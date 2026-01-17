@@ -1,0 +1,21 @@
+{
+    "subject": "mathematics",
+    "generation_info": "Complete mathematics curriculum with all 24 modules across 3 levels - Generated systematically",
+    "levels": {
+        "beginner": {
+            "description": "Foundation level covering basic mathematical concepts",
+            "total_modules": 10,
+            "modules": []
+        },
+        "intermediate": {
+            "description": "Building on fundamentals with calculus and advanced algebra",
+            "total_modules": 8,
+            "modules": []
+        },
+        "advanced": {
+            "description": "Advanced topics for specialization and applications",
+            "total_modules": 6,
+            "modules": []
+        }
+    }
+}

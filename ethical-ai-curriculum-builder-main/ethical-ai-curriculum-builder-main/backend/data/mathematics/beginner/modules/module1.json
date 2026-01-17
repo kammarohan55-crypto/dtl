@@ -1,0 +1,9 @@
+{
+  "id": "module1",
+  "title": "Basics of Matrices",
+  "content": [
+    "A matrix is a rectangular array of numbers.",
+    "Matrices are widely used in engineering mathematics."
+  ],
+  "industry_insight": "Matrices are used in simulations, graphics, and data processing."
+}

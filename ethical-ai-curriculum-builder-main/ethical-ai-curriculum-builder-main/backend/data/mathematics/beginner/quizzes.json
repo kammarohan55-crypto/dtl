@@ -1,0 +1,56 @@
+{
+  "easy": [
+    {
+      "question": "What is a matrix?",
+      "options": [
+        "A rectangular array of numbers",
+        "A programming language",
+        "A graph",
+        "A variable"
+      ],
+      "answer": "A rectangular array of numbers"
+    },
+    {
+      "question": "What does the order of a matrix represent?",
+      "options": [
+        "Number of rows and columns",
+        "Sum of elements",
+        "Type of matrix",
+        "Value of determinant"
+      ],
+      "answer": "Number of rows and columns"
+    },
+    {
+      "question": "Which symbol is commonly used to represent a matrix?",
+      "options": [
+        "Capital letter",
+        "Lowercase letter",
+        "Number",
+        "Greek letter"
+      ],
+      "answer": "Capital letter"
+    },
+    {
+      "question": "A matrix with one row is called?",
+      "options": [
+        "Row matrix",
+        "Column matrix",
+        "Square matrix",
+        "Diagonal matrix"
+      ],
+      "answer": "Row matrix"
+    },
+    {
+      "question": "A matrix with equal rows and columns is called?",
+      "options": [
+        "Square matrix",
+        "Rectangular matrix",
+        "Zero matrix",
+        "Unit matrix"
+      ],
+      "answer": "Square matrix"
+    }
+  ],
+  "medium": [],
+  "hard": []
+}

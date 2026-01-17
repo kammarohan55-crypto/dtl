@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive learning module with progress tracking and industry insights">
+  <title>Module | AI Curriculum Builder</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div class="glass-card">
+        <h2 id="moduleTitle" style="margin-bottom: 1.5rem;">📖 Loading Module...</h2>
+
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+          <div id="progressContainer" style="flex: 1; margin: 0;">
+            <div id="progressBar"></div>
+          </div>
+          <span id="progressText" style="color: var(--color-text-muted); font-size: 0.875rem; white-space: nowrap;">
+            0% Complete
+          </span>
+        </div>
+
+        <div id="moduleContent"></div>
+
+        <div id="industryInsight" style="display: none;">
+          <strong>💡 Industry Insight</strong>
+          <p style="margin: 0;"></p>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem;">
+          <button id="completeBtn" class="btn-primary">
+            ✓ Mark as Completed
+          </button>
+          <button id="flashcardBtn" class="btn-secondary">
+            🗂️ Flashcards
+          </button>
+          <button id="quizBtn" class="btn-secondary">
+            🎯 Take Quiz
+          </button>
+        </div>
+
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(248, 250, 252, 0.1);">
+          <button onclick="history.back()" class="btn-secondary" style="width: auto;">
+            ← Back to Roadmap
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/progress.js"></script>
+  <script src="js/module.js"></script>
+
+  <script>
+    // Update progress text when progress bar changes
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+
+    const observer = new MutationObserver(() => {
+      const width = progressBar.style.width;
+      if (width) {
+        progressText.textContent = `${width} Complete`;
+      }
+    });
+
+    observer.observe(progressBar, { attributes: true, attributeFilter: ['style'] });
+  </script>
+</body>
+
+</html>
