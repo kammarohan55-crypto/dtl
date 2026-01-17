@@ -30,8 +30,6 @@ async function loadQuiz() {
     document.getElementById('startQuizBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
 
     try {
-        // Fetch quiz data for the subject
-        // Note: The file contains ALL quizzes for the subject, indexed by module_id
         const response = await fetch(`quizzes/${subject}_quizzes.json`);
         if (!response.ok) throw new Error("Failed to load quizzes");
 
@@ -44,13 +42,13 @@ async function loadQuiz() {
         renderQuiz(currentQuiz);
 
         // Hide start button, show quiz container
-        document.querySelector('.quiz-control').style.display = 'none';
+        document.querySelector('.quiz-hero').style.display = 'none';
         document.getElementById('quizContainer').style.display = 'block';
 
     } catch (error) {
         console.error(error);
         alert("Could not load quiz: " + error.message);
-        document.getElementById('startQuizBtn').innerHTML = '<i class="fas fa-question-circle"></i> Take Module Quiz';
+        document.getElementById('startQuizBtn').innerHTML = 'Start Interactive Quiz';
     }
 }
 
@@ -68,6 +66,14 @@ function renderQuiz(quiz) {
         card.className = 'question-card';
         card.dataset.id = index;
 
+        // Difficulty Badge Colors
+        let diffColor = '#6b7280'; // Default gray
+        if (q.difficulty === 'Easy') diffColor = '#10b981';
+        if (q.difficulty === 'Medium') diffColor = '#f59e0b';
+        if (q.difficulty === 'Hard') diffColor = '#ef4444';
+
+        const diffBadge = `<span style="background:${diffColor}; color:white; padding:2px 8px; border-radius:12px; font-size:0.75rem; margin-left:10px; font-weight:bold;">${q.difficulty || 'General'}</span>`;
+
         let optionsHtml = '';
         q.options.forEach((opt, optIndex) => {
             optionsHtml += `
@@ -79,13 +85,21 @@ function renderQuiz(quiz) {
         });
 
         card.innerHTML = `
-            <div class="question-text">${index + 1}. ${q.question}</div>
+            <div class="question-header" style="margin-bottom:15px;">
+                <span class="q-num">Q${index + 1}</span> ${diffBadge}
+            </div>
+            <div class="question-text">${q.question}</div>
             <div class="options-group">${optionsHtml}</div>
-            <div class="feedback" style="display:none;"></div>
+            <div class="feedback" style="display:none; margin-top:15px;"></div>
         `;
 
         container.appendChild(card);
     });
+
+    // Re-render LaTeX if present in questions
+    if (window.MathJax) {
+        window.MathJax.typesetPromise();
+    }
 }
 
 function submitQuiz() {
@@ -115,20 +129,24 @@ function submitQuiz() {
         if (userAns === q.correct) {
             score++;
             card.querySelector(`input[value="${userAns}"]`).parentElement.classList.add('correct-answer');
-            feedback.innerHTML = `<div class="explanation"><i class="fas fa-check"></i> Correct! ${q.explanation}</div>`;
+            feedback.innerHTML = `
+                <div class="explanation success-exp">
+                    <strong><i class="fas fa-check"></i> Correct!</strong><br>
+                    ${q.explanation || 'Great job!'}
+                </div>`;
         } else {
             card.querySelector(`input[value="${userAns}"]`).parentElement.classList.add('wrong-answer');
             card.querySelector(`input[value="${q.correct}"]`).parentElement.classList.add('correct-answer');
-            feedback.innerHTML = `<div class="explanation"><i class="fas fa-times"></i> Incorrect. ${q.explanation}</div>`;
+            feedback.innerHTML = `
+                <div class="explanation error-exp">
+                    <strong><i class="fas fa-times"></i> Incorrect.</strong><br>
+                    ${q.explanation || 'Review the topic concepts.'}
+                </div>`;
         }
     });
 
     if (unanswered > 0) {
         alert(`Please answer all questions! (${unanswered} remaining)`);
-        // Re-enable inputs for unanswered?? 
-        // For simplicity, we just stop here and let them answer.
-        // Re-hide feedback if shown prematurely? 
-        // Better UX: Just return and don't grade yet.
         return;
     }
 
@@ -142,87 +160,13 @@ function submitQuiz() {
 
     // Handle Progression
     handleProgression(percentage);
-}
 
-function handleProgression(score) {
-    const currentModule = window.moduleState.getCurrentModule();
-    const subject = currentModule.subject;
-    const level = currentModule.level;
-    const moduleId = currentModule.module_id;
-
-    // 1. Save Score
-    let progress = JSON.parse(localStorage.getItem('userProgress') || '{}');
-    if (!progress[subject]) progress[subject] = {};
-    if (!progress[subject][level]) progress[subject][level] = {};
-
-    // Only update if higher? Or always update? Let's keep highest.
-    const oldScore = progress[subject][level][moduleId] || 0;
-    progress[subject][level][moduleId] = Math.max(oldScore, score);
-
-    localStorage.setItem('userProgress', JSON.stringify(progress));
-
-    // 2. Analyze weak topics (If score < 60)
-    const msgDiv = document.getElementById('progressionMessage');
-    msgDiv.style.display = 'block';
-
-    if (score < 60) {
-        msgDiv.className = 'progression-message progression-review';
-        msgDiv.innerHTML = `
-            <i class="fas fa-exclamation-triangle"></i> Not quite there yet. 
-            <br>We recommend reviewing the Theory section and Worked Examples before trying again.
-        `;
-    } else {
-        // 3. Check Level Completion
-        const isLevelComplete = checkLevelCompletion(subject, level, progress);
-
-        msgDiv.className = 'progression-message progression-success';
-        if (isLevelComplete) {
-            msgDiv.innerHTML = `
-                <i class="fas fa-trophy"></i> <strong>Congratulations!</strong>
-                <br>You have passed all modules in the <strong>${level}</strong> level!
-                <br>You are ready to advance to the next level in the Roadmap.
-            `;
-        } else {
-            msgDiv.innerHTML = `
-                <i class="fas fa-check-circle"></i> <strong>Module Passed!</strong>
-                <br>Great job! You can now move to the next module in the Roadmap.
-            `;
-        }
+    // Re-render MathJax in explanations
+    if (window.MathJax) {
+        window.MathJax.typesetPromise();
     }
 }
 
-function checkLevelCompletion(subject, level, progress) {
-    // Need to know TOTAL modules in this level.
-    // We can't easily access the full curriculum list here unless we fetch it again or store it.
-    // BUT! moduleState stores current module, not full list.
-    // However, roadmap.js stored the CURRENT curriculum in a variable? No, separate page.
-    // workaround: We assume if we have X passed modules, we are good?
-    // Better: We should probably fetch the curriculum to know the count.
-    // Let's do a quick fetch since it's cached usually.
-
-    // Actually, for MVP, just showing "Module Passed" is good.
-    // But user asked for "tell if ready for next level".
-    // I will try to support it by fetching curriculum.
-
-    return fetch(`${subject}_curriculum.json`)
-        .then(res => res.json())
-        .then(data => {
-            const modules = data.levels[level].modules;
-            const userScores = progress[subject][level];
-
-            // Check if every module has a score >= 60
-            const allPassed = modules.every(m => (userScores[m.module_id] || 0) >= 60);
-            return allPassed;
-        })
-        .catch(err => {
-            console.error("Error checking level completion", err);
-            return false;
-        });
-    // Wait, checkLevelCompletion needs to be async or return promise.
-    // I called it synchronously above. I need to fix that.
-}
-
-// Fixed async version of handleProgression
 async function handleProgression(score) {
     const currentModule = window.moduleState.getCurrentModule();
     const subject = currentModule.subject;
@@ -242,14 +186,14 @@ async function handleProgression(score) {
     msgDiv.style.display = 'block';
 
     if (score < 60) {
-        msgDiv.className = 'progression-message progression-review';
+        msgDiv.className = 'progression-banner progression-review';
         msgDiv.innerHTML = `
-            <i class="fas fa-exclamation-triangle"></i> Score below 60%. 
-            <br>Please review the weak topics in this module and retry.
+            <h3><i class="fas fa-exclamation-triangle"></i> Review Needed</h3> 
+            <p>You scored ${score}%. We recommend reviewing the <strong>Intuition</strong> and <strong>Worked Examples</strong> sections before moving on.</p>
         `;
     } else {
-        msgDiv.className = 'progression-message progression-success';
-        msgDiv.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Checking progression...`;
+        msgDiv.className = 'progression-banner progression-success';
+        msgDiv.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Checking Level Completion...`;
 
         try {
             // Check Level Completion
@@ -262,26 +206,27 @@ async function handleProgression(score) {
 
             if (allPassed) {
                 msgDiv.innerHTML = `
-                    <i class="fas fa-trophy"></i> <strong>LEVEL COMPLETE!</strong>
-                    <br>You have mastered the passed all modules in <strong>${level}</strong>!
-                    <br><a href="roadmap.html">rReturn to Roadmap</a> to start the next level.
+                    <h3><i class="fas fa-trophy"></i> LEVEL COMPLETE!</h3>
+                    <p>You have mastered the passed all modules in <strong>${level}</strong>!</p>
+                    <a href="roadmap.html" class="premium-btn" style="display:inline-block; margin-top:10px; color:white; text-decoration:none;">Unlock Next Level</a>
                 `;
             } else {
                 msgDiv.innerHTML = `
-                    <i class="fas fa-check-circle"></i> <strong>Module Passed!</strong>
-                    <br>Good job! Return to the <a href="roadmap.html">Roadmap</a> to continue.
+                    <h3><i class="fas fa-check-circle"></i> Module Passed!</h3>
+                    <p>Great work! You've mastered this concept.</p>
+                    <a href="roadmap.html" class="premium-btn" style="display:inline-block; margin-top:10px; color:white; text-decoration:none;">Return to Roadmap</a>
                 `;
             }
         } catch (e) {
             msgDiv.innerHTML = `
-                <i class="fas fa-check-circle"></i> <strong>Module Passed!</strong>
+                <h3><i class="fas fa-check-circle"></i> Module Passed!</h3>
             `;
         }
     }
 }
 
 function resetQuiz() {
-    document.querySelector('.quiz-control').style.display = 'block';
+    document.querySelector('.quiz-hero').style.display = 'block';
     document.getElementById('quizContainer').style.display = 'none';
-    document.getElementById('startQuizBtn').innerHTML = '<i class="fas fa-question-circle"></i> Take Module Quiz';
+    document.getElementById('startQuizBtn').innerHTML = 'Start Interactive Quiz';
 }

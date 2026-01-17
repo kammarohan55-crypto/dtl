@@ -4,85 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethical AI Curriculum Builder - Learn</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Ethical AI Curriculum Builder - Master Class</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/module.css">
     <link rel="stylesheet" href="css/summary.css">
     <link rel="stylesheet" href="css/quiz.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MathJax for Beautiful LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Floating Navigation -->
+    <div class="app-container">
+        <!-- Minimal Nav -->
         <nav class="top-nav">
-            <a href="roadmap.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Roadmap</a>
-            <span class="brand"><i class="fas fa-graduation-cap"></i> Ethical AI Curriculum Builder</span>
+            <a href="roadmap.html" class="nav-link"><i class="fas fa-arrow-left"></i> Roadmap</a>
+            <span class="brand">Ethical AI / Master Class</span>
         </nav>
 
-        <header class="module-header-container">
-            <h1 id="moduleName">Loading...</h1>
-            <div id="moduleLevel" class="badge">...</div>
+        <!-- Topic Header: The "Why" -->
+        <header class="topic-header">
+            <div id="moduleLevelBadge" class="level-pill">...</div>
+            <h1 id="moduleName">Topic Loading...</h1>
+            <p id="moduleMotivation" class="motivation-text">Loading motivation...</p>
         </header>
 
         <main id="moduleContent" style="display: none;">
-            <!-- Content Grid -->
-            <div class="content-grid">
-                <!-- Objectives -->
-                <section class="objectives-box">
-                    <h3><i class="fas fa-bullseye"></i> Learning Objectives</h3>
-                    <ul id="objectives"></ul>
+
+            <!-- 1. Concept Overview & Intuition -->
+            <div class="cards-grid">
+                <section class="learning-card concept-card">
+                    <div class="card-header"><i class="fas fa-lightbulb"></i> Concept Overview</div>
+                    <div class="card-body" id="conceptContent"></div>
                 </section>
 
-                <!-- Theory -->
-                <section class="theory-box">
-                    <h3><i class="fas fa-book-open"></i> Core Theory</h3>
-                    <div id="theoryContent" class="text-content"></div>
-                </section>
-
-                <!-- Worked Examples -->
-                <section class="examples-box">
-                    <h3><i class="fas fa-chalkboard-teacher"></i> Worked Examples</h3>
-                    <div id="examplesContent"></div>
+                <section class="learning-card intuition-card">
+                    <div class="card-header"><i class="fas fa-brain"></i> Intuition & Analogies</div>
+                    <div class="card-body" id="intuitionContent"></div>
                 </section>
             </div>
 
-            <!-- AI Summary Section -->
-            <section class="ai-summary-control">
-                <button id="summarizeBtn" class="btn btn-magic">
-                    <i class="fas fa-robot"></i> Summarize This Module with AI
+            <!-- 2. Mathematical Formulation (The "Hard" Part) -->
+            <section class="learning-card math-card">
+                <div class="card-header"><i class="fas fa-square-root-alt"></i> Mathematical Formulation</div>
+                <div class="card-body" id="mathContent"></div>
+            </section>
+
+            <!-- 3. Worked Example -->
+            <section class="learning-card example-card">
+                <div class="card-header"><i class="fas fa-pencil-ruler"></i> Worked Example</div>
+                <div class="card-body" id="exampleContent"></div>
+            </section>
+
+            <!-- 4. Key Takeaways -->
+            <section class="learning-card takeaways-card">
+                <div class="card-header"><i class="fas fa-key"></i> Key Takeaways</div>
+                <div class="card-body" id="takeawaysContent"></div>
+            </section>
+
+            <!-- AI Tools -->
+            <section class="ai-controls">
+                <button id="summarizeBtn" class="premium-btn">
+                    <i class="fas fa-sparkles"></i> AI Summary
                 </button>
             </section>
 
             <div id="loadingSpinner" class="spinner" style="display: none;"></div>
 
-            <section id="summaryContainer" class="summary-container" style="display: none;">
-                <div class="summary-header">
-                    <h3><i class="fas fa-sparkles"></i> AI Generated Summary</h3>
-                    <button id="closeSummary" class="close-btn">&times;</button>
+            <!-- Summary Container -->
+            <section id="summaryContainer" class="learning-card summary-card" style="display: none;">
+                <div class="card-header">
+                    <span><i class="fas fa-robot"></i> AI Generated Summary</span>
+                    <button id="closeSummary" class="icon-btn">&times;</button>
                 </div>
-                <div id="summaryContent"></div>
+                <div class="card-body" id="summaryContent"></div>
             </section>
 
             <!-- Quiz Section -->
-            <section class="quiz-control"
-                style="margin-top: 50px; text-align: center; border-top: 1px solid #eee; padding-top: 40px;">
-                <button id="startQuizBtn" class="btn btn-primary btn-lg">
-                    <i class="fas fa-question-circle"></i> Take Module Quiz
+            <section class="quiz-hero">
+                <h2>Ready to Test Your Mastery?</h2>
+                <button id="startQuizBtn" class="btn-quiz-start">
+                    Start Interactive Quiz
                 </button>
             </section>
 
-            <section id="quizContainer" class="quiz-container" style="display: none;">
+            <section id="quizContainer" class="quiz-interface" style="display: none;">
                 <div class="quiz-header">
-                    <h3><i class="fas fa-check-double"></i> Knowledge Check</h3>
-                    <div id="quizScore" class="quiz-score"></div>
+                    <h3>Skill Verification</h3>
+                    <div id="quizScore" class="score-display"></div>
                 </div>
-                <div id="quizQuestions" class="quiz-questions"></div>
-                <div class="quiz-footer">
-                    <button id="submitQuizBtn" class="btn btn-success">Submit Answers</button>
-                    <button id="retryQuizBtn" class="btn btn-secondary" style="display: none;">Retry Quiz</button>
+                <div id="quizQuestions" class="questions-stream"></div>
+                <div class="quiz-actions">
+                    <button id="submitQuizBtn" class="btn-submit">Submit Answers</button>
+                    <button id="retryQuizBtn" class="btn-retry" style="display: none;">Retry Module</button>
                 </div>
-                <div id="progressionMessage" class="progression-message" style="display:none;"></div>
+                <div id="progressionMessage" class="progression-banner" style="display:none;"></div>
             </section>
 
         </main>

@@ -20,8 +20,7 @@ async function initModule() {
         return;
     }
 
-    // 2. Load the Module Data directly from the JSON file
-    // We reuse the filename convention: [subject]_curriculum.json
+    // 2. Load the Module Data
     try {
         const response = await fetch(`${subject}_curriculum.json`);
         if (!response.ok) throw new Error("Failed to fetch curriculum");
@@ -34,7 +33,7 @@ async function initModule() {
 
         if (!module) throw new Error("Module not found in curriculum");
 
-        currentModule = { ...module, subject, level }; // Enrich with context
+        currentModule = { ...module, subject, level };
 
         // 3. Render Module
         renderModule(currentModule);
@@ -42,47 +41,54 @@ async function initModule() {
     } catch (err) {
         console.error(err);
         document.getElementById('moduleName').textContent = "Error Loading Module";
-        document.getElementById('moduleContent').innerHTML = `<p class="error">Failed to load content: ${err.message}. <br><a href="roadmap.html">Back to Roadmap</a></p>`;
+        document.getElementById('moduleContent').innerHTML = `<p class="error">Failed to load content: ${err.message}. <a href="roadmap.html">Back</a></p>`;
         document.getElementById('moduleContent').style.display = 'block';
     }
 }
 
 function renderModule(module) {
     document.getElementById('moduleName').textContent = module.module_name;
-    const badge = document.getElementById('moduleLevel');
-    badge.textContent = module.level.toUpperCase();
-    badge.className = `badge badge-${module.level}`;
+    document.getElementById('moduleLevelBadge').textContent = module.level;
 
-    // Objectives
-    const objList = document.getElementById('objectives');
-    objList.innerHTML = '';
-    module.learning_objectives.forEach(obj => {
-        const li = document.createElement('li');
-        li.textContent = obj;
-        objList.appendChild(li);
-    });
+    const cards = module.content_cards;
 
-    // Theory
-    // Simple markdown-like parser for newlines/bold
-    const theoryHTML = formatText(module.core_content.theory);
-    document.getElementById('theoryContent').innerHTML = theoryHTML;
+    // 1. Motivation
+    document.getElementById('moduleMotivation').textContent = cards.motivation ? cards.motivation.content : "Master this concept to unlock advanced applications.";
 
-    // Examples
-    const exDiv = document.getElementById('examplesContent');
-    exDiv.innerHTML = '';
-    module.core_content.worked_examples.forEach((ex, i) => {
-        const card = document.createElement('div');
-        card.className = 'example-card';
-        card.innerHTML = `
-            <h4>Example ${i + 1}</h4>
-            <div class="problem"><strong>Q:</strong> ${formatText(ex.problem)}</div>
-            <div class="solution"><strong>A:</strong> ${formatText(ex.solution)}</div>
+    // 2. Concept Overview (List)
+    const conceptDiv = document.getElementById('conceptContent');
+    const points = cards.concept_overview ? cards.concept_overview.points : ["Core fundamental topic."];
+    conceptDiv.innerHTML = `<ul>${points.map(p => `<li>${p}</li>`).join('')}</ul>`;
+
+    // 3. Intuition (Rich Text)
+    document.getElementById('intuitionContent').innerHTML = formatText(cards.intuition ? cards.intuition.content : module.core_content.intuition);
+
+    // 4. Mathematical Formulation (LaTeX)
+    document.getElementById('mathContent').innerHTML = formatText(cards.math_derivation ? cards.math_derivation.content : "No formulation required.");
+
+    // 5. Worked Example (Rich Text)
+    const exDiv = document.getElementById('exampleContent');
+    if (cards.worked_example) {
+        exDiv.innerHTML = `
+            <div class="problem"><strong>Q:</strong> ${formatText(cards.worked_example.problem)}</div>
+            <div class="solution"><strong>A:</strong> ${formatText(cards.worked_example.solution)}</div>
         `;
-        exDiv.appendChild(card);
-    });
+    } else {
+        exDiv.innerHTML = "No example provided.";
+    }
+
+    // 6. Takeaways (List)
+    const takeDiv = document.getElementById('takeawaysContent');
+    const takeaways = cards.key_takeaways ? cards.key_takeaways.points : [];
+    takeDiv.innerHTML = `<ul>${takeaways.map(t => `<li>${t}</li>`).join('')}</ul>`;
 
     // Show Content
     document.getElementById('moduleContent').style.display = 'block';
+
+    // TRIGGER MATHJAX
+    if (window.MathJax) {
+        window.MathJax.typesetPromise();
+    }
 }
 
 function formatText(text) {
@@ -93,14 +99,14 @@ function formatText(text) {
         .replace(/\n/g, '<br>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-    // Handle code blocks if possible (simple)
+    // Handle code blocks (simple regex for MVP)
     if (html.includes('```')) {
         html = html.replace(/```(.*?)```/gs, '<pre><code>$1</code></pre>');
     }
     return html;
 }
 
-// Export state for other scripts (summarize.js, quiz.js)
+// Export state
 window.moduleState = {
     getCurrentModule: () => currentModule,
     API_BASE_URL
