@@ -1,0 +1,55 @@
+{
+    "subject": "aiml",
+    "overview": "Learn AI and Machine Learning from Python basics through state-of-the-art deep learning. Build practical skills to create intelligent systems and deploy ML models in production.",
+    "levels": {
+        "beginner": {
+            "name": "Beginner",
+            "description": "Foundation level - Build core understanding",
+            "modules": [
+                "Python for AI/ML",
+                "NumPy Fundamentals",
+                "Pandas for Data",
+                "Data Visualization",
+                "Statistics for ML",
+                "Linear Regression",
+                "Logistic Regression",
+                "Decision Trees",
+                "K-Nearest Neighbors",
+                "Model Evaluation"
+            ],
+            "prerequisites": "Basic familiarity with the subject area",
+            "outcomes": "Strong foundational knowledge to progress to intermediate concepts"
+        },
+        "intermediate": {
+            "name": "Intermediate",
+            "description": "Application level - Apply concepts to solve problems",
+            "modules": [
+                "Neural Networks",
+                "Convolutional Neural Networks",
+                "Recurrent Neural Networks",
+                "Natural Language Processing",
+                "Clustering Algorithms",
+                "Dimensionality Reduction",
+                "Ensemble Methods",
+                "Support Vector Machines"
+            ],
+            "prerequisites": "Completion of all beginner modules with 75%+ average",
+            "outcomes": "Ability to tackle complex problems and understand advanced topics"
+        },
+        "advanced": {
+            "name": "Advanced",
+            "description": "Expert level - Master complex techniques",
+            "modules": [
+                "Transformers & Attention",
+                "Generative Adversarial Networks",
+                "Reinforcement Learning",
+                "ML Operations",
+                "Advanced Deep Learning",
+                "Advanced Optimization"
+            ],
+            "prerequisites": "Completion of all intermediate modules with 75%+ average",
+            "outcomes": "Professional-level expertise and readiness for real-world application"
+        }
+    },
+    "progression_logic": "Students must complete all modules in a level with an average quiz score of 75% or higher before advancing to the next level. Each module quiz must be passed with at least 60% to proceed to the next module within the same level."
+}

@@ -1,0 +1,55 @@
+{
+    "subject": "mathematics",
+    "overview": "Master mathematics from fundamentals through advanced calculus and optimization. Progress from basic arithmetic and algebra to advanced mathematical concepts used in engineering and data science.",
+    "levels": {
+        "beginner": {
+            "name": "Beginner",
+            "description": "Foundation level - Build core understanding",
+            "modules": [
+                "Number Systems",
+                "Linear Equations",
+                "Algebraic Expressions",
+                "Sets & Relations",
+                "Functions Introduction",
+                "Coordinate Geometry",
+                "Probability Basics",
+                "Statistics Basics",
+                "Polynomials",
+                "Inequalities"
+            ],
+            "prerequisites": "Basic familiarity with the subject area",
+            "outcomes": "Strong foundational knowledge to progress to intermediate concepts"
+        },
+        "intermediate": {
+            "name": "Intermediate",
+            "description": "Application level - Apply concepts to solve problems",
+            "modules": [
+                "Matrices",
+                "Limits & Continuity",
+                "Differentiation",
+                "Integration",
+                "Differential Equations",
+                "Vector Algebra",
+                "Permutations & Combinations",
+                "Probability Distributions"
+            ],
+            "prerequisites": "Completion of all beginner modules with 75%+ average",
+            "outcomes": "Ability to tackle complex problems and understand advanced topics"
+        },
+        "advanced": {
+            "name": "Advanced",
+            "description": "Expert level - Master complex techniques",
+            "modules": [
+                "Linear Algebra",
+                "Multivariable Calculus",
+                "Optimization Techniques",
+                "Numerical Methods",
+                "Probability Theory",
+                "Math for Machine Learning"
+            ],
+            "prerequisites": "Completion of all intermediate modules with 75%+ average",
+            "outcomes": "Professional-level expertise and readiness for real-world application"
+        }
+    },
+    "progression_logic": "Students must complete all modules in a level with an average quiz score of 75% or higher before advancing to the next level. Each module quiz must be passed with at least 60% to proceed to the next module within the same level."
+}

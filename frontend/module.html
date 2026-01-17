@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical AI Curriculum Builder - Learn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/summary.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Floating Navigation -->
+        <nav class="top-nav">
+            <a href="roadmap.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Roadmap</a>
+            <span class="brand"><i class="fas fa-graduation-cap"></i> Ethical AI Curriculum Builder</span>
+        </nav>
+
+        <header class="module-header-container">
+            <h1 id="moduleName">Loading...</h1>
+            <div id="moduleLevel" class="badge">...</div>
+        </header>
+
+        <main id="moduleContent" style="display: none;">
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Objectives -->
+                <section class="objectives-box">
+                    <h3><i class="fas fa-bullseye"></i> Learning Objectives</h3>
+                    <ul id="objectives"></ul>
+                </section>
+
+                <!-- Theory -->
+                <section class="theory-box">
+                    <h3><i class="fas fa-book-open"></i> Core Theory</h3>
+                    <div id="theoryContent" class="text-content"></div>
+                </section>
+
+                <!-- Worked Examples -->
+                <section class="examples-box">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Worked Examples</h3>
+                    <div id="examplesContent"></div>
+                </section>
+            </div>
+
+            <!-- AI Summary Section -->
+            <section class="ai-summary-control">
+                <button id="summarizeBtn" class="btn btn-magic">
+                    <i class="fas fa-robot"></i> Summarize This Module with AI
+                </button>
+            </section>
+
+            <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+
+            <section id="summaryContainer" class="summary-container" style="display: none;">
+                <div class="summary-header">
+                    <h3><i class="fas fa-sparkles"></i> AI Generated Summary</h3>
+                    <button id="closeSummary" class="close-btn">&times;</button>
+                </div>
+                <div id="summaryContent"></div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section class="quiz-control"
+                style="margin-top: 50px; text-align: center; border-top: 1px solid #eee; padding-top: 40px;">
+                <button id="startQuizBtn" class="btn btn-primary btn-lg">
+                    <i class="fas fa-question-circle"></i> Take Module Quiz
+                </button>
+            </section>
+
+            <section id="quizContainer" class="quiz-container" style="display: none;">
+                <div class="quiz-header">
+                    <h3><i class="fas fa-check-double"></i> Knowledge Check</h3>
+                    <div id="quizScore" class="quiz-score"></div>
+                </div>
+                <div id="quizQuestions" class="quiz-questions"></div>
+                <div class="quiz-footer">
+                    <button id="submitQuizBtn" class="btn btn-success">Submit Answers</button>
+                    <button id="retryQuizBtn" class="btn btn-secondary" style="display: none;">Retry Quiz</button>
+                </div>
+                <div id="progressionMessage" class="progression-message" style="display:none;"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/module.js"></script>
+    <script src="js/summarize.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

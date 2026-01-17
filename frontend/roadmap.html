@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical AI Curriculum Builder - Roadmap</title>
+    <link rel="stylesheet" href="css/roadmap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Floating Header -->
+        <header class="main-header">
+            <div class="logo">
+                <i class="fas fa-network-wired"></i> Ethical AI Curriculum Builder
+            </div>
+            <nav>
+                <button id="homeBtn" class="nav-btn active">Roadmaps</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Subject Selection Grid -->
+            <section id="subjectSelection" class="subject-grid">
+                <div class="subject-card" data-subject="mathematics">
+                    <div class="card-icon math-bg"><i class="fas fa-square-root-alt"></i></div>
+                    <h3>Mathematics</h3>
+                    <p>Foundations of Logic & Calculus</p>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="subject-card" data-subject="aiml">
+                    <div class="card-icon ai-bg"><i class="fas fa-brain"></i></div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>From Data to Deep Learning</p>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="subject-card" data-subject="programming_c">
+                    <div class="card-icon c-bg"><i class="fas fa-code"></i></div>
+                    <h3>Programming in C</h3>
+                    <p>System Level Mastery</p>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Tree Roadmap -->
+            <section id="roadmapDisplay" class="roadmap-tree-container" style="display: none;">
+                <div class="tree-header">
+                    <button id="backBtn" class="icon-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                    <h2 id="roadmapTitle">Subject Pipeline</h2>
+                </div>
+
+                <div class="tree-canvas">
+                    <!-- Tree content injected by JS -->
+                    <div class="tree-root">
+                        <!-- Connecting Line -->
+                        <div class="tree-line"></div>
+
+                        <!-- Beginner Cluster -->
+                        <div class="tree-level-group" id="treeBeginner">
+                            <div class="level-badge beginner-badge">Beginner</div>
+                            <div class="nodes-grid" id="beginnerNodes"></div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="tree-connector"></div>
+
+                        <!-- Intermediate Cluster -->
+                        <div class="tree-level-group" id="treeIntermediate">
+                            <div class="level-badge intermediate-badge">Intermediate</div>
+                            <div class="nodes-grid" id="intermediateNodes"></div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="tree-connector"></div>
+
+                        <!-- Advanced Cluster -->
+                        <div class="tree-level-group" id="treeAdvanced">
+                            <div class="level-badge advanced-badge">Advanced</div>
+                            <div class="nodes-grid" id="advancedNodes"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/roadmap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,3098 @@
+{
+    "number_systems": {
+        "module_id": "number_systems",
+        "module_name": "Number Systems",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Number Systems - Question 1: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Number Systems - Question 2: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Number Systems - Question 3: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Number Systems - Question 4: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Number Systems - Question 5: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Number Systems - Question 6: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Number Systems - Question 7: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Number Systems - Question 8: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Number Systems - Question 9: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Number Systems - Question 10: What is a key concept in Number Systems?",
+                "options": [
+                    "Concept A related to Number Systems",
+                    "Correct answer for Number Systems",
+                    "Concept C related to Number Systems",
+                    "Concept D related to Number Systems"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Number Systems. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "linear_equations": {
+        "module_id": "linear_equations",
+        "module_name": "Linear Equations",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Linear Equations - Question 1: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Linear Equations - Question 2: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Linear Equations - Question 3: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Linear Equations - Question 4: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Linear Equations - Question 5: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Linear Equations - Question 6: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Linear Equations - Question 7: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Linear Equations - Question 8: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Linear Equations - Question 9: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Linear Equations - Question 10: What is a key concept in Linear Equations?",
+                "options": [
+                    "Concept A related to Linear Equations",
+                    "Correct answer for Linear Equations",
+                    "Concept C related to Linear Equations",
+                    "Concept D related to Linear Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Equations. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "algebraic_expressions": {
+        "module_id": "algebraic_expressions",
+        "module_name": "Algebraic Expressions",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Algebraic Expressions - Question 1: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Algebraic Expressions - Question 2: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Algebraic Expressions - Question 3: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Algebraic Expressions - Question 4: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Algebraic Expressions - Question 5: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Algebraic Expressions - Question 6: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Algebraic Expressions - Question 7: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Algebraic Expressions - Question 8: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Algebraic Expressions - Question 9: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Algebraic Expressions - Question 10: What is a key concept in Algebraic Expressions?",
+                "options": [
+                    "Concept A related to Algebraic Expressions",
+                    "Correct answer for Algebraic Expressions",
+                    "Concept C related to Algebraic Expressions",
+                    "Concept D related to Algebraic Expressions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Algebraic Expressions. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "sets_relations": {
+        "module_id": "sets_relations",
+        "module_name": "Sets and Relations",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Sets and Relations - Question 1: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Sets and Relations - Question 2: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Sets and Relations - Question 3: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Sets and Relations - Question 4: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Sets and Relations - Question 5: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Sets and Relations - Question 6: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Sets and Relations - Question 7: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Sets and Relations - Question 8: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Sets and Relations - Question 9: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Sets and Relations - Question 10: What is a key concept in Sets and Relations?",
+                "options": [
+                    "Concept A related to Sets and Relations",
+                    "Correct answer for Sets and Relations",
+                    "Concept C related to Sets and Relations",
+                    "Concept D related to Sets and Relations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Sets and Relations. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "functions_intro": {
+        "module_id": "functions_intro",
+        "module_name": "Introduction to Functions",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Introduction to Functions - Question 1: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Introduction to Functions - Question 2: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Introduction to Functions - Question 3: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Introduction to Functions - Question 4: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Introduction to Functions - Question 5: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Introduction to Functions - Question 6: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Introduction to Functions - Question 7: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Introduction to Functions - Question 8: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Introduction to Functions - Question 9: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Introduction to Functions - Question 10: What is a key concept in Introduction to Functions?",
+                "options": [
+                    "Concept A related to Introduction to Functions",
+                    "Correct answer for Introduction to Functions",
+                    "Concept C related to Introduction to Functions",
+                    "Concept D related to Introduction to Functions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Introduction to Functions. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "coordinate_geometry": {
+        "module_id": "coordinate_geometry",
+        "module_name": "Coordinate Geometry",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Coordinate Geometry - Question 1: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Coordinate Geometry - Question 2: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Coordinate Geometry - Question 3: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Coordinate Geometry - Question 4: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Coordinate Geometry - Question 5: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Coordinate Geometry - Question 6: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Coordinate Geometry - Question 7: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Coordinate Geometry - Question 8: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Coordinate Geometry - Question 9: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Coordinate Geometry - Question 10: What is a key concept in Coordinate Geometry?",
+                "options": [
+                    "Concept A related to Coordinate Geometry",
+                    "Correct answer for Coordinate Geometry",
+                    "Concept C related to Coordinate Geometry",
+                    "Concept D related to Coordinate Geometry"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Coordinate Geometry. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "probability_basics": {
+        "module_id": "probability_basics",
+        "module_name": "Probability Basics",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Probability Basics - Question 1: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Probability Basics - Question 2: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Probability Basics - Question 3: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Probability Basics - Question 4: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Probability Basics - Question 5: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Probability Basics - Question 6: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Probability Basics - Question 7: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Probability Basics - Question 8: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Probability Basics - Question 9: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Probability Basics - Question 10: What is a key concept in Probability Basics?",
+                "options": [
+                    "Concept A related to Probability Basics",
+                    "Correct answer for Probability Basics",
+                    "Concept C related to Probability Basics",
+                    "Concept D related to Probability Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Basics. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "statistics_basics": {
+        "module_id": "statistics_basics",
+        "module_name": "Statistics Basics",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Statistics Basics - Question 1: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Statistics Basics - Question 2: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Statistics Basics - Question 3: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Statistics Basics - Question 4: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Statistics Basics - Question 5: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Statistics Basics - Question 6: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Statistics Basics - Question 7: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Statistics Basics - Question 8: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Statistics Basics - Question 9: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Statistics Basics - Question 10: What is a key concept in Statistics Basics?",
+                "options": [
+                    "Concept A related to Statistics Basics",
+                    "Correct answer for Statistics Basics",
+                    "Concept C related to Statistics Basics",
+                    "Concept D related to Statistics Basics"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Statistics Basics. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "polynomials": {
+        "module_id": "polynomials",
+        "module_name": "Polynomials",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Polynomials - Question 1: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Polynomials - Question 2: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Polynomials - Question 3: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Polynomials - Question 4: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Polynomials - Question 5: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Polynomials - Question 6: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Polynomials - Question 7: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Polynomials - Question 8: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Polynomials - Question 9: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Polynomials - Question 10: What is a key concept in Polynomials?",
+                "options": [
+                    "Concept A related to Polynomials",
+                    "Correct answer for Polynomials",
+                    "Concept C related to Polynomials",
+                    "Concept D related to Polynomials"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Polynomials. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "inequalities": {
+        "module_id": "inequalities",
+        "module_name": "Inequalities",
+        "subject": "mathematics",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Inequalities - Question 1: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 2,
+                "question": "Inequalities - Question 2: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 3,
+                "question": "Inequalities - Question 3: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 4,
+                "question": "Inequalities - Question 4: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 5,
+                "question": "Inequalities - Question 5: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 6,
+                "question": "Inequalities - Question 6: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 7,
+                "question": "Inequalities - Question 7: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 8,
+                "question": "Inequalities - Question 8: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 9,
+                "question": "Inequalities - Question 9: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            },
+            {
+                "id": 10,
+                "question": "Inequalities - Question 10: What is a key concept in Inequalities?",
+                "options": [
+                    "Concept A related to Inequalities",
+                    "Correct answer for Inequalities",
+                    "Concept C related to Inequalities",
+                    "Concept D related to Inequalities"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Inequalities. This concept is fundamental to mathematics at beginner level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "matrices": {
+        "module_id": "matrices",
+        "module_name": "Matrices and Determinants",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Matrices and Determinants - Question 1: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Matrices and Determinants - Question 2: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Matrices and Determinants - Question 3: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Matrices and Determinants - Question 4: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Matrices and Determinants - Question 5: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Matrices and Determinants - Question 6: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Matrices and Determinants - Question 7: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Matrices and Determinants - Question 8: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Matrices and Determinants - Question 9: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Matrices and Determinants - Question 10: What is a key concept in Matrices and Determinants?",
+                "options": [
+                    "Concept A related to Matrices and Determinants",
+                    "Correct answer for Matrices and Determinants",
+                    "Concept C related to Matrices and Determinants",
+                    "Concept D related to Matrices and Determinants"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Matrices and Determinants. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "limits_continuity": {
+        "module_id": "limits_continuity",
+        "module_name": "Limits and Continuity",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Limits and Continuity - Question 1: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Limits and Continuity - Question 2: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Limits and Continuity - Question 3: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Limits and Continuity - Question 4: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Limits and Continuity - Question 5: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Limits and Continuity - Question 6: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Limits and Continuity - Question 7: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Limits and Continuity - Question 8: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Limits and Continuity - Question 9: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Limits and Continuity - Question 10: What is a key concept in Limits and Continuity?",
+                "options": [
+                    "Concept A related to Limits and Continuity",
+                    "Correct answer for Limits and Continuity",
+                    "Concept C related to Limits and Continuity",
+                    "Concept D related to Limits and Continuity"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Limits and Continuity. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "differentiation": {
+        "module_id": "differentiation",
+        "module_name": "Differentiation",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Differentiation - Question 1: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Differentiation - Question 2: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Differentiation - Question 3: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Differentiation - Question 4: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Differentiation - Question 5: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Differentiation - Question 6: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Differentiation - Question 7: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Differentiation - Question 8: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Differentiation - Question 9: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Differentiation - Question 10: What is a key concept in Differentiation?",
+                "options": [
+                    "Concept A related to Differentiation",
+                    "Correct answer for Differentiation",
+                    "Concept C related to Differentiation",
+                    "Concept D related to Differentiation"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differentiation. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "integration": {
+        "module_id": "integration",
+        "module_name": "Integration",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Integration - Question 1: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Integration - Question 2: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Integration - Question 3: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Integration - Question 4: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Integration - Question 5: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Integration - Question 6: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Integration - Question 7: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Integration - Question 8: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Integration - Question 9: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Integration - Question 10: What is a key concept in Integration?",
+                "options": [
+                    "Concept A related to Integration",
+                    "Correct answer for Integration",
+                    "Concept C related to Integration",
+                    "Concept D related to Integration"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Integration. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "differential_equations": {
+        "module_id": "differential_equations",
+        "module_name": "Differential Equations",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Differential Equations - Question 1: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Differential Equations - Question 2: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Differential Equations - Question 3: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Differential Equations - Question 4: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Differential Equations - Question 5: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Differential Equations - Question 6: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Differential Equations - Question 7: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Differential Equations - Question 8: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Differential Equations - Question 9: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Differential Equations - Question 10: What is a key concept in Differential Equations?",
+                "options": [
+                    "Concept A related to Differential Equations",
+                    "Correct answer for Differential Equations",
+                    "Concept C related to Differential Equations",
+                    "Concept D related to Differential Equations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Differential Equations. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "vector_algebra": {
+        "module_id": "vector_algebra",
+        "module_name": "Vector Algebra",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Vector Algebra - Question 1: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Vector Algebra - Question 2: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Vector Algebra - Question 3: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Vector Algebra - Question 4: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Vector Algebra - Question 5: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Vector Algebra - Question 6: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Vector Algebra - Question 7: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Vector Algebra - Question 8: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Vector Algebra - Question 9: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Vector Algebra - Question 10: What is a key concept in Vector Algebra?",
+                "options": [
+                    "Concept A related to Vector Algebra",
+                    "Correct answer for Vector Algebra",
+                    "Concept C related to Vector Algebra",
+                    "Concept D related to Vector Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Vector Algebra. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "permutations_combinations": {
+        "module_id": "permutations_combinations",
+        "module_name": "Permutations and Combinations",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Permutations and Combinations - Question 1: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Permutations and Combinations - Question 2: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Permutations and Combinations - Question 3: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Permutations and Combinations - Question 4: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Permutations and Combinations - Question 5: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Permutations and Combinations - Question 6: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Permutations and Combinations - Question 7: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Permutations and Combinations - Question 8: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Permutations and Combinations - Question 9: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Permutations and Combinations - Question 10: What is a key concept in Permutations and Combinations?",
+                "options": [
+                    "Concept A related to Permutations and Combinations",
+                    "Correct answer for Permutations and Combinations",
+                    "Concept C related to Permutations and Combinations",
+                    "Concept D related to Permutations and Combinations"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Permutations and Combinations. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "probability_distributions": {
+        "module_id": "probability_distributions",
+        "module_name": "Probability Distributions",
+        "subject": "mathematics",
+        "level": "intermediate",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Probability Distributions - Question 1: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 2,
+                "question": "Probability Distributions - Question 2: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 3,
+                "question": "Probability Distributions - Question 3: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 4,
+                "question": "Probability Distributions - Question 4: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 5,
+                "question": "Probability Distributions - Question 5: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 6,
+                "question": "Probability Distributions - Question 6: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 7,
+                "question": "Probability Distributions - Question 7: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 8,
+                "question": "Probability Distributions - Question 8: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 9,
+                "question": "Probability Distributions - Question 9: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            },
+            {
+                "id": 10,
+                "question": "Probability Distributions - Question 10: What is a key concept in Probability Distributions?",
+                "options": [
+                    "Concept A related to Probability Distributions",
+                    "Correct answer for Probability Distributions",
+                    "Concept C related to Probability Distributions",
+                    "Concept D related to Probability Distributions"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Distributions. This concept is fundamental to mathematics at intermediate level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "linear_algebra": {
+        "module_id": "linear_algebra",
+        "module_name": "Linear Algebra",
+        "subject": "mathematics",
+        "level": "advanced",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Linear Algebra - Question 1: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 2,
+                "question": "Linear Algebra - Question 2: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 3,
+                "question": "Linear Algebra - Question 3: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 4,
+                "question": "Linear Algebra - Question 4: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 5,
+                "question": "Linear Algebra - Question 5: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 6,
+                "question": "Linear Algebra - Question 6: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 7,
+                "question": "Linear Algebra - Question 7: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 8,
+                "question": "Linear Algebra - Question 8: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 9,
+                "question": "Linear Algebra - Question 9: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 10,
+                "question": "Linear Algebra - Question 10: What is a key concept in Linear Algebra?",
+                "options": [
+                    "Concept A related to Linear Algebra",
+                    "Correct answer for Linear Algebra",
+                    "Concept C related to Linear Algebra",
+                    "Concept D related to Linear Algebra"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Linear Algebra. This concept is fundamental to mathematics at advanced level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "multivariable_calculus": {
+        "module_id": "multivariable_calculus",
+        "module_name": "Multivariable Calculus",
+        "subject": "mathematics",
+        "level": "advanced",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Multivariable Calculus - Question 1: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 2,
+                "question": "Multivariable Calculus - Question 2: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 3,
+                "question": "Multivariable Calculus - Question 3: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 4,
+                "question": "Multivariable Calculus - Question 4: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 5,
+                "question": "Multivariable Calculus - Question 5: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 6,
+                "question": "Multivariable Calculus - Question 6: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 7,
+                "question": "Multivariable Calculus - Question 7: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 8,
+                "question": "Multivariable Calculus - Question 8: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 9,
+                "question": "Multivariable Calculus - Question 9: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 10,
+                "question": "Multivariable Calculus - Question 10: What is a key concept in Multivariable Calculus?",
+                "options": [
+                    "Concept A related to Multivariable Calculus",
+                    "Correct answer for Multivariable Calculus",
+                    "Concept C related to Multivariable Calculus",
+                    "Concept D related to Multivariable Calculus"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Multivariable Calculus. This concept is fundamental to mathematics at advanced level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "optimization_techniques": {
+        "module_id": "optimization_techniques",
+        "module_name": "Optimization Techniques",
+        "subject": "mathematics",
+        "level": "advanced",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Optimization Techniques - Question 1: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 2,
+                "question": "Optimization Techniques - Question 2: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 3,
+                "question": "Optimization Techniques - Question 3: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 4,
+                "question": "Optimization Techniques - Question 4: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 5,
+                "question": "Optimization Techniques - Question 5: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 6,
+                "question": "Optimization Techniques - Question 6: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 7,
+                "question": "Optimization Techniques - Question 7: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 8,
+                "question": "Optimization Techniques - Question 8: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 9,
+                "question": "Optimization Techniques - Question 9: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 10,
+                "question": "Optimization Techniques - Question 10: What is a key concept in Optimization Techniques?",
+                "options": [
+                    "Concept A related to Optimization Techniques",
+                    "Correct answer for Optimization Techniques",
+                    "Concept C related to Optimization Techniques",
+                    "Concept D related to Optimization Techniques"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Optimization Techniques. This concept is fundamental to mathematics at advanced level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "numerical_methods": {
+        "module_id": "numerical_methods",
+        "module_name": "Numerical Methods",
+        "subject": "mathematics",
+        "level": "advanced",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Numerical Methods - Question 1: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 2,
+                "question": "Numerical Methods - Question 2: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 3,
+                "question": "Numerical Methods - Question 3: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 4,
+                "question": "Numerical Methods - Question 4: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 5,
+                "question": "Numerical Methods - Question 5: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 6,
+                "question": "Numerical Methods - Question 6: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 7,
+                "question": "Numerical Methods - Question 7: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 8,
+                "question": "Numerical Methods - Question 8: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 9,
+                "question": "Numerical Methods - Question 9: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 10,
+                "question": "Numerical Methods - Question 10: What is a key concept in Numerical Methods?",
+                "options": [
+                    "Concept A related to Numerical Methods",
+                    "Correct answer for Numerical Methods",
+                    "Concept C related to Numerical Methods",
+                    "Concept D related to Numerical Methods"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Numerical Methods. This concept is fundamental to mathematics at advanced level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "probability_theory": {
+        "module_id": "probability_theory",
+        "module_name": "Probability Theory",
+        "subject": "mathematics",
+        "level": "advanced",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Probability Theory - Question 1: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 2,
+                "question": "Probability Theory - Question 2: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 3,
+                "question": "Probability Theory - Question 3: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 4,
+                "question": "Probability Theory - Question 4: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 5,
+                "question": "Probability Theory - Question 5: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 6,
+                "question": "Probability Theory - Question 6: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 7,
+                "question": "Probability Theory - Question 7: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 8,
+                "question": "Probability Theory - Question 8: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 9,
+                "question": "Probability Theory - Question 9: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 10,
+                "question": "Probability Theory - Question 10: What is a key concept in Probability Theory?",
+                "options": [
+                    "Concept A related to Probability Theory",
+                    "Correct answer for Probability Theory",
+                    "Concept C related to Probability Theory",
+                    "Concept D related to Probability Theory"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Probability Theory. This concept is fundamental to mathematics at advanced level."
+            }
+        ],
+        "passing_score": 60
+    },
+    "math_for_machine_learning": {
+        "module_id": "math_for_machine_learning",
+        "module_name": "Mathematics for Machine Learning",
+        "subject": "mathematics",
+        "level": "advanced",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Mathematics for Machine Learning - Question 1: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 2,
+                "question": "Mathematics for Machine Learning - Question 2: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 3,
+                "question": "Mathematics for Machine Learning - Question 3: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 4,
+                "question": "Mathematics for Machine Learning - Question 4: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 5,
+                "question": "Mathematics for Machine Learning - Question 5: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 6,
+                "question": "Mathematics for Machine Learning - Question 6: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 7,
+                "question": "Mathematics for Machine Learning - Question 7: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 8,
+                "question": "Mathematics for Machine Learning - Question 8: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 9,
+                "question": "Mathematics for Machine Learning - Question 9: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            },
+            {
+                "id": 10,
+                "question": "Mathematics for Machine Learning - Question 10: What is a key concept in Mathematics for Machine Learning?",
+                "options": [
+                    "Concept A related to Mathematics for Machine Learning",
+                    "Correct answer for Mathematics for Machine Learning",
+                    "Concept C related to Mathematics for Machine Learning",
+                    "Concept D related to Mathematics for Machine Learning"
+                ],
+                "correct": 1,
+                "explanation": "The correct answer demonstrates understanding of Mathematics for Machine Learning. This concept is fundamental to mathematics at advanced level."
+            }
+        ],
+        "passing_score": 60
+    }
+}

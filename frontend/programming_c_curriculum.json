@@ -1,0 +1,1385 @@
+{
+    "subject": "programming_c",
+    "levels": {
+        "beginner": {
+            "modules": [
+                {
+                    "module_id": "introduction_to_c",
+                    "module_name": "Introduction to C",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Introduction to C",
+                        "Apply Introduction to C to solve complex problems",
+                        "Analyze the efficiency/implications of Introduction to C",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Introduction to C in C\n\nIntroduction to C is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Introduction to C as a building block. Just as bricks make a wall, Introduction to C constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Introduction to C.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Introduction to C with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Introduction to C)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Introduction to C and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Introduction to C optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "variables_and_data_types",
+                    "module_name": "Variables & Data Types",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Variables & Data Types",
+                        "Apply Variables & Data Types to solve complex problems",
+                        "Analyze the efficiency/implications of Variables & Data Types",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Variables & Data Types in C\n\nVariables & Data Types is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Variables & Data Types as a building block. Just as bricks make a wall, Variables & Data Types constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Variables & Data Types.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Variables & Data Types with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Variables & Data Types)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Variables & Data Types and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Variables & Data Types optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "operators",
+                    "module_name": "Operators",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Operators",
+                        "Apply Operators to solve complex problems",
+                        "Analyze the efficiency/implications of Operators",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Operators in C\n\nOperators is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Operators as a building block. Just as bricks make a wall, Operators constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Operators.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Operators with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Operators)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Operators and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Operators optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "control_flow",
+                    "module_name": "Control Flow",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Control Flow",
+                        "Apply Control Flow to solve complex problems",
+                        "Analyze the efficiency/implications of Control Flow",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Control Flow in C\n\nControl Flow is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Control Flow as a building block. Just as bricks make a wall, Control Flow constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Control Flow.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Control Flow with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Control Flow)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Control Flow and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Control Flow optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "loops",
+                    "module_name": "Loops",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Loops",
+                        "Apply Loops to solve complex problems",
+                        "Analyze the efficiency/implications of Loops",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Loops in C\n\nLoops is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Loops as a building block. Just as bricks make a wall, Loops constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Loops.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Loops with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Loops)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Loops and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Loops optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "functions",
+                    "module_name": "Functions",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Functions",
+                        "Apply Functions to solve complex problems",
+                        "Analyze the efficiency/implications of Functions",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Functions in C\n\nFunctions is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Functions as a building block. Just as bricks make a wall, Functions constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Functions.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Functions with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Functions)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Functions and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Functions optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "arrays",
+                    "module_name": "Arrays",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Arrays",
+                        "Apply Arrays to solve complex problems",
+                        "Analyze the efficiency/implications of Arrays",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Arrays in C\n\nArrays is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Arrays as a building block. Just as bricks make a wall, Arrays constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Arrays.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Arrays with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Arrays)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Arrays and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Arrays optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "strings",
+                    "module_name": "Strings",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Strings",
+                        "Apply Strings to solve complex problems",
+                        "Analyze the efficiency/implications of Strings",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Strings in C\n\nStrings is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Strings as a building block. Just as bricks make a wall, Strings constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Strings.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Strings with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Strings)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Strings and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Strings optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "pointers_basics",
+                    "module_name": "Pointers Basics",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Pointers Basics",
+                        "Apply Pointers Basics to solve complex problems",
+                        "Analyze the efficiency/implications of Pointers Basics",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Pointers Basics in C\n\nPointers Basics is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Pointers Basics as a building block. Just as bricks make a wall, Pointers Basics constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Pointers Basics.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Pointers Basics with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Pointers Basics)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Pointers Basics and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Pointers Basics optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "structures",
+                    "module_name": "Structures",
+                    "level": "beginner",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Structures",
+                        "Apply Structures to solve complex problems",
+                        "Analyze the efficiency/implications of Structures",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Structures in C\n\nStructures is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Structures as a building block. Just as bricks make a wall, Structures constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Structures.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Structures with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Structures)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Structures and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Structures optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                }
+            ]
+        },
+        "intermediate": {
+            "modules": [
+                {
+                    "module_id": "dynamic_memory",
+                    "module_name": "Dynamic Memory",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Dynamic Memory",
+                        "Apply Dynamic Memory to solve complex problems",
+                        "Analyze the efficiency/implications of Dynamic Memory",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Dynamic Memory in C\n\nDynamic Memory is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Dynamic Memory as a building block. Just as bricks make a wall, Dynamic Memory constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Dynamic Memory.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Dynamic Memory with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Dynamic Memory)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Dynamic Memory and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Dynamic Memory optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "file_i_o",
+                    "module_name": "File I/O",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of File I/O",
+                        "Apply File I/O to solve complex problems",
+                        "Analyze the efficiency/implications of File I/O",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into File I/O in C\n\nFile I/O is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of File I/O as a building block. Just as bricks make a wall, File I/O constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate File I/O.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing File I/O with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (File I/O)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define File I/O and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding File I/O optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "preprocessor",
+                    "module_name": "Preprocessor",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Preprocessor",
+                        "Apply Preprocessor to solve complex problems",
+                        "Analyze the efficiency/implications of Preprocessor",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Preprocessor in C\n\nPreprocessor is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Preprocessor as a building block. Just as bricks make a wall, Preprocessor constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Preprocessor.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Preprocessor with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Preprocessor)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Preprocessor and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Preprocessor optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "multi-file_programs",
+                    "module_name": "Multi-file Programs",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Multi-file Programs",
+                        "Apply Multi-file Programs to solve complex problems",
+                        "Analyze the efficiency/implications of Multi-file Programs",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Multi-file Programs in C\n\nMulti-file Programs is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Multi-file Programs as a building block. Just as bricks make a wall, Multi-file Programs constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Multi-file Programs.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Multi-file Programs with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Multi-file Programs)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Multi-file Programs and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Multi-file Programs optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "linked_lists",
+                    "module_name": "Linked Lists",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Linked Lists",
+                        "Apply Linked Lists to solve complex problems",
+                        "Analyze the efficiency/implications of Linked Lists",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Linked Lists in C\n\nLinked Lists is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Linked Lists as a building block. Just as bricks make a wall, Linked Lists constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Linked Lists.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Linked Lists with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Linked Lists)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Linked Lists and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Linked Lists optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "stacks_and_queues",
+                    "module_name": "Stacks & Queues",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Stacks & Queues",
+                        "Apply Stacks & Queues to solve complex problems",
+                        "Analyze the efficiency/implications of Stacks & Queues",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Stacks & Queues in C\n\nStacks & Queues is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Stacks & Queues as a building block. Just as bricks make a wall, Stacks & Queues constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Stacks & Queues.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Stacks & Queues with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Stacks & Queues)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Stacks & Queues and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Stacks & Queues optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "recursion",
+                    "module_name": "Recursion",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Recursion",
+                        "Apply Recursion to solve complex problems",
+                        "Analyze the efficiency/implications of Recursion",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Recursion in C\n\nRecursion is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Recursion as a building block. Just as bricks make a wall, Recursion constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Recursion.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Recursion with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Recursion)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Recursion and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Recursion optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "sorting_algorithms",
+                    "module_name": "Sorting Algorithms",
+                    "level": "intermediate",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Sorting Algorithms",
+                        "Apply Sorting Algorithms to solve complex problems",
+                        "Analyze the efficiency/implications of Sorting Algorithms",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Sorting Algorithms in C\n\nSorting Algorithms is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Sorting Algorithms as a building block. Just as bricks make a wall, Sorting Algorithms constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Sorting Algorithms.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Sorting Algorithms with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Sorting Algorithms)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Sorting Algorithms and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Sorting Algorithms optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                }
+            ]
+        },
+        "advanced": {
+            "modules": [
+                {
+                    "module_id": "trees_and_graphs",
+                    "module_name": "Trees & Graphs",
+                    "level": "advanced",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Trees & Graphs",
+                        "Apply Trees & Graphs to solve complex problems",
+                        "Analyze the efficiency/implications of Trees & Graphs",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Trees & Graphs in C\n\nTrees & Graphs is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Trees & Graphs as a building block. Just as bricks make a wall, Trees & Graphs constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Trees & Graphs.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Trees & Graphs with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Trees & Graphs)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Trees & Graphs and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Trees & Graphs optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "hash_tables",
+                    "module_name": "Hash Tables",
+                    "level": "advanced",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Hash Tables",
+                        "Apply Hash Tables to solve complex problems",
+                        "Analyze the efficiency/implications of Hash Tables",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Hash Tables in C\n\nHash Tables is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Hash Tables as a building block. Just as bricks make a wall, Hash Tables constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Hash Tables.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Hash Tables with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Hash Tables)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Hash Tables and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Hash Tables optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "memory_management",
+                    "module_name": "Memory Management",
+                    "level": "advanced",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Memory Management",
+                        "Apply Memory Management to solve complex problems",
+                        "Analyze the efficiency/implications of Memory Management",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Memory Management in C\n\nMemory Management is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Memory Management as a building block. Just as bricks make a wall, Memory Management constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Memory Management.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Memory Management with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Memory Management)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Memory Management and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Memory Management optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "bit_manipulation",
+                    "module_name": "Bit Manipulation",
+                    "level": "advanced",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Bit Manipulation",
+                        "Apply Bit Manipulation to solve complex problems",
+                        "Analyze the efficiency/implications of Bit Manipulation",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Bit Manipulation in C\n\nBit Manipulation is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Bit Manipulation as a building block. Just as bricks make a wall, Bit Manipulation constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Bit Manipulation.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Bit Manipulation with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Bit Manipulation)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Bit Manipulation and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Bit Manipulation optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "system_programming",
+                    "module_name": "System Programming",
+                    "level": "advanced",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of System Programming",
+                        "Apply System Programming to solve complex problems",
+                        "Analyze the efficiency/implications of System Programming",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into System Programming in C\n\nSystem Programming is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of System Programming as a building block. Just as bricks make a wall, System Programming constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate System Programming.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing System Programming with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (System Programming)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define System Programming and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding System Programming optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                },
+                {
+                    "module_id": "advanced_pointers",
+                    "module_name": "Advanced Pointers",
+                    "level": "advanced",
+                    "subject": "programming_c",
+                    "learning_objectives": [
+                        "Understand the core principles of Advanced Pointers",
+                        "Apply Advanced Pointers to solve complex problems",
+                        "Analyze the efficiency/implications of Advanced Pointers",
+                        "Master the syntax and implementation details"
+                    ],
+                    "core_content": {
+                        "theory": "### Deep Dive into Advanced Pointers in C\n\nAdvanced Pointers is a powerful feature of the C language, allowing for efficient memory manipulation and system-level control. Unlike higher-level languages, C gives you direct access to hardware resources, which makes {name} both potent and dangerous.\n\n### Syntax and Semantics\nThe syntax for {name} involves specific keywords and operator precedence. For instance, understanding the difference between `*` (dereference) and `&` (address-of) is vital when dealing with pointers related to {name}.\n\n### Memory Management\nImproper use of {name} can lead to segmentation faults or memory leaks. Always ensure that any memory allocated dynamically using `malloc` is properly freed using `free`.\n\n### Best Practices\n1. Always initialize variables.\n2. Use tools like Valgrind to check for leaks.\n3. Follow the principle of least privilege when exposing data via headers.",
+                        "intuition": "Think of Advanced Pointers as a building block. Just as bricks make a wall, Advanced Pointers constructs the foundation for advanced topics.",
+                        "worked_examples": [
+                            {
+                                "problem": "Write a C program to demonstrate Advanced Pointers.",
+                                "solution": "```c\n#include <stdio.h>\n\nint main() {\n    // Implementation of {name}\n    printf(\"Hello, {name}\");\n    return 0;\n}\n```"
+                            },
+                            {
+                                "problem": "Debug the following snippet related to this topic.",
+                                "solution": "The error was a buffer overflow. By increasing the array size to `char buf[256]`, we prevent writing past the end of the buffer."
+                            }
+                        ],
+                        "common_mistakes": [
+                            "Confusing Advanced Pointers with related concepts",
+                            "Syntax errors in implementation",
+                            "Overlooking edge cases",
+                            "ignoring performance constraints"
+                        ],
+                        "real_world_applications": [
+                            "Used in high-frequency trading algorithms (Advanced Pointers)",
+                            "Essential for autonomous vehicle navigation",
+                            "Critical for secure cryptographic systems",
+                            "Foundational for scientific simulations"
+                        ]
+                    },
+                    "exam_orientation": {
+                        "frequently_asked": [
+                            "Define Advanced Pointers and give an example.",
+                            "Compare and contrast approach A vs approach B.",
+                            "Solve a problem involving...",
+                            "Write a code snippet to..."
+                        ],
+                        "tips": [
+                            "Focus on the definitions.",
+                            "Practice coding by hand.",
+                            "Draw diagrams to visualize the logic."
+                        ]
+                    },
+                    "advanced_notes": "For advanced students: Look into research papers regarding Advanced Pointers optimization.",
+                    "references": [
+                        "MIT OpenCourseWare",
+                        "Standard Documentation",
+                        "Academic Papers"
+                    ]
+                }
+            ]
+        }
+    }
+}

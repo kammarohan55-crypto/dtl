@@ -1,0 +1,136 @@
+/* Quiz Interface Styling */
+
+.quiz-control {
+    padding: 30px;
+}
+
+.quiz-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    animation: slideUp 0.3s ease-out;
+    border: 1px solid #e5e7eb;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.quiz-header h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 1.5rem;
+}
+
+.quiz-score {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+.question-card {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4f46e5;
+}
+
+.question-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #374151;
+}
+
+.options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-label:hover {
+    background: #eef2ff;
+    border-color: #6366f1;
+}
+
+.option-input {
+    margin-right: 12px;
+    transform: scale(1.2);
+}
+
+/* Feedback Styling */
+.correct-answer {
+    background-color: #d1fae5 !important;
+    border-color: #10b981 !important;
+    color: #065f46;
+}
+
+.wrong-answer {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b;
+}
+
+.explanation {
+    margin-top: 10px;
+    padding: 10px;
+    background: #fffbeb;
+    border-radius: 6px;
+    font-size: 0.9em;
+    color: #92400e;
+}
+
+.quiz-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.progression-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.progression-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #34d399;
+}
+
+.progression-review {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

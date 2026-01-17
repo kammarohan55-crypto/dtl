@@ -1,0 +1,256 @@
+/* NeetCode-Style Roadmap CSS */
+
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-sub: #6b7280;
+    --beginner-color: #10b981;
+    --intermediate-color: #f59e0b;
+    --advanced-color: #ef4444;
+    --line-color: #d1d5db;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-weight: 600;
+    color: var(--text-sub);
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+    color: var(--primary);
+    background: #eef2ff;
+}
+
+/* Subject Grid */
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.subject-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.math-bg {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.ai-bg {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.c-bg {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+}
+
+.subject-card h3 {
+    margin: 10px 0;
+    color: var(--text-main);
+}
+
+.subject-card p {
+    color: var(--text-sub);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* Tree Visualization */
+.roadmap-tree-container {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    min-height: 80vh;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.tree-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 20px;
+}
+
+.icon-btn {
+    background: var(--bg-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.icon-btn:hover {
+    background: #e5e7eb;
+}
+
+.tree-canvas {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tree-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+}
+
+.tree-level-group {
+    background: #f9fafb;
+    border: 2px dashed var(--line-color);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.level-badge {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.beginner-badge {
+    background: var(--beginner-color);
+}
+
+.intermediate-badge {
+    background: var(--intermediate-color);
+}
+
+.advanced-badge {
+    background: var(--advanced-color);
+}
+
+.nodes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.node-chip {
+    background: white;
+    border: 1px solid var(--line-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.node-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.node-chip.completed {
+    background: #d1fae5;
+    border-color: #10b981;
+    color: #065f46;
+}
+
+.node-chip.locked {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.tree-connector {
+    height: 40px;
+    width: 2px;
+    background: var(--line-color);
+    margin: 5px 0;
+}
