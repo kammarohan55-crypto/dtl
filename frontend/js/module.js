@@ -110,7 +110,7 @@ function renderModule(data) {
     document.getElementById('moduleContent').style.display = 'block';
 
     // TRIGGER MATHJAX rendering
-    if (window.MathJax) {
+    if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
         window.MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
     }
 }
