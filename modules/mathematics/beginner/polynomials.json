@@ -1,0 +1,341 @@
+{
+    "module_header": {
+        "module_title": "Polynomials",
+        "subject": "Mathematics",
+        "level": "Beginner",
+        "prerequisites": [
+            "Basic algebraic operations",
+            "Understanding of variables, constants, and exponents",
+            "Linear and quadratic equations",
+            "Factorization techniques"
+        ],
+        "learning_outcomes": [
+            "Define polynomials and classify them by degree and number of terms",
+            "Perform arithmetic operations on polynomials (addition, subtraction, multiplication, division)",
+            "Apply the Remainder Theorem and Factor Theorem to analyze polynomials",
+            "Find zeros and roots of polynomial equations",
+            "Factor polynomials using various techniques including grouping and synthetic division",
+            "Apply polynomial concepts to solve real-world engineering problems"
+        ]
+    },
+    "definition": "A polynomial is an algebraic expression consisting of variables and coefficients combined using addition, subtraction, and multiplication, where variables appear only with non-negative integer exponents. The general form of a polynomial in one variable $x$ is $P(x) = a_nx^n + a_{n-1}x^{n-1} + \\cdots + a_1x + a_0$, where $a_n, a_{n-1}, \\ldots, a_0$ are constants called coefficients and $n$ is a non-negative integer representing the degree of the polynomial.",
+    "concept_overview": [
+        "Polynomials are classified by degree: linear (degree 1), quadratic (degree 2), cubic (degree 3), quartic (degree 4), and so on, with the degree determined by the highest exponent.",
+        "Polynomials can also be classified by the number of terms: monomial (one term), binomial (two terms), trinomial (three terms), and multinomial (more than three terms).",
+        "The leading coefficient is the coefficient of the term with the highest degree, and it determines the end behavior of the polynomial function.",
+        "Polynomial operations follow specific algebraic rules, with addition and subtraction combining like terms, while multiplication uses the distributive property.",
+        "The Remainder Theorem and Factor Theorem provide powerful tools for evaluating polynomials and finding their roots without complete factorization."
+    ],
+    "theory": [
+        "Polynomials constitute a fundamental class of mathematical functions that generalize linear and quadratic equations to arbitrary degrees, forming the backbone of algebraic analysis in mathematics and engineering. Unlike transcendental functions such as exponentials or trigonometric functions, polynomials are constructed using only the elementary operations of addition, subtraction, and multiplication, making them computationally tractable and analytically accessible. In the engineering curriculum, polynomials appear as approximations to complex functions through Taylor series, as characteristic equations in differential equations and control theory, as interpolation functions in numerical analysis, and as transfer functions in signal processing. The study of polynomials develops critical skills in algebraic manipulation, pattern recognition, and the systematic application of theorems. Mastery of polynomial algebra provides the essential foundation for understanding rational functions, partial fraction decomposition, Laplace transforms, and frequency domain analysis in advanced engineering mathematics.",
+        "The fundamental operations on polynomials follow systematic algebraic principles that extend familiar arithmetic to symbolic expressions. Addition and subtraction of polynomials involve combining like terms—terms with identical variable parts and exponents—by adding or subtracting their coefficients. For example, $(3x^2 + 2x - 1) + (x^2 - 5x + 4) = 4x^2 - 3x + 3$ by combining coefficients of $x^2$, $x$, and constant terms separately. Multiplication of polynomials employs the distributive property repeatedly: each term in the first polynomial multiplies every term in the second, then like terms are collected. Division of polynomials generalizes long division from arithmetic, producing a quotient and remainder satisfying $P(x) = D(x) \\cdot Q(x) + R(x)$ where the degree of $R(x)$ is less than the degree of $D(x)$. The Remainder Theorem states that when polynomial $P(x)$ is divided by $(x - a)$, the remainder is simply $P(a)$, allowing rapid evaluation without performing full division. The Factor Theorem extends this: $(x - a)$ is a factor of $P(x)$ if and only if $P(a) = 0$, providing a direct method to verify roots and construct factorizations.",
+        "Mastery of polynomials is critically important because they serve as the fundamental building blocks for virtually all higher mathematics and engineering analysis. In engineering problem-solving, polynomial equations model physical systems including beam deflection (fourth-degree polynomials in structural mechanics), impedance functions in electrical circuits, and state-space representations in control systems. The ability to factor polynomials enables simplification of complex expressions, solution of higher-degree equations, and partial fraction decomposition essential for inverse Laplace transforms in systems analysis. Polynomial roots correspond to critical system parameters such as natural frequencies, stability boundaries, and equilibrium points. The Fundamental Theorem of Algebra guarantees that an $n$-th degree polynomial has exactly $n$ roots (counting multiplicities) in the complex numbers, establishing the theoretical foundation for root-finding algorithms used in computational engineering. Furthermore, polynomials provide the basis for numerical approximation: any continuous function can be approximated arbitrarily closely by polynomials on a bounded interval, justifying their use in finite element analysis, computational fluid dynamics, and digital signal processing. In examinations, proficiency in polynomial manipulation demonstrates command over algebraic reasoning and prepares students for advanced topics in transforms, optimization, and computational methods."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$P(x) = a_nx^n + a_{n-1}x^{n-1} + \\cdots + a_1x + a_0$",
+            "explanation": "General form of a polynomial of degree $n$ in variable $x$, where $a_n \\neq 0$ is the leading coefficient and $a_0$ is the constant term."
+        },
+        {
+            "formula": "$\\text{deg}(P) = n$ if $a_n \\neq 0$",
+            "explanation": "The degree of a polynomial is the highest power of the variable with a non-zero coefficient."
+        },
+        {
+            "formula": "$P(x) + Q(x) = \\sum_{i=0}^{\\max(m,n)} (a_i + b_i)x^i$",
+            "explanation": "Addition of polynomials is performed by adding coefficients of like terms (same powers of $x$)."
+        },
+        {
+            "formula": "$P(x) \\cdot Q(x) = \\sum_{i=0}^{m} \\sum_{j=0}^{n} a_i b_j x^{i+j}$",
+            "explanation": "Multiplication of polynomials uses the distributive property: every term in $P(x)$ multiplies every term in $Q(x)$."
+        },
+        {
+            "formula": "$P(x) = D(x) \\cdot Q(x) + R(x)$",
+            "explanation": "Polynomial division algorithm: $P(x)$ (dividend) equals $D(x)$ (divisor) times $Q(x)$ (quotient) plus $R(x)$ (remainder), where $\\text{deg}(R) < \\text{deg}(D)$."
+        },
+        {
+            "formula": "$P(a) = R$, where $R$ is the remainder when $P(x)$ is divided by $(x-a)$",
+            "explanation": "Remainder Theorem: substituting $x = a$ into $P(x)$ gives the remainder of dividing $P(x)$ by $(x-a)$."
+        },
+        {
+            "formula": "$P(a) = 0 \\iff (x-a)$ is a factor of $P(x)$",
+            "explanation": "Factor Theorem: $(x-a)$ divides $P(x)$ with zero remainder if and only if $a$ is a root of $P(x)$."
+        },
+        {
+            "formula": "$(a+b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k$",
+            "explanation": "Binomial Theorem for expanding powers of binomials, where $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$ are binomial coefficients."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Add the polynomials $P(x) = 3x^3 - 2x^2 + 5x - 7$ and $Q(x) = x^3 + 4x^2 - 3x + 2$.",
+            "solution_steps": [
+                "**Step 1**: Write both polynomials with aligned like terms:",
+                "$P(x) = 3x^3 - 2x^2 + 5x - 7$",
+                "$Q(x) = x^3 + 4x^2 - 3x + 2$",
+                "**Step 2**: Add coefficients of like terms:",
+                "Coefficient of $x^3$: $3 + 1 = 4$",
+                "Coefficient of $x^2$: $-2 + 4 = 2$",
+                "Coefficient of $x$: $5 + (-3) = 2$",
+                "Constant term: $-7 + 2 = -5$",
+                "**Step 3**: Write the result:",
+                "$P(x) + Q(x) = 4x^3 + 2x^2 + 2x - 5$"
+            ],
+            "final_answer": "$4x^3 + 2x^2 + 2x - 5$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Use the Remainder Theorem to find the remainder when $P(x) = 2x^3 - 5x^2 + 3x - 7$ is divided by $(x - 2)$.",
+            "solution_steps": [
+                "**Step 1**: By the Remainder Theorem, the remainder when $P(x)$ is divided by $(x - a)$ is $P(a)$",
+                "**Step 2**: Here, $a = 2$, so we need to evaluate $P(2)$:",
+                "$P(2) = 2(2)^3 - 5(2)^2 + 3(2) - 7$",
+                "**Step 3**: Calculate each term:",
+                "$2(8) - 5(4) + 6 - 7$",
+                "$= 16 - 20 + 6 - 7$",
+                "**Step 4**: Simplify:",
+                "$= 16 + 6 - 20 - 7 = 22 - 27 = -5$",
+                "**Conclusion**: The remainder is $-5$"
+            ],
+            "final_answer": "Remainder = $-5$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Determine whether $(x + 3)$ is a factor of $P(x) = x^3 + 5x^2 + 2x - 24$ using the Factor Theorem.",
+            "solution_steps": [
+                "**Step 1**: By the Factor Theorem, $(x - a)$ is a factor of $P(x)$ if and only if $P(a) = 0$",
+                "**Step 2**: Rewrite $(x + 3)$ as $(x - (-3))$, so $a = -3$",
+                "**Step 3**: Evaluate $P(-3)$:",
+                "$P(-3) = (-3)^3 + 5(-3)^2 + 2(-3) - 24$",
+                "**Step 4**: Calculate each term:",
+                "$= -27 + 5(9) - 6 - 24$",
+                "$= -27 + 45 - 6 - 24$",
+                "**Step 5**: Simplify:",
+                "$= 45 - 27 - 6 - 24 = 45 - 57 = -12$",
+                "**Step 6**: Since $P(-3) = -12 \\neq 0$, $(x + 3)$ is NOT a factor of $P(x)$",
+                "**Interpretation**: If we divided $P(x)$ by $(x + 3)$, the remainder would be $-12$"
+            ],
+            "final_answer": "$(x + 3)$ is NOT a factor; remainder is $-12$"
+        }
+    ],
+    "logical_derivation": "To derive the Remainder Theorem, consider dividing polynomial $P(x)$ by the linear divisor $(x - a)$ using the division algorithm. This yields $P(x) = (x - a) \\cdot Q(x) + R$, where $Q(x)$ is the quotient polynomial and $R$ is the remainder. Since the divisor $(x - a)$ has degree 1, the remainder $R$ must have degree less than 1, meaning $R$ is a constant. Now substitute $x = a$ into both sides of the equation: $P(a) = (a - a) \\cdot Q(a) + R = 0 \\cdot Q(a) + R = R$. Therefore, $P(a) = R$, proving that evaluating the polynomial at $x = a$ gives the remainder directly. The Factor Theorem follows as a special case: if $R = 0$, then $P(a) = 0$ and $P(x) = (x - a) \\cdot Q(x)$, showing that $(x - a)$ is a factor. Conversely, if $(x - a)$ is a factor, then $P(x) = (x - a) \\cdot Q(x)$ with no remainder, so $P(a) = 0$. This bidirectional implication establishes the Factor Theorem: $(x - a)$ is a factor of $P(x)$ if and only if $P(a) = 0$, providing a powerful computational tool for testing and finding roots.",
+    "applications": [
+        "**Approximation Theory**: Using Taylor polynomials to approximate transcendental functions like $e^x$, $\\sin(x)$, and $\\ln(x)$ in numerical computations.",
+        "**Interpolation**: Constructing Lagrange or Newton polynomials that pass through specified data points in engineering data analysis.",
+        "**Control Systems**: Analyzing characteristic polynomials to determine system stability and natural frequencies.",
+        "**Signal Processing**: Representing digital filters and transfer functions as ratios of polynomials (rational functions).",
+        "**Structural Mechanics**: Modeling beam deflection curves using fourth-degree polynomials in elasticity theory.",
+        "**Computer Graphics**: Using Bezier curves and splines (polynomial-based) for smooth curve design and animation.",
+        "**Cryptography**: Employing polynomial arithmetic over finite fields in error-correcting codes and encryption algorithms."
+    ],
+    "key_takeaways": [
+        "The degree of a polynomial is the highest power with a non-zero coefficient, determining the maximum number of roots and the polynomial's end behavior.",
+        "Polynomial addition and subtraction combine like terms, while multiplication requires distributing each term across all terms in the other polynomial.",
+        "The division algorithm for polynomials guarantees a unique quotient and remainder: $P(x) = D(x)Q(x) + R(x)$ with $\\text{deg}(R) < \\text{deg}(D)$.",
+        "The Remainder Theorem allows rapid evaluation: the remainder when dividing $P(x)$ by $(x-a)$ is simply $P(a)$.",
+        "The Factor Theorem provides a root-testing tool: $(x-a)$ is a factor if and only if $P(a) = 0$.",
+        "An $n$-th degree polynomial has at most $n$ real roots and exactly $n$ complex roots (counting multiplicities) by the Fundamental Theorem of Algebra.",
+        "Polynomials form the basis for Taylor series, interpolation, numerical integration, and approximation methods throughout engineering mathematics."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Adding or subtracting coefficients of non-like terms",
+            "why_it_occurs": "Students sometimes add coefficients of different powers, such as combining $3x^2$ and $5x$ to get $8x^2$ or $8x$.",
+            "how_to_avoid": "Only combine terms with exactly the same variable part and exponent. Write polynomials in standard form (descending powers) and align like terms vertically before adding."
+        },
+        {
+            "mistake": "Forgetting to distribute when multiplying polynomials",
+            "why_it_occurs": "Students may multiply only some terms instead of every term in the first polynomial with every term in the second.",
+            "how_to_avoid": "Use the FOIL method for binomials or systematically multiply each term in the first polynomial by each term in the second, then combine like terms."
+        },
+        {
+            "mistake": "Incorrectly determining the degree of a sum or product",
+            "why_it_occurs": "Students assume that adding two polynomials of degree $n$ always yields a polynomial of degree $n$, or that multiplying degrees adds them incorrectly.",
+            "how_to_avoid": "For sums, the degree is the maximum of the two degrees (unless leading terms cancel). For products, the degree is the sum of the individual degrees: $\\text{deg}(P \\cdot Q) = \\text{deg}(P) + \\text{deg}(Q)$."
+        },
+        {
+            "mistake": "Confusing the Remainder Theorem with the Factor Theorem",
+            "why_it_occurs": "Students mix up when to evaluate $P(a)$ and what it signifies regarding factors versus remainders.",
+            "how_to_avoid": "Remember: $P(a)$ always gives the remainder when dividing by $(x-a)$. If $P(a) = 0$, then $(x-a)$ is a factor (Factor Theorem); otherwise, $P(a)$ is the non-zero remainder."
+        },
+        {
+            "mistake": "Sign errors when substituting negative values",
+            "why_it_occurs": "When evaluating $P(-3)$ for example, students forget to apply the negative sign to all powers: $(-3)^2 = 9$ (not $-9$) and $(-3)^3 = -27$ (not $27$).",
+            "how_to_avoid": "Use parentheses when substituting negative numbers: $P(-3) = 2(-3)^3 - 5(-3)^2 + \\ldots$ and carefully compute each power before multiplying by coefficients."
+        },
+        {
+            "mistake": "Misidentifying the leading coefficient and degree",
+            "why_it_occurs": "In non-standard form like $5 + 3x - 2x^3$, students may incorrectly identify the leading term as the first term written.",
+            "how_to_avoid": "Always rewrite polynomials in standard form (descending powers) first: $-2x^3 + 3x + 5$. The leading coefficient is the coefficient of the highest power term."
+        },
+        {
+            "mistake": "Assuming all polynomial division results in integer or rational coefficients",
+            "why_it_occurs": "Students expect division to always work out neatly when in reality remainders and non-integer quotients are common.",
+            "how_to_avoid": "Understand that polynomial division may produce quotients and remainders with fractional or irrational coefficients. Always verify using the division algorithm: $P(x) = D(x)Q(x) + R(x)$."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is the degree of the polynomial $P(x) = 7x^4 - 3x^2 + 5x - 9$?",
+            "options": [
+                "$4$",
+                "$3$",
+                "$2$",
+                "$7$"
+            ],
+            "correct_answer": 0,
+            "explanation": "The degree is the highest power of $x$ with a non-zero coefficient, which is $4$ from the term $7x^4$."
+        },
+        {
+            "question": "If $P(x) = 2x^3 - 5x + 1$ and $Q(x) = -x^3 + 3x^2 + 4$, what is $P(x) + Q(x)$?",
+            "options": [
+                "$x^3 + 3x^2 - 5x + 5$",
+                "$x^3 - 3x^2 + 5x + 5$",
+                "$3x^3 + 3x^2 - 5x + 5$",
+                "$x^3 + 3x^2 - x + 5$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Combine like terms: $x^3$ terms: $2x^3 + (-x^3) = x^3$; $x^2$ terms: $0 + 3x^2 = 3x^2$; $x$ terms: $-5x + 0 = -5x$; constants: $1 + 4 = 5$."
+        },
+        {
+            "question": "Using the Remainder Theorem, what is the remainder when $P(x) = x^3 - 4x^2 + 6x - 1$ is divided by $(x - 1)$?",
+            "options": [
+                "$2$",
+                "$0$",
+                "$-1$",
+                "$6$"
+            ],
+            "correct_answer": 0,
+            "explanation": "By the Remainder Theorem, the remainder is $P(1) = 1 - 4 + 6 - 1 = 2$."
+        },
+        {
+            "question": "Which of the following is a binomial?",
+            "options": [
+                "$3x^2 - 7$",
+                "$5x^3$",
+                "$2x^2 + 3x - 1$",
+                "$x^4 - 2x^3 + x^2 - 5$"
+            ],
+            "correct_answer": 0,
+            "explanation": "A binomial has exactly two terms. Option (a) $3x^2 - 7$ has two terms."
+        },
+        {
+            "question": "If $(x - 2)$ is a factor of $P(x) = x^3 - 3x^2 + ax - 4$, what is the value of $a$?",
+            "options": [
+                "$a = -2$",
+                "$a = 2$",
+                "$a = 4$",
+                "$a = 0$"
+            ],
+            "correct_answer": 2,
+            "explanation": "By the Factor Theorem, $P(2) = 0$: $P(2) = 2^3 - 3(2^2) + a(2) - 4 = 8 - 12 + 2a - 4 = 2a - 8 = 0$. Solving: $2a = 8$, so $a = 4$."
+        },
+        {
+            "question": "What is the product $(2x + 3)(x - 5)$?",
+            "options": [
+                "$2x^2 - 7x - 15$",
+                "$2x^2 + 7x - 15$",
+                "$2x^2 - 10x - 15$",
+                "$2x^2 - 7x + 15$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Using FOIL: $2x \\cdot x = 2x^2$; $2x \\cdot (-5) = -10x$; $3 \\cdot x = 3x$; $3 \\cdot (-5) = -15$. Combine: $2x^2 - 10x + 3x - 15 = 2x^2 - 7x - 15$."
+        },
+        {
+            "question": "If the degree of $P(x)$ is 5 and the degree of $Q(x)$ is 3, what is the degree of $P(x) \\cdot Q(x)$?",
+            "options": [
+                "$8$",
+                "$5$",
+                "$3$",
+                "$15$"
+            ],
+            "correct_answer": 0,
+            "explanation": "When multiplying polynomials, degrees add: $\\text{deg}(P \\cdot Q) = \\text{deg}(P) + \\text{deg}(Q) = 5 + 3 = 8$."
+        },
+        {
+            "question": "Evaluate $P(-2)$ for $P(x) = x^4 - 3x^2 + 2x - 5$:",
+            "options": [
+                "$-5$",
+                "$3$",
+                "$-13$",
+                "$11$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$P(-2) = (-2)^4 - 3(-2)^2 + 2(-2) - 5 = 16 - 3(4) - 4 - 5 = 16 - 12 - 4 - 5 = -5$."
+        },
+        {
+            "question": "Which statement is always true for polynomials $P(x)$ and $Q(x)$?",
+            "options": [
+                "$\\text{deg}(P + Q) \\leq \\max(\\text{deg}(P), \\text{deg}(Q))$",
+                "$\\text{deg}(P + Q) = \\text{deg}(P) + \\text{deg}(Q)$",
+                "$\\text{deg}(P \\cdot Q) = \\max(\\text{deg}(P), \\text{deg}(Q))$",
+                "$\\text{deg}(P - Q) > \\text{deg}(P)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "When adding polynomials, the degree is at most the maximum of the two degrees (it could be less if leading terms cancel). For multiplication, degrees add, not take the maximum."
+        },
+        {
+            "question": "The polynomial $x^3 - 6x^2 + 11x - 6$ factors as:",
+            "options": [
+                "$(x-1)(x-2)(x-3)$",
+                "$(x+1)(x+2)(x+3)$",
+                "$(x-1)(x-3)(x-6)$",
+                "$(x-2)^2(x-3)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Testing $P(1) = 1 - 6 + 11 - 6 = 0$, so $(x-1)$ is a factor. Testing $P(2) = 8 - 24 + 22 - 6 = 0$, so $(x-2)$ is a factor. Testing $P(3) = 27 - 54 + 33 - 6 = 0$, so $(x-3)$ is a factor. Therefore $P(x) = (x-1)(x-2)(x-3)$."
+        },
+        {
+            "question": "A polynomial of degree 4 can have at most how many real roots?",
+            "options": [
+                "$4$",
+                "$2$",
+                "$3$",
+                "Infinitely many"
+            ],
+            "correct_answer": 0,
+            "explanation": "By the Fundamental Theorem of Algebra, a polynomial of degree $n$ has at most $n$ real roots (and exactly $n$ complex roots counting multiplicities)."
+        },
+        {
+            "question": "What is the leading coefficient of $P(x) = -3x^5 + 2x^4 - x + 7$?",
+            "options": [
+                "$-3$",
+                "$5$",
+                "$2$",
+                "$7$"
+            ],
+            "correct_answer": 0,
+            "explanation": "The leading coefficient is the coefficient of the highest degree term, which is $-3$ from $-3x^5$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Polynomials are algebraic expressions with non-negative integer exponents, classified by degree (highest power) and number of terms (monomial, binomial, trinomial).",
+            "The general form is $P(x) = a_nx^n + a_{n-1}x^{n-1} + \\cdots + a_1x + a_0$ where $a_n \\neq 0$ defines the degree and leading coefficient.",
+            "Addition and subtraction combine like terms (same power of variable), while multiplication distributes every term and adds exponents.",
+            "The polynomial division algorithm states $P(x) = D(x)Q(x) + R(x)$ where the remainder $R(x)$ has degree less than the divisor $D(x)$.",
+            "The Remainder Theorem provides rapid evaluation: dividing $P(x)$ by $(x-a)$ gives remainder $P(a)$ without performing full division.",
+            "The Factor Theorem states $(x-a)$ is a factor of $P(x)$ if and only if $P(a) = 0$, enabling root testing and factorization verification.",
+            "When multiplying polynomials, degrees add: $\\text{deg}(P \\cdot Q) = \\text{deg}(P) + \\text{deg}(Q)$.",
+            "An $n$-th degree polynomial has at most $n$ real roots and exactly $n$ complex roots (Fundamental Theorem of Algebra).",
+            "Polynomials serve as approximations for complex functions (Taylor series), interpolation tools, and models in control systems and structural analysis.",
+            "The leading coefficient determines end behavior: positive leads to $+\\infty$ as $x \\to +\\infty$ for even degree, and behavior depends on sign and parity."
+        ],
+        "important_formulas": [
+            "$P(x) = a_nx^n + a_{n-1}x^{n-1} + \\cdots + a_1x + a_0$ — General form",
+            "$P(x) = D(x) \\cdot Q(x) + R(x)$ — Division algorithm",
+            "$P(a) = R$ — Remainder Theorem (remainder when dividing by $(x-a)$)",
+            "$P(a) = 0 \\iff (x-a)$ is a factor — Factor Theorem",
+            "$\\text{deg}(P \\cdot Q) = \\text{deg}(P) + \\text{deg}(Q)$ — Degree of product",
+            "$(a+b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k$ — Binomial Theorem"
+        ],
+        "common_exam_traps": [
+            "Combining coefficients of non-like terms (different powers) leads to incorrect polynomial sums.",
+            "Forgetting to distribute all terms when multiplying polynomials results in missing terms in the product.",
+            "Sign errors when substituting negative values: remember $(-a)^{\\text{even}} > 0$ and $(-a)^{\\text{odd}} < 0$.",
+            "Confusing Remainder and Factor Theorems: $P(a)$ gives the remainder; $P(a)=0$ means $(x-a)$ is a factor.",
+            "Misidentifying degree when polynomial is not in standard form—always rewrite in descending powers first."
+        ],
+        "exam_tip": "Always rewrite polynomials in standard form (descending powers) before operations, use the Factor Theorem to test potential roots quickly, and verify polynomial division using $P(x) = D(x)Q(x) + R(x)$."
+    }
+}

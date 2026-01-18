@@ -1,0 +1,388 @@
+{
+    "module_header": {
+        "module_title": "Linear Regression (Conceptual)",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Supervised Learning",
+            "Basic linear algebra",
+            "Basic statistics and probability",
+            "Calculus basics (derivatives)"
+        ],
+        "learning_outcomes": [
+            "Understand linear regression as supervised learning for predicting continuous values",
+            "Derive and interpret the linear regression equation y = wx + b",
+            "Understand loss functions (MSE) and optimization via gradient descent",
+            "Apply simple and multiple linear regression to real problems",
+            "Interpret model coefficients and assess fit quality (R², residuals)",
+            "Recognize assumptions and limitations of linear regression",
+            "Address overfitting using regularization (Ridge, Lasso)"
+        ]
+    },
+    "definition": "Linear Regression is a supervised learning algorithm predicting continuous target variable $y$ as linear combination of input features $x$: $y = w_0 + w_1x_1 + ... + w_nx_n$ or $y = w^Tx + b$ where $w$ are weights (coefficients), $b$ is bias (intercept). Simple regression: single feature. Multiple regression: multiple features. Training minimizes Mean Squared Error (MSE): $\\frac{1}{n}\\sum(y_i - \\hat{y}_i)^2$ using gradient descent or closed-form (normal equation). Model interpretation: coefficients indicate feature importance/direction. Evaluation: R² (variance explained), RMSE, residual plots. Assumptions: linearity, independence, homoscedasticity (constant variance), normality of residuals. Regularization: Ridge (L2) and Lasso (L1) prevent overfitting by penalizing large weights. Applications: price prediction, forecasting, trend analysis.",
+    "concept_overview": [
+        "Linear regression: Predicts continuous y as linear function of x. Supervised regression task.",
+        "Equation: y = wx + b (simple) or y = w^Tx + b (multiple). w=weights, b=bias/intercept.",
+        "Training: Minimize MSE = (1/n)Σ(y - ŷ)². Find optimal w, b via gradient descent or normal equation.",
+        "Gradient descent: Iteratively update weights: w := w - α∇Loss. α=learning rate.",
+        "R²: Coefficient of determination. [0,1]. Measures variance explained. Higher=better fit.",
+        "Assumptions: Linear relationship, independent observations, constant variance (homoscedasticity), normal residuals.",
+        "Regularization: Ridge (L2) adds λΣw². Lasso (L1) adds λΣ|w|. Prevents overfitting, handles multicollinearity."
+    ],
+    "theory": [
+        "Linear regression represents the simplest and most interpretable supervised learning algorithm for regression tasks. Its linearity assumption—output is weighted sum of inputs—makes it computationally efficient and results easily interpretable (each coefficient quantifies feature's effect on target). Understanding linear regression develops intuition for: (1) Loss function minimization (foundation of all ML training), (2) Gradient-based optimization (gradient descent used in neural networks), (3) Overfitting and regularization trade-offs, (4) Model evaluation metrics. Despite simplicity, linear regression performs well when relationships are approximately linear and serves as baseline for complex models. Real-world applications: predicting house prices from size/location, forecasting sales from advertising spend, estimating medical costs from patient characteristics. The interpretability advantage: stakeholders understand 'each additional bedroom increases price by $50k' more easily than black-box neural network predictions.",
+        "The fundamental linear regression mechanics involve formulating the prediction function, defining loss, and optimizing parameters. **Simple Linear Regression** (one feature): $y = wx + b$ where $w$ is slope (change in $y$ per unit $x$), $b$ is intercept (y when x=0). Example: predicting house price from size: $price = 150 \\times size + 50000$ means each sqft adds $150, base $50k. **Multiple Linear Regression** (multiple features): $y = w_1x_1 + w_2x_2 + ... + w_nx_n + b$ or vectorized $y = w^Tx + b$. Example: $price = 150 \\times size + 20000 \\times bedrooms - 5000 \\times age + 50000$. **Loss Function** (Mean Squared Error): $MSE = \\frac{1}{n}\\sum_{i=1}^{n}(y_i - \\hat{y}_i)^2$ where $y_i$ is true value, $\\hat{y}_i = w^Tx_i + b$ is prediction. MSE penalizes large errors quadratically (large errors contribute more than small). **Optimization**: Find $w, b$ minimizing MSE. (1) **Closed-form solution (Normal Equation)**: $w = (X^TX)^{-1}X^Ty$ computes optimal weights directly. Fast for small datasets but requires matrix inversion (expensive for large n, fails if $X^TX$ singular). (2) **Gradient Descent**: Iterative optimization. Initialize weights randomly, repeatedly update: $w := w - \\alpha \\frac{\\partial MSE}{\\partial w}$, $b := b - \\alpha \\frac{\\partial MSE}{\\partial b}$ where $\\alpha$ is learning rate. Gradients: $\\frac{\\partial MSE}{\\partial w} = \\frac{2}{n}X^T(Xw - y)$. Repeat until convergence (gradient near zero). **Model Interpretation**: Coefficient $w_j$ indicates: holding other features constant, one-unit increase in $x_j$ changes $y$ by $w_j$. Sign shows direction (positive=increases, negative=decreases). Magnitude shows strength. **Evaluation**: (1) **R² (Coefficient of Determination)**: $R^2 = 1 - \\frac{SS_{res}}{SS_{tot}}$ where $SS_{res} = \\sum(y - \\hat{y})^2$ (residual sum of squares), $SS_{tot} = \\sum(y - \\bar{y})^2$ (total variance). Range [0,1] (can be negative for terrible fits). R²=1: perfect fit. R²=0: no better than predicting mean. (2) **RMSE** (Root Mean Squared Error): $\\sqrt{MSE}$. Same units as target, interpretable. (3) **Residual plots**: Plot residuals $e_i = y_i - \\hat{y}_i$ vs predicted $\\hat{y}_i$. Random scatter→good fit. Patterns→violated assumptions (non-linearity, heteroscedasticity).",
+        "Mastery of linear regression is critically important as foundation for advanced ML and practical regression tasks. **Assumptions** (violations cause poor performance): (1) **Linearity**: Relationship between x and y is linear. Check: scatter plots, residual plots. Violation: Use polynomial features $x^2, x^3$ or non-linear models. (2) **Independence**: Observations independent (no autocorrelation in time series). (3) **Homoscedasticity**: Constant variance of residuals. Check: residual plot shows funnel shape→heteroscedasticity. Fix: transform target (log), weighted least squares. (4) **Normality of residuals**: Residuals normally distributed. Check: Q-Q plot, histogram. Important for inference (confidence intervals), less critical for prediction. (5) **No multicollinearity**: Features not highly correlated (causes unstable coefficients). Check: correlation matrix, VIF (Variance Inflation Factor). Fix: remove redundant features, PCA, regularization. **Overfitting**: Complex models (many features, polynomial) fit training data too well, poor generalization. Symptoms: perfect R² on training, poor on test. Solutions: (1) **Ridge Regression (L2)**: Adds penalty $\\lambda \\sum w_j^2$ to MSE. Shrinks coefficients toward zero. Handles multicollinearity (distributes weights among correlated features). Hyperparameter $\\lambda$ controls strength (larger=more penalty=simpler model). (2) **Lasso Regression (L1)**: Adds penalty $\\lambda \\sum |w_j|$. Drives some coefficients exactly to zero→feature selection (sparse model). Useful when many features, few important. (3) **Elastic Net**: Combines Ridge + Lasso. **Real applications**: House price prediction (Zillow estimates), medical cost forecasting, stock market trends, demand forecasting (retail, airlines), climate modeling. **Feature engineering**: Transform features for better fit: polynomial ($x, x^2, x^3$ for curves), interactions ($x_1 \\times x_2$ for combined effects), log transforms (for exponential relationships), categorical encoding (one-hot for categories). **Limitations**: (1) Assumes linearity (poor for non-linear relationships), (2) Sensitive to outliers (large errors dominate MSE), (3) Extrapolation risky (predictions outside training range unreliable), (4) Multicollinearity causes unstable coefficients. **When to use**: Starting point for regression (interpretable baseline), relationships approximately linear, need interpretability (stakeholder understanding), fast training/prediction required. **Alternatives**: Polynomial regression (non-linear curves), Decision trees/Random Forests (non-linear, interactions), Neural networks (complex non-linear). In examinations, demonstrating equation understanding, optimization methods, evaluation metrics, assumption checking, and regularization shows comprehensive linear regression competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Prediction: $\\hat{y} = w^Tx + b$ or $\\hat{y} = \\sum_{j=1}^{n} w_jx_j + b$",
+            "explanation": "Predicted value as weighted sum of features plus bias. Linear combination."
+        },
+        {
+            "formula": "Loss (MSE): $MSE = \\frac{1}{n}\\sum_{i=1}^{n}(y_i - \\hat{y}_i)^2$",
+            "explanation": "Mean squared error. Average squared difference between true and predicted values."
+        },
+        {
+            "formula": "Gradient descent: $w := w - \\alpha \\frac{\\partial MSE}{\\partial w}$",
+            "explanation": "Iteratively update weights in direction of negative gradient (steepest descent). α=learning rate."
+        },
+        {
+            "formula": "Normal equation: $w = (X^TX)^{-1}X^Ty$",
+            "explanation": "Closed-form solution for optimal weights. Direct computation (no iterations)."
+        },
+        {
+            "formula": "R²: $R^2 = 1 - \\frac{\\sum(y - \\hat{y})^2}{\\sum(y - \\bar{y})^2}$",
+            "explanation": "Coefficient of determination. Proportion of variance explained. Range [0,1], higher=better."
+        },
+        {
+            "formula": "Ridge penalty: $Loss = MSE + \\lambda \\sum_{j} w_j^2$",
+            "explanation": "L2 regularization. Penalizes sum of squared weights. Shrinks coefficients, prevents overfitting."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Fit simple linear regression to predict house price from size.",
+            "solution_steps": [
+                "**Data:** 3 houses",
+                "- House 1: size=1000 sqft, price=$200k",
+                "- House 2: size=1500 sqft, price=$250k",
+                "- House 3: size=2000 sqft, price=$300k",
+                "",
+                "**Model:** price = w × size + b",
+                "",
+                "**Goal:** Find w (slope) and b (intercept) minimizing MSE.",
+                "",
+                "**Solution (using formulas):**",
+                "",
+                "Mean size: x̄ = (1000+1500+2000)/3 = 1500",
+                "Mean price: ȳ = (200+250+300)/3 = 250",
+                "",
+                "Slope: w = Σ[(xi - x̄)(yi - ȳ)] / Σ[(xi - x̄)²]",
+                "= [(1000-1500)(200-250) + (1500-1500)(250-250) + (2000-1500)(300-250)]",
+                "  / [(1000-1500)² + (1500-1500)² + (2000-1500)²]",
+                "= [(-500)(-50) + 0 + (500)(50)] / [250000 + 0 + 250000]",
+                "= [25000 + 25000] / 500000",
+                "= 50000 / 500000 = 0.1 = $100 per sqft",
+                "",
+                "Intercept: b = ȳ - w×x̄ = 250 - 0.1×1500 = 250 - 150 = $100k",
+                "",
+                "**Final Model:** price = 100 × size + 100",
+                "- Or: price = $100/sqft × size + $100k base",
+                "",
+                "**Interpretation:**",
+                "- Slope w=100: Each additional sqft adds $100 to price",
+                "- Intercept b=100: Base price is $100k (when size=0—not meaningful here)",
+                "",
+                "**Predictions:**",
+                "- 1200 sqft house: price = 100×1200 + 100 = $220k",
+                "- 1800 sqft house: price = 100×1800 + 100 = $280k",
+                "",
+                "**Evaluation (R²):**",
+                "Predictions: ŷ₁=200, ŷ₂=250, ŷ₃=300 (perfect fit!)",
+                "Residuals: all zero",
+                "R² = 1 (100% variance explained—perfect linear fit)"
+            ],
+            "final_answer": "Model: price = 100×size + 100. Each sqft adds $100. Perfect fit (R²=1) for this simple example."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Explain overfitting in linear regression and how Ridge regularization helps.",
+            "solution_steps": [
+                "**Overfitting in Linear Regression:**",
+                "",
+                "**Scenario:** Predicting house price with 100 features (size, bedrooms, age, location, etc.) but only 50 training examples.",
+                "",
+                "**Problem:**",
+                "- Model has 100 parameters (weights)",
+                "- Only 50 examples to learn from",
+                "- Model finds weights that perfectly fit training data (even noise)",
+                "- Training MSE: $5k² (great!)",
+                "- Test MSE: $50k² (terrible!)",
+                "",
+                "**Why it happens:**",
+                "- Too many features relative to data → model memorizes",
+                "- Some features highly correlated (multicollinearity) → unstable weights",
+                "- Model fits noise in training set as if it's signal",
+                "",
+                "**Example:**",
+                "True relationship: price = 100×size + 50×bedrooms + noise",
+                "Overfit model: price = 98×size + 45×bedrooms + 0.01×neighbor_cat_count + ... (100 terms)",
+                "- Includes spurious features (cat ownership) with large weights",
+                "- Perfect on training but fails on new data",
+                "",
+                "**Ridge Regression (L2) Solution:**",
+                "",
+                "**Modified Loss:** MSE + λΣw²",
+                "- Original: Minimize MSE only",
+                "- Ridge: Minimize MSE + penalty on large weights",
+                "",
+                "**Effect:**",
+                "- λ=0: No penalty, standard regression (overfits)",
+                "- λ>0: Penalizes large weights",
+                "- λ→∞: All weights→0 (underfits, predicts mean)",
+                "",
+                "**How it helps:**",
+                "1. **Shrinks coefficients:** Large weights get reduced",
+                "   - Spurious features (cat count) get near-zero weights",
+                "   - Important features (size, bedrooms) retain meaningful weights",
+                "",
+                "2. **Handles multicollinearity:**",
+                "   - Correlated features (size, total_rooms) both important",
+                "   - Without Ridge: unstable (size=200, rooms=-50)",
+                "   - With Ridge: distributes (size=100, rooms=100)",
+                "",
+                "3. **Prevents memorization:**",
+                "   - Can't fit noise with large weights (penalty prevents)",
+                "   - Forces simpler model (smaller coefficients)",
+                "",
+                "**Result with Ridge (λ=10):**",
+                "- Training MSE: $8k² (slightly worse than overfit)",
+                "- Test MSE: $12k² (MUCH better—generalizes!)",
+                "",
+                "**Choosing λ:**",
+                "- Cross-validation: try λ=0.01, 0.1, 1, 10, 100",
+                "- Plot validation error vs λ",
+                "- Choose λ with lowest validation error",
+                "",
+                "**Visual:**",
+                "```",
+                "Without Ridge: Weights = [98, 45, 0.01, -120, 85, ...] (wild variation)",
+                "With Ridge (λ=10): Weights = [95, 48, 0, -5, 2, ...] (more reasonable)",
+                "```"
+            ],
+            "final_answer": "Overfitting: too many features relative to data, model memorizes noise. Ridge adds λΣw² penalty shrinking weights, preventing large spurious coefficients. Improves generalization. Tune λ via cross-validation."
+        }
+    ],
+    "logical_derivation": "Linear regression assumes target $y$ depends linearly on features $x$: $y = w^Tx + b + \\epsilon$ where $\\epsilon$ is noise. To find best $w, b$, minimize prediction error (MSE) over training data. MSE is convex (single global minimum)—gradient descent guaranteed to converge. Taking derivative and setting to zero yields normal equation: $(X^TX)w = X^Ty$. For large datasets, gradient descent more efficient. Regularization modifies loss adding complexity penalty: Ridge $||w||^2$ shrinks weights, Lasso $||w||_1$ induces sparsity. Optimal $\\lambda$ balances underfitting (too simple, high bias) vs overfitting (too complex, high variance) via cross-validation. R² measures proportion of variance captured by model relative to baseline (mean).",
+    "applications": [
+        "**Real Estate:** House price prediction from size, location, bedrooms (Zillow, Redfin estimates).",
+        "**Finance:** Stock price forecasting, credit risk scoring, portfolio return prediction.",
+        "**Healthcare:** Medical cost estimation from patient characteristics, treatment outcome prediction.",
+        "**Retail:** Sales forecasting from advertising spend, seasonal trends, promotions.",
+        "**Manufacturing:** Quality prediction from process parameters, yield optimization.",
+        "**Climate Science:** Temperature forecasting from historical data, CO2 impact modeling.",
+        "**Marketing:** Customer lifetime value prediction, campaign ROI estimation."
+    ],
+    "key_takeaways": [
+        "Linear regression: Predicts continuous y as linear combination y = w^Tx + b. Supervised regression.",
+        "Training: Minimize MSE = (1/n)Σ(y - ŷ)². Gradient descent or normal equation finds optimal w, b.",
+        "Interpretation: Coefficient wⱼ = change in y per unit xⱼ (holding others constant). Sign=direction, magnitude=strength.",
+        "R²: Variance explained. [0,1]. R²=1 perfect fit, R²=0 no better than mean. Higher=better.",
+        "Assumptions: Linearity, independence, homoscedasticity (constant variance), normality of residuals.",
+        "Regularization: Ridge (L2) adds λΣw² shrinking weights. Lasso (L1) adds λΣ|w| creating sparsity. Prevent overfitting.",
+        "Evaluation: R², RMSE (interpretable units), residual plots (check assumptions, patterns indicate violations)."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Extrapolating beyond training data range",
+            "why_it_occurs": "Students apply model outside observed x range.",
+            "how_to_avoid": "Linear relationship may not hold outside training range. Predictions for x outside [min, max] unreliable. Flag extrapolation warnings."
+        },
+        {
+            "mistake": "Ignoring assumption violations",
+            "why_it_occurs": "Students don't check residual plots, linearity.",
+            "how_to_avoid": "Always plot residuals vs predicted. Patterns (curves, funnels) indicate violated assumptions (non-linearity, heteroscedasticity). Transform features or use non-linear models."
+        },
+        {
+            "mistake": "Using R² alone for model evaluation",
+            "why_it_occurs": "Students think high R² means good model.",
+            "how_to_avoid": "High R² on training doesn't guarantee generalization. MUST evaluate on separate test set. Check residual plots, RMSE in context."
+        },
+        {
+            "mistake": "Not scaling features for gradient descent",
+            "why_it_occurs": "Features have very different scales (salary: 100k, age: 30).",
+            "how_to_avoid": "Different scales cause gradient descent to converge slowly (zigzag). Standardize features (mean=0, std=1) before training."
+        },
+        {
+            "mistake": "Including categorical variables without encoding",
+            "why_it_occurs": "Students put categories (red, blue, green) directly as numbers.",
+            "how_to_avoid": "Linear regression needs numerical inputs. Use one-hot encoding for categories (red=[1,0,0], blue=[0,1,0], green=[0,0,1])."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What does linear regression predict?",
+            "options": [
+                "Continuous numerical value",
+                "Category/class",
+                "Cluster assignment",
+                "Boolean (yes/no)"
+            ],
+            "correct_answer": 0,
+            "explanation": "Linear regression is supervised regression algorithm predicting continuous target (prices, temperatures). Classification predicts categories."
+        },
+        {
+            "question": "What is the linear regression equation?",
+            "options": [
+                "y = w^T x + b",
+                "y = sigmoid(w^T x)",
+                "y = max(0, w^T x)",
+                "y = exp(w^T x)"
+            ],
+            "correct_answer": 0,
+            "explanation": "Linear regression: y = w^T x + b (weighted sum of features plus bias). Linear combination predicts continuous output."
+        },
+        {
+            "question": "What loss function does linear regression minimize?",
+            "options": [
+                "Mean Squared Error (MSE)",
+                "Cross-entropy",
+                "Hinge loss",
+                "Absolute error only"
+            ],
+            "correct_answer": 0,
+            "explanation": "Linear regression minimizes MSE = (1/n)Σ(y - ŷ)². Quadratic penalty on prediction errors."
+        },
+        {
+            "question": "What is R²?",
+            "options": [
+                "Proportion of variance explained by model",
+                "Mean squared error",
+                "Learning rate",
+                "Number of features"
+            ],
+            "correct_answer": 0,
+            "explanation": "R² (coefficient of determination): variance explained relative to baseline (predicting mean). Range [0,1], higher=better fit."
+        },
+        {
+            "question": "What does Ridge regression add to MSE?",
+            "options": [
+                "λΣw² (L2 penalty on weights)",
+                "λΣ|w| (L1 penalty)",
+                "Nothing",
+                "More features"
+            ],
+            "correct_answer": 0,
+            "explanation": "Ridge (L2 regularization) adds λΣw² penalty to MSE. Shrinks weights toward zero, prevents overfitting."
+        },
+        {
+            "question": "What indicates overfitting in linear regression?",
+            "options": [
+                "Low training error, high test error",
+                "High training error, high test error",
+                "Low training error, low test error",
+                "High R² on test set"
+            ],
+            "correct_answer": 0,
+            "explanation": "Overfitting: perfect fit on training (low error) but poor generalization (high test error). Large train/test gap."
+        },
+        {
+            "question": "What does coefficient w indicate?",
+            "options": [
+                "Change in y per unit change in x (holding others constant)",
+                "Total prediction",
+                "Error magnitude",
+                "Number of examples"
+            ],
+            "correct_answer": 0,
+            "explanation": "Weight wⱼ: one-unit increase in xⱼ changes y by wⱼ (other features constant). Slope/partial derivative."
+        },
+        {
+            "question": "When should you NOT use linear regression?",
+            "options": [
+                "Relationship is highly non-linear",
+                "Predicting continuous values",
+                "Need interpretability",
+                "Small dataset"
+            ],
+            "correct_answer": 0,
+            "explanation": "Linear regression assumes linear relationship. For non-linear (exponential, polynomial), use polynomial features or non-linear models."
+        },
+        {
+            "question": "What is multicollinearity?",
+            "options": [
+                "Features highly correlated with each other",
+                "Target has multiple values",
+                "Multiple models",
+                "Many training examples"
+            ],
+            "correct_answer": 0,
+            "explanation": "Multicollinearity: features correlated (size and total_rooms). Causes unstable coefficients. Ridge regression helps."
+        },
+        {
+            "question": "How to optimize linear regression?",
+            "options": [
+                "Gradient descent or normal equation",
+                "Random search",
+                "Grid search only",
+                "Manual tuning"
+            ],
+            "correct_answer": 0,
+            "explanation": "Find optimal w minimizing MSE via: (1) Gradient descent (iterative), or (2) Normal equation (X^T X)^{-1}X^T y (closed-form)."
+        },
+        {
+            "question": "What does Lasso (L1) do that Ridge doesn't?",
+            "options": [
+                "Drives some coefficients exactly to zero (feature selection)",
+                "Shrinks all coefficients equally",
+                "Faster training",
+                "Better R²"
+            ],
+            "correct_answer": 0,
+            "explanation": "Lasso (L1) adds λΣ|w| penalty. Drives many weights to EXACTLY zero (sparse model, automatic feature selection). Ridge shrinks but rarely zeros."
+        },
+        {
+            "question": "What does intercept (bias) b represent?",
+            "options": [
+                "Predicted y when all features are zero",
+                "Slope",
+                "Error term",
+                "Learning rate"
+            ],
+            "correct_answer": 0,
+            "explanation": "Intercept b: predicted value when all x=0. Starting point. May not be meaningful (e.g., house price when size=0)."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Linear regression: Predicts continuous y = w^T x + b. Supervised regression (labeled continuous targets).",
+            "Training: Minimize MSE = (1/n)Σ(y - ŷ)². Gradient descent (iterative) or normal equation (closed-form).",
+            "Simple: y = wx + b (one feature). Multiple: y = w₁x₁ + ... + wₙxₙ + b (many features).",
+            "Interpretation: Coefficient wⱼ = change in y per unit xⱼ (others constant). Sign=direction, magnitude=strength.",
+            "R²: Variance explained. [0,1]. R²=1 perfect, R²=0 no better than mean. Evaluate on TEST set.",
+            "Assumptions: Linearity, independence, homoscedasticity (constant variance), normality of residuals. Check with residual plots.",
+            "Overfitting: Too many features, model memorizes training. Low train error, HIGH test error.",
+            "Ridge (L2): Loss = MSE + λΣw². Shrinks weights, prevents overfitting. Tune λ via cross-validation.",
+            "Lasso (L1): Loss = MSE + λΣ|w|. Drives weights to zero (sparse, feature selection).",
+            "Limitations: Assumes linearity (poor for non-linear), sensitive to outliers, extrapolation risky."
+        ],
+        "important_formulas": [
+            "Prediction: ŷ = w^T x + b",
+            "MSE: (1/n)Σ(y - ŷ)²",
+            "Gradient descent: w := w - α∂MSE/∂w",
+            "Normal equation: w = (X^T X)^{-1}X^T y",
+            "R²: 1 - Σ(y-ŷ)²/Σ(y-ȳ)²",
+            "Ridge: MSE + λΣw²"
+        ],
+        "common_exam_traps": [
+            "Regression predicts CONTINUOUS values (prices). Classification=categories. Don't mix.",
+            "R² alone insufficient. Check test R², residual plots (assumptions), RMSE (context).",
+            "Overfitting: Low train, HIGH test error (gap). Fix: Ridge/Lasso, more data, fewer features.",
+            "Extrapolation risky: Predictions outside training x range unreliable (linear may not hold).",
+            "Multicollinearity (correlated features) → unstable coefficients. Ridge helps distribute weights."
+        ],
+        "exam_tip": "Remember: y=w^T x+b predicts continuous. MSE minimized via gradient descent/normal equation. R²=variance explained. Ridge adds λΣw² (shrinks). Check assumptions with residual plots. Test set evaluation essential."
+    }
+}

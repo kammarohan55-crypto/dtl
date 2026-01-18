@@ -1,0 +1,355 @@
+{
+    "module_header": {
+        "module_title": "Unsupervised Learning",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Introduction to Machine Learning",
+            "Types of Machine Learning",
+            "Basic linear algebra",
+            "Basic statistics"
+        ],
+        "learning_outcomes": [
+            "Understand unsupervised learning principles and when to apply them",
+            "Distinguish between clustering, dimensionality reduction, and association rule learning",
+            "Apply K-means clustering algorithm and evaluate cluster quality",
+            "Understand hierarchical clustering and dendrogram interpretation",
+            "Apply PCA for dimensionality reduction and data visualization",
+            "Recognize the challenges of unsupervised learning evaluation",
+            "Identify real-world applications of unsupervised techniques"
+        ]
+    },
+    "definition": "Unsupervised Learning discovers patterns in unlabeled data without explicit target outputs. Unlike supervised learning (labeled data), unsupervised algorithms find hidden structure autonomously. Main types: (1) **Clustering** groups similar data points—K-means (partition into k clusters minimizing within-cluster variance), Hierarchical (builds tree of clusters), DBSCAN (density-based, arbitrary shapes). (2) **Dimensionality Reduction** compresses high-dimensional data preserving structure—PCA (principal component analysis—linear projection maximizing variance), t-SNE (non-linear for visualization). (3) **Association Rule Learning** discovers relationships—market basket analysis (items purchased together). Evaluation challenges: no ground truth labels—use internal metrics (silhouette score, inertia) or domain expertise. Applications: customer segmentation, anomaly detection, data compression, feature extraction, exploratory data analysis.",
+    "concept_overview": [
+        "Unsupervised: No labels. Algorithm finds structure/patterns autonomously. Exploratory analysis.",
+        "Clustering: Group similar items. K-means (k clusters), Hierarchical (tree), DBSCAN (density-based).",
+        "K-means: Initialize k centroids, assign points to nearest, update centroids, repeat until convergence.",
+        "Hierarchical: Agglomerative (bottom-up merge) or Divisive (top-down split). Dendrogram visualizes.",
+        "Dimensionality reduction: High-D → Low-D preserving structure. PCA (linear), t-SNE (non-linear viz).",
+        "PCA: Find directions (principal components) of maximum variance. Project data onto top components.",
+        "Evaluation: No labels→subjective. Silhouette score (cluster separation), inertia (within-cluster variance), domain knowledge."
+    ],
+    "theory": [
+        "Unsupervised learning tackles the fundamental challenge of discovering structure in data without guidance. Unlike supervised learning where labels define learning objectives, unsupervised algorithms must autonomously identify meaningful patterns. This exploratory nature makes unsupervised learning powerful for: (1) Understanding data before modeling—clustering reveals natural groupings (customer segments, document topics), (2) Preprocessing for supervised learning—dimensionality reduction creates features, (3) Anomaly detection—deviations from learned patterns signal outliers, (4) Data compression—reduce storage/computation while preserving information. The absence of labels creates evaluation challenges: no objective 'correct' answer. Success depends on domain interpretation—are discovered clusters meaningful? Understanding when unsupervised learning applies develops judgment about data-driven discovery versus prediction tasks. Real-world scenarios often combine both: unsupervised exploration followed by supervised prediction.",
+        "The fundamental unsupervised learning approaches solve different discovery tasks. **Clustering** partitions data into groups where intra-group similarity high, inter-group similarity low. **K-means**: Most popular. Algorithm: (1) Initialize k cluster centers (randomly or k-means++), (2) Assign each point to nearest center (Euclidean distance), (3) Update centers as mean of assigned points, (4) Repeat 2-3 until convergence (centers don't change). Objective: minimize within-cluster sum of squares $\\sum_{i=1}^{k} \\sum_{x \\in C_i} ||x - \\mu_i||^2$. Strengths: Fast (O(nkt)), simple, scales well. Weaknesses: Must specify k, assumes spherical clusters, sensitive to initialization (run multiple times), sensitive to outliers. Choosing k: Elbow method (plot inertia vs k, look for elbow), Silhouette score (measures separation). **Hierarchical Clustering**: Builds tree (dendrogram) of nested clusters. Agglomerative (bottom-up): Start with each point as cluster, iteratively merge closest pairs. Linkage criteria: Single (min distance between clusters), Complete (max distance), Average, Ward (minimize variance increase). Divisive (top-down): Start with all points in one cluster, recursively split. Advantages: Don't need to specify k (cut dendrogram at desired level), visualize hierarchy. Disadvantages: Slower (O(n²log n) to O(n³)), no reassignment once merged. **DBSCAN** (Density-Based): Groups high-density regions separated by low-density. Parameters: ε (neighborhood radius), MinPts (minimum points to form cluster). Core point: ≥MinPts neighbors within ε. Border: In neighborhood of core but <MinPts neighbors. Noise: Neither. Advantages: Finds arbitrary-shaped clusters, handles noise/outliers, no need to specify k. Disadvantages: Sensitive to ε and MinPts, struggles with varying densities. **Dimensionality Reduction**: High-dimensional data (thousands of features) causes curse of dimensionality (distances become meaningless, visualizations impossible). **PCA** (Principal Component Analysis): Linear transformation finding orthogonal directions (principal components) of maximum variance. Steps: (1) Center data (subtract mean), (2) Compute covariance matrix, (3) Find eigenvectors (principal components) and eigenvalues (variance explained), (4) Project data onto top k components. First component captures most variance, second (orthogonal) captures next most, etc. Use: dimensionality reduction (keep top k components explaining 90% variance), visualization (project to 2D/3D), noise reduction (discard low-variance components), feature extraction. **t-SNE** (t-distributed Stochastic Neighbor Embedding): Non-linear for visualization. Preserves local structure—similar points stay close. Great for exploratory 2D/3D visualizations but computationally expensive, non-deterministic, only for visualization (don't use reduced dimensions for modeling). **Association Rules**: Discover relationships in transactional data. Example: market basket (customers buying bread also buy butter). Metrics: Support (frequency), Confidence (conditional probability), Lift (how much more likely together than independently). Apriori algorithm finds frequent itemsets.",
+        "Mastery of unsupervised learning is critically important for data exploration, feature engineering, and discovering hidden insights. Real applications: **Customer Segmentation** (marketing): Cluster customers by behavior/demographics—target segments differently. K-means on RFM (recency, frequency, monetary) creates groups: high-value, at-risk, new, etc. **Anomaly Detection** (fraud, cybersecurity): Learn normal patterns, flag deviations. Isolation Forest, autoencoders (neural networks learning to reconstruct—anomalies have high reconstruction error). **Image Compression** (JPEG): K-means reduces colors—cluster similar colors, replace with centroid (reduces file size). **Document Clustering** (topic discovery): Group similar documents (news articles by topic). TF-IDF features + K-means or LDA (Latent Dirichlet Allocation). **Recommender Systems** (Netflix, Amazon): Collaborative filtering uses clustering to find similar users/items. **Genomics** (bioinformatics): Cluster genes by expression patterns identifying functional groups. **Data Preprocessing**: PCA reduces dimensions before supervised learning (faster training, reduced overfitting). t-SNE visualizes high-D data exploring class separability. Challenges: **Evaluation** without labels is subjective. Internal metrics: Silhouette score (−1 to 1, higher=better separation), Davies-Bouldin index (lower=better), inertia (within-cluster variance—lower better but decreases with more clusters). External validation: if some labels available (semi-supervised evaluation), use purity, rand index. Ultimately, domain experts assess meaningfulness. **Choosing algorithm**: K-means for speed, spherical clusters. Hierarchical for hierarchy, no k. DBSCAN for arbitrary shapes, noise. PCA for linear dimensionality reduction. t-SNE for visualization. **Hyperparameter tuning**: K-means k (elbow, silhouette), DBSCAN ε/MinPts (domain knowledge, grid search), PCA components (cumulative variance plot). Best practices: Feature scaling (especially for distance-based), try multiple algorithms, visualize results (scatter plots, dendrograms), interpret with domain knowledge, bootstrap/stability analysis (do clusters persist across samples?). In examinations, demonstrating algorithm understanding, appropriate selection for scenarios, evaluation strategies, and awareness of limitations shows practical unsupervised learning competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "K-means objective: Minimize $\\sum_{i=1}^{k} \\sum_{x \\in C_i} ||x - \\mu_i||^2$",
+            "explanation": "Find k cluster centers μ minimizing sum of squared distances from points to their assigned centers."
+        },
+        {
+            "formula": "Silhouette score: $s(i) = \\frac{b(i) - a(i)}{\\max(a(i), b(i))}$ where a=avg intra-cluster distance, b=avg nearest-cluster distance",
+            "explanation": "Measures cluster quality. Range [−1, 1]. High=well-clustered, 0=boundary, negative=wrong cluster."
+        },
+        {
+            "formula": "PCA: Find eigenvectors of covariance matrix $\\Sigma = \\frac{1}{n}X^T X$",
+            "explanation": "Principal components are eigenvectors. Eigenvalues indicate variance explained by each component."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Explain K-means algorithm step-by-step with example.",
+            "solution_steps": [
+                "**Problem:** Cluster 6 points in 2D into k=2 clusters.",
+                "**Data:** (1,1), (2,1), (1,2), (8,8), (8,9), (9,8)",
+                "",
+                "**K-means Algorithm:**",
+                "",
+                "**Step 1: Initialize k=2 centroids randomly**",
+                "- μ₁ = (1, 1) (pick first point)",
+                "- μ₂ = (8, 8) (pick fourth point)",
+                "",
+                "**Step 2: Assign points to nearest centroid**",
+                "- (1,1): distance to μ₁=0, to μ₂=√98 → Cluster 1",
+                "- (2,1): distance to μ₁=1, to μ₂=√85 → Cluster 1",
+                "- (1,2): distance to μ₁=1, to μ₂=√85 → Cluster 1",
+                "- (8,8): distance to μ₁=√98, to μ₂=0 → Cluster 2",
+                "- (8,9): distance to μ₁=√113, to μ₂=1 → Cluster 2",
+                "- (9,8): distance to μ₁=√113, to μ₂=1 → Cluster 2",
+                "",
+                "Cluster 1: {(1,1), (2,1), (1,2)}",
+                "Cluster 2: {(8,8), (8,9), (9,8)}",
+                "",
+                "**Step 3: Update centroids (mean of assigned points)**",
+                "- μ₁ = mean of Cluster 1 = ((1+2+1)/3, (1+1+2)/3) = (1.33, 1.33)",
+                "- μ₂ = mean of Cluster 2 = ((8+8+9)/3, (8+9+8)/3) = (8.33, 8.33)",
+                "",
+                "**Step 4: Repeat Steps 2-3 until convergence**",
+                "- Reassign points with new centroids (assignments won't change)",
+                "- Centroids stay same → **Converged!**",
+                "",
+                "**Final Clusters:**",
+                "- Cluster 1: {(1,1), (2,1), (1,2)} center at (1.33, 1.33)",
+                "- Cluster 2: {(8,8), (8,9), (9,8)} center at (8.33, 8.33)",
+                "",
+                "**Within-cluster variance (inertia):**",
+                "- Cluster 1: (1-1.33)²+(1-1.33)² + ... ≈ 0.67",
+                "- Cluster 2: (8-8.33)²+(8-8.33)² + ... ≈ 0.67",
+                "- Total: ~1.34"
+            ],
+            "final_answer": "K-means iterates: (1) Assign points to nearest center, (2) Update centers as cluster means, until convergence. Fast, simple, but requires choosing k."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "When to use K-means vs Hierarchical vs DBSCAN clustering?",
+            "solution_steps": [
+                "**Scenario Analysis:**",
+                "",
+                "**Use K-means when:**",
+                "✅ Know approximate number of clusters",
+                "✅ Clusters are roughly spherical/globular",
+                "✅ Similar cluster sizes",
+                "✅ Need fast algorithm (large datasets)",
+                "✅ Example: Customer segmentation with 3-5 predetermined segments",
+                "",
+                "**Use Hierarchical when:**",
+                "✅ Don't know number of clusters (explore dendrogram)",
+                "✅ Want cluster hierarchy (nested groups)",
+                "✅ Small to medium datasets (computational cost)",
+                "✅ Need reproducible results (deterministic, unlike K-means randomness)",
+                "✅ Example: Taxonomy (species classification with natural hierarchy)",
+                "",
+                "**Use DBSCAN when:**",
+                "✅ Arbitrary cluster shapes (non-spherical)",
+                "✅ Varying cluster densities",
+                "✅ Presence of noise/outliers (DBSCAN identifies noise)",
+                "✅ Don't know number of clusters (algorithm determines)",
+                "✅ Example: Geographic clustering (city areas with irregular boundaries)",
+                "",
+                "**Comparison Table:**",
+                "",
+                "| Feature | K-means | Hierarchical | DBSCAN |",
+                "|---------|---------|--------------|--------|",
+                "| Need k? | Yes (must specify) | No (cut dendrogram) | No (finds automatically) |",
+                "| Shape | Spherical only | Any | Arbitrary |",
+                "| Outliers | Sensitive (affects centroids) | Sensitive | Robust (marks as noise) |",
+                "| Speed | Fast O(nkt) | Slow O(n²logn+) | Medium O(nlogn) |",
+                "| Deterministic | No (random init) | Yes | Yes (given params) |",
+                "| Scalability | Excellent (millions) | Poor (thousands) | Good |",
+                "",
+                "**Real Example:**",
+                "",
+                "**Problem:** Cluster GPS coordinates of crimes in city",
+                "",
+                "- K-means: Assumes circular hotspots, fixed count → Poor fit (crime areas irregular)",
+                "- Hierarchical: Slow for millions of points → Impractical",
+                "- **DBSCAN:** Finds irregularly-shaped hotspots, ignores sparse areas as noise → Best choice!",
+                "",
+                "**Parameters:**",
+                "- ε = 200 meters (neighborhood radius)",
+                "- MinPts = 10 (minimum crimes to form hotspot)"
+            ],
+            "final_answer": "K-means: fast, spherical clusters, known k. Hierarchical: hierarchy needed, small data. DBSCAN: arbitrary shapes, noise handling, unknown k. Choose based on data characteristics and problem requirements."
+        }
+    ],
+    "logical_derivation": "Unsupervised learning addresses structure discovery without labels. Clustering assumes data contains natural groups—algorithms optimize internal cohesion criteria (K-means minimizes within-cluster variance). Hierarchical clustering builds nested structure reflecting agglomerative/divisive grouping. DBSCAN defines clusters as high-density regions. Dimensionality reduction assumes data lies on lower-dimensional manifold embedded in high-D space—PCA finds linear subspace maximizing variance, t-SNE preserves local neighborhoods. Evaluation challenges arise from lack of ground truth—internal metrics measure geometric properties, but meaningfulness requires domain interpretation. Unsupervised learning serves exploratory analysis, preprocessing, and anomaly detection.",
+    "applications": [
+        "**Customer Segmentation:** Cluster customers by purchase behavior for targeted marketing (K-means on RFM).",
+        "**Anomaly Detection:** Fraud detection (transactions deviating from learned patterns), network intrusion.",
+        "**Image Compression:** K-means reduces image colors (cluster similar colors, replace with centroid).",
+        "**Document Clustering:** Group news articles by topic (TF-IDF + K-means), organize search results.",
+        "**Recommender Systems:** Collaborative filtering (cluster similar users/items for recommendations).",
+        "**Gene Expression Analysis:** Cluster genes by expression patterns identifying functional groups (bioinformatics).",
+        "**Data Visualization:** t-SNE/PCA project high-D data to 2D/3D for exploratory visualization."
+    ],
+    "key_takeaways": [
+        "Unsupervised: No labels. Find hidden structure/patterns autonomously. Exploratory, subjective evaluation.",
+        "Clustering: K-means (fast, spherical, need k), Hierarchical (tree, no k), DBSCAN (arbitrary shapes, noise).",
+        "K-means: Assign→Update centroids→Repeat. Minimize within-cluster variance. Fast but needs k, assumes spherical.",
+        "Hierarchical: Agglomerative (merge) or Divisive (split). Dendrogram visualizes. No need for k but slow.",
+        "DBSCAN: Density-based. Finds arbitrary shapes, handles outliers. Parameters: ε (radius), MinPts.",
+        "PCA: Linear dimensionality reduction. Find principal components (max variance directions). For compression, features, viz.",
+        "Evaluation: No ground truth→internal metrics (silhouette, inertia), domain expert judgment crucial."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Using K-means without choosing k properly",
+            "why_it_occurs": "Students pick random k without analysis.",
+            "how_to_avoid": "Use Elbow method (plot inertia vs k, find elbow) or Silhouette score. Try multiple k values, evaluate quality."
+        },
+        {
+            "mistake": "Applying K-means to non-spherical clusters",
+            "why_it_occurs": "Students don't check cluster shape assumptions.",
+            "how_to_avoid": "K-means assumes spherical clusters. For elongated/arbitrary shapes, use DBSCAN or hierarchical. Visualize first."
+        },
+        {
+            "mistake": "Treating unsupervised evaluation as objective",
+            "why_it_occurs": "Students expect clear 'correct' clustering.",
+            "how_to_avoid": "No ground truth→no single right answer. Evaluate with metrics (silhouette) AND domain knowledge (are clusters meaningful?)."
+        },
+        {
+            "mistake": "Not scaling features before clustering",
+            "why_it_occurs": "Students forget distance-based algorithms sensitive to scale.",
+            "how_to_avoid": "Features like [salary: $100k, age: 30]→salary dominates distance. Standardize (mean=0, std=1) or normalize [0,1] first."
+        },
+        {
+            "mistake": "Using PCA for supervised learning without checking",
+            "why_it_occurs": "Students blindly reduce dimensions losing important features.",
+            "how_to_avoid": "PCA maximizes VARIANCE, not prediction. May discard low-variance but high-predictive features. Check supervised performance after reduction."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is the main difference between supervised and unsupervised learning?",
+            "options": [
+                "Unsupervised has no labels, finds patterns autonomously",
+                "Unsupervised is faster",
+                "Unsupervised is more accurate",
+                "No difference"
+            ],
+            "correct_answer": 0,
+            "explanation": "Unsupervised learning: no labels, algorithms discover structure autonomously. Supervised: labeled data, learn input→output mapping."
+        },
+        {
+            "question": "What does K-means minimize?",
+            "options": [
+                "Within-cluster sum of squared distances",
+                "Between-cluster distance",
+                "Number of clusters",
+                "Maximum distance"
+            ],
+            "correct_answer": 0,
+            "explanation": "K-means minimizes Σ||x - μᵢ||² (sum of squared distances from points to their cluster centers). Tighter clusters."
+        },
+        {
+            "question": "How many clusters must you specify for K-means?",
+            "options": [
+                "k (number of clusters)",
+                "Zero (finds automatically)",
+                "Always 2",
+                "Depends on data size"
+            ],
+            "correct_answer": 0,
+            "explanation": "K-means requires specifying k beforehand. Choose using Elbow method or Silhouette score. Unlike DBSCAN which finds k automatically."
+        },
+        {
+            "question": "Which clustering handles arbitrary shapes best?",
+            "options": [
+                "DBSCAN",
+                "K-means",
+                "Both equally",
+                "Neither"
+            ],
+            "correct_answer": 0,
+            "explanation": "DBSCAN (density-based) finds arbitrary-shaped clusters. K-means assumes spherical. Hierarchical handles some non-spherical but DBSCAN best."
+        },
+        {
+            "question": "What does PCA find?",
+            "options": [
+                "Directions of maximum variance in data",
+                "Optimal clusters",
+                "Best classifier",
+                "Missing values"
+            ],
+            "correct_answer": 0,
+            "explanation": "PCA (Principal Component Analysis) finds orthogonal directions (principal components) capturing maximum variance. For dimensionality reduction."
+        },
+        {
+            "question": "How to choose k in K-means?",
+            "options": [
+                "Elbow method or Silhouette score",
+                "Always use k=3",
+                "Random guess",
+                "Maximum possible"
+            ],
+            "correct_answer": 0,
+            "explanation": "Elbow method: plot inertia vs k, look for elbow (diminishing returns). Silhouette score: measures cluster separation. Both guide k selection."
+        },
+        {
+            "question": "What is silhouette score range?",
+            "options": [
+                "−1 to 1 (higher=better clustering)",
+                "0 to ∞",
+                "0 to 1",
+                "-∞ to ∞"
+            ],
+            "correct_answer": 0,
+            "explanation": "Silhouette: [−1, 1]. Close to 1=well-clustered, 0=boundary, negative=possibly wrong cluster. Higher better."
+        },
+        {
+            "question": "Which is NOT a clustering algorithm?",
+            "options": [
+                "PCA",
+                "K-means",
+                "Hierarchical",
+                "DBSCAN"
+            ],
+            "correct_answer": 0,
+            "explanation": "PCA is dimensionality reduction, not clustering. K-means, Hierarchical, DBSCAN are clustering algorithms."
+        },
+        {
+            "question": "What does dendrogram show?",
+            "options": [
+                "Hierarchical clustering tree structure",
+                "K-means iterations",
+                "PCA components",
+                "Training progress"
+            ],
+            "correct_answer": 0,
+            "explanation": "Dendrogram visualizes hierarchical clustering—tree showing how clusters merge/split. Can cut at desired level to get k clusters."
+        },
+        {
+            "question": "Why is unsupervised evaluation subjective?",
+            "options": [
+                "No ground truth labels to compare against",
+                "Algorithms are random",
+                "Data is always noisy",
+                "Too many metrics"
+            ],
+            "correct_answer": 0,
+            "explanation": "Unsupervised has no labels→no objective 'correct' clustering. Evaluate with internal metrics (silhouette) and domain expert judgment (meaningful?)."
+        },
+        {
+            "question": "What is inertia in K-means?",
+            "options": [
+                "Sum of squared distances from points to their cluster centers",
+                "Number of iterations",
+                "Cluster count",
+                "Algorithm speed"
+            ],
+            "correct_answer": 0,
+            "explanation": "Inertia (within-cluster variance): Σ||x - μᵢ||². K-means minimizes this. Lower=tighter clusters. Used in Elbow method."
+        },
+        {
+            "question": "Which algorithm marks outliers as noise?",
+            "options": [
+                "DBSCAN",
+                "K-means",
+                "PCA",
+                "Hierarchical"
+            ],
+            "correct_answer": 0,
+            "explanation": "DBSCAN identifies points in low-density regions as noise (not assigned to any cluster). K-means/Hierarchical assign all points."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Unsupervised: No labels. Find hidden structure/patterns autonomously. Exploratory, evaluation subjective.",
+            "Clustering: Group similar items. K-means (fast, spherical, need k), Hierarchical (tree, no k), DBSCAN (arbitrary shapes, noise).",
+            "K-means: Initialize k centers → Assign points to nearest → Update centers=mean → Repeat. Minimizes within-cluster variance.",
+            "K-means weaknesses: Must choose k (Elbow/Silhouette), assumes spherical, sensitive to initialization (run multiple times), outliers.",
+            "Hierarchical: Agglomerative (merge bottom-up) or Divisive (split top-down). Dendrogram visualizes. No k needed but slow O(n²).",
+            "DBSCAN: Density-based. Finds arbitrary shapes, robust to outliers (marks as noise). Parameters: ε (radius), MinPts.",
+            "PCA: Linear dimensionality reduction. Find principal components (eigenvectors of covariance). Max variance directions. For compression, features, viz.",
+            "Evaluation: No ground truth→internal metrics (Silhouette [−1,1 higher=better], inertia). Domain knowledge crucial for meaningfulness.",
+            "Applications: Customer segmentation, anomaly detection, image compression, document clustering, gene expression, data viz.",
+            "Best practices: Scale features (distance-sensitive), try multiple algorithms, visualize results, interpret with domain knowledge."
+        ],
+        "important_formulas": [
+            "K-means: Minimize Σ||x - μᵢ||²",
+            "Silhouette: s(i) = (b-a)/max(a,b)",
+            "PCA: Eigenvectors of covariance Σ=X^TX/n"
+        ],
+        "common_exam_traps": [
+            "K-means needs k specified (Elbow/Silhouette). DBSCAN/Hierarchical don't.",
+            "K-means assumes spherical clusters. Arbitrary shapes→use DBSCAN.",
+            "Unsupervised evaluation subjective (no labels). Use metrics+domain knowledge.",
+            "Scale features before distance-based clustering (K-means, hierarchical, DBSCAN).",
+            "PCA maximizes variance, not prediction. Check supervised performance after reduction."
+        ],
+        "exam_tip": "Remember: K-means=fast, spherical, need k. DBSCAN=arbitrary shapes, noise. Hierarchical=tree, no k. PCA=max variance reduction. Evaluation=subjective, use silhouette+domain knowledge."
+    }
+}

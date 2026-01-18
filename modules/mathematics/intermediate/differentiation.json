@@ -1,0 +1,338 @@
+{
+    "module_header": {
+        "module_title": "Differentiation",
+        "subject": "Mathematics",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Limits and limit evaluation",
+            "Continuity and types of discontinuities",
+            "Functions and their properties",
+            "Basic algebraic manipulation"
+        ],
+        "learning_outcomes": [
+            "Define the derivative as a limit and understand its geometric and physical interpretations",
+            "Apply differentiation rules including power rule, product rule, quotient rule, and chain rule",
+            "Differentiate algebraic, trigonometric, exponential, and logarithmic functions",
+            "Compute higher-order derivatives and understand their significance",
+            "Apply implicit differentiation and logarithmic differentiation techniques",
+            "Understand the relationship between differentiability and continuity"
+        ]
+    },
+    "definition": "The derivative of a function $f(x)$ at a point $x = a$ is defined as $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$, provided this limit exists. Geometrically, the derivative represents the slope of the tangent line to the curve at that point. Physically, it represents the instantaneous rate of change of the function with respect to its variable.",
+    "concept_overview": [
+        "The derivative measures how a function changes instantaneously at each point, generalizing the concept of slope to curves.",
+        "Differentiation rules (power, product, quotient, chain) enable systematic computation of derivatives without using the limit definition directly.",
+        "The power rule states $\\frac{d}{dx}[x^n] = nx^{n-1}$, applicable to any real power $n$.",
+        "The chain rule enables differentiation of composite functions: $(f \\circ g)'(x) = f'(g(x)) \\cdot g'(x)$.",
+        "Differentiability implies continuity, but continuity does not imply differentiability—functions can be continuous with sharp corners where derivatives don't exist."
+    ],
+    "theory": [
+        "Differentiation represents the central operation of differential calculus, providing the mathematical framework for analyzing rates of change, optimization, and dynamic behavior in engineering systems. The derivative, defined rigorously as a limit, formalizes the intuitive notion of instantaneous velocity and captures how functions respond to infinitesimal changes in input. Historically, Newton and Leibniz independently developed calculus to solve problems in physics and geometry, with differentiation enabling analysis of motion, forces, and extremal values. In engineering education, derivatives appear in every discipline: electrical engineers use derivatives to analyze circuit transient responses and control systems, mechanical engineers compute velocities and accelerations in dynamics, chemical engineers determine reaction rates, and structural engineers assess stress gradients. The study of differentiation develops essential analytical skills including systematic application of rules, recognition of compositi on patterns, and translation of physical rates into mathematical expressions. Mastery of differentiation provides the foundation for optimization, differential equations, numerical methods, and all subsequent analysis involving change and motion.",
+        "The fundamental differentiation rules transform the limit definition into systematic algebraic procedures. The power rule $\\frac{d}{dx}[x^n] = nx^{n-1}$ handles polynomial terms efficiently. The product rule $\\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)$ differentiates products without expanding. The quotient rule $\\frac{d}{dx}\\left[\\frac{f(x)}{g(x)}\\right] = \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}$ handles ratios. The chain rule $(f \\circ g)'(x) = f'(g(x)) \\cdot g'(x)$ differentiates compositions by differentiating the outer function at the inner function, then multiplying by the inner function's derivative. Standard derivatives include: $\\frac{d}{dx}[\\sin x] = \\cos x$, $\\frac{d}{dx}[e^x] = e^x$, $\\frac{d}{dx}[\\ln x] = \\frac{1}{x}$. Implicit differentiation handles equations not solved for $y$ by differentiating both sides with respect to $x$ and treating $y$ as a function of $x$. Logarithmic differentiation simplifies products, quotients, and powers by taking logarithms before differentiating. Higher-order derivatives represent repeated differentiation: $f''(x)$ is the second derivative (rate of change of rate of change), crucial for analyzing concavity and acceleration.",
+        "Mastery of differentiation is critically important because derivatives quantify all dynamic behavior in engineering systems. In physics, velocity is the derivative of position ($v = \\frac{dx}{dt}$) and acceleration is the derivative of velocity ($a = \\frac{dv}{dt} = \\frac{d^2x}{dt^2}$). In electrical engineering, current is the derivative of charge, and voltage across an inductor equals inductance times the derivative of current. In control systems, derivative action in PID controllers provides predictive response by reacting to rate of change. In economics, marginal cost and revenue are derivatives quantifying incremental changes. The relationship between differentiability and continuity has profound implications: differentiable functions are necessarily continuous (no sudden jumps), but continuous functions may have corners where derivatives fail to exist (example: $|x|$ at $x=0$). Optimization relies fundamentally on derivatives: finding maxima and minima requires setting $f'(x) = 0$ and checking second derivatives. In numerical analysis, derivatives enable Newton's method for root-finding and gradient descent for optimization. In examinations, proficiency in differentiation demonstrates command over systematic rule application, pattern recognition in composite functions, and the ability to translate physical problems into derivative calculations."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$",
+            "explanation": "Definition of derivative as a limit, representing instantaneous rate of change."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[x^n] = nx^{n-1}$",
+            "explanation": "Power rule: bring down the exponent and reduce it by 1."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)$",
+            "explanation": "Sum rule: derivative of a sum equals sum of derivatives."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[cf(x)] = c \\cdot f'(x)$",
+            "explanation": "Constant multiple rule: constants factor out of derivatives."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)$",
+            "explanation": "Product rule: derivative of a product."
+        },
+        {
+            "formula": "$\\frac{d}{dx}\\left[\\frac{f(x)}{g(x)}\\right] = \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}$",
+            "explanation": "Quotient rule: derivative of a quotient."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)$",
+            "explanation": "Chain rule: derivative of a composition (outer derivative times inner derivative)."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[\\sin x] = \\cos x$, $\\frac{d}{dx}[\\cos x] = -\\sin x$",
+            "explanation": "Derivatives of sine and cosine functions."
+        },
+        {
+            "formula": "$\\frac{d}{dx}[e^x] = e^x$, $\\frac{d}{dx}[\\ln x] = \\frac{1}{x}$",
+            "explanation": "Derivatives of exponential and natural logarithm."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Find the derivative of $f(x) = 3x^4 - 2x^2 + 5x - 7$ using the power rule.",
+            "solution_steps": [
+                "**Step 1**: Apply power rule to each term separately:",
+                "$\\frac{d}{dx}[3x^4] = 3 \\cdot 4x^3 = 12x^3$",
+                "$\\frac{d}{dx}[-2x^2] = -2 \\cdot 2x = -4x$",
+                "$\\frac{d}{dx}[5x] = 5 \\cdot 1 = 5$",
+                "$\\frac{d}{dx}[-7] = 0$ (constant)",
+                "**Step 2**: Combine using sum rule:",
+                "$f'(x) = 12x^3 - 4x + 5$"
+            ],
+            "final_answer": "$f'(x) = 12x^3 - 4x + 5$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Differentiate $y = (2x^2 + 1)(3x - 5)$ using the product rule.",
+            "solution_steps": [
+                "**Step 1**: Identify $f(x) = 2x^2 + 1$ and $g(x) = 3x - 5$",
+                "**Step 2**: Find derivatives:",
+                "$f'(x) = 4x$",
+                "$g'(x) = 3$",
+                "**Step 3**: Apply product rule: $(fg)' = f'g + fg'$",
+                "$\\frac{dy}{dx} = (4x)(3x - 5) + (2x^2 + 1)(3)$",
+                "**Step 4**: Expand and simplify:",
+                "$= 12x^2 - 20x + 6x^2 + 3$",
+                "$= 18x^2 - 20x + 3$"
+            ],
+            "final_answer": "$\\frac{dy}{dx} = 18x^2 - 20x + 3$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Find $\\frac{dy}{dx}$ for $y = \\sin(5x^2)$ using the chain rule.",
+            "solution_steps": [
+                "**Step 1**: Identify outer function $f(u) = \\sin u$ and inner function $u = g(x) = 5x^2$",
+                "**Step 2**: Find derivatives:",
+                "$f'(u) = \\cos u$",
+                "$g'(x) = 10x$",
+                "**Step 3**: Apply chain rule: $(f \\circ g)' = f'(g(x)) \\cdot g'(x)$",
+                "$\\frac{dy}{dx} = \\cos(5x^2) \\cdot 10x$",
+                "$= 10x \\cos(5x^2)$"
+            ],
+            "final_answer": "$\\frac{dy}{dx} = 10x \\cos(5x^2)$"
+        }
+    ],
+    "logical_derivation": "To derive the product rule, let $h(x) = f(x)g(x)$. By definition: $h'(x) = \\lim_{\\Delta x \\to 0} \\frac{h(x + \\Delta x) - h(x)}{\\Delta x} = \\lim_{\\Delta x \\to 0} \\frac{f(x + \\Delta x)g(x + \\Delta x) - f(x)g(x)}{\\Delta x}$. Add and subtract $f(x + \\Delta x)g(x)$: $= \\lim_{\\Delta x \\to 0} \\frac{f(x + \\Delta x)g(x + \\Delta x) - f(x + \\Delta x)g(x) + f(x + \\Delta x)g(x) - f(x)g(x)}{\\Delta x}$. Factor: $= \\lim_{\\Delta x \\to 0} \\left[f(x + \\Delta x) \\cdot \\frac{g(x + \\Delta x) - g(x)}{\\Delta x} + g(x) \\cdot \\frac{f(x + \\Delta x) - f(x)}{\\Delta x}\\right]$. Taking limits (using continuity of $f$): $= f(x) \\cdot g'(x) + g(x) \\cdot f'(x) = f'(x)g(x) + f(x)g'(x)$.",
+    "applications": [
+        "**Velocity and Acceleration**: $v = \\frac{dx}{dt}$ (velocity) and $a = \\frac{dv}{dt} = \\frac{d^2x}{dt^2}$ (acceleration) in kinematics.",
+        "**Electrical Circuits**: Current $i = \\frac{dq}{dt}$ (derivative of charge), voltage across inductor $v_L = L\\frac{di}{dt}$.",
+        "**Optimization**: Finding maxima/minima by setting $f'(x) = 0$ and analyzing critical points.",
+        "**Control Systems**: Derivative action in PID controllers responds to rate of change of error.",
+        "**Economics**: Marginal cost $MC = \\frac{dC}{dx}$ and marginal revenue $MR = \\frac{dR}{dx}$ quantify incremental changes.",
+        "**Signal Processing**: Rate of signal change, frequency modulation analysis.",
+        "**Numerical Methods**: Newton's method uses derivatives for root-finding: $x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$."
+    ],
+    "key_takeaways": [
+        "The derivative $f'(a)$ represents instantaneous rate of change and slope of the tangent line at $x = a$.",
+        "Power rule: $\\frac{d}{dx}[x^n] = nx^{n-1}$ is the most frequently used differentiation rule.",
+        "Product rule: $(fg)' = f'g + fg'$ and quotient rule: $(\\frac{f}{g})' = \\frac{f'g - fg'}{g^2}$ handle combinations.",
+        "Chain rule: $(f \\circ g)' = f'(g) \\cdot g'$ differentiates composite functions (outer times inner derivative).",
+        "Differentiability implies continuity, but not vice versa—functions with corners are continuous but not differentiable there.",
+        "Standard derivatives: $\\frac{d}{dx}[\\sin x] = \\cos x$, $\\frac{d}{dx}[e^x] = e^x$, $\\frac{d}{dx}[\\ln x] = \\frac{1}{x}$.",
+        "Higher-order derivatives represent repeated differentiation: $f''(x)$ measures concavity, $f'''(x)$ measures jerk, etc."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Confusing $(fg)'$ with $f'g'$ (incorrect) instead of $f'g + fg'$",
+            "why_it_occurs": "Students incorrectly assume derivatives distribute over products.",
+            "how_to_avoid": "Remember the product rule explicitly: $(fg)' = f'g + fg'$. The derivative of a product is NOT the product of derivatives."
+        },
+        {
+            "mistake": "Forgetting to multiply by the inner derivative in chain rule",
+            "why_it_occurs": "Students differentiate only the outer function, omitting $g'(x)$.",
+            "how_to_avoid": "Always ask: 'Is this a composition?' If yes, apply chain rule: derivative of outer (at inner) times derivative of inner."
+        },
+        {
+            "mistake": "Sign errors in quotient rule numerator",
+            "why_it_occurs": "Students write $f'g + fg'$ instead of $f'g - fg'$ in the numerator.",
+            "how_to_avoid": "Remember the quotient rule has a MINUS sign: $(\\frac{f}{g})' = \\frac{f'g - fg'}{g^2}$. Mnemonic: 'low d-high minus high d-low, over low squared'."
+        },
+        {
+            "mistake": "Treating constants as variables when differentiating",
+            "why_it_occurs": "Students forget that constants have zero derivatives.",
+            "how_to_avoid": "Identify what the variable is. If differentiating with respect to $x$, any term without $x$ is constant and its derivative is 0."
+        },
+        {
+            "mistake": "Incorrect exponent manipulation in power rule",
+            "why_it_occurs": "Students write $\\frac{d}{dx}[x^n] = x^{n-1}$ instead of $nx^{n-1}$, forgetting the coefficient.",
+            "how_to_avoid": "Power rule: bring the exponent down as a coefficient, then reduce the exponent by 1: $\\frac{d}{dx}[x^n] = nx^{n-1}$."
+        },
+        {
+            "mistake": "Confusing $\\frac{d}{dx}[\\sin x] = -\\cos x$ instead of $+\\cos x$",
+            "why_it_occurs": "Students mix up signs for trigonometric derivatives.",
+            "how_to_avoid": "Memorize: $\\frac{d}{dx}[\\sin x] = \\cos x$ (positive), $\\frac{d}{dx}[\\cos x] = -\\sin x$ (negative)."
+        },
+        {
+            "mistake": "Applying product/quotient rule when easier methods exist",
+            "why_it_occurs": "Students don't simplify expressions before differentiating.",
+            "how_to_avoid": "Before applying product/quotient rule, check if the expression can be expanded or simplified to use simpler power rule."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is $\\frac{d}{dx}[x^5]$?",
+            "options": [
+                "$5x^4$",
+                "$x^4$",
+                "$5x^5$",
+                "$\\frac{x^6}{6}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Using power rule: $\\frac{d}{dx}[x^n] = nx^{n-1}$, so $\\frac{d}{dx}[x^5] = 5x^4$."
+        },
+        {
+            "question": "Find $\\frac{d}{dx}[(2x + 3)(x - 1)]$ using the product rule:",
+            "options": [
+                "$4x + 1$",
+                "$2x - 1$",
+                "$4x$",
+                "$2x + 3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Product rule: $(fg)' = f'g + fg' = (2)(x-1) + (2x+3)(1) = 2x - 2 + 2x + 3 = 4x + 1$."
+        },
+        {
+            "question": "Using chain rule, $\\frac{d}{dx}[(3x + 1)^4] =$",
+            "options": [
+                "$12(3x + 1)^3$",
+                "$4(3x + 1)^3$",
+                "$3(3x + 1)^3$",
+                "$(3x + 1)^3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Chain rule: outer derivative $4(3x+1)^3$ times inner derivative $3$ gives $12(3x+1)^3$."
+        },
+        {
+            "question": "What is $\\frac{d}{dx}[\\sin(2x)]$?",
+            "options": [
+                "$2\\cos(2x)$",
+                "$\\cos(2x)$",
+                "$-2\\sin(2x)$",
+                "$2\\sin(2x)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Chain rule: derivative of $\\sin u$ is $\\cos u$, times derivative of $2x$ which is 2: $\\cos(2x) \\cdot 2 = 2\\cos(2x)$."
+        },
+        {
+            "question": "If $f(x) = e^{3x}$, then $f'(x) =$",
+            "options": [
+                "$3e^{3x}$",
+                "$e^{3x}$",
+                "$3e^{2x}$",
+                "$\\frac{e^{3x}}{3}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Chain rule: $\\frac{d}{dx}[e^u] = e^u \\cdot u'$, so $\\frac{d}{dx}[e^{3x}] = e^{3x} \\cdot 3 = 3e^{3x}$."
+        },
+        {
+            "question": "The quotient rule states: $\\frac{d}{dx}\\left[\\frac{f}{g}\\right] =$",
+            "options": [
+                "$\\frac{f'g - fg'}{g^2}$",
+                "$\\frac{f'g + fg'}{g^2}$",
+                "$\\frac{f'}{g'}$",
+                "$\\frac{fg' - f'g}{g^2}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Quotient rule: $\\frac{d}{dx}\\left[\\frac{f}{g}\\right] = \\frac{f'g - fg'}{g^2}$ (low d-high minus high d-low, over low squared)."
+        },
+        {
+            "question": "What is $\\frac{d}{dx}[\\ln(x^2)]$?",
+            "options": [
+                "$\\frac{2}{x}$",
+                "$\\frac{1}{x^2}$",
+                "$\\frac{2}{x^2}$",
+                "$2\\ln x$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Chain rule: $\\frac{d}{dx}[\\ln u] = \\frac{1}{u} \\cdot u'$, so $\\frac{d}{dx}[\\ln(x^2)] = \\frac{1}{x^2} \\cdot 2x = \\frac{2}{x}$. Alternatively, $\\ln(x^2) = 2\\ln x$, so derivative is $\\frac{2}{x}$."
+        },
+        {
+            "question": "If $y = x^3 + 2x^2 - 5x + 7$, find $y''$ (second derivative):",
+            "options": [
+                "$6x + 4$",
+                "$3x^2 + 4x - 5$",
+                "$6x$",
+                "$3x^2$"
+            ],
+            "correct_answer": 0,
+            "explanation": "First derivative: $y' = 3x^2 + 4x - 5$. Second derivative: $y'' = 6x + 4$."
+        },
+        {
+            "question": "Differentiability implies:",
+            "options": [
+                "Continuity",
+                "Integrability",
+                "Boundedness",
+                "Periodicity"
+            ],
+            "correct_answer": 0,
+            "explanation": "If a function is differentiable at a point, it must be continuous there. However, continuity doesn't imply differentiability (e.g., $|x|$ at $x=0$)."
+        },
+        {
+            "question": "The derivative of a constant is:",
+            "options": [
+                "$0$",
+                "$1$",
+                "The constant itself",
+                "Undefined"
+            ],
+            "correct_answer": 0,
+            "explanation": "Constants have zero rate of change, so $\\frac{d}{dx}[c] = 0$ for any constant $c$."
+        },
+        {
+            "question": "Find $\\frac{d}{dx}[\\cos x]$:",
+            "options": [
+                "$-\\sin x$",
+                "$\\sin x$",
+                "$-\\cos x$",
+                "$\\cos x$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Standard derivative: $\\frac{d}{dx}[\\cos x] = -\\sin x$ (note the negative sign)."
+        },
+        {
+            "question": "Using the power rule, $\\frac{d}{dx}[\\frac{1}{x^2}] = \\frac{d}{dx}[x^{-2}] =$",
+            "options": [
+                "$-2x^{-3} = -\\frac{2}{x^3}$",
+                "$2x^{-3}$",
+                "$-x^{-3}$",
+                "$\\frac{1}{2x}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Power rule with $n = -2$: $\\frac{d}{dx}[x^{-2}] = -2x^{-3} = -\\frac{2}{x^3}$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "The derivative $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$ represents instantaneous rate of change and tangent line slope.",
+            "Power rule $\\frac{d}{dx}[x^n] = nx^{n-1}$ is the fundamental differentiation rule for polynomial terms.",
+            "Product rule: $(fg)' = f'g + fg'$ (NOT $f'g'$)—derivative of product is NOT product of derivatives.",
+            "Quotient rule: $(\\frac{f}{g})' = \\frac{f'g - fg'}{g^2}$ (note the minus sign in numerator).",
+            "Chain rule: $(f \\circ g)' = f'(g(x)) \\cdot g'(x)$—derivative of outer (at inner) times derivative of inner.",
+            "Standard derivatives: $\\frac{d}{dx}[\\sin x] = \\cos x$, $\\frac{d}{dx}[\\cos x] = -\\sin x$, $\\frac{d}{dx}[e^x] = e^x$, $\\frac{d}{dx}[\\ln x] = \\frac{1}{x}$.",
+            "Differentiability implies continuity (but not vice versa)—differentiable functions have no corners or jumps.",
+            "Sum/difference rule: derivatives distribute over addition/subtraction but NOT over multiplication/division.",
+            "Constants have zero derivatives; constant multiples factor out.",
+            "Higher-order derivatives measure rates of change of rates: $f''$ measures concavity/acceleration."
+        ],
+        "important_formulas": [
+            "$f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$ — Definition",
+            "$\\frac{d}{dx}[x^n] = nx^{n-1}$ — Power rule",
+            "$(fg)' = f'g + fg'$ — Product rule",
+            "$(\\frac{f}{g})' = \\frac{f'g - fg'}{g^2}$ — Quotient rule",
+            "$(f \\circ g)' = f'(g) \\cdot g'$ — Chain rule",
+            "$\\frac{d}{dx}[\\sin x] = \\cos x$, $\\frac{d}{dx}[e^x] = e^x$, $\\frac{d}{dx}[\\ln x] = \\frac{1}{x}$"
+        ],
+        "common_exam_traps": [
+            "Confusing $(fg)' = f'g + fg'$ with $f'g'$ (incorrect)—product rule has two terms.",
+            "Forgetting to multiply by inner derivative in chain rule—always include $g'(x)$.",
+            "Sign error in quotient rule: it's $f'g - fg'$ (minus), not plus.",
+            "Treating constants as variables—constants differentiate to zero.",
+            "Forgetting the coefficient in power rule: $\\frac{d}{dx}[x^n] = nx^{n-1}$, not just $x^{n-1}$."
+        ],
+        "exam_tip": "For composite functions, identify inner and outer functions first, then apply chain rule. For products and quotients, write out the formula explicitly before substituting to avoid sign and term errors."
+    }
+}

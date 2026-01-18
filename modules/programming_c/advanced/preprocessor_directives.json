@@ -1,0 +1,332 @@
+{
+    "module_header": {
+        "module_title": "Preprocessor Directives",
+        "subject": "Programming Using C",
+        "level": "Advanced",
+        "prerequisites": [
+            "Basic C programming",
+            "Functions in C",
+            "Understanding of compilation process",
+            "Multi-file programs basics"
+        ],
+        "learning_outcomes": [
+            "Understand preprocessor phase and its role in compilation",
+            "Use #define for constants and function-like macros",
+            "Apply #include for file inclusion and header management",
+            "Implement conditional compilation using #ifdef, #ifndef, #if",
+            "Use predefined macros (__FILE__, __LINE__, __DATE__, __TIME__)",
+            "Apply macro best practices and avoid common pitfalls",
+            "Understand macro vs function trade-offs"
+        ]
+    },
+    "definition": "Preprocessor directives are commands processed before compilation, modifying source code. They begin with # and don't end with semicolon. Key directives: `#define NAME value` creates symbolic constant or macro, `#include <file>` or `#include \"file\"` inserts file contents, `#ifdef NAME` / `#ifndef NAME` / `#if condition` enable conditional compilation, `#undef NAME` removes definition. Predefined macros like `__FILE__`, `__LINE__`, `__DATE__`, `__TIME__` provide compilation context. Preprocessor text substitution occurs before compiler sees code, enabling platform-specific code, debug/release builds, and code generation.",
+    "concept_overview": [
+        "#define: Creates symbolic constants `#define PI 3.14159` or macros `#define MAX(a,b) ((a)>(b)?(a):(b))`",
+        "#include: Inserts file contents. `<file>` searches system paths, `\"file\"` searches current directory first.",
+        "Conditional compilation: `#ifdef DEBUG ... #endif` includes code only if DEBUG defined. Platform-specific code.",
+        "#if, #elif, #else, #endif: Complex conditionals `#if defined(WINDOWS) || defined(LINUX)`",
+        "Predefined macros: `__FILE__` (filename), `__LINE__` (line number), `__DATE__`, `__TIME__`, `__func__`",
+        "#undef: Removes macro definition. Useful for redefining or preventing conflicts.",
+        "Macro pitfalls: No type safety, text substitution issues. Use parentheses: `#define SQ(x) ((x)*(x))` not `x*x`"
+    ],
+    "theory": [
+        "Preprocessor directives form the first phase of C compilation, performing text manipulation before the compiler parses code. Understanding preprocessor enables platform-portable code, configuration management, debug instrumentation, and code generation. The preprocessor operates purely on text: #define performs literal substitution without type checking or evaluation. This enables powerful meta-programming but requires discipline to avoid subtle bugs. Conditional compilation (#ifdef, #if) allows single codebase to support multiple platforms, feature sets, or configurations—critical for cross-platform libraries and configurable software. Include directives manage code organization and dependency, with header guards preventing multiple inclusion. Predefined macros provide compile-time metadata useful for debugging (file/line), version tracking (date/time), and assertion messages. Mastery of preprocessor enables writing maintainable, portable, and configurable C code.",
+        "The fundamental preprocessor directives enable text manipulation and conditional code inclusion. #define creates two types: object-like macros `#define MAX_SIZE 100` replaced with value wherever MAX_SIZE appears, and function-like macros `#define MAX(a,b) ((a)>(b)?(a):(b))` performing substitution with arguments. Critical: macros lack type safety and use text replacement, so `#define SQ(x) x*x` gives wrong result for `SQ(2+3)` becoming `2+3*2+3=11` not 25; parentheses required: `#define SQ(x) ((x)*(x))`. Multi-line macros use backslash: `#define SWAP(a,b) do { typeof(a) tmp = a; a = b; b = tmp; } while(0)`. #include inserts file contents: `#include <stdio.h>` searches system paths (standard headers), `#include \"myheader.h\"` searches current directory first (project headers). Header guards prevent multiple inclusion: `#ifndef HEADER_H #define HEADER_H ... #endif` or `#pragma once`. Conditional compilation enables platform-specific code: `#ifdef WINDOWS ... #elif defined(LINUX) ... #else ... #endif`. Complex conditions: `#if defined(DEBUG) && !defined(RELEASE)`. Predefined macros: `__FILE__` expands to source filename string, `__LINE__` to line number, `__DATE__` to compilation date, `__TIME__` to time, `__func__` to function name (C99). Useful for assertions: `assert(cond) || fprintf(stderr, \"Failed at %s:%d\\n\", __FILE__, __LINE__)`. #undef removes definition: `#undef MAX` allowing redefinition or preventing conflicts.",
+        "Mastery of preprocessor is critically important for professional C programming because it enables cross-platform development, configuration management, and debugging infrastructure. Cross-platform code uses conditional compilation for OS-specific APIs: `#ifdef _WIN32 #include <windows.h> #elif defined(__linux__) #include <unistd.h> #endif`. Feature toggles: `#ifdef ENABLE_LOGGING ... logging code ... #endif` allows compile-time feature selection without runtime overhead. Debug vs release: `#ifdef DEBUG printf(\"debug: x=%d at %s:%d\\n\", x, __FILE__, __LINE__); #endif` instruments code for debugging, removed in release builds. Header organization: headers declare interfaces, source files implement; include guards prevent redefinition errors. Macros enable code generation avoiding repetition: `#define DECLARE_VECTOR(T) typedef struct { T* data; size_t size; } T##_vector;` generates type-specific vector definitions. Performance: macros inline simple operations without function call overhead, but modern compilers inline functions too. Trade-offs: macros provide compile-time constants (array sizes, case labels) where const variables can't be used, but lack type safety and debugging (macro expansions not visible in debugger). Security: macro argument side effects are pitfall: `MAX(i++, j++)` evaluates increment twice. Best practices: uppercase macro names, parenthesize arguments and entire expression, prefer inline functions for complex logic, use const for simple constants. Understanding preprocessor text substitution prevents subtle bugs and enables leveraging its power for maintainable systems. In examinations, demonstrating proper macro definition (with parentheses), conditional compilation usage, and header guard implementation shows professional C competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "#define NAME value - Object-like macro: `#define PI 3.14159`",
+            "explanation": "Replaces all occurrences of NAME with value during preprocessing."
+        },
+        {
+            "formula": "#define NAME(params) expansion - Function-like macro: `#define MAX(a,b) ((a)>(b)?(a):(b))`",
+            "explanation": "Replaces NAME(args) with expansion where params substituted by args. Parentheses crucial."
+        },
+        {
+            "formula": "#ifdef NAME ... #endif - Conditional compilation if NAME defined",
+            "explanation": "Includes code between #ifdef and #endif only if NAME previously #defined."
+        },
+        {
+            "formula": "#include <file> vs #include \"file\"",
+            "explanation": "<file> searches system include paths. \"file\" searches current directory first, then system paths."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Use #define for constants and simple macro.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "#define PI 3.14159",
+                "#define SQUARE(x) ((x) * (x))",
+                "",
+                "int main() {",
+                "    double radius = 5.0;",
+                "    double area = PI * SQUARE(radius);",
+                "    ",
+                "    printf(\"Area: %.2f\\n\", area);",
+                "    // PI expands to 3.14159",
+                "    // SQUARE(radius) expands to ((radius) * (radius))",
+                "    ",
+                "    return 0;",
+                "}",
+                "```",
+                "**Note:** Parentheses in SQUARE prevent issues like SQUARE(2+3) becoming wrong result."
+            ],
+            "final_answer": "Macros perform text substitution. Always parenthesize macro parameters and entire expression."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Use conditional compilation for debug/release builds.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "#define DEBUG  // Comment out for release build",
+                "",
+                "#ifdef DEBUG",
+                "  #define LOG(msg) printf(\"[%s:%d] %s\\n\", __FILE__, __LINE__, msg)",
+                "#else",
+                "  #define LOG(msg)  // Empty in release (no overhead)",
+                "#endif",
+                "",
+                "int main() {",
+                "    LOG(\"Program started\");",
+                "    ",
+                "    int x = 10;",
+                "    LOG(\"Processing data\");",
+                "    ",
+                "    printf(\"Result: %d\\n\", x * 2);",
+                "    ",
+                "    LOG(\"Program ended\");",
+                "    return 0;",
+                "}",
+                "```",
+                "**Debug build:** LOG statements print file:line and message",
+                "**Release build:** LOG expands to nothing (zero overhead)"
+            ],
+            "final_answer": "Conditional compilation enables debug instrumentation without release build overhead."
+        }
+    ],
+    "logical_derivation": "Preprocessor exists because early C needed text manipulation before compilation: platform-specific code, configuration management, code reuse via inclusion. Text substitution is simplest meta-programming: #define literally replaces tokens. Conditional compilation allows single source to build differently based on defines (platform macros). File inclusion solves code organization: declarations in headers, implementations in sources. Predefined macros provide compile-time context otherwise unavailable. The model trades type safety (macros are untyped text) for flexibility and zero runtime overhead. Modern C retains preprocessor despite inline functions and const because some use cases (array sizes, conditional compilation) require compile-time evaluation.",
+    "applications": [
+        "**Constants**: #define MAX_SIZE 100 for compile-time constants in array declarations.",
+        "**Platform-specific code**: #ifdef _WIN32 vs #ifdef __linux__ for OS-specific implementations.",
+        "**Debug instrumentation**: #ifdef DEBUG for logging, assertions removed in release.",
+        "**Feature toggles**: #ifdef ENABLE_FEATURE for compile-time feature selection.",
+        "**Header guards**: #ifndef HEADER_H ... #endif prevents multiple inclusion.",
+        "**Version management**: #if VERSION >= 2 for version-specific code.",
+        "**Simple macros**: MIN, MAX, ABS for inline operations without function call overhead."
+    ],
+    "key_takeaways": [
+        "#define creates macros: `#define PI 3.14` (constant) or `#define MAX(a,b) ((a)>(b)?(a):(b))` (function-like).",
+        "Macro pitfall: Text substitution, not evaluation. Use parentheses: `#define SQ(x) ((x)*(x))` not `x*x`.",
+        "#include <file> (system paths) vs #include \"file\" (current directory first).",
+        "Conditional compilation: #ifdef, #ifndef, #if for platform/debug/feature-specific code.",
+        "Header guards: `#ifndef HEADER_H #define HEADER_H ... #endif` or `#pragma once`.",
+        "Predefined macros: __FILE__ (filename), __LINE__ (line number), __DATE__, __TIME__.",
+        "Macros: No type safety, no debugging, side effects repeated. Prefer inline functions for complex logic."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Not parenthesizing macro arguments",
+            "why_it_occurs": "Students write `#define SQ(x) x*x`",
+            "how_to_avoid": "`SQ(2+3)` becomes `2+3*2+3=11` not 25. Use `#define SQ(x) ((x)*(x))` with parentheses around parameter and entire expression."
+        },
+        {
+            "mistake": "Macro argument side effects",
+            "why_it_occurs": "Students use `MAX(i++, j++)` not realizing arguments evaluated multiple times.",
+            "how_to_avoid": "Macro expansion: `((i++)>(j++)?(i++):(j++))` increments twice. Use variables or inline functions."
+        },
+        {
+            "mistake": "Forgetting semicolon sensitivity in macros",
+            "why_it_occurs": "Students define `#define LOG(msg) printf(msg);` creating issues with if-else.",
+            "how_to_avoid": "`if(cond) LOG(\"hi\"); else ...` breaks because ; after LOG creates empty statement. Use do-while(0): `#define LOG(msg) do { printf(msg); } while(0)`"
+        },
+        {
+            "mistake": "Missing header guards",
+            "why_it_occurs": "Students don't protect headers, causing redefinition errors.",
+            "how_to_avoid": "Always use: `#ifndef HEADER_H #define HEADER_H ... #endif` or `#pragma once` (non-standard but widely supported)."
+        },
+        {
+            "mistake": "Using macros instead of const for simple constants",
+            "why_it_occurs": "Students use `#define MAX 100` for everything.",
+            "how_to_avoid": "Prefer `const int MAX = 100;` for type safety and debugging. Use #define only where const can't work (array sizes in C89, case labels)."
+        },
+        {
+            "mistake": "Incorrect conditional compilation logic",
+            "why_it_occurs": "Students confuse #ifdef (defined?) with #if (value?).",
+            "how_to_avoid": "`#ifdef DEBUG` checks if DEBUG defined (any value). `#if DEBUG` checks if DEBUG is non-zero (must be defined as number)."
+        },
+        {
+            "mistake": "Not understanding #include <> vs \"\"",
+            "why_it_occurs": "Students randomly choose angle brackets or quotes.",
+            "how_to_avoid": "`<file>` for system headers (stdio.h). `\"file\"` for project headers (myheader.h)."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What does #define do?",
+            "options": [
+                "Text substitution during preprocessing",
+                "Declares a constant variable",
+                "Defines a function",
+                "Creates a type"
+            ],
+            "correct_answer": 0,
+            "explanation": "#define performs text substitution before compilation. Replaces macro name with expansion wherever it appears."
+        },
+        {
+            "question": "What's wrong with `#define SQ(x) x*x`?",
+            "options": [
+                "Missing parentheses causes precedence issues",
+                "Syntax error",
+                "Nothing wrong",
+                "Should use function"
+            ],
+            "correct_answer": 0,
+            "explanation": "`SQ(2+3)` becomes `2+3*2+3=11` not 25. Need `#define SQ(x) ((x)*(x))` with parentheses."
+        },
+        {
+            "question": "Difference between `#include <file>` and `#include \"file\"`?",
+            "options": [
+                "<> searches system paths, \"\" searches current directory first",
+                "No difference",
+                "\"\" is for C files, <> for headers",
+                "<> is deprecated"
+            ],
+            "correct_answer": 0,
+            "explanation": "`<file>` searches system include directories (for standard headers). `\"file\"` searches current directory first (for project headers)."
+        },
+        {
+            "question": "What does `#ifdef DEBUG` check?",
+            "options": [
+                "If DEBUG is defined (regardless of value)",
+                "If DEBUG is non-zero",
+                "If DEBUG is true",
+                "Syntax error"
+            ],
+            "correct_answer": 0,
+            "explanation": "`#ifdef NAME` tests if NAME is defined, regardless of value. `#if NAME` tests if NAME is non-zero."
+        },
+        {
+            "question": "What is a header guard?",
+            "options": [
+                "Prevents multiple inclusion of header file",
+                "Protects header from modification",
+                "Encrypts header content",
+                "Validates header syntax"
+            ],
+            "correct_answer": 0,
+            "explanation": "Header guard: `#ifndef HEADER_H #define HEADER_H ... #endif` prevents including header multiple times (redefinition errors)."
+        },
+        {
+            "question": "What does `__LINE__` expand to?",
+            "options": [
+                "Current line number in source file",
+                "Total lines in file",
+                "Function name",
+                "Last line number"
+            ],
+            "correct_answer": 0,
+            "explanation": "`__LINE__` is predefined macro expanding to current source line number. Useful for error messages and assertions."
+        },
+        {
+            "question": "When does preprocessor run?",
+            "options": [
+                "Before compilation (first phase)",
+                "After compilation",
+                "During runtime",
+                "During linking"
+            ],
+            "correct_answer": 0,
+            "explanation": "Preprocessor is first compilation phase, modifying source text before compiler parses code."
+        },
+        {
+            "question": "What's the issue with `MAX(i++, j++)`?",
+            "options": [
+                "Side effect (i++, j++) evaluated multiple times",
+                "Syntax error",
+                "Nothing wrong",
+                "Can't use ++ in macros"
+            ],
+            "correct_answer": 0,
+            "explanation": "Macro expands arguments  where they appear. `MAX(a,b) ((a)>(b)?(a):(b))` evaluates i++ and j++ twice."
+        },
+        {
+            "question": "How to remove a macro definition?",
+            "options": [
+                "`#undef MACRO_NAME`",
+                "`#undefine MACRO_NAME`",
+                "`#delete MACRO_NAME`",
+                "`#remove MACRO_NAME`"
+            ],
+            "correct_answer": 0,
+            "explanation": "`#undef NAME` removes macro definition. Useful for redefining or preventing conflicts."
+        },
+        {
+            "question": "Do preprocessor directives end with semicolon?",
+            "options": [
+                "No",
+                "Yes",
+                "Only #define",
+                "Only #include"
+            ],
+            "correct_answer": 0,
+            "explanation": "Preprocessor directives start with # and don't end with semicolon (unlike C statements)."
+        },
+        {
+            "question": "What does `__FILE__` provide?",
+            "options": [
+                "Current source filename as string",
+                "File size",
+                "File permissions",
+                "File pointer"
+            ],
+            "correct_answer": 0,
+            "explanation": "`__FILE__` expands to current source filename (string). Useful for error logging: `printf(\"Error at %s:%d\", __FILE__, __LINE__);`"
+        },
+        {
+            "question": "Which is better for type safety?",
+            "options": [
+                "const variable",
+                "Macro",
+                "Both equal",
+                "Neither"
+            ],
+            "correct_answer": 0,
+            "explanation": "`const int MAX=100;` has type safety. `#define MAX 100` is text substitution without type checking. Prefer const where possible."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "#define creates macros: `#define PI 3.14` (object-like) or `#define MAX(a,b) ((a)>(b)?(a):(b))` (function-like).",
+            "Macro pitfall: Text substitution causes issues. Use parentheses: `#define SQ(x) ((x)*(x))` not `x*x`.",
+            "Side effects: `MAX(i++,j++)` evaluates increments multiple times—macro expands arguments everywhere they appear.",
+            "#include <file> searches system paths (stdio.h). #include \"file\" searches current directory first (project headers).",
+            "Conditional compilation: #ifdef NAME, #ifndef NAME, #if condition. Enables platform/debug/feature-specific code.",
+            "Header guards: `#ifndef HEADER_H #define HEADER_H ... #endif` or `#pragma once` prevents multiple inclusion.",
+            "Predefined macros: __FILE__ (filename), __LINE__ (line number), __DATE__, __TIME__, __func__ for debugging/logging.",
+            "Preprocessor runs before compilation—text manipulation phase. Directives start with #, no semicolon.",
+            "#undef NAME removes macro definition. Useful for redefinition or preventing conflicts.",
+            "Macros: No type safety, no debugging visibility, repeated side effects. Prefer inline functions for complex logic, const for simple constants."
+        ],
+        "important_formulas": [
+            "`#define PI 3.14159` (constant)",
+            "`#define MAX(a,b) ((a)>(b)?(a):(b))` (macro with parentheses)",
+            "`#include <stdio.h>` vs `#include \"myheader.h\"`",
+            "`#ifdef DEBUG ... #endif` (conditional)"
+        ],
+        "common_exam_traps": [
+            "Missing parentheses in macros: `#define SQ(x) x*x` gives wrong results. Use `((x)*(x))`.",
+            "Side effects: `MAX(i++,j++)` increments multiple times—arguments expanded at each use.",
+            "Semicolon in macros: `#define LOG(msg) printf(msg);` breaks if-else. Use do-while(0).",
+            "Header guards: Forgetting causes redefinition errors when header included multiple times.",
+            "Confusing #ifdef (checks if defined) vs #if (checks value)."
+        ],
+        "exam_tip": "Remember: Macros are TEXT substitution. Always parenthesize macro parameters AND entire expression. Predefined macros: __FILE__, __LINE__. Header guards prevent multiple inclusion. Prefer const/inline over macros when possible."
+    }
+}

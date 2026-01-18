@@ -1,0 +1,332 @@
+{
+    "module_header": {
+        "module_title": "Problem Solving in AI",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Beginner",
+        "prerequisites": [
+            "Introduction to Artificial Intelligence",
+            "Intelligent Agents",
+            "Basic data structures (graphs, trees)"
+        ],
+        "learning_outcomes": [
+            "Understand problem formulation: states, actions, goals, path costs",
+            "Apply search strategies: uninformed (BFS, DFS, UCS) and informed (A*, greedy best-first)",
+            "Distinguish between search algorithms based on completeness, optimality, time/space complexity",
+            "Understand heuristic functions and admissibility",
+            "Formulate real-world problems as search problems",
+            "Apply appropriate search algorithm based on problem characteristics",
+            "Recognize limitations and trade-offs of different search approaches"
+        ]
+    },
+    "definition": "Problem solving in AI involves formulating problems as search in state spaces and applying algorithms to find solutions. Problem formulation defines: initial state, actions(s) producing successor states, goal test, path cost. Search tree explores state space where nodes represent states, edges represent actions. Uninformed search (blind): BFS (breadth-first), DFS (depth-first), UCS (uniform-cost) explore without domain knowledge. Informed search (heuristic): uses domain knowledge—A* (optimal with admissible heuristic), greedy best-first. Algorithm properties: Completeness (always finds solution if exists), Optimality (finds least-cost solution), Time complexity O(b^d), Space complexity (memory). Heuristic h(n): estimated cost to goal; admissible if h(n) ≤ true cost (never overestimates).",
+    "concept_overview": [
+        "Problem formulation: Initial state, Actions, Transition model, Goal test, Path cost function.",
+        "State space: All reachable states from initial state via actions. Search explores this space.",
+        "Search tree: Nodes=states, edges=actions. Root=initial state. Goal state reached → solution found.",
+        "Uninformed search: BFS (complete, optimal for uniform cost), DFS (not complete, not optimal), UCS (optimal).",
+        "Informed search: Uses heuristics. A* (optimal if h admissible), Greedy (fast but not optimal).",
+        "Heuristic h(n): Estimated cost from n to goal. Admissible: h(n) ≤ actual cost (never overestimates).",
+        "Complexity: b=branching factor, d=solution depth. Time: O(b^d), Space varies by algorithm."
+    ],
+    "theory": [
+        "Problem solving via search abstracts many AI tasks as finding paths in state spaces: route planning (states=locations, actions=moves, goal=destination), puzzle solving (8-puzzle, Rubik's cube), game playing (chess, Go), planning (robot task sequences). Understanding search develops algorithmic thinking central to AI: how to systematically explore possibilities, balance exploration breadth vs depth, leverage domain knowledge (heuristics) for efficiency. Problem formulation is critical—poorly formulated problems lead to intractable search. Clear specification of states (what information defines configuration), actions (what transitions are legal), goals (what constitutes success), and costs (what defines optimal) determines search feasibility. State space can be enormous (chess ~10^120 states) making exhaustive search impossible—intelligent algorithms essential. Search strategies trade off completeness (guaranteed to find solution), optimality (finding best solution), time (computational steps), and space (memory requirements). No algorithm dominates all dimensions—choice depends on problem characteristics.",
+        "The fundamental search algorithms represent different exploration strategies. Breadth-First Search (BFS) expands shallowest nodes first (level-by-level). Complete (finds solution if exists at finite depth), optimal (finds shallowest solution, optimal if costs uniform). Time/Space: O(b^d) where b=branching factor, d=solution depth—exponential, limiting depth. Use: shallow solutions, completeness essential. Depth-First Search (DFS) expands deepest node first (follow path until dead-end, backtrack). Incomplete (may loop in infinite spaces), not optimal (finds any solution, not shallowest). Time: O(b^m) where m=max depth (can be infinite), Space: O(bm)—linear in depth. Use: space-constrained, completeness not critical. Uniform-Cost Search (UCS) expands lowest path-cost node first (prioritizes cheap paths). Complete, optimal (finds least-cost solution). Time/Space: O(b^(C*/ε)) where C*=optimal cost, ε=min step cost. Use: non-uniform costs, optimality required. Informed searches use heuristic h(n) estimating cost to goal. Greedy Best-First expands node with lowest h(n). Fast (heads toward goal), incomplete, not optimal (greedy choice may miss optimal path). A* Search expands node minimizing f(n) = g(n) + h(n) where g(n)=path cost so far, h(n)=estimated remaining cost. Complete, optimal IF h is admissible (h(n) ≤ true cost to goal). Dominates UCS (reduces nodes expanded with good h). Manhattan distance (grid), straight-line distance (maps) are admissible heuristics. Time/Space: exponential but fewer nodes than uninformed. Use: most problems requiring optimality.",
+        "Mastery of problem solving search is critically important because search underpins many AI applications: GPS navigation (route finding), robotics (path planning), logistics (scheduling), game AI (move selection), automated reasoning (theorem proving). Understanding enables algorithm selection: BFS for shortest paths in unweighted graphs, A* for weighted graphs with heuristic, DFS for exhaustive search (solution existence). Real-world challenges: state space explosion (combinatorial growth), representation complexity (what's a valid state?), heuristic design (good h improves efficiency dramatically). Heuristic quality measured by effective branching factor—better h expands fewer nodes approaching b*=1 (straight to goal). Admissibility ensures optimality: h(n) ≤ true cost means A* never prunes optimal path. Inadmissible h finds suboptimal solutions faster. Consistency (h(n) ≤ cost(n,a,n') + h(n')) stronger than admissibility, avoids re-expansion. Domain-specific knowledge crucial: chess use piece values/position control, route planning use straight-line distance. Limitations: exponential complexity (worst-case intractable), local minima (greedy can get stuck), heuristic dependence (poor h degrades to UCS). Advanced methods: Iterative Deepening (DFS benefits with BFS completeness), Bidirectional Search (search from both initial/goal), Local Search (hill-climbing, simulated annealing for optimization). In examinations, demonstrating problem formulation, algorithm selection based on properties, complexity analysis, and heuristic design shows foundational problem-solving competence essential for AI applications."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Problem: (S₀, Actions(s), Result(s,a), GoalTest(s), PathCost)",
+            "explanation": "Initial state S₀, available actions, transition model, goal test, cost function define search problem."
+        },
+        {
+            "formula": "A* evaluation: $f(n) = g(n) + h(n)$",
+            "explanation": "f(n): estimated total cost via n. g(n): cost from start to n. h(n): estimated cost from n to goal."
+        },
+        {
+            "formula": "Admissible heuristic: $h(n) \\leq h^*(n)$ where $h^*$ = true cost",
+            "explanation": "Heuristic never overestimates actual cost to goal. Guarantees A* optimality."
+        },
+        {
+            "formula": "Time complexity: $O(b^d)$ where b=branching factor, d=depth",
+            "explanation": "Exponential in solution depth. Limits search to shallow problems or requires pruning."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Formulate route-finding problem from city A to city B as search problem.",
+            "solution_steps": [
+                "**Problem Formulation:**",
+                "",
+                "**1. States:**",
+                "- Each city is a state",
+                "- Example states: {A, B, C, D, ...}",
+                "",
+                "**2. Initial State:**",
+                "- City A (starting location)",
+                "",
+                "**3. Actions:**",
+                "- From each city, available actions = roads to neighboring cities",
+                "- Example: From A, can go to {C, D}",
+                "",
+                "**4. Transition Model:**",
+                "- Result(A, \"go to C\") = C",
+                "- Result(C, \"go to B\") = B",
+                "",
+                "**5. Goal Test:**",
+                "- Current state == B (reached destination)",
+                "",
+                "**6. Path Cost:**",
+                "- Sum of road distances traveled",
+                "- Example: Cost(A→C→B) = distance(A,C) + distance(C,B)",
+                "",
+                "**Search Algorithm Choice:**",
+                "- Use **A*** with straight-line distance to B as heuristic",
+                "- Finds optimal (shortest) route efficiently"
+            ],
+            "final_answer": "Route-finding: states=cities, actions=roads, goal=destination, cost=total distance. Use A* with straight-line heuristic for optimal path."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Compare BFS vs A* for finding shortest path in grid with obstacles.",
+            "solution_steps": [
+                "**Problem:** Find shortest path in grid from start to goal avoiding obstacles.",
+                "",
+                "**BFS (Breadth-First Search):**",
+                "- Explores all nodes at distance 1, then 2, then 3... from start",
+                "- **Complete:** Yes (finds solution if exists)",
+                "- **Optimal:** Yes (finds shortest path in unweighted grid)",
+                "- **Time:** O(b^d) where b≈4 (4 directions), d=distance to goal",
+                "- **Space:** O(b^d) - stores entire frontier (memory-intensive)",
+                "- **Pro:** Guaranteed shortest path",
+                "- **Con:** Explores many irrelevant nodes (all directions equally)",
+                "",
+                "**A* with Manhattan Distance Heuristic:**",
+                "- h(n) = |x_n - x_goal| + |y_n - y_goal| (admissible in grid)",
+                "- Prioritizes nodes closer to goal",
+                "- **Complete:** Yes",
+                "- **Optimal:** Yes (h is admissible)",
+                "- **Time:** O(b^d) worst-case, but expands FAR fewer nodes than BFS",
+                "- **Space:** O(b^d) - but typically much less than BFS",
+                "- **Pro:** Much faster than BFS (guided by heuristic)",
+                "- **Con:** Requires good heuristic",
+                "",
+                "**Example:**",
+                "- Grid 20x20, start (0,0), goal (19,19), few obstacles",
+                "- BFS explores ~400 nodes (entire grid)",
+                "- A* explores ~40 nodes (mostly along diagonal toward goal)",
+                "",
+                "**Conclusion:** A* dominates BFS when good heuristic available (same guarantees, much faster)."
+            ],
+            "final_answer": "A* with Manhattan distance outperforms BFS in grids: both complete/optimal but A* expands far fewer nodes by using heuristic to guide search toward goal."
+        }
+    ],
+    "logical_derivation": "Search abstracts problem solving: state space captures all configurations, actions define transitions, goals specify success. Finding solution = finding path in graph from initial to goal state. Uninformed search (BFS, DFS, UCS) explores systematically without domain knowledge—guarantees (completeness, optimality) but exponential cost. Informed search leverages heuristics (domain knowledge about goal proximity)—A* combines actual cost g(n) with estimated remaining h(n), expanding most promising nodes first. Admissibility (h never overestimates) ensures optimality: A* won't prune optimal path because f(optimal node) ≤ f(suboptimal). Exponential complexity fundamental: branching factor b per level, depth d → b^d nodes. Only tractable for small d or with strong heuristics reducing  effective branching.",
+    "applications": [
+        "**Route planning:** GPS navigation (A* with straight-line distance heuristic).",
+        "**Robotics:** Path planning for robots navigating environments (grid-based A*).",
+        "**Puzzle solving:** 8-puzzle, Rubik's cube (IDA*, pattern databases).",
+        "**Game AI:** Chess, Go move selection (minimax search with pruning).",
+        "**Logistics:** Vehicle routing, scheduling (optimization search).",
+        "**Network routing:** Internet packet routing (shortest path algorithms).",
+        "**AI planning:** Action sequences for robots/agents achieving goals."
+    ],
+    "key_takeaways": [
+        "Problem formulation: Initial state, Actions, Transition model, Goal test, Path cost define search problem.",
+        "State space: All reachable states. Search explores graph of states connected by actions.",
+        "BFS: Complete, optimal (uniform cost), O(b^d) time/space. Use: shallow solutions, completeness needed.",
+        "DFS: Incomplete, not optimal, O(b^m) time, O(bm) space. Use: space-constrained, depth preferred.",
+        "UCS: Complete, optimal, expands lowest cost first. Use: non-uniform costs.",
+        "A*: f(n)=g(n)+h(n). Complete, optimal if h admissible. Best general-purpose search. Use: most problems.",
+        "Heuristic admissible if h(n) ≤ true cost. Ensures A* optimality. Manhattan, straight-line are admissible."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Confusing BFS optimality with general optimality",
+            "why_it_occurs": "Students think BFS always finds optimal solution.",
+            "how_to_avoid": "BFS optimal only for UNIFORM costs (all steps same cost). For varying costs, use UCS or A*."
+        },
+        {
+            "mistake": "Using inadmissible heuristic with A*",
+            "why_it_occurs": "Students use heuristic that overestimates cost.",
+            "how_to_avoid": "Verify h(n) ≤ true cost for all n. Inadmissible h makes A* suboptimal (may find non-optimal solution)."
+        },
+        {
+            "mistake": "Confusing completeness with optimality",
+            "why_it_occurs": "Students mix up algorithm properties.",
+            "how_to_avoid": "Complete: finds A solution if exists. Optimal: finds BEST solution. DFS complete only for finite spaces, never optimal."
+        },
+        {
+            "mistake": "Ignoring space complexity",
+            "why_it_occurs": "Students focus only on time, forget memory limits.",
+            "how_to_avoid": "BFS/A* use O(b^d) space—can exhaust memory. DFS uses O(bm) space—more memory-efficient for deep searches."
+        },
+        {
+            "mistake": "Poor problem formulation",
+            "why_it_occurs": "Students don't carefully define states/actions/goals.",
+            "how_to_avoid": "Precisely specify: What is a state? What actions are legal? What's the goal? What costs matter? Vague formulation → intractable search."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What defines a search problem?",
+            "options": [
+                "Initial state, actions, transition model, goal test, path cost",
+                "Only goal and initial state",
+                "Algorithm and heuristic",
+                "State space size"
+            ],
+            "correct_answer": 0,
+            "explanation": "Search problem components: Initial state (start), Actions (what's possible), Transition model (results), Goal test (success condition), Path cost (optimization criterion)."
+        },
+        {
+            "question": "Which search is complete and optimal for uniform-cost problems?",
+            "options": [
+                "Breadth-First Search (BFS)",
+                "Depth-First Search (DFS)",
+                "Greedy Best-First",
+                "None"
+            ],
+            "correct_answer": 0,
+            "explanation": "BFS complete (always finds solution at finite depth) and optimal for uniform costs (finds shallowest = shortest path). For non-uniform costs, use UCS or A*."
+        },
+        {
+            "question": "What is an admissible heuristic?",
+            "options": [
+                "Never overestimates true cost to goal",
+                "Always exact cost",
+                "Overestimates for safety",
+                "Random estimate"
+            ],
+            "correct_answer": 0,
+            "explanation": "Admissible heuristic: h(n) ≤ actual cost from n to goal. Never overestimates. Guarantees A* finds optimal solution."
+        },
+        {
+            "question": "What does A* minimize?",
+            "options": [
+                "f(n) = g(n) + h(n)",
+                "Only g(n)",
+                "Only h(n)",
+                "g(n) - h(n)"
+            ],
+            "correct_answer": 0,
+            "explanation": "A* expands node minimizing f(n) = g(n) + h(n) where g(n)=cost so far, h(n)=estimated remaining. Balances actual and estimated costs."
+        },
+        {
+            "question": "Which has better space complexity for deep searches?",
+            "options": [
+                "DFS (O(bm))",
+                "BFS (O(b^d))",
+                "Both equal",
+                "A* always better"
+            ],
+            "correct_answer": 0,
+            "explanation": "DFS space: O(bm) linear in max depth. BFS/A* space: O(b^d) exponential. DFS more space-efficient for deep trees."
+        },
+        {
+            "question": "Is Greedy Best-First Search optimal?",
+            "options": [
+                "No",
+                "Yes",
+                "Only with admissible heuristic",
+                "Only for uniform costs"
+            ],
+            "correct_answer": 0,
+            "explanation": "Greedy expands lowest h(n) only—may take longer path if leads toward goal. Not optimal. Fast but doesn't guarantee best solution."
+        },
+        {
+            "question": "What is state space?",
+            "options": [
+                "All states reachable from initial state via actions",
+                "Memory used by algorithm",
+                "Number of goals",
+                "Search tree size"
+            ],
+            "correct_answer": 0,
+            "explanation": "State space: set of all states reachable from initial state by applying action sequences. Search explores this space finding path to goal."
+        },
+        {
+            "question": "Which search explores deepest nodes first?",
+            "options": [
+                "Depth-First Search (DFS)",
+                "Breadth-First Search (BFS)",
+                "A*",
+                "UCS"
+            ],
+            "correct_answer": 0,
+            "explanation": "DFS expands deepest node first (follows path to maximum depth before backtracking). BFS expands shallowest."
+        },
+        {
+            "question": "Is h(n) = Manhattan distance admissible for grid pathfinding?",
+            "options": [
+                "Yes",
+                "No",
+                "Only for diagonal movement",
+                "Only without obstacles"
+            ],
+            "correct_answer": 0,
+            "explanation": "Manhattan distance |x₁-x₂|+|y₁-y₂| never overestimates (straight line is shortest). Admissible heuristic for grid with orthogonal movement."
+        },
+        {
+            "question": "What does 'complete' algorithm mean?",
+            "options": [
+                "Finds solution if one exists",
+                "Finds optimal solution",
+                "Runs quickly",
+                "Uses little memory"
+            ],
+            "correct_answer": 0,
+            "explanation": "Complete: guaranteed to find solution if exists (at finite depth/cost). DFS incomplete for infinite spaces (may loop forever)."
+        },
+        {
+            "question": "When is BFS NOT optimal?",
+            "options": [
+                "When path costs are non-uniform",
+                "Never, always optimal",
+                "When space-constrained",
+                "When graph has cycles"
+            ],
+            "correct_answer": 0,
+            "explanation": "BFS optimal for uniform costs (all steps same cost). For varying costs, finds shallowest but not cheapest path. Use UCS/A* for non-uniform costs."
+        },
+        {
+            "question": "What's the time complexity of BFS?",
+            "options": [
+                "O(b^d) where b=branching factor, d=depth",
+                "O(d)",
+                "O(b)",
+                "O(log d)"
+            ],
+            "correct_answer": 0,
+            "explanation": "BFS explores all nodes at depth 1, 2, ..., d. Total: 1 + b + b² + ... + b^d = O(b^d) exponential in depth."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Problem formulation: Initial state, Actions, Transition model, Goal test, Path cost define search problem.",
+            "State space: All reachable states via actions. Search finds path in state graph from initial to goal.",
+            "BFS: Complete, optimal (uniform cost), O(b^d) time/space. Explores level-by-level. Use: shallow solutions.",
+            "DFS: Incomplete (infinite spaces), not optimal, O(b^m) time, O(bm) space. Explores depth-first. Use: space-constrained.",
+            "UCS (Uniform-Cost Search): Complete, optimal, expands lowest path cost. Use: non-uniform costs.",
+            "A* Search: f(n)=g(n)+h(n). Complete, optimal if h admissible. Best general-purpose. Use: most problems.",
+            "Admissible heuristic: h(n) ≤ true cost. Never overestimates. Ensures A* optimality. Examples: Manhattan, straight-line.",
+            "Greedy Best-First: Expands lowest h(n). Fast but incomplete, not optimal. May get stuck or miss optimal path.",
+            "Complexity exponential: O(b^d) limits search to shallow problems or requires good heuristics.",
+            "Heuristic quality crucial: Better h reduces nodes expanded, approaching b*→1 (straight to goal)."
+        ],
+        "important_formulas": [
+            "Problem: (S₀, Actions, Result, GoalTest, PathCost)",
+            "A*: f(n) = g(n) + h(n)",
+            "Admissible: h(n) ≤ h*(n)",
+            "Time: O(b^d)"
+        ],
+        "common_exam_traps": [
+            "BFS optimal only for UNIFORM costs. Non-uniform → use UCS or A*.",
+            "Admissible h required for A* optimality. Inadmissible → suboptimal solution.",
+            "Complete ≠ Optimal. DFS complete (finite spaces), never optimal. BFS complete and optimal (uniform).",
+            "Space complexity: BFS/A* O(b^d) exponential. DFS O(bm) linear. Memory limits favor DFS for deep searches.",
+            "Poor formulation → intractable. Must precisely define states, actions, goals, costs."
+        ],
+        "exam_tip": "Remember: BFS=complete+optimal(uniform). DFS=space-efficient but incomplete/suboptimal. A*=f(g+h), optimal if h admissible. Admissible=never overestimate. Complexity O(b^d) exponential—key bottleneck."
+    }
+}

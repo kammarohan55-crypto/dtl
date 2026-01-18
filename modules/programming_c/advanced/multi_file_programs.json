@@ -1,0 +1,372 @@
+{
+    "module_header": {
+        "module_title": "Multi-file Programs",
+        "subject": "Programming Using C",
+        "level": "Advanced",
+        "prerequisites": [
+            "Functions in C",
+            "Pointers basics",
+            "Preprocessor directives",
+            "Understanding of compilation process"
+        ],
+        "learning_outcomes": [
+            "Understand separate compilation and linking process",
+            "Create and use header files (.h) for declarations",
+            "Implement source files (.c) with definitions",
+            "Use extern keyword for variable and function declarations",
+            "Apply header guards to prevent multiple inclusion",
+            "Organize code into modules with clear interfaces",
+            "Compile and link multiple source files into executable"
+        ]
+    },
+    "definition": "Multi-file programs split code across multiple source (.c) and header (.h) files for organization, reusability, and separate compilation. Header files contain declarations (function prototypes, type definitions, extern variables), included via #include. Source files contain definitions (function implementations). The `extern` keyword declares variables/functions defined elsewhere. Compilation occurs per source file creating object files (.o/.obj), then linker combines them into executable. Benefits: modularity (logical separation), reusability (shared headers), faster recompilation (only modified files), and team collaboration (parallel development).",
+    "concept_overview": [
+        "Header files (.h): Contain declarations—function prototypes, struct/typedef, extern variables, macros. Shared interface.",
+        "Source files (.c): Contain definitions—function implementations, variable definitions. Implementation hidden.",
+        "extern keyword: Declares variable/function defined in another file. `extern int count;` (declaration, no storage).",
+        "static keyword: Limits scope to current file. `static int helper()` visible only in defining file (internal linkage).",
+        "Header guards: `#ifndef HEADER_H #define HEADER_H ... #endif` prevents multiple inclusion.",
+        "Compilation: Each .c compiled separately to .o (object file). Linker combines .o files into executable.",
+        "Code organization: group related functionality in modules (math.h/math.c, utils.h/utils.c)."
+    ],
+    "theory": [
+        "Multi-file programs solve the limitations of single-file development: large programs become unmaintainable, code reuse requires copying, team collaboration difficult, recompilation slow. Separating code into logical modules with clear interfaces (headers) and hidden implementations (source files) enables software engineering at scale. Headers define contracts: what functions/types are available without exposing how they're implemented (information hiding). This separation enables: (1) modularity—each module has single responsibility, (2) reusability—header exposes interface for other programs, (3) separate compilation—only changed files recompiled (faster builds), (4) team parallelism—different developers work on different modules. Understanding multi-file structure develops software architecture skills essential for real projects. The extern/static distinction controls linkage: extern provides external linkage (accessible across files), static provides internal linkage (file-private). Header guards prevent multiple inclusion errors when headers include other headers.",
+        "The fundamental multi-file mechanics involve header/source separation, extern declarations, and compilation/linking process. Typical module structure: `math.h` declares interface: `int add(int a, int b); extern int operation_count;`, `math.c` defines implementation: `#include \"math.h\" int operation_count = 0; int add(int a, int b) { operation_count++; return a + b; }`, `main.c` uses module: `#include \"math.h\" int main() { int result = add(5, 3); printf(\"Count: %d\\n\", operation_count); }`. Header guard in `math.h`: `#ifndef MATH_H #define MATH_H ... #endif` ensures declarations appear only once even if multiple files include math.h. The `extern` keyword declares without defining: `extern int count;` in header says \"count exists somewhere\"; actual definition `int count = 0;` in one .c file allocates storage. Omitting extern in header and defining in multiple .c files causes multiple definition linker error. Static functions/variables: `static int helper() {}` in .c file provides internal linkage—helper visible only in that file, not exported. Useful for private helper functions. Compilation process: (1) Preprocessor expands #include, replacing with header contents. (2) Compiler compiles each .c independently to .o (object code with symbols). (3) Linker resolves symbols (matches extern declarations with definitions) and combines .o files to executable. Command: `gcc -c math.c -o math.o` compiles, `gcc main.o math.o -o program` links. Or one step: `gcc main.c math.c -o program`. Makefile automates: compile changed files only, link all objects.",
+        "Mastery of multi-file programs is critically important because professional software is always multi-file: libraries (hundreds of .c/.h files), operating systems (thousands), applications (organized by feature modules). Understanding enables building scalable, maintainable systems. Proper header/source separation enforces information hiding: users see interface (what), not implementation (how)—allows changing implementation without breaking users. Real projects use module organization: network layer (net.h/net.c), database layer (db.h/db.c), UI layer (ui.h/ ui.c), common utilities (util.h/util.c). Benefits: (1) Modularity—each module testable independently. (2) Reusability—same module used in multiple projects (link different .o files). (3) Collaboration—team members work on different modules in parallel. (4) Build speed—make/ninja only recompile changed files (incremental builds). (5) Namespace management—static prevents name conflicts between modules. Common patterns: (1) One .h per .c—header declares, source implements. (2) Header includes only what needed—minimizes dependencies. (3) Forward declarations reduce includes—`struct Node;` instead of `#include \"node.h\"` when only pointer used. (4) Include guards or `#pragma once` always. (5) Never define variables/functions in headers (unless inline/static)—causes multiple definition. Security: exposing minimal interface in header limits attack surface. Performance: smaller headers compile faster. In embedded systems, careful module organization manages limited ROM/RAM. In examinations, demonstrating proper header/source split, extern usage, header guards, and understanding compilation/linking shows professional software engineering competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Header file (math.h): Function prototypes and extern declarations",
+            "explanation": "`int add(int, int);\nextern int count;` Declares interface without implementation."
+        },
+        {
+            "formula": "Source file (math.c): Function definitions and variable definitions",
+            "explanation": "`#include \"math.h\"\nint count = 0;\nint add(int a, int b) { return a+b; }` Implements interface."
+        },
+        {
+            "formula": "Compilation: gcc -c file.c -o file.o (compile) → gcc file1.o file2.o -o program (link)",
+            "explanation": "Separate compilation creates object files; linker combines them."
+        },
+        {
+            "formula": "extern vs static: extern (external linkage) vs static (internal linkage)",
+            "explanation": "extern: accessible across files. static: visible only in defining file."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Create multi-file program with separate header and source files.",
+            "solution_steps": [
+                "**math.h** (header file):",
+                "```c",
+                "#ifndef MATH_H",
+                "#define MATH_H",
+                "",
+                "int add(int a, int b);",
+                "int subtract(int a, int b);",
+                "extern int operation_count;",
+                "",
+                "#endif",
+                "```",
+                "",
+                "**math.c** (source file):",
+                "```c",
+                "#include \"math.h\"",
+                "",
+                "int operation_count = 0;",
+                "",
+                "int add(int a, int b) {",
+                "    operation_count++;",
+                "    return a + b;",
+                "}",
+                "",
+                "int subtract(int a, int b) {",
+                "    operation_count++;",
+                "    return a - b;",
+                "}",
+                "```",
+                "",
+                "**main.c**:",
+                "```c",
+                "#include <stdio.h>",
+                "#include \"math.h\"",
+                "",
+                "int main() {",
+                "    int sum = add(10, 5);",
+                "    int diff = subtract(10, 5);",
+                "    printf(\"Sum: %d, Diff: %d\\n\", sum, diff);",
+                "    printf(\"Operations: %d\\n\", operation_count);",
+                "    return 0;",
+                "}",
+                "```",
+                "",
+                "**Compile:** `gcc main.c math.c -o program`"
+            ],
+            "final_answer": "Header declares interface, source implements, main uses. Compile all .c files together."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Use static for file-private helper function.",
+            "solution_steps": [
+                "**utils.h**:",
+                "```c",
+                "#ifndef UTILS_H",
+                "#define UTILS_H",
+                "",
+                "int process_data(int x);  // Public interface",
+                "",
+                "#endif",
+                "```",
+                "",
+                "**utils.c**:",
+                "```c",
+                "#include \"utils.h\"",
+                "",
+                "// Private helper (static = internal linkage)",
+                "static int validate(int x) {",
+                "    return (x >= 0 && x <= 100);",
+                "}",
+                "",
+                "int process_data(int x) {",
+                "    if (!validate(x)) {",
+                "        return -1;  // Error",
+                "    }",
+                "    return x * 2;  // Process",
+                "}",
+                "```",
+                "",
+                "**main.c**:",
+                "```c",
+                "#include <stdio.h>",
+                "#include \"utils.h\"",
+                "",
+                "int main() {",
+                "    // validate() not accessible (static in utils.c)",
+                "    int result = process_data(50);",
+                "    printf(\"Result: %d\\n\", result);",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "static makes validate() private to utils.c. Only process_data() exposed in header/public."
+        }
+    ],
+    "logical_derivation": "Multi-file organization solves scalability: single file becomes unwieldy for large programs. Separation into modules (logical units) with headers (interfaces) and sources (implementations) enables: modularity (single responsibility), information hiding (expose what, hide how), reuse (same header for multiple programs), separate compilation (build speed—recompile only changed files). extern/static control symbol visibility: extern exports symbol for use across files (external linkage), static keeps symbol file-private (internal linkage, prevents name conflicts). Linker's job: resolve symbols—match extern declarations with definitions across object files. Header guards prevent multiple inclusion: same header included by multiple files would cause redefinition without guards.",
+    "applications": [
+        "**Library development**: Separate modules (math, string, I/O) with clear interfaces.",
+        "**Large applications**: Organize by features (network module, database module, UI module).",
+        "**Team collaboration**: Different developers work on different .c files in parallel.",
+        "**Code reuse**: Same .h/.c module used in multiple projects.",
+        "**Faster builds**: Makefile recompiles only changed files, links all .o files.",
+        "**Information hiding**: Header exposes API, source hides implementation details.",
+        "**Testing**: Each module testable independently via its header interface."
+    ],
+    "key_takeaways": [
+        "Header (.h): Contains declarations (function prototypes, extern variables, typedefs). Interface/contract.",
+        "Source (.c): Contains definitions (function implementations, variable definitions). Implementation.",
+        "extern: Declares variable/function defined elsewhere. `extern int count;` (no storage allocated).",
+        "static: File-private (internal linkage). `static int helper()` visible only in defining file.",
+        "Header guards: `#ifndef HEADER_H #define HEADER_H ... #endif` or `#pragma once`.",
+        "Compilation: Each .c → .o (object file). Linker combines .o → executable.",
+        "One definition Rule: Variable/function defined in exactly ONE .c file. Declared (extern) in header."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Defining variables in headers",
+            "why_it_occurs": "Students put `int count = 0;` in header included by multiple files.",
+            "how_to_avoid": "Multiple files define count → linker error (multiple definition). Use `extern int count;` in header, `int count = 0;` in ONE .c file."
+        },
+        {
+            "mistake": "Missing header guards",
+            "why_it_occurs": "Students forget guards, headers included multiple times cause redefinition.",
+            "how_to_avoid": "Always use: `#ifndef HEADER_H #define HEADER_H ... #endif` at top/bottom of every header."
+        },
+        {
+            "mistake": "Implementing functions in headers",
+            "why_it_occurs": "Students write function body in .h file.",
+            "how_to_avoid": "Function implementation in .h included by multiple .c files → multiple definition error. Put prototypes in .h, implementations in .c. Exception: inline functions."
+        },
+        {
+            "mistake": "Forgetting to include own header in source",
+            "why_it_occurs": "Students don't `#include \"module.h\"` in module.c.",
+            "how_to_avoid": "Source file should include its own header: ensures declarations and definitions match (compiler checks prototype agrees with implementation)."
+        },
+        {
+            "mistake": "Circular header dependencies",
+            "why_it_occurs": "a.h includes b.h, b.h includes a.h →  infinite expansion.",
+            "how_to_avoid": "Use forward declarations: `struct Node;` instead of `#include \"node.h\"` when only pointer used. Redesign if needed."
+        },
+        {
+            "mistake": "Not using extern for global variables",
+            "why_it_occurs": "Students declare `int count;` in header expecting sharing.",
+            "how_to_avoid": "`int count;` in header → each including file gets separate count (tentative definition). Use `extern int count;` in header, `int count = 0;` in one .c."
+        },
+        {
+            "mistake": "Linking errors from missing object files",
+            "why_it_occurs": "Students compile main.c but forget to link math.o.",
+            "how_to_avoid": "Undefined reference error means function declared but not defined/linked. Compile all .c files: `gcc main.c math.c -o program`"
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What goes in header (.h) file?",
+            "options": [
+                "Declarations (prototypes, extern)",
+                "Definitions (implementations)",
+                "Both equally",
+                "Only #include"
+            ],
+            "correct_answer": 0,
+            "explanation": "Headers contain declarations: function prototypes, struct definitions, extern variables. Implementations go in .c files."
+        },
+        {
+            "question": "What goes in source (.c) file?",
+            "options": [
+                "Definitions (function implementations)",
+                "Only prototypes",
+                "Only #include",
+                "Nothing"
+            ],
+            "correct_answer": 0,
+            "explanation": "Source files contain definitions: function implementations, variable definitions. Include corresponding .h file."
+        },
+        {
+            "question": "What does extern keyword do?",
+            "options": [
+                "Declares variable/function defined elsewhere",
+                "Defines variable",
+                "Exports function",
+                "Creates external file"
+            ],
+            "correct_answer": 0,
+            "explanation": "`extern int count;` declares count exists elsewhere. Actual definition `int count = 0;` in one .c file."
+        },
+        {
+            "question": "What does static function mean in .c file?",
+            "options": [
+                "Visible only in that file (internal linkage)",
+                "Visible globally",
+                "Never changes",
+                "Allocated on stack"
+            ],
+            "correct_answer": 0,
+            "explanation": "`static int helper()` in .c makes helper private to that file (not visible to other files)."
+        },
+        {
+            "question": "Why use header guards?",
+            "options": [
+                "Prevent multiple inclusion causing redefinition",
+                "Protect from modification",
+                "Faster compilation",
+                "Required by language"
+            ],
+            "correct_answer": 0,
+            "explanation": "Header guards `#ifndef HEADER_H #define HEADER_H ... #endif` prevent including header multiple times (redefinition errors)."
+        },
+        {
+            "question": "What does linker do?",
+            "options": [
+                "Combines object files into executable",
+                "Compiles source files",
+                "Preprocesses headers",
+                "Runs the program"
+            ],
+            "correct_answer": 0,
+            "explanation": "Linker combines .o object files, resolves symbols (matches extern with definitions), creates executable."
+        },
+        {
+            "question": "Can you define variable in header?",
+            "options": [
+                "No, causes multiple definition error",
+                "Yes, always",
+                "Only static variables",
+                "Only extern variables"
+            ],
+            "correct_answer": 0,
+            "explanation": "Defining variable in header (e.g., `int count = 0;`) included by multiple files → multiple definition error. Use extern in header, define in one .c."
+        },
+        {
+            "question": "How to compile main.c and math.c together?",
+            "options": [
+                "`gcc main.c math.c -o program`",
+                "`gcc main.c -o program`",
+                "`gcc math.c -o program`",
+                "`link main.c math.c`"
+            ],
+            "correct_answer": 0,
+            "explanation": "Compile/link all .c files together: `gcc main.c math.c -o program`. Or separately: `gcc -c main.c`, `gcc -c math.c`, `gcc main.o math.o -o program`"
+        },
+        {
+            "question": "What indicates undefined reference error?",
+            "options": [
+                "Function declared but not defined/linked",
+                "Syntax error",
+                "Missing header",
+                "Wrong file extension"
+            ],
+            "correct_answer": 0,
+            "explanation": "Undefined reference: function prototyped in header but implementation not compiled/linked. Forgot to compile/link its .c file."
+        },
+        {
+            "question": "Should source file include its own header?",
+            "options": [
+                "Yes, ensures declaration matches definition",
+                "No, unnecessary",
+                "Only for large files",
+                "Only if using extern"
+            ],
+            "correct_answer": 0,
+            "explanation": "math.c should `#include \"math.h\"` so compiler verifies function implementations match prototypes."
+        },
+        {
+            "question": "What's #pragma once?",
+            "options": [
+                "Alternative to header guards",
+                "Compiles once only",
+                "Deprecated syntax",
+                "Optimization directive"
+            ],
+            "correct_answer": 0,
+            "explanation": "`#pragma once` at top of header prevents multiple inclusion (alternative to #ifndef guards). Non-standard but widely supported."
+        },
+        {
+            "question": "What's the purpose of separating .h and .c?",
+            "options": [
+                "Modularity, reusability, information hiding",
+                "Compiler requirement",
+                "Faster runtime",
+                "Smaller executable"
+            ],
+            "correct_answer": 0,
+            "explanation": "Separation enables: modularity (organized code), reusability (same interface, different implementations), information hiding (expose API, hide details)."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Header (.h): Declarations (function prototypes, extern variables, typedefs). Defines interface/contract.",
+            "Source (.c): Definitions (function implementations, variable definitions). Implements interface.",
+            "extern: Declares variable/function defined elsewhere. `extern int count;` in header, `int count = 0;` in ONE .c file.",
+            "static: File-private (internal linkage). `static int helper()` visible only in defining file.",
+            "Header guards: `#ifndef HEADER_H #define HEADER_H ... #endif` or `#pragma once` prevents multiple inclusion.",
+            "One Definition Rule: Variable/function defined in exactly ONE .c file. Declared (extern) in header if shared.",
+            "Compilation: Each .c compiled to .o (object file). Linker combines .o files into executable.",
+            "Source includes own header: `#include \"module.h\"` in module.c ensures declaration/definition match.",
+            "Never define variables/functions in headers (causes multiple definition when included by multiple files).",
+            "Benefits: Modularity, reusability, separate compilation (faster builds), information hiding (expose API only)."
+        ],
+        "important_formulas": [
+            "Header: `int add(int, int);\nextern int count;`",
+            "Source: `#include \"math.h\"\nint count=0;\nint add(int a,int b){return a+b;}`",
+            "Compile: `gcc -c file.c -o file.o`",
+            "Link: `gcc file1.o file2.o -o program`"
+        ],
+        "common_exam_traps": [
+            "Defining variables in headers: `extern int count;` in .h, `int count = 0;` in ONE .c only.",
+            "Missing header guards: causes redefinition errors. Always use #ifndef/#define/#endif.",
+            "Implementing functions in headers: causes multiple definition. Prototypes in .h, implementations in .c.",
+            "Forgetting to include own header in source: math.c should #include \"math.h\" for consistency check.",
+            "Linking errors: Undefined reference means forgot to compile/link the .c file with implementation."
+        ],
+        "exam_tip": "Remember: Headers = declarations (prototypes, extern). Sources = definitions (implementations). One definition per variable/function across all files. Header guards prevent multiple inclusion. Compile all .c files, link .o files."
+    }
+}

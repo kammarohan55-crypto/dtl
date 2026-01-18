@@ -1,0 +1,340 @@
+{
+    "module_header": {
+        "module_title": "Quadratic Equations",
+        "subject": "Mathematics",
+        "level": "Beginner",
+        "prerequisites": [
+            "Linear equations and their solutions",
+            "Basic algebraic operations and simplification",
+            "Factorization techniques",
+            "Understanding of perfect squares and square roots"
+        ],
+        "learning_outcomes": [
+            "Define and identify quadratic equations in standard form",
+            "Apply multiple methods to solve quadratic equations (factorization, completing the square, quadratic formula)",
+            "Determine the nature of roots using the discriminant",
+            "Graphically interpret quadratic equations as parabolas",
+            "Formulate and solve real-world problems involving quadratic relationships",
+            "Analyze the relationship between coefficients and roots using Vieta's formulas"
+        ]
+    },
+    "definition": "A quadratic equation is a second-degree polynomial equation in one variable of the form $ax^2 + bx + c = 0$, where $a$, $b$, and $c$ are constants and $a \\neq 0$. The solutions to this equation, called roots, can be real or complex numbers depending on the discriminant $\\Delta = b^2 - 4ac$.",
+    "concept_overview": [
+        "Quadratic equations are characterized by the presence of the squared term $x^2$ as the highest degree, making them second-degree polynomial equations.",
+        "The graph of a quadratic function $y = ax^2 + bx + c$ is a parabola that opens upward when $a > 0$ and downward when $a < 0$.",
+        "Solutions to quadratic equations (roots) represent the x-intercepts of the corresponding parabola, where the function crosses the x-axis.",
+        "The discriminant $\\Delta = b^2 - 4ac$ determines the nature of roots: two distinct real roots when $\\Delta > 0$, one repeated real root when $\\Delta = 0$, and two complex conjugate roots when $\\Delta < 0$.",
+        "Quadratic equations appear extensively in physics (projectile motion, energy relations), engineering (optimization, structural analysis), and economics (profit maximization, cost minimization)."
+    ],
+    "theory": [
+        "Quadratic equations represent the natural progression from linear relationships to nonlinear phenomena and constitute one of the most important classes of polynomial equations in mathematics and engineering. Unlike linear equations where the rate of change is constant, quadratic equations model situations where rates themselves vary linearly, such as acceleration in kinematics or the relationship between area and side length in geometric problems. Within the mathematical curriculum, quadratic equations serve as the gateway to understanding polynomial theory, complex numbers, conic sections, and optimization techniques. The study of quadratic equations develops essential problem-solving skills including pattern recognition, algebraic manipulation, and the ability to select appropriate solution strategies from multiple available methods. In engineering education, quadratic equations appear in beam deflection analysis, electrical resonance circuits, control system transfer functions, and optimization of design parameters, making their mastery fundamental to subsequent technical coursework.",
+        "The solution mechanisms for quadratic equations rely on three primary approaches, each with distinct advantages depending on the problem structure. The factorization method exploits the zero product property: if $(px + q)(rx + s) = 0$, then either $px + q = 0$ or $rx + s = 0$, yielding the two roots directly. This method is efficient when the quadratic expression factors neatly over integers or rational numbers. The completing the square technique transforms the equation into the form $(x - h)^2 = k$ by adding and subtracting appropriate constants, revealing the roots as $x = h \\pm \\sqrt{k}$. This method provides geometric insight and leads to the derivation of the quadratic formula. The quadratic formula $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$ is the most general method, applicable to all quadratic equations regardless of whether they factor nicely. The discriminant $\\Delta = b^2 - 4ac$ within the formula determines root nature: when $\\Delta > 0$, the square root yields two distinct real values; when $\\Delta = 0$, the roots coincide at $x = -\\frac{b}{2a}$; and when $\\Delta < 0$, the square root of a negative number produces complex conjugate roots.",
+        "Mastery of quadratic equations is critically important because they provide the foundation for understanding nonlinear relationships and optimization across all engineering disciplines. In mechanical engineering, the trajectory of projectiles follows quadratic paths described by $y = x\\tan\\theta - \\frac{gx^2}{2v^2\\cos^2\\theta}$, requiring quadratic equation solutions to determine range and maximum height. In electrical engineering, the resonance condition in RLC circuits is governed by quadratic relationships in frequency analysis. Civil engineers utilize quadratic equations in stress-strain relationships for materials entering nonlinear regimes and in optimizing structural dimensions subject to constraints. The concept of the discriminant teaches students to analyze solution existence and nature before computation, a critical skill in numerical methods and system stability analysis. Furthermore, Vieta's formulas connecting roots to coefficients ($x_1 + x_2 = -\\frac{b}{a}$ and $x_1 \\cdot x_2 = \\frac{c}{a}$) introduce students to symmetric functions and prepare them for polynomial theory in higher mathematics. In examinations, proficiency in selecting the most efficient solution method and interpreting roots in physical contexts demonstrates deep conceptual understanding beyond mere algorithmic computation."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$ax^2 + bx + c = 0, \\quad a \\neq 0$",
+            "explanation": "Standard form of a quadratic equation, where $a$ is the coefficient of $x^2$, $b$ is the coefficient of $x$, $c$ is the constant term, and $a \\neq 0$ ensures the equation is truly quadratic."
+        },
+        {
+            "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$",
+            "explanation": "The quadratic formula provides the general solution to any quadratic equation, where the $\\pm$ symbol indicates two possible roots."
+        },
+        {
+            "formula": "$\\Delta = b^2 - 4ac$",
+            "explanation": "The discriminant determines the nature of roots: $\\Delta > 0$ gives two distinct real roots, $\\Delta = 0$ gives one repeated real root, and $\\Delta < 0$ gives two complex conjugate roots."
+        },
+        {
+            "formula": "$x_1 + x_2 = -\\frac{b}{a}$",
+            "explanation": "Vieta's first formula relating the sum of roots to the coefficients of the quadratic equation."
+        },
+        {
+            "formula": "$x_1 \\cdot x_2 = \\frac{c}{a}$",
+            "explanation": "Vieta's second formula relating the product of roots to the coefficients of the quadratic equation."
+        },
+        {
+            "formula": "$(x - h)^2 = k \\implies x = h \\pm \\sqrt{k}$",
+            "explanation": "The result of completing the square, where $h$ represents the axis of symmetry and $k$ determines the vertical shift."
+        },
+        {
+            "formula": "$y = a(x - h)^2 + k$",
+            "explanation": "Vertex form of a quadratic function, where $(h, k)$ is the vertex of the parabola."
+        },
+        {
+            "formula": "$x = \\frac{-b}{2a}$",
+            "explanation": "The x-coordinate of the vertex (axis of symmetry) of the parabola, also the midpoint between the two roots."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Solve the quadratic equation by factorization: $x^2 - 5x + 6 = 0$",
+            "solution_steps": [
+                "**Step 1**: Identify coefficients: $a = 1$, $b = -5$, $c = 6$",
+                "**Step 2**: Find two numbers that multiply to $c = 6$ and add to $b = -5$: The numbers are $-2$ and $-3$",
+                "**Step 3**: Factor the quadratic: $x^2 - 5x + 6 = (x - 2)(x - 3) = 0$",
+                "**Step 4**: Apply zero product property: Either $x - 2 = 0$ or $x - 3 = 0$",
+                "**Step 5**: Solve each factor: $x = 2$ or $x = 3$",
+                "**Verification**: Substitute $x = 2$: $(2)^2 - 5(2) + 6 = 4 - 10 + 6 = 0$ ✓",
+                "Substitute $x = 3$: $(3)^2 - 5(3) + 6 = 9 - 15 + 6 = 0$ ✓"
+            ],
+            "final_answer": "$x = 2$ or $x = 3$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Solve using the quadratic formula and determine the nature of roots: $2x^2 - 7x + 3 = 0$",
+            "solution_steps": [
+                "**Step 1**: Identify coefficients: $a = 2$, $b = -7$, $c = 3$",
+                "**Step 2**: Calculate the discriminant: $\\Delta = b^2 - 4ac = (-7)^2 - 4(2)(3) = 49 - 24 = 25$",
+                "**Step 3**: Since $\\Delta = 25 > 0$, the equation has two distinct real roots",
+                "**Step 4**: Apply the quadratic formula:",
+                "$x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} = \\frac{-(-7) \\pm \\sqrt{25}}{2(2)} = \\frac{7 \\pm 5}{4}$",
+                "**Step 5**: Calculate both roots:",
+                "$x_1 = \\frac{7 + 5}{4} = \\frac{12}{4} = 3$",
+                "$x_2 = \\frac{7 - 5}{4} = \\frac{2}{4} = \\frac{1}{2}$",
+                "**Verification using Vieta's formulas**:",
+                "Sum: $x_1 + x_2 = 3 + \\frac{1}{2} = \\frac{7}{2} = -\\frac{b}{a} = -\\frac{-7}{2}$ ✓",
+                "Product: $x_1 \\cdot x_2 = 3 \\times \\frac{1}{2} = \\frac{3}{2} = \\frac{c}{a}$ ✓"
+            ],
+            "final_answer": "$x = 3$ or $x = \\frac{1}{2}$; Two distinct real roots"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "A ball is thrown upward with an initial velocity of 20 m/s from a height of 5 m. Its height $h$ (in meters) at time $t$ (in seconds) is given by $h = -5t^2 + 20t + 5$. When does the ball hit the ground?",
+            "solution_steps": [
+                "**Step 1**: The ball hits the ground when $h = 0$, so solve: $-5t^2 + 20t + 5 = 0$",
+                "**Step 2**: Simplify by dividing by $-5$: $t^2 - 4t - 1 = 0$",
+                "**Step 3**: Identify coefficients: $a = 1$, $b = -4$, $c = -1$",
+                "**Step 4**: Calculate discriminant: $\\Delta = (-4)^2 - 4(1)(-1) = 16 + 4 = 20$",
+                "**Step 5**: Apply quadratic formula:",
+                "$t = \\frac{-(-4) \\pm \\sqrt{20}}{2(1)} = \\frac{4 \\pm 2\\sqrt{5}}{2} = 2 \\pm \\sqrt{5}$",
+                "**Step 6**: Calculate numerical values:",
+                "$t_1 = 2 + \\sqrt{5} \\approx 2 + 2.236 = 4.236$ seconds",
+                "$t_2 = 2 - \\sqrt{5} \\approx 2 - 2.236 = -0.236$ seconds (rejected as time cannot be negative)",
+                "**Physical interpretation**: The ball hits the ground approximately 4.24 seconds after being thrown."
+            ],
+            "final_answer": "$t = 2 + \\sqrt{5} \\approx 4.24$ seconds"
+        }
+    ],
+    "logical_derivation": "To derive the quadratic formula from first principles, begin with the standard form $ax^2 + bx + c = 0$ where $a \\neq 0$. Divide all terms by $a$ to obtain $x^2 + \\frac{b}{a}x + \\frac{c}{a} = 0$. The objective is to complete the square on the left side. Take half of the coefficient of $x$, which is $\\frac{b}{2a}$, and square it to get $\\left(\\frac{b}{2a}\\right)^2 = \\frac{b^2}{4a^2}$. Add and subtract this term: $x^2 + \\frac{b}{a}x + \\frac{b^2}{4a^2} - \\frac{b^2}{4a^2} + \\frac{c}{a} = 0$. The first three terms form a perfect square: $\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2}{4a^2} - \\frac{c}{a}$. Combine the right side over a common denominator: $\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a^2}$. Take the square root of both sides: $x + \\frac{b}{2a} = \\pm\\frac{\\sqrt{b^2 - 4ac}}{2a}$. Finally, isolate $x$: $x = -\\frac{b}{2a} \\pm \\frac{\\sqrt{b^2 - 4ac}}{2a} = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. This derivation reveals that the discriminant $\\Delta = b^2 - 4ac$ naturally emerges from the completing the square process and determines whether the square root operation yields real or complex values.",
+    "applications": [
+        "**Projectile Motion**: Determining the time of flight, maximum height, and range of projectiles under gravity using equations of the form $y = y_0 + v_0t - \\frac{1}{2}gt^2$.",
+        "**Optimization Problems**: Finding maximum or minimum values in engineering design, such as maximizing area given a fixed perimeter or minimizing cost functions.",
+        "**Electrical Engineering**: Analyzing resonance frequencies in RLC circuits and solving characteristic equations in control systems.",
+        "**Structural Engineering**: Calculating deflection in beams and determining critical loads in stability analysis.",
+        "**Economics**: Profit maximization and cost minimization where revenue and cost functions are quadratic.",
+        "**Optics**: Designing parabolic mirrors and lenses where the reflecting surface follows a quadratic profile.",
+        "**Kinematics**: Solving problems involving uniformly accelerated motion where displacement varies quadratically with time."
+    ],
+    "key_takeaways": [
+        "A quadratic equation always has exactly two roots (counting multiplicity), which may be real or complex depending on the discriminant.",
+        "The discriminant $\\Delta = b^2 - 4ac$ completely determines root nature without requiring actual computation of roots.",
+        "Three primary solution methods exist: factorization (fastest when applicable), completing the square (provides geometric insight), and the quadratic formula (universally applicable).",
+        "The vertex of the parabola $y = ax^2 + bx + c$ occurs at $x = -\\frac{b}{2a}$, which is also the axis of symmetry.",
+        "Vieta's formulas provide a quick check for solution correctness and enable construction of quadratic equations from given roots.",
+        "The coefficient $a$ determines the parabola's concavity: $a > 0$ opens upward (minimum at vertex), $a < 0$ opens downward (maximum at vertex).",
+        "Quadratic equations model any relationship where one quantity varies as the square of another, appearing throughout physics and engineering."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Forgetting to write the equation in standard form before applying the quadratic formula",
+            "why_it_occurs": "Students sometimes apply the formula to equations like $x^2 = 5x - 6$ without first rearranging to $x^2 - 5x + 6 = 0$.",
+            "how_to_avoid": "Always rearrange the equation to the form $ax^2 + bx + c = 0$ first, then carefully identify $a$, $b$, and $c$ before substituting into the formula."
+        },
+        {
+            "mistake": "Sign errors when calculating the discriminant",
+            "why_it_occurs": "The expression $b^2 - 4ac$ involves multiple operations with signed numbers, leading to errors like computing $(-3)^2$ as $-9$ instead of $9$.",
+            "how_to_avoid": "When $b$ is negative, remember that $b^2$ is always positive. Write out each calculation step explicitly: if $b = -3$, then $b^2 = (-3)^2 = 9$."
+        },
+        {
+            "mistake": "Incorrectly applying the $\\pm$ symbol in the quadratic formula",
+            "why_it_occurs": "Students sometimes compute only one root by forgetting to evaluate both the plus and minus cases.",
+            "how_to_avoid": "Always compute both $x_1 = \\frac{-b + \\sqrt{\\Delta}}{2a}$ and $x_2 = \\frac{-b - \\sqrt{\\Delta}}{2a}$ separately to obtain both roots."
+        },
+        {
+            "mistake": "Dividing only some terms by $2a$ instead of the entire numerator",
+            "why_it_occurs": "Students write $x = \\frac{-b}{2a} \\pm \\frac{\\sqrt{b^2-4ac}}{a}$ instead of the correct $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$.",
+            "how_to_avoid": "Remember that the entire expression $-b \\pm \\sqrt{b^2-4ac}$ is in the numerator and must be divided by $2a$. Use parentheses to clarify: $x = \\frac{(-b \\pm \\sqrt{\\Delta})}{2a}$."
+        },
+        {
+            "mistake": "Attempting to factor when the quadratic is not factorable over rational numbers",
+            "why_it_occurs": "Students spend excessive time searching for integer factors when the discriminant is not a perfect square.",
+            "how_to_avoid": "Check the discriminant first. If $\\Delta$ is not a perfect square, factorization over rationals is impossible; use the quadratic formula instead."
+        },
+        {
+            "mistake": "Misidentifying coefficients when terms are missing or rearranged",
+            "why_it_occurs": "In equations like $3x^2 - 5 = 0$, students may fail to recognize that $b = 0$ because the $x$ term is absent.",
+            "how_to_avoid": "Rewrite the equation explicitly in standard form with all terms present, using zero coefficients where necessary: $3x^2 + 0x - 5 = 0$."
+        },
+        {
+            "mistake": "Rejecting negative roots without considering the physical context",
+            "why_it_occurs": "Students automatically discard negative solutions even when they may be physically meaningful (e.g., time before a reference point).",
+            "how_to_avoid": "Evaluate each root in the context of the problem. Reject roots only when they are physically impossible, not merely because they are negative."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is the discriminant of the equation $3x^2 - 4x + 1 = 0$?",
+            "options": [
+                "$\\Delta = 4$",
+                "$\\Delta = 16$",
+                "$\\Delta = -4$",
+                "$\\Delta = 0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Using $\\Delta = b^2 - 4ac$ with $a=3$, $b=-4$, $c=1$: $\\Delta = (-4)^2 - 4(3)(1) = 16 - 12 = 4$."
+        },
+        {
+            "question": "For a quadratic equation, if the discriminant $\\Delta < 0$, the roots are:",
+            "options": [
+                "Two complex conjugate roots",
+                "Two distinct real roots",
+                "One repeated real root",
+                "No roots exist"
+            ],
+            "correct_answer": 0,
+            "explanation": "When $\\Delta < 0$, the square root in the quadratic formula involves $\\sqrt{\\text{negative number}}$, producing two complex conjugate roots of the form $p \\pm qi$."
+        },
+        {
+            "question": "Solve $x^2 - 6x + 9 = 0$. What is the nature of the roots?",
+            "options": [
+                "One repeated real root: $x = 3$",
+                "Two distinct real roots: $x = 3, x = -3$",
+                "Two complex roots",
+                "No real solution"
+            ],
+            "correct_answer": 0,
+            "explanation": "This factors as $(x-3)^2 = 0$, giving a repeated root $x = 3$. Alternatively, $\\Delta = 36 - 36 = 0$ indicates one repeated root."
+        },
+        {
+            "question": "Using the quadratic formula, solve $x^2 + 5x + 6 = 0$:",
+            "options": [
+                "$x = -2$ or $x = -3$",
+                "$x = 2$ or $x = 3$",
+                "$x = -1$ or $x = -6$",
+                "$x = 1$ or $x = 6$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\Delta = 25 - 24 = 1$. Using the formula: $x = \\frac{-5 \\pm 1}{2}$, giving $x_1 = \\frac{-5+1}{2} = -2$ and $x_2 = \\frac{-5-1}{2} = -3$."
+        },
+        {
+            "question": "If the roots of $x^2 - 7x + k = 0$ are equal, what is the value of $k$?",
+            "options": [
+                "$k = \\frac{49}{4}$",
+                "$k = 7$",
+                "$k = 14$",
+                "$k = 0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Equal roots occur when $\\Delta = 0$: $49 - 4k = 0 \\implies 4k = 49 \\implies k = \\frac{49}{4}$."
+        },
+        {
+            "question": "For the equation $2x^2 - 8x + 6 = 0$, what is the sum of the roots?",
+            "options": [
+                "$4$",
+                "$-4$",
+                "$3$",
+                "$-3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Using Vieta's formula: sum of roots $= -\\frac{b}{a} = -\\frac{-8}{2} = 4$."
+        },
+        {
+            "question": "What is the vertex of the parabola $y = x^2 - 4x + 3$?",
+            "options": [
+                "$(2, -1)$",
+                "$(-2, 15)$",
+                "$(4, 3)$",
+                "$(0, 3)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Vertex x-coordinate: $x = -\\frac{b}{2a} = -\\frac{-4}{2} = 2$. Substitute: $y = 4 - 8 + 3 = -1$. Vertex is $(2, -1)$."
+        },
+        {
+            "question": "Which method is most efficient for solving $x^2 = 16$?",
+            "options": [
+                "Direct square root: $x = \\pm 4$",
+                "Quadratic formula",
+                "Completing the square",
+                "Factorization"
+            ],
+            "correct_answer": 0,
+            "explanation": "For simple equations of the form $x^2 = k$, taking the square root directly is fastest: $x = \\pm\\sqrt{16} = \\pm 4$."
+        },
+        {
+            "question": "If $x_1 = 2$ and $x_2 = 5$ are roots of a quadratic equation with $a = 1$, what is the equation?",
+            "options": [
+                "$x^2 - 7x + 10 = 0$",
+                "$x^2 + 7x + 10 = 0$",
+                "$x^2 - 7x - 10 = 0$",
+                "$x^2 + 3x - 10 = 0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Sum $= 2 + 5 = 7 = -\\frac{b}{1}$, so $b = -7$. Product $= 2 \\times 5 = 10 = \\frac{c}{1}$, so $c = 10$. Equation: $x^2 - 7x + 10 = 0$."
+        },
+        {
+            "question": "The parabola $y = -2x^2 + 4x + 1$ opens:",
+            "options": [
+                "Downward",
+                "Upward",
+                "To the right",
+                "To the left"
+            ],
+            "correct_answer": 0,
+            "explanation": "Since the coefficient of $x^2$ is $a = -2 < 0$, the parabola opens downward."
+        },
+        {
+            "question": "For the equation $x^2 - 2x - 3 = 0$, what is the product of the roots?",
+            "options": [
+                "$-3$",
+                "$3$",
+                "$2$",
+                "$-2$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Using Vieta's formula: product of roots $= \\frac{c}{a} = \\frac{-3}{1} = -3$."
+        },
+        {
+            "question": "Which equation has exactly one real root?",
+            "options": [
+                "$4x^2 - 12x + 9 = 0$",
+                "$x^2 - 5x + 6 = 0$",
+                "$x^2 + x + 1 = 0$",
+                "$2x^2 - 3x - 2 = 0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Checking discriminant for option (a): $\\Delta = 144 - 144 = 0$, indicating one repeated real root. The equation factors as $(2x - 3)^2 = 0$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Quadratic equations are second-degree polynomial equations of the form $ax^2 + bx + c = 0$ where $a \\neq 0$, modeling situations where rates of change vary linearly.",
+            "Three primary solution methods exist: factorization (efficient for factorable equations), completing the square (provides geometric insight), and the quadratic formula (universally applicable).",
+            "The discriminant $\\Delta = b^2 - 4ac$ determines root nature: $\\Delta > 0$ gives two distinct real roots, $\\Delta = 0$ gives one repeated root, $\\Delta < 0$ gives complex conjugate roots.",
+            "The quadratic formula $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$ solves any quadratic equation and is derived by completing the square on the general form.",
+            "Vieta's formulas relate roots to coefficients: sum of roots $x_1 + x_2 = -\\frac{b}{a}$ and product $x_1 \\cdot x_2 = \\frac{c}{a}$, providing verification without solving.",
+            "The graph of $y = ax^2 + bx + c$ is a parabola opening upward when $a > 0$ and downward when $a < 0$, with vertex at $x = -\\frac{b}{2a}$.",
+            "Roots represent x-intercepts where the parabola crosses the x-axis; the discriminant tells how many real intercepts exist.",
+            "Quadratic equations appear in projectile motion, optimization, circuit resonance, beam deflection, and any scenario involving squared relationships.",
+            "The vertex form $y = a(x-h)^2 + k$ immediately reveals the vertex $(h,k)$ and is obtained by completing the square.",
+            "Solutions must be interpreted in physical context—negative roots may be meaningful or may need rejection depending on the problem."
+        ],
+        "important_formulas": [
+            "$ax^2 + bx + c = 0 \\quad (a \\neq 0)$ — Standard form",
+            "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$ — Quadratic formula",
+            "$\\Delta = b^2 - 4ac$ — Discriminant",
+            "$x_1 + x_2 = -\\frac{b}{a}$ — Sum of roots (Vieta)",
+            "$x_1 \\cdot x_2 = \\frac{c}{a}$ — Product of roots (Vieta)",
+            "$x = -\\frac{b}{2a}$ — Vertex x-coordinate (axis of symmetry)",
+            "$y = a(x - h)^2 + k$ — Vertex form"
+        ],
+        "common_exam_traps": [
+            "Forgetting to rearrange to standard form before identifying coefficients $a$, $b$, $c$ leads to incorrect formula application.",
+            "Sign errors in discriminant calculation, especially when $b$ is negative: remember $(-b)^2$ is positive.",
+            "Computing only one root by forgetting the $\\pm$ in the quadratic formula—always evaluate both cases.",
+            "Dividing only part of the numerator by $2a$ instead of the entire expression $-b \\pm \\sqrt{\\Delta}$.",
+            "Missing that $b = 0$ when the linear term is absent, or that $c = 0$ when the constant is missing."
+        ],
+        "exam_tip": "Always check the discriminant first to understand root nature, use Vieta's formulas to verify your solutions, and select the most efficient solution method based on whether the equation factors easily."
+    }
+}

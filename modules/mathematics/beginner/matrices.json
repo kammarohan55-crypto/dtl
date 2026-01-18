@@ -1,0 +1,342 @@
+{
+    "module_header": {
+        "module_title": "Matrices",
+        "subject": "Mathematics",
+        "level": "Beginner",
+        "prerequisites": [
+            "Basic arithmetic operations",
+            "Understanding of ordered arrangements and arrays",
+            "Linear equations and systems of equations",
+            "Algebraic manipulation skills"
+        ],
+        "learning_outcomes": [
+            "Define matrices and identify their order, types, and elements",
+            "Perform matrix operations including addition, subtraction, scalar multiplication, and matrix multiplication",
+            "Understand and apply the properties of matrix operations",
+            "Calculate the transpose of a matrix and understand its properties",
+            "Identify special matrices such as identity, null, diagonal, symmetric, and skew-symmetric matrices",
+            "Apply matrix concepts to represent and solve systems of linear equations and engineering problems"
+        ]
+    },
+    "definition": "A matrix is a rectangular array of numbers, symbols, or expressions arranged in rows and columns. A matrix of order $m \\times n$ has $m$ rows and $n$ columns, with each element denoted as $a_{ij}$ where $i$ represents the row number and $j$ represents the column number. Matrices are denoted by capital letters such as $A$, $B$, or $C$.",
+    "concept_overview": [
+        "Matrices are classified by their order (dimensions): a matrix with $m$ rows and $n$ columns has order $m \\times n$, with square matrices having $m = n$.",
+        "Matrix operations include addition and subtraction (performed element-wise on matrices of the same order), scalar multiplication (multiplying every element by a constant), and matrix multiplication (following the row-column rule).",
+        "Matrix multiplication is not commutative ($AB \\neq BA$ in general) but is associative and distributive over addition.",
+        "The transpose of a matrix $A$, denoted $A^T$, is obtained by interchanging rows and columns, satisfying $(A^T)^T = A$ and $(AB)^T = B^T A^T$.",
+        "Special matrices include the identity matrix $I$ (diagonal elements are 1, others are 0), null matrix (all elements zero), diagonal matrix (non-zero elements only on the main diagonal), and symmetric matrices where $A = A^T$."
+    ],
+    "theory": [
+        "Matrices constitute one of the most powerful and versatile mathematical tools in engineering, providing a compact notation for representing systems of linear equations, transformations, and complex relationships between variables. Historically developed to solve systems of linear equations systematically, matrices have evolved into the fundamental language of linear algebra, which underpins virtually all modern engineering analysis. In the engineering curriculum, matrices appear in structural analysis (stiffness matrices), electrical networks (impedance matrices), control systems (state-space representations), computer graphics (transformation matrices), and numerical methods (finite element analysis). The study of matrices develops essential skills in systematic computation, pattern recognition, and the ability to translate physical systems into mathematical representations. Mastery of matrix algebra provides the foundation for eigenvalue analysis, singular value decomposition, least squares optimization, and computational linear algebra—all critical tools in advanced engineering applications.",
+        "The fundamental operations on matrices follow well-defined algebraic rules that extend scalar arithmetic to two-dimensional arrays. Matrix addition and subtraction require matrices of identical order, with the operation performed element-wise: if $C = A + B$, then $c_{ij} = a_{ij} + b_{ij}$ for all positions. Scalar multiplication multiplies every element by the constant: $kA$ has elements $ka_{ij}$. Matrix multiplication, however, is fundamentally different from element-wise operations. For matrices $A$ (of order $m \\times n$) and $B$ (of order $n \\times p$), the product $C = AB$ has order $m \\times p$ with elements $c_{ij} = \\sum_{k=1}^{n} a_{ik}b_{kj}$, representing the dot product of the $i$-th row of $A$ with the $j$-th column of $B$. This row-column multiplication rule requires the number of columns in $A$ to equal the number of rows in $B$ for the product to be defined. Critically, matrix multiplication is non-commutative: $AB \\neq BA$ in general, even when both products are defined. The transpose operation $A^T$ interchanges rows and columns, satisfying important properties including $(A + B)^T = A^T + B^T$, $(kA)^T = kA^T$, and the crucial reversal property $(AB)^T = B^T A^T$.",
+        "Mastery of matrix operations is critically important because matrices provide the computational framework for virtually all engineering analysis involving multiple variables and equations. In structural engineering, the stiffness method represents the entire structure as a single matrix equation $K\\mathbf{u} = \\mathbf{f}$, where displacement vector $\\mathbf{u}$ is solved from the stiffness matrix $K$ and force vector $\\mathbf{f}$. In electrical engineering, matrices represent circuit networks, with mesh analysis and nodal analysis formulated as matrix equations. Control system engineers use state-space representations $\\dot{\\mathbf{x}} = A\\mathbf{x} + B\\mathbf{u}$ where system dynamics are encoded in matrices $A$ and $B$. Computer graphics relies on transformation matrices for rotation, scaling, and projection operations. The non-commutativity of matrix multiplication has profound physical significance: rotating an object first about the x-axis then the y-axis produces a different final orientation than reversing the order, a reality captured precisely by matrix algebra. The identity matrix $I$ serves as the multiplicative identity ($AI = IA = A$), analogous to the number 1 in scalar arithmetic, and plays a central role in defining matrix inverses and solving linear systems. In examinations and engineering practice, proficiency in matrix operations demonstrates command over systematic computation and prepares students for advanced topics including determinants, eigenvalues, matrix decompositions, and numerical linear algebra."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$A = \\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1n} \\\\ a_{21} & a_{22} & \\cdots & a_{2n} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ a_{m1} & a_{m2} & \\cdots & a_{mn} \\end{bmatrix}$",
+            "explanation": "General representation of an $m \\times n$ matrix $A$ with elements $a_{ij}$ where $i$ is the row index (1 to $m$) and $j$ is the column index (1 to $n$)."
+        },
+        {
+            "formula": "$C = A + B \\implies c_{ij} = a_{ij} + b_{ij}$",
+            "explanation": "Matrix addition: matrices of the same order are added element-wise. Defined only when $A$ and $B$ have identical dimensions."
+        },
+        {
+            "formula": "$C = kA \\implies c_{ij} = k \\cdot a_{ij}$",
+            "explanation": "Scalar multiplication: every element of matrix $A$ is multiplied by scalar $k$."
+        },
+        {
+            "formula": "$C = AB \\implies c_{ij} = \\sum_{k=1}^{n} a_{ik}b_{kj}$",
+            "explanation": "Matrix multiplication: element $c_{ij}$ is the dot product of the $i$-th row of $A$ and the $j$-th column of $B$. Requires the number of columns in $A$ to equal the number of rows in $B$."
+        },
+        {
+            "formula": "$A^T \\implies (A^T)_{ij} = a_{ji}$",
+            "explanation": "Transpose of matrix $A$: rows and columns are interchanged. If $A$ is $m \\times n$, then $A^T$ is $n \\times m$."
+        },
+        {
+            "formula": "$(AB)^T = B^T A^T$",
+            "explanation": "Transpose of a product: the transpose of a matrix product equals the product of transposes in reverse order."
+        },
+        {
+            "formula": "$I_n = \\begin{bmatrix} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\cdots & 1 \\end{bmatrix}$",
+            "explanation": "Identity matrix of order $n$: a square matrix with 1's on the main diagonal and 0's elsewhere, satisfying $AI = IA = A$ for any $n \\times n$ matrix $A$."
+        },
+        {
+            "formula": "$A = A^T$ (Symmetric matrix)",
+            "explanation": "A square matrix is symmetric if it equals its transpose, meaning $a_{ij} = a_{ji}$ for all $i, j$."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Given $A = \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}$ and $B = \\begin{bmatrix} 5 & 2 \\\\ -1 & 6 \\end{bmatrix}$, find $A + B$ and $2A$.",
+            "solution_steps": [
+                "**Part 1: Find $A + B$**",
+                "**Step 1**: Verify both matrices have the same order: Both are $2 \\times 2$ ✓",
+                "**Step 2**: Add corresponding elements:",
+                "$A + B = \\begin{bmatrix} 2+5 & -1+2 \\\\ 3+(-1) & 4+6 \\end{bmatrix}$",
+                "$= \\begin{bmatrix} 7 & 1 \\\\ 2 & 10 \\end{bmatrix}$",
+                "",
+                "**Part 2: Find $2A$**",
+                "**Step 1**: Multiply each element of $A$ by 2:",
+                "$2A = \\begin{bmatrix} 2(2) & 2(-1) \\\\ 2(3) & 2(4) \\end{bmatrix}$",
+                "$= \\begin{bmatrix} 4 & -2 \\\\ 6 & 8 \\end{bmatrix}$"
+            ],
+            "final_answer": "$A + B = \\begin{bmatrix} 7 & 1 \\\\ 2 & 10 \\end{bmatrix}$, $2A = \\begin{bmatrix} 4 & -2 \\\\ 6 & 8 \\end{bmatrix}$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Compute the matrix product $AB$ where $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$ and $B = \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}$.",
+            "solution_steps": [
+                "**Step 1**: Verify compatibility: $A$ is $2 \\times 2$, $B$ is $2 \\times 2$. Number of columns in $A$ (2) equals number of rows in $B$ (2) ✓",
+                "**Step 2**: The product $AB$ will be $2 \\times 2$",
+                "**Step 3**: Calculate element $(1,1)$ (row 1 of $A$ · column 1 of $B$):",
+                "$c_{11} = 1(5) + 2(7) = 5 + 14 = 19$",
+                "**Step 4**: Calculate element $(1,2)$ (row 1 of $A$ · column 2 of $B$):",
+                "$c_{12} = 1(6) + 2(8) = 6 + 16 = 22$",
+                "**Step 5**: Calculate element $(2,1)$ (row 2 of $A$ · column 1 of $B$):",
+                "$c_{21} = 3(5) + 4(7) = 15 + 28 = 43$",
+                "**Step 6**: Calculate element $(2,2)$ (row 2 of $A$ · column 2 of $B$):",
+                "$c_{22} = 3(6) + 4(8) = 18 + 32 = 50$",
+                "**Step 7**: Write the result:",
+                "$AB = \\begin{bmatrix} 19 & 22 \\\\ 43 & 50 \\end{bmatrix}$"
+            ],
+            "final_answer": "$AB = \\begin{bmatrix} 19 & 22 \\\\ 43 & 50 \\end{bmatrix}$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Find the transpose of $A = \\begin{bmatrix} 1 & 4 & 7 \\\\ 2 & 5 & 8 \\\\ 3 & 6 & 9 \\end{bmatrix}$ and verify that $(A^T)^T = A$.",
+            "solution_steps": [
+                "**Step 1**: Identify the order of $A$: $3 \\times 3$",
+                "**Step 2**: Interchange rows and columns to find $A^T$:",
+                "Row 1 of $A$ becomes column 1 of $A^T$: $[1, 4, 7]^T$",
+                "Row 2 of $A$ becomes column 2 of $A^T$: $[2, 5, 8]^T$",
+                "Row 3 of $A$ becomes column 3 of $A^T$: $[3, 6, 9]^T$",
+                "**Step 3**: Write $A^T$:",
+                "$A^T = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{bmatrix}$",
+                "**Step 4**: Verify $(A^T)^T = A$ by transposing $A^T$:",
+                "$(A^T)^T = \\begin{bmatrix} 1 & 4 & 7 \\\\ 2 & 5 & 8 \\\\ 3 & 6 & 9 \\end{bmatrix} = A$ ✓"
+            ],
+            "final_answer": "$A^T = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{bmatrix}$; Verified: $(A^T)^T = A$"
+        }
+    ],
+    "logical_derivation": "To derive the transpose reversal property $(AB)^T = B^T A^T$, consider the element in position $(i,j)$ of $(AB)^T$. By definition of transpose, this element equals the $(j,i)$ element of $AB$. By the matrix multiplication rule, $(AB)_{ji} = \\sum_{k=1}^{n} a_{jk}b_{ki}$. Now consider the element in position $(i,j)$ of $B^T A^T$. By matrix multiplication, $(B^T A^T)_{ij} = \\sum_{k=1}^{n} (B^T)_{ik}(A^T)_{kj}$. By the transpose definition, $(B^T)_{ik} = b_{ki}$ and $(A^T)_{kj} = a_{jk}$. Substituting: $(B^T A^T)_{ij} = \\sum_{k=1}^{n} b_{ki} a_{jk} = \\sum_{k=1}^{n} a_{jk} b_{ki}$. This matches $(AB)_{ji}$, proving that $((AB)^T)_{ij} = (B^T A^T)_{ij}$ for all $i, j$. Therefore $(AB)^T = B^T A^T$. This reversal property extends to products of multiple matrices: $(ABC)^T = C^T B^T A^T$, and is fundamental in deriving properties of symmetric matrices and in applications involving least squares optimization.",
+    "applications": [
+        "**Structural Analysis**: Representing stiffness matrices in finite element analysis where $K\\mathbf{u} = \\mathbf{f}$ relates displacements to applied forces.",
+        "**Electrical Networks**: Formulating mesh and nodal analysis equations in circuit theory using impedance and admittance matrices.",
+        "**Computer Graphics**: Applying transformation matrices for rotation, scaling, translation, and projection in 2D and 3D graphics.",
+        "**Control Systems**: Representing state-space models $\\dot{\\mathbf{x}} = A\\mathbf{x} + B\\mathbf{u}$ where system dynamics are encoded in matrices.",
+        "**Data Analysis**: Organizing datasets where rows represent observations and columns represent variables, enabling statistical computations.",
+        "**Quantum Mechanics**: Representing operators and state vectors in quantum systems using matrix formalism.",
+        "**Optimization**: Formulating linear programming problems and least squares regression using matrix notation."
+    ],
+    "key_takeaways": [
+        "Matrices are ordered rectangular arrays with a defined order $m \\times n$ (rows × columns), providing compact representation of systems of equations.",
+        "Matrix addition and subtraction require identical dimensions and are performed element-wise.",
+        "Matrix multiplication follows the row-column rule: element $c_{ij} = \\sum_{k} a_{ik}b_{kj}$, requiring the number of columns in the first matrix to equal the number of rows in the second.",
+        "Matrix multiplication is NOT commutative ($AB \\neq BA$ generally) but IS associative $(AB)C = A(BC)$ and distributive $A(B+C) = AB + AC$.",
+        "The transpose $A^T$ interchanges rows and columns, satisfying $(A^T)^T = A$ and $(AB)^T = B^T A^T$.",
+        "The identity matrix $I$ satisfies $AI = IA = A$ and serves as the multiplicative identity in matrix algebra.",
+        "Special matrices (diagonal, symmetric, skew-symmetric) have unique properties that simplify computations and appear frequently in applications."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Attempting to add or subtract matrices of different orders",
+            "why_it_occurs": "Students forget that matrix addition/subtraction requires identical dimensions.",
+            "how_to_avoid": "Always verify that both matrices have the same number of rows and same number of columns before attempting addition or subtraction."
+        },
+        {
+            "mistake": "Performing element-wise multiplication instead of matrix multiplication",
+            "why_it_occurs": "Students confuse matrix multiplication with the simpler element-wise multiplication, computing $c_{ij} = a_{ij} \\times b_{ij}$ incorrectly.",
+            "how_to_avoid": "Remember that matrix multiplication uses the row-column dot product rule: $c_{ij} = \\sum_{k} a_{ik}b_{kj}$. Each element requires summing products across a full row and column."
+        },
+        {
+            "mistake": "Assuming matrix multiplication is commutative ($AB = BA$)",
+            "why_it_occurs": "Students apply scalar arithmetic rules to matrices, expecting commutativity.",
+            "how_to_avoid": "Always remember that $AB \\neq BA$ in general. Even when both products exist and have the same dimensions, they typically differ. Test with a simple example to verify."
+        },
+        {
+            "mistake": "Incorrectly determining the order of a matrix product",
+            "why_it_occurs": "Students forget that if $A$ is $m \\times n$ and $B$ is $n \\times p$, then $AB$ is $m \\times p$.",
+            "how_to_avoid": "Use the rule: $(m \\times n)(n \\times p) = (m \\times p)$. The inner dimensions must match (enabling multiplication), and the outer dimensions give the result's order."
+        },
+        {
+            "mistake": "Errors in the transpose reversal property",
+            "why_it_occurs": "Students write $(AB)^T = A^T B^T$ instead of the correct $(AB)^T = B^T A^T$, forgetting the order reversal.",
+            "how_to_avoid": "Remember the transpose property reverses the order: $(AB)^T = B^T A^T$. Verify with a simple $2 \\times 2$ example if uncertain."
+        },
+        {
+            "mistake": "Confusing row and column indices when writing matrix elements",
+            "why_it_occurs": "Students write $a_{ji}$ when they mean $a_{ij}$, mixing up which subscript represents rows versus columns.",
+            "how_to_avoid": "Always remember: first subscript = row, second subscript = column. $a_{ij}$ means row $i$, column $j$. Use 'RC' (Row-Column) as a mnemonic."
+        },
+        {
+            "mistake": "Forgetting to check multiplication compatibility",
+            "why_it_occurs": "Students attempt to multiply matrices where the number of columns in the first doesn't equal the number of rows in the second.",
+            "how_to_avoid": "Before multiplying, verify: columns of first matrix = rows of second matrix. If $A$ is $m \\times n$ and $B$ is $p \\times q$, product $AB$ exists only if $n = p$."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is the order of the matrix $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}$?",
+            "options": [
+                "$2 \\times 3$",
+                "$3 \\times 2$",
+                "$2 \\times 2$",
+                "$3 \\times 3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "The matrix has 2 rows and 3 columns, so its order is $2 \\times 3$ (rows × columns)."
+        },
+        {
+            "question": "If $A = \\begin{bmatrix} 3 & -1 \\\\ 2 & 4 \\end{bmatrix}$ and $B = \\begin{bmatrix} 1 & 2 \\\\ -3 & 5 \\end{bmatrix}$, what is $A - B$?",
+            "options": [
+                "$\\begin{bmatrix} 2 & -3 \\\\ 5 & -1 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 4 & 1 \\\\ -1 & 9 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 2 & 3 \\\\ -1 & 1 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 3 & -2 \\\\ 5 & 4 \\end{bmatrix}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Subtract element-wise: $a_{11} - b_{11} = 3 - 1 = 2$; $a_{12} - b_{12} = -1 - 2 = -3$; $a_{21} - b_{21} = 2 - (-3) = 5$; $a_{22} - b_{22} = 4 - 5 = -1$."
+        },
+        {
+            "question": "What is the result of $3\\begin{bmatrix} 2 & -1 \\\\ 0 & 4 \\end{bmatrix}$?",
+            "options": [
+                "$\\begin{bmatrix} 6 & -3 \\\\ 0 & 12 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 5 & 2 \\\\ 3 & 7 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 6 & 3 \\\\ 0 & 12 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 2 & -1 \\\\ 0 & 4 \\end{bmatrix}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Scalar multiplication: multiply each element by 3: $3(2)=6$, $3(-1)=-3$, $3(0)=0$, $3(4)=12$."
+        },
+        {
+            "question": "If $A$ is a $3 \\times 4$ matrix and $B$ is a $4 \\times 2$ matrix, what is the order of $AB$?",
+            "options": [
+                "$3 \\times 2$",
+                "$4 \\times 4$",
+                "$3 \\times 4$",
+                "The product is not defined"
+            ],
+            "correct_answer": 0,
+            "explanation": "Using the rule $(m \\times n)(n \\times p) = (m \\times p)$: $(3 \\times 4)(4 \\times 2) = (3 \\times 2)$. The product has 3 rows and 2 columns."
+        },
+        {
+            "question": "Compute $\\begin{bmatrix} 1 & 2 \\end{bmatrix} \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix}$:",
+            "options": [
+                "$11$",
+                "$\\begin{bmatrix} 3 & 6 \\\\ 4 & 8 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 11 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 3 \\\\ 8 \\end{bmatrix}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "This is a $1 \\times 2$ matrix times a $2 \\times 1$ matrix, giving a $1 \\times 1$ matrix (scalar): $1(3) + 2(4) = 3 + 8 = 11$."
+        },
+        {
+            "question": "What is the transpose of $A = \\begin{bmatrix} 1 & 3 & 5 \\\\ 2 & 4 & 6 \\end{bmatrix}$?",
+            "options": [
+                "$\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\\\ 5 & 6 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 6 & 4 & 2 \\\\ 5 & 3 & 1 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 1 & 3 & 5 \\\\ 2 & 4 & 6 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 2 & 1 \\\\ 4 & 3 \\\\ 6 & 5 \\end{bmatrix}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Transpose interchanges rows and columns: row 1 $[1, 3, 5]$ becomes column 1; row 2 $[2, 4, 6]$ becomes column 2."
+        },
+        {
+            "question": "Which matrix is the $2 \\times 2$ identity matrix?",
+            "options": [
+                "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "The identity matrix has 1's on the main diagonal and 0's elsewhere, satisfying $AI = IA = A$ for any compatible matrix $A$."
+        },
+        {
+            "question": "If $A^T = A$, the matrix $A$ is called:",
+            "options": [
+                "Symmetric",
+                "Skew-symmetric",
+                "Diagonal",
+                "Identity"
+            ],
+            "correct_answer": 0,
+            "explanation": "A matrix equal to its transpose ($A = A^T$) is symmetric, meaning $a_{ij} = a_{ji}$ for all elements."
+        },
+        {
+            "question": "Compute $\\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix} \\begin{bmatrix} 1 & 4 \\\\ 5 & 2 \\end{bmatrix}$:",
+            "options": [
+                "$\\begin{bmatrix} 2 & 8 \\\\ 15 & 6 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 2 & 4 \\\\ 5 & 6 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 2 & 0 \\\\ 0 & 6 \\end{bmatrix}$",
+                "$\\begin{bmatrix} 1 & 4 \\\\ 5 & 2 \\end{bmatrix}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Element $(1,1)$: $2(1) + 0(5) = 2$; $(1,2)$: $2(4) + 0(2) = 8$; $(2,1)$: $0(1) + 3(5) = 15$; $(2,2)$: $0(4) + 3(2) = 6$."
+        },
+        {
+            "question": "For the product $BA$ to exist when $A$ is $m \\times n$, matrix $B$ must be:",
+            "options": [
+                "$p \\times m$ for any positive integer $p$",
+                "$n \\times p$ for any positive integer $p$",
+                "$m \\times n$",
+                "$n \\times m$"
+            ],
+            "correct_answer": 0,
+            "explanation": "For $BA$ to be defined, the number of columns in $B$ must equal the number of rows in $A$. Since $A$ is $m \\times n$, $B$ must be $p \\times m$ for some $p$."
+        },
+        {
+            "question": "What is $(AB)^T$ equal to?",
+            "options": [
+                "$B^T A^T$",
+                "$A^T B^T$",
+                "$AB$",
+                "$(BA)^T$"
+            ],
+            "correct_answer": 0,
+            "explanation": "The transpose of a product reverses the order: $(AB)^T = B^T A^T$. This is a fundamental property used throughout matrix algebra."
+        },
+        {
+            "question": "A null matrix (zero matrix) has:",
+            "options": [
+                "All elements equal to zero",
+                "Diagonal elements equal to one",
+                "All elements equal to one",
+                "Negative of the original matrix"
+            ],
+            "correct_answer": 0,
+            "explanation": "A null or zero matrix has all elements equal to zero. Adding a null matrix to any matrix $A$ gives $A + O = A$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Matrices are rectangular arrays of numbers with defined order $m \\times n$ (rows × columns), providing compact representation for systems of equations and transformations.",
+            "Matrix addition and subtraction require identical dimensions and operate element-wise: $c_{ij} = a_{ij} \\pm b_{ij}$.",
+            "Scalar multiplication multiplies every element by the constant: $(kA)_{ij} = k \\cdot a_{ij}$.",
+            "Matrix multiplication follows the row-column dot product rule: $c_{ij} = \\sum_{k} a_{ik}b_{kj}$, requiring columns of first matrix to equal rows of second.",
+            "Matrix multiplication is NOT commutative ($AB \\neq BA$) but IS associative and distributive.",
+            "For $A$ ($m \\times n$) and $B$ ($n \\times p$), the product $AB$ has order $m \\times p$.",
+            "The transpose $A^T$ interchanges rows and columns: $(A^T)_{ij} = a_{ji}$, satisfying $(A^T)^T = A$.",
+            "The transpose reversal property $(AB)^T = B^T A^T$ is fundamental in matrix algebra.",
+            "The identity matrix $I$ has 1's on diagonal and 0's elsewhere, satisfying $AI = IA = A$.",
+            "Symmetric matrices satisfy $A = A^T$, meaning $a_{ij} = a_{ji}$ for all elements."
+        ],
+        "important_formulas": [
+            "$C = A + B \\implies c_{ij} = a_{ij} + b_{ij}$ — Element-wise addition",
+            "$C = kA \\implies c_{ij} = k \\cdot a_{ij}$ — Scalar multiplication",
+            "$C = AB \\implies c_{ij} = \\sum_{k=1}^{n} a_{ik}b_{kj}$ — Matrix multiplication",
+            "$A^T \\implies (A^T)_{ij} = a_{ji}$ — Transpose",
+            "$(AB)^T = B^T A^T$ — Transpose reversal property",
+            "$(m \\times n)(n \\times p) = (m \\times p)$ — Product order rule"
+        ],
+        "common_exam_traps": [
+            "Attempting addition/subtraction on matrices with different dimensions—both must have identical order.",
+            "Confusing matrix multiplication with element-wise multiplication—use row-column dot product, not $a_{ij} \\times b_{ij}$.",
+            "Assuming $AB = BA$ (commutativity)—matrix multiplication is generally non-commutative.",
+            "Forgetting the order reversal in transpose property: $(AB)^T = B^T A^T$, not $A^T B^T$.",
+            "Misidentifying product order: if $A$ is $m \\times n$ and $B$ is $n \\times p$, then $AB$ is $m \\times p$, not $n \\times n$."
+        ],
+        "exam_tip": "Always verify dimensional compatibility before operations (same order for addition, inner dimensions matching for multiplication), remember matrix multiplication is non-commutative, and use the transpose reversal property $(AB)^T = B^T A^T$ carefully."
+    }
+}

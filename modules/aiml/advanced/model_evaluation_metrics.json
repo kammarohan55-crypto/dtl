@@ -1,0 +1,468 @@
+{
+    "module_header": {
+        "module_title": "Model Evaluation Metrics",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Advanced",
+        "prerequisites": [
+            "Supervised Learning",
+            "Classification Concepts",
+            "Linear Regression (Conceptual)",
+            "Basic statistics and probability"
+        ],
+        "learning_outcomes": [
+            "Understand how to evaluate classification models using accuracy, precision, recall, F1-score, and confusion matrix",
+            "Apply regression evaluation metrics including MAE, MSE, RMSE, and R²",
+            "Interpret ROC curves and calculate AUC for binary classification",
+            "Understand when to use each metric based on problem context and class imbalance",
+            "Apply cross-validation techniques for robust model evaluation",
+            "Recognize the trade-offs between different evaluation metrics",
+            "Identify common pitfalls in model evaluation and how to avoid them"
+        ]
+    },
+    "definition": "Model Evaluation Metrics quantify machine learning model performance. **Classification metrics** assess categorical predictions: (1) **Accuracy**—fraction of correct predictions (all classes), (2) **Precision**—fraction of positive predictions that are correct (TP/(TP+FP)), (3) **Recall (Sensitivity)**—fraction of actual positives correctly identified (TP/(TP+FN)), (4) **F1-Score**—harmonic mean of precision and recall (2·P·R/(P+R)), (5) **Confusion Matrix**—table showing TP, TN, FP, FN counts, (6) **ROC-AUC**—area under receiver operating characteristic curve (TPR vs FPR trade-off). **Regression metrics** evaluate continuous predictions: (1) **MAE (Mean Absolute Error)**—average absolute difference |y−ŷ|, (2) **MSE (Mean Squared Error)**—average squared difference (y−ŷ)², (3) **RMSE (Root Mean Squared Error)**—√MSE (same units as target), (4) **R² (Coefficient of Determination)**—proportion of variance explained (0–1, higher better). Metric selection depends on problem context: accuracy misleading with class imbalance (use F1/AUC), MSE penalizes large errors heavily (use MAE for robustness). **Cross-validation** provides robust evaluation by averaging across multiple train/test splits (k-fold CV). Proper evaluation prevents overfitting, enables model comparison, and guides hyperparameter tuning.",
+    "concept_overview": [
+        "Classification metrics: Accuracy (overall correctness), Precision (positive prediction accuracy), Recall (positive detection rate), F1 (precision-recall balance).",
+        "Confusion Matrix: 2×2 table for binary classification—rows: actual, columns: predicted. TP, TN, FP, FN counts.",
+        "Precision vs Recall trade-off: High precision→fewer false positives (spam filter). High recall→fewer false negatives (disease detection).",
+        "F1-Score: Harmonic mean balances precision and recall. Use when both matter equally. Better than accuracy for imbalanced data.",
+        "ROC-AUC: ROC curve plots TPR vs FPR at various thresholds. AUC=0.5 (random), AUC=1.0 (perfect). Threshold-independent metric.",
+        "Regression metrics: MAE (robust to outliers), MSE (penalizes large errors), RMSE (interpretable units), R² (variance explained).",
+        "Cross-validation: Split data into k folds, train on k-1, test on 1, repeat k times. Average performance. Reduces overfitting risk."
+    ],
+    "theory": [
+        "Model evaluation is fundamental to machine learning—without proper metrics, we cannot assess model quality, compare algorithms, or tune hyperparameters. The choice of evaluation metric depends critically on the problem domain and business objectives. **Classification problems** predict discrete categories and require different metrics than **regression problems** which predict continuous values. Understanding when each metric is appropriate prevents misleading conclusions. For example, consider a fraud detection system where 99% of transactions are legitimate. A naive model predicting 'legitimate' for every transaction achieves 99% accuracy but is useless—it catches zero fraud! This illustrates why **accuracy alone is insufficient** for imbalanced datasets. We need metrics that account for class distribution and reflect the costs of different error types. Fraud detection prioritizes **recall** (catch all fraud, even with false alarms) while spam filters prioritize **precision** (don't mark legitimate emails as spam). The **confusion matrix** visualizes these trade-offs, showing True Positives (correctly identified fraud), False Positives (false alarms), True Negatives (correctly identified legitimate), and False Negatives (missed fraud). From this matrix, we derive precision, recall, F1-score, and other metrics. **Cross-validation** addresses another critical concern: ensuring our evaluation generalizes to unseen data. Training and testing on the same data guarantees overfitting—the model memorizes rather than learns. Proper train/test splits or k-fold cross-validation provide honest performance estimates.",
+        "**Classification Metrics** in depth: The **Confusion Matrix** for binary classification has 4 quadrants. Rows represent actual class, columns represent predicted class. **True Positive (TP)**: Predicted positive, actually positive (correct). **True Negative (TN)**: Predicted negative, actually negative (correct). **False Positive (FP)**: Predicted positive, actually negative (Type I error). **False Negative (FN)**: Predicted negative, actually positive (Type II error). From these: **Accuracy** = (TP+TN)/(TP+TN+FP+FN)—overall fraction correct. Problem: Misleading with class imbalance. 99% negative class→predicting all negative gives 99% accuracy but misses all positives. **Precision** = TP/(TP+FP)—of all positive predictions, what fraction are correct? High precision→few false alarms. Critical when false positives are costly (e.g., spam filter marking important email as spam). **Recall (Sensitivity, True Positive Rate)** = TP/(TP+FN)—of all actual positives, what fraction did we catch? High recall→few missed positives. Critical when false negatives are costly (e.g., cancer screening missing actual cancer). **Precision-Recall Trade-off**: Adjusting classification threshold changes both. Lower threshold→more positive predictions→higher recall but lower precision (more false alarms). Higher threshold→fewer positive predictions→higher precision but lower recall (more misses). **F1-Score** = 2·(Precision·Recall)/(Precision+Recall)—harmonic mean balances both. Use when precision and recall are equally important. Better than accuracy for imbalanced data. **Specificity (True Negative Rate)** = TN/(TN+FP)—of actual negatives, fraction correctly identified. **ROC Curve (Receiver Operating Characteristic)**: Plots TPR (Recall) vs FPR (1-Specificity) at different thresholds. Visualizes threshold trade-offs. **AUC (Area Under Curve)**: Scalar metric from ROC. AUC=1.0 perfect, AUC=0.5 random, AUC<0.5 worse than random. Threshold-independent (unlike F1). Use for comparing models. Multi-class classification: Extend to one-vs-rest (micro/macro averaging) or use multi-class confusion matrix.",
+        "**Regression Metrics** in depth: Regression predicts continuous values—price, temperature, stock value. Errors are continuous, not binary correct/incorrect. **Mean Absolute Error (MAE)** = (1/n)Σ|yᵢ−ŷᵢ|—average absolute difference. Intuitive: average prediction error. Robust to outliers (linear penalty). Same units as target variable. **Mean Squared Error (MSE)** = (1/n)Σ(yᵢ−ŷᵢ)²—average squared difference. Penalizes large errors heavily (quadratic). Sensitive to outliers. Differentiable (used in gradient descent). Units are squared (hard to interpret). **Root Mean Squared Error (RMSE)** = √MSE—brings MSE back to original units. More interpretable than MSE. Still penalizes large errors. Common in competitions. ** (Coefficient of Determination)** = 1 − (SS_res/SS_tot) where SS_res=Σ(yᵢ−ŷᵢ)² (residual sum of squares) and SS_tot=Σ(yᵢ−ȳ)² (total sum of squares). Interpretation: fraction of variance explained by model. R²=1 perfect fit, R²=0 model no better than mean baseline, R²<0 worse than mean. Independent of scale (unlike MAE/RMSE). Can be misleading with non-linear relationships. **Adjusted R²**: Penalizes model complexity, accounts for number of features. MAE vs MSE choice: MAE robust to outliers (e.g., housing prices with rare mansions), MSE penalizes large errors (important if big mistakes costly). Both decrease with better fit. RMSE popular for interpretability (same units, penalizes large errors). R² useful for comparing models on same dataset. **Mean Absolute Percentage Error (MAPE)**: (1/n)Σ|(yᵢ−ŷᵢ)/yᵢ|·100—percentage error. Problem: undefined if yᵢ=0, biased toward underprediction. Best practices: Always use multiple metrics (different aspects of performance), visualize predictions vs actuals (scatter plot), check residuals (should be random, normally distributed, constant variance).",
+        "**Cross-Validation and Best Practices**: Simply splitting data into train (70%) and test (30%) has problems: (1) Single split may be lucky/unlucky (performance varies), (2) Wastes training data (30% unused for training). **K-Fold Cross-Validation** addresses this: Split data into k equal folds (typically k=5 or 10), repeat k times: train on k−1 folds, test on remaining fold, average performance across k runs. Advantages: Every data point used for both training and testing, robust estimate (averaged), efficient data usage. **Stratified K-Fold**: Maintains class proportions in each fold (essential for imbalanced data). **Leave-One-Out (LOO)**: k=n (each fold is single example). Maximum data usage but computationally expensive. Use only for small datasets. **Time Series Cross-Validation**: For temporal data, respect time order—train on past, test on future (no future data in training). Rolling window or expanding window strategies. **Validation Set**: Train/Validation/Test split (60/20/20). Train on training set, tune hyperparameters on validation set, final evaluation on test set (touched once!). Prevents test set leakage from repeated hyperparameter tuning. **Common Pitfalls**: (1) **Data leakage**: Test information leaking into training (e.g., scaling before split→statistics computed on test data). Always split first, then preprocess. (2) **Evaluation metric mismatch**: Optimizing accuracy when recall matters→model optimizes wrong objective. Match metric to business goal. (3) **Class imbalance**: Accuracy misleading→use F1, precision-recall, AUC. (4) **Test set reuse**: Tuning on test set→overfitting to test set. Use validation set for tuning. (5) **Small test sets**: High variance in estimates. Use cross-validation or larger test sets. Practical workflow: Split data→train on train set→tune hyperparameters via cross-validation on train set→final test set evaluation once→report test set performance. In exams, demonstrating understanding of metric trade-offs (precision vs recall), appropriate metric selection for scenarios (imbalanced data→F1, regression→RMSE+R²), and cross-validation purpose (generalization, overfitting prevention) shows advanced evaluation competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Accuracy = $\\frac{TP + TN}{TP + TN + FP + FN}$",
+            "explanation": "Fraction of all predictions that are correct. Misleading with imbalanced classes."
+        },
+        {
+            "formula": "Precision = $\\frac{TP}{TP + FP}$",
+            "explanation": "Of positive predictions, fraction correct. High precision→few false alarms."
+        },
+        {
+            "formula": "Recall (Sensitivity) = $\\frac{TP}{TP + FN}$",
+            "explanation": "Of actual positives, fraction detected. High recall→few misses."
+        },
+        {
+            "formula": "F1-Score = $2 \\cdot \\frac{Precision \\cdot Recall}{Precision + Recall}$",
+            "explanation": "Harmonic mean balances precision and recall. Use for imbalanced data."
+        },
+        {
+            "formula": "MSE = $\\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2$",
+            "explanation": "Mean Squared Error. Penalizes large errors heavily (quadratic)."
+        },
+        {
+            "formula": "RMSE = $\\sqrt{MSE} = \\sqrt{\\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2}$",
+            "explanation": "Root Mean Squared Error. Same units as target, interpretable."
+        },
+        {
+            "formula": "R² = $1 - \\frac{\\sum (y_i - \\hat{y}_i)^2}{\\sum (y_i - \\bar{y})^2}$",
+            "explanation": "Coefficient of Determination. Fraction of variance explained [0,1]."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Given a confusion matrix for binary classification, calculate accuracy, precision, recall, and F1-score.",
+            "solution_steps": [
+                "**Problem:** Medical test for disease. Confusion matrix:",
+                "",
+                "|                | Predicted Positive | Predicted Negative |",
+                "|----------------|--------------------|--------------------|",
+                "| Actual Positive| 90 (TP)            | 10 (FN)            |",
+                "| Actual Negative| 30 (FP)            | 870 (TN)           |",
+                "",
+                "**Calculate metrics:**",
+                "",
+                "**Total samples:** TP+TN+FP+FN = 90+870+30+10 = 1000",
+                "",
+                "**Accuracy:**",
+                "Accuracy = (TP+TN)/(TP+TN+FP+FN)",
+                "= (90+870)/1000",
+                "= 960/1000 = **0.96 or 96%**",
+                "",
+                "**Precision:**",
+                "Precision = TP/(TP+FP)",
+                "= 90/(90+30)",
+                "= 90/120 = **0.75 or 75%**",
+                "",
+                "Interpretation: Of all positive predictions (120), 75% are correct.",
+                "",
+                "**Recall (Sensitivity):**",
+                "Recall = TP/(TP+FN)",
+                "= 90/(90+10)",
+                "= 90/100 = **0.90 or 90%**",
+                "",
+                "Interpretation: Of all actual disease cases (100), we detect 90%.",
+                "",
+                "**F1-Score:**",
+                "F1 = 2·(Precision·Recall)/(Precision+Recall)",
+                "= 2·(0.75·0.90)/(0.75+0.90)",
+                "= 2·0.675/1.65",
+                "= 1.35/1.65 ≈ **0.818 or 81.8%**",
+                "",
+                "**Analysis:**",
+                "- High accuracy (96%) but this includes 870 true negatives (87% of data)",
+                "- Precision moderate (75%)—30 false alarms",
+                "- Recall high (90%)—only 10 missed cases",
+                "- For disease screening, high recall is critical (don't miss disease)",
+                "- F1-score (81.8%) balances both aspects"
+            ],
+            "final_answer": "Accuracy=96%, Precision=75%, Recall=90%, F1=81.8%. High recall is crucial for medical screening (minimize false negatives). Accuracy can be misleading if classes are imbalanced."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Compare two regression models using MAE, RMSE, and R². Which is better?",
+            "solution_steps": [
+                "**Problem:** Predict house prices. Three predictions vs actual:",
+                "",
+                "| House | Actual (y) | Model A (ŷ_A) | Model B (ŷ_B) |",
+                "|-------|------------|---------------|---------------|",
+                "| 1     | 250k       | 240k          | 255k          |",
+                "| 2     | 300k       | 310k          | 295k          |",
+                "| 3     | 400k       | 380k          | 420k          |",
+                "| 4     | 500k       | 520k          | 490k          |",
+                "| 5     | 600k       | 580k          | 650k          |",
+                "",
+                "**Mean actual:** ȳ = (250+300+400+500+600)/5 = 410k",
+                "",
+                "**Model A:**",
+                "",
+                "**Errors (y−ŷ):** +10, −10, +20, −20, +20",
+                "**Absolute errors:** 10, 10, 20, 20, 20",
+                "**Squared errors:** 100, 100, 400, 400, 400",
+                "",
+                "**MAE_A** = (10+10+20+20+20)/5 = 80/5 = **16k**",
+                "**MSE_A** = (100+100+400+400+400)/5 = 1400/5 = **280k²**",
+                "**RMSE_A** = √280 ≈ **16.73k**",
+                "",
+                "**SS_res_A** = 1400 (sum of squared errors)",
+                "**SS_tot** = (250−410)²+(300−410)²+(400−410)²+(500−410)²+(600−410)²",
+                "= 25600+12100+100+8100+36100 = 82000",
+                "**R²_A** = 1 − (1400/82000) = 1 − 0.0171 ≈ **0.983**",
+                "",
+                "**Model B:**",
+                "",
+                "**Errors:** −5, +5, −20, +10, −50",
+                "**Absolute errors:** 5, 5, 20, 10, 50",
+                "**Squared errors:** 25, 25, 400, 100, 2500",
+                "",
+                "**MAE_B** = (5+5+20+10+50)/5 = 90/5 = **18k**",
+                "**MSE_B** = (25+25+400+100+2500)/5 = 3050/5 = **610k²**",
+                "**RMSE_B** = √610 ≈ **24.70k**",
+                "",
+                "**SS_res_B** = 3050",
+                "**R²_B** = 1 − (3050/82000) = 1 − 0.0372 ≈ **0.963**",
+                "",
+                "**Comparison:**",
+                "",
+                "| Metric | Model A | Model B | Winner  |",
+                "|--------|---------|---------|---------|",
+                "| MAE    | 16k     | 18k     | Model A |",
+                "| RMSE   | 16.73k  | 24.70k  | Model A |",
+                "| R²     | 0.983   | 0.963   | Model A |",
+                "",
+                "**Analysis:**",
+                "- Model A better on all metrics",
+                "- Model B has one large error (−50k on house 5)",
+                "- RMSE penalizes this heavily (quadratic): MSE_B much higher",
+                "- MAE less affected (linear penalty)",
+                "- Both models explain >96% variance (high R²)",
+                "- For house pricing, large errors are problematic→RMSE important"
+            ],
+            "final_answer": "Model A is better: lower MAE (16k vs 18k), lower RMSE (16.73k vs 24.70k), higher R² (0.983 vs 0.963). Model B suffers from one large prediction error, heavily penalized by RMSE."
+        },
+        {
+            "difficulty": "Advanced",
+            "problem": "Explain why accuracy is misleading for imbalanced data and suggest better metrics.",
+            "solution_steps": [
+                "**Scenario:** Credit card fraud detection",
+                "- 10,000 transactions",
+                "- 9,950 legitimate (99.5%)",
+                "- 50 fraudulent (0.5%)",
+                "",
+                "**Model 1: Naive 'Always Legitimate'**",
+                "",
+                "Predicts every transaction as legitimate.",
+                "",
+                "Confusion Matrix:",
+                "- TP = 0 (no fraud detected)",
+                "- TN = 9950 (all legitimate correctly classified)",
+                "- FP = 0 (no false alarms)",
+                "- FN = 50 (all fraud missed)",
+                "",
+                "**Accuracy** = (0+9950)/10000 = **99.5%** ✓ Sounds great!",
+                "**Precision** = 0/(0+0) = undefined (no positive predictions)",
+                "**Recall** = 0/(0+50) = **0%** ✗ Catches ZERO fraud!",
+                "**F1** = **0%**",
+                "",
+                "**Model 2: Smart Fraud Detector**",
+                "",
+                "Actually detects fraud (but with some errors).",
+                "",
+                "Confusion Matrix:",
+                "- TP = 40 (detected 40/50 fraud)",
+                "- TN = 9900 (legitimate correctly classified)",
+                "- FP = 50 (50 false alarms—legitimate flagged as fraud)",
+                "- FN = 10 (missed 10 fraud)",
+                "",
+                "**Accuracy** = (40+9900)/10000 = **99.4%** ✗ Slightly lower!",
+                "**Precision** = 40/(40+50) = 40/90 ≈ **44.4%**",
+                "**Recall** = 40/(40+10) = 40/50 = **80%** ✓ Catches 80% fraud!",
+                "**F1** = 2·(0.444·0.80)/(0.444+0.80) ≈ **57.1%**",
+                "",
+                "**Analysis:**",
+                "",
+                "Comparing accuracies: Model 1 (99.5%) > Model 2 (99.4%)",
+                "**But Model 1 is USELESS!** It catches zero fraud.",
+                "",
+                "**Why accuracy fails:**",
+                "- Imbalanced data (99.5% one class)",
+                "- Accuracy dominated by majority class (TN=9950)",
+                "- Can achieve 99.5% by ignoring minority class entirely",
+                "- Business cares about fraud detection, not legitimate transactions!",
+                "",
+                "**Better metrics for this problem:**",
+                "",
+                "**1. Recall (Priority #1):**",
+                "- Must catch fraud (minimize FN)",
+                "- Model 2 recall=80% vs Model 1 recall=0%",
+                "- Missing fraud costs money (chargebacks, reputation)",
+                "",
+                "**2. Precision (Secondary):**",
+                "- False alarms (FP) annoy customers (legitimate transactions blocked)",
+                "- Model 2 precision=44% (acceptable trade-off)",
+                "- Can investigate flagged transactions manually",
+                "",
+                "**3. F1-Score:**",
+                "- Balances precision and recall",
+                "- Model 2 F1=57% vs Model 1 F1=0%",
+                "- Better than accuracy for imbalanced data",
+                "",
+                "**4. ROC-AUC:**",
+                "- Threshold-independent",
+                "- Can adjust threshold: lower→higher recall (catch more fraud) but more FP (false alarms)",
+                "- AUC quantifies overall discrimination ability",
+                "",
+                "**Business decision:**",
+                "Optimize recall (catch fraud) while keeping precision acceptable (limit false alarms).",
+                "Adjust threshold based on cost/benefit: cost of missed fraud vs cost of false alarm investigations."
+            ],
+            "final_answer": "Accuracy misleading for imbalanced data—dominates by majority class. Model predicting all majority achieves high accuracy but zero minority detection. Use Recall (catch minority class), Precision (limit false alarms), F1-Score (balance), or ROC-AUC (threshold-independent) instead. Match metric to business objective."
+        }
+    ],
+    "logical_derivation": "Model evaluation quantifies the gap between predictions and ground truth. Classification metrics decompose this into error types (FP, FN) with different costs—precision prioritizes avoiding false positives, recall prioritizes avoiding false negatives, F1 balances both, accuracy treats all errors equally (problematic for imbalance). ROC-AUC evaluates threshold-independent discrimination ability. Regression metrics measure continuous error magnitude—MAE uses absolute difference (robust), MSE uses squared difference (penalizes large errors), R² normalizes by total variance (scale-independent). Cross-validation averages performance across multiple splits, reducing overfitting risk and providing robust estimates. Metric selection must align with domain requirements: medical screening prioritizes recall (minimize missed disease), spam filtering prioritizes precision (minimize false positives), regression chooses MAE/RMSE based on outlier sensitivity and error cost structure. Proper evaluation enables model comparison and hyperparameter tuning.",
+    "applications": [
+        "**Healthcare:** Medical diagnosis models evaluated with recall (minimize missed disease) and precision (minimize false positives requiring expensive follow-up). ROC-AUC for overall diagnostic ability.",
+        "**Finance:** Credit default prediction uses precision-recall trade-off—high precision (approve credit only for reliable borrowers) vs high recall (don't reject creditworthy customers). Fraud detection optimizes recall.",
+        "**E-commerce:** Recommendation systems use precision@k (relevant items in top k recommendations) and recall@k (fraction of relevant items in top k). Balance discovery vs relevance.",
+        "**Real Estate:** House price prediction models evaluated with RMSE (interpretable error in dollars) and R² (variance explained). MAE if robust to luxury property outliers.",
+        "**Marketing:** Customer churn prediction optimizes recall (identify at-risk customers for retention campaigns). F1-score balances retention cost vs missed churners.",
+        "**Autonomous Vehicles:** Object detection requires high recall (detect all pedestrians/obstacles) with acceptable precision (false alarms cause unnecessary braking). Safety-critical systems prioritize recall.",
+        "**Natural Language Processing:** Text classification (sentiment, spam) uses F1-score for imbalanced categories. Machine translation uses BLEU score (specialized metric). Named entity recognition uses precision-recall for entity types."
+    ],
+    "key_takeaways": [
+        "Classification: Accuracy (all correct), Precision (positive predictions correct), Recall (actual positives detected), F1 (harmonic mean).",
+        "Confusion Matrix: TP, TN, FP, FN counts. Visualizes error types. All classification metrics derive from this.",
+        "Imbalanced data: Accuracy misleading (dominated by majority class). Use F1, precision-recall, or ROC-AUC instead.",
+        "Precision vs Recall: Precision minimizes false positives (spam filter), Recall minimizes false negatives (disease detection). F1 balances both.",
+        "ROC-AUC: Threshold-independent metric. AUC=1.0 perfect, AUC=0.5 random. Good for model comparison.",
+        "Regression: MAE (robust), MSE (penalizes large errors), RMSE (interpretable units), R² (variance explained [0,1]).",
+        "Cross-validation: k-fold splits for robust evaluation. Prevents overfitting. Average performance across folds. Match metric to business objective and problem context."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Using accuracy for imbalanced classification",
+            "why_it_occurs": "Students assume accuracy is always the right metric.",
+            "how_to_avoid": "Check class distribution. If imbalanced (e.g., 90%/10%), use F1-score, precision-recall, or ROC-AUC instead. Accuracy dominated by majority class."
+        },
+        {
+            "mistake": "Confusing precision and recall",
+            "why_it_occurs": "Similar names and formulas cause confusion.",
+            "how_to_avoid": "Precision: Of positive PREDICTIONS, fraction correct (TP/predicted positive). Recall: Of actual POSITIVES, fraction detected (TP/actual positive). Use context: spam→precision, disease→recall."
+        },
+        {
+            "mistake": "Not using cross-validation",
+            "why_it_occurs": "Students use single train/test split.",
+            "how_to_avoid": "Single split can be lucky/unlucky. Use k-fold cross-validation for robust estimate. Average performance across folds reduces variance."
+        },
+        {
+            "mistake": "Data leakage during preprocessing",
+            "why_it_occurs": "Scaling/normalizing before splitting train/test.",
+            "how_to_avoid": "Always split first, then preprocess separately. Otherwise test statistics leak into training (e.g., test set mean used in scaling)."
+        },
+        {
+            "mistake": "Choosing metric mismatched to problem",
+            "why_it_occurs": "Students use default metrics without thinking.",
+            "how_to_avoid": "Match metric to business objective. Medical screening→recall (minimize misses). Spam filter→precision (minimize false positives). Regression outliers→MAE over MSE."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What does precision measure in classification?",
+            "options": [
+                "Of positive predictions, fraction that are correct",
+                "Of actual positives, fraction detected",
+                "Overall fraction of correct predictions",
+                "Number of true positives"
+            ],
+            "correct_answer": 0,
+            "explanation": "Precision = TP/(TP+FP)—of all positive predictions made, what fraction are actually correct? High precision→few false alarms."
+        },
+        {
+            "question": "What does recall (sensitivity) measure?",
+            "options": [
+                "Of actual positives, fraction detected",
+                "Of positive predictions, fraction correct",
+                "Overall accuracy",
+                "Number of false negatives"
+            ],
+            "correct_answer": 0,
+            "explanation": "Recall = TP/(TP+FN)—of all actual positive cases, what fraction did we detect? High recall→few missed positives (false negatives)."
+        },
+        {
+            "question": "Why is accuracy misleading for imbalanced data?",
+            "options": [
+                "Dominated by majority class, can be high while missing minority class entirely",
+                "It is always wrong",
+                "It only measures negative class",
+                "It requires balanced classes"
+            ],
+            "correct_answer": 0,
+            "explanation": "With 99% negative class, predicting all negative gives 99% accuracy but 0% minority detection. Accuracy dominated by majority, hides poor minority performance."
+        },
+        {
+            "question": "What is F1-score?",
+            "options": [
+                "Harmonic mean of precision and recall",
+                "Arithmetic mean of precision and recall",
+                "Product of precision and recall",
+                "Maximum of precision and recall"
+            ],
+            "correct_answer": 0,
+            "explanation": "F1 = 2·(P·R)/(P+R) is the harmonic mean. Balances precision and recall. Use when both are important. Better than arithmetic mean for balancing."
+        },
+        {
+            "question": "What does ROC-AUC measure?",
+            "options": [
+                "Area under curve of TPR vs FPR, threshold-independent discrimination ability",
+                "Total true positives",
+                "Accuracy at optimal threshold",
+                "Training speed"
+            ],
+            "correct_answer": 0,
+            "explanation": "ROC plots TPR (recall) vs FPR at all thresholds. AUC (area under curve) quantifies overall discrimination. AUC=1 perfect, 0.5 random. Threshold-independent."
+        },
+        {
+            "question": "What does MSE penalize more than MAE?",
+            "options": [
+                "Large errors (quadratic vs linear penalty)",
+                "Small errors",
+                "All errors equally",
+                "Positive errors only"
+            ],
+            "correct_answer": 0,
+            "explanation": "MSE uses squared errors (y−ŷ)²—quadratic penalty heavily penalizes large errors. MAE uses |y−ŷ|—linear penalty, treats all errors equally. MSE sensitive to outliers."
+        },
+        {
+            "question": "What does R² measure?",
+            "options": [
+                "Fraction of variance in target explained by model (0 to 1)",
+                "Mean squared error",
+                "Total error",
+                "Training time"
+            ],
+            "correct_answer": 0,
+            "explanation": "R² = 1 − (SS_res/SS_tot) measures proportion of variance explained. R²=1 perfect, R²=0 no better than mean baseline. Scale-independent."
+        },
+        {
+            "question": "Which metric is most robust to outliers?",
+            "options": [
+                "MAE (Mean Absolute Error)",
+                "MSE (Mean Squared Error)",
+                "RMSE (Root Mean Squared Error)",
+                "All equally robust"
+            ],
+            "correct_answer": 0,
+            "explanation": "MAE uses |y−ŷ| (linear)—outliers have linear impact. MSE/RMSE use (y−ŷ)² (quadratic)—outliers have squared impact, much larger effect."
+        },
+        {
+            "question": "What is the purpose of k-fold cross-validation?",
+            "options": [
+                "Robust evaluation by averaging over multiple train/test splits",
+                "Speed up training",
+                "Increase model accuracy",
+                "Reduce data size"
+            ],
+            "correct_answer": 0,
+            "explanation": "k-fold CV splits data into k folds, trains k times (each fold as test once), averages performance. Reduces variance, provides robust estimate, uses all data."
+        },
+        {
+            "question": "When should you prioritize recall over precision?",
+            "options": [
+                "When false negatives are costly (e.g., disease detection)",
+                "When false positives are costly",
+                "When classes are balanced",
+                "Never, always use precision"
+            ],
+            "correct_answer": 0,
+            "explanation": "Recall = TP/(TP+FN) minimizes false negatives (misses). Prioritize recall when missing positives is costly: disease screening (don't miss disease), fraud (catch fraud)."
+        },
+        {
+            "question": "What is a confusion matrix?",
+            "options": [
+                "Table showing TP, TN, FP, FN counts for classification",
+                "Plot of training loss",
+                "Algorithm for classification",
+                "Type of neural network"
+            ],
+            "correct_answer": 0,
+            "explanation": "Confusion matrix is 2×2 table (binary) or n×n (multi-class). Rows=actual class, columns=predicted. Shows TP, TN, FP, FN. All metrics derive from this."
+        },
+        {
+            "question": "What is data leakage in model evaluation?",
+            "options": [
+                "Test set information leaking into training process",
+                "Training taking too long",
+                "Model predicting training data",
+                "Data being deleted"
+            ],
+            "correct_answer": 0,
+            "explanation": "Data leakage: test information used in training (e.g., scaling before split→test statistics in training). Causes overfitting. Always split first, then preprocess."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Classification: Confusion matrix (TP, TN, FP, FN) → all metrics derive from this.",
+            "Accuracy = (TP+TN)/total. Misleading for imbalanced data (dominated by majority class). Use F1/AUC instead.",
+            "Precision = TP/(TP+FP): Of positive predictions, fraction correct. Minimize false positives (spam filter).",
+            "Recall = TP/(TP+FN): Of actual positives, fraction detected. Minimize false negatives (disease detection).",
+            "F1-Score = 2·(P·R)/(P+R): Harmonic mean balances precision and recall. Use for imbalanced data.",
+            "ROC-AUC: Threshold-independent. AUC=1 perfect, 0.5 random. Good for model comparison.",
+            "Regression: MAE (robust to outliers), MSE (penalizes large errors), RMSE (interpretable units), R² (variance explained [0,1]).",
+            "Cross-validation: k-fold splits for robust evaluation. Average performance across k runs. Prevents overfitting.",
+            "Metric selection: Match to problem—disease detection (recall), spam (precision), imbalanced (F1/AUC), regression outliers (MAE).",
+            "Data leakage: Split before preprocessing. Otherwise test statistics leak into training."
+        ],
+        "important_formulas": [
+            "Precision = TP/(TP+FP)",
+            "Recall = TP/(TP+FN)",
+            "F1 = 2·(P·R)/(P+R)",
+            "MSE = (1/n)Σ(y−ŷ)²",
+            "R² = 1 − (SS_res/SS_tot)"
+        ],
+        "common_exam_traps": [
+            "Accuracy high for imbalanced data but useless (missing minority class). Use F1/Recall/AUC.",
+            "Precision ≠ Recall. Precision: positive predictions correct. Recall: actual positives detected.",
+            "MSE penalizes large errors (quadratic). MAE robust to outliers (linear). Choose based on context.",
+            "Cross-validation prevents overfitting. Single split can be lucky/unlucky.",
+            "Data leakage: Always split first, then preprocess. Otherwise test info leaks to training."
+        ],
+        "exam_tip": "Remember: Precision=TP/(TP+FP) (positive predictions correct), Recall=TP/(TP+FN) (actual positives detected). F1 balances. Imbalanced→use F1/AUC not accuracy. MSE penalizes large errors, MAE robust. R²=variance explained. Cross-validation for robust evaluation. Match metric to problem context!"
+    }
+}

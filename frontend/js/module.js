@@ -1,15 +1,14 @@
-// Module Loading Logic - Linked to Roadmap
-const API_BASE_URL = 'http://localhost:5000/api';
+// Module Loading Logic - Works with NEW JSON schema
+// Loads full module content from modules/{subject}/{level}/{module_id}.json
 
-// State
-let currentModule = null;
+let currentModuleData = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     initModule();
 });
 
 async function initModule() {
-    // 1. Check LocalStorage for valid state
+    // 1. Check LocalStorage for module selection
     const subject = localStorage.getItem('selectedSubject');
     const level = localStorage.getItem('selectedLevel');
     const moduleId = localStorage.getItem('selectedModuleId');
@@ -20,23 +19,18 @@ async function initModule() {
         return;
     }
 
-    // 2. Load the Module Data
+    // 2. Load the FULL module JSON file
     try {
-        const response = await fetch(`${subject}_curriculum.json`);
-        if (!response.ok) throw new Error("Failed to fetch curriculum");
+        const modulePath = `../modules/${subject}/${level}/${moduleId}.json`;
+        const response = await fetch(modulePath);
 
-        const data = await response.json();
+        if (!response.ok) throw new Error(`Failed to load module from ${modulePath}`);
 
-        // Find the module
-        const moduleList = data.levels[level].modules;
-        const module = moduleList.find(m => m.module_id === moduleId);
+        const moduleData = await response.json();
+        currentModuleData = { ...moduleData, subject, level, module_id: moduleId };
 
-        if (!module) throw new Error("Module not found in curriculum");
-
-        currentModule = { ...module, subject, level };
-
-        // 3. Render Module
-        renderModule(currentModule);
+        // 3. Render Module Content
+        renderModule(currentModuleData);
 
     } catch (err) {
         console.error(err);
@@ -46,68 +40,121 @@ async function initModule() {
     }
 }
 
-function renderModule(module) {
-    document.getElementById('moduleName').textContent = module.module_name;
-    document.getElementById('moduleLevelBadge').textContent = module.level;
+function renderModule(data) {
+    // Module Header
+    const header = data.module_header;
+    document.getElementById('moduleName').textContent = header.module_title;
+    document.getElementById('moduleLevelBadge').textContent = header.level;
 
-    const cards = module.content_cards;
+    // Definition as motivation
+    document.getElementById('moduleMotivation').textContent = data.definition || "Master this fundamental concept.";
 
-    // 1. Motivation
-    document.getElementById('moduleMotivation').textContent = cards.motivation ? cards.motivation.content : "Master this concept to unlock advanced applications.";
-
-    // 2. Concept Overview (List)
+    // 1. Concept Overview (array of strings)
     const conceptDiv = document.getElementById('conceptContent');
-    const points = cards.concept_overview ? cards.concept_overview.points : ["Core fundamental topic."];
-    conceptDiv.innerHTML = `<ul>${points.map(p => `<li>${p}</li>`).join('')}</ul>`;
+    const concepts = data.concept_overview || [];
+    conceptDiv.innerHTML = `<ul>${concepts.map(c => `<li>${c}</li>`).join('')}</ul>`;
 
-    // 3. Intuition (Rich Text)
-    document.getElementById('intuitionContent').innerHTML = formatText(cards.intuition ? cards.intuition.content : module.core_content.intuition);
+    // 2. Intuition - Use THEORY section (comprehensive content)
+    const theoryText = Array.isArray(data.theory) ? data.theory.join('\n\n') : data.theory || "";
+    document.getElementById('intuitionContent').innerHTML = formatText(theoryText);
 
-    // 4. Mathematical Formulation (LaTeX)
-    document.getElementById('mathContent').innerHTML = formatText(cards.math_derivation ? cards.math_derivation.content : "No formulation required.");
-
-    // 5. Worked Example (Rich Text)
-    const exDiv = document.getElementById('exampleContent');
-    if (cards.worked_example) {
-        exDiv.innerHTML = `
-            <div class="problem"><strong>Q:</strong> ${formatText(cards.worked_example.problem)}</div>
-            <div class="solution"><strong>A:</strong> ${formatText(cards.worked_example.solution)}</div>
-        `;
+    // 3. Mathematical Formulation
+    const mathDiv = document.getElementById('mathContent');
+    if (data.mathematical_formulation && data.mathematical_formulation.length > 0) {
+        let mathHtml = '';
+        data.mathematical_formulation.forEach(item => {
+            mathHtml += `
+                <div class="formula-block">
+                    <div class="formula">${item.formula}</div>
+                    <div class="formula-explanation">${item.explanation}</div>
+                </div>
+            `;
+        });
+        mathDiv.innerHTML = mathHtml;
     } else {
-        exDiv.innerHTML = "No example provided.";
+        mathDiv.innerHTML = "<p>No mathematical formulation required for this topic.</p>";
     }
 
-    // 6. Takeaways (List)
+    // 4. Worked Examples
+    const exDiv = document.getElementById('exampleContent');
+    if (data.worked_examples && data.worked_examples.length > 0) {
+        let exHtml = '';
+        data.worked_examples.forEach((ex, idx) => {
+            const steps = Array.isArray(ex.solution_steps) ? ex.solution_steps.join('<br>') : ex.solution_steps || "";
+            exHtml += `
+                <div class="example-block">
+                    <div class="example-header">
+                        <span class="difficulty-badge" style="background: ${getDifficultyColor(ex.difficulty)}">${ex.difficulty || 'General'}</span>
+                        <strong>Example ${idx + 1}</strong>
+                    </div>
+                    <div class="problem"><strong>Problem:</strong> ${ex.problem}</div>
+                    <div class="solution">
+                        <strong>Solution:</strong><br>
+                        ${formatText(steps)}
+                    </div>
+                    ${ex.final_answer ? `<div class="final-answer"><strong>Answer:</strong> ${ex.final_answer}</div>` : ''}
+                </div>
+            `;
+        });
+        exDiv.innerHTML = exHtml;
+    } else {
+        exDiv.innerHTML = "<p>No worked examples for this module.</p>";
+    }
+
+    // 5. Key Takeaways
     const takeDiv = document.getElementById('takeawaysContent');
-    const takeaways = cards.key_takeaways ? cards.key_takeaways.points : [];
+    const takeaways = data.key_takeaways || [];
     takeDiv.innerHTML = `<ul>${takeaways.map(t => `<li>${t}</li>`).join('')}</ul>`;
 
     // Show Content
     document.getElementById('moduleContent').style.display = 'block';
 
-    // TRIGGER MATHJAX
+    // TRIGGER MATHJAX rendering
     if (window.MathJax) {
-        window.MathJax.typesetPromise();
+        window.MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
     }
 }
 
 function formatText(text) {
     if (!text) return '';
-    // Basic formatting: newlines to <br>, bold to <strong>
+
+    // Convert arrays to text
+    if (Array.isArray(text)) {
+        text = text.join('\n\n');
+    }
+
+    // Basic formatting: newlines to <br>, bold markdown to <strong>
     let html = text
         .replace(/\n\n/g, '<br><br>')
         .replace(/\n/g, '<br>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-    // Handle code blocks (simple regex for MVP)
+    // Handle code blocks
     if (html.includes('```')) {
-        html = html.replace(/```(.*?)```/gs, '<pre><code>$1</code></pre>');
+        html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
     }
+
     return html;
 }
 
-// Export state
+function getDifficultyColor(difficulty) {
+    if (!difficulty) return '#6b7280';
+    if (difficulty.toLowerCase().includes('basic') || difficulty.toLowerCase().includes('easy')) return '#10b981';
+    if (difficulty.toLowerCase().includes('intermediate') || difficulty.toLowerCase().includes('medium')) return '#f59e0b';
+    if (difficulty.toLowerCase().includes('advanced') || difficulty.toLowerCase().includes('hard')) return '#ef4444';
+    return '#6b7280';
+}
+
+// Export state for quiz and summary
 window.moduleState = {
-    getCurrentModule: () => currentModule,
-    API_BASE_URL
+    getCurrentModule: () => {
+        if (!currentModuleData) return null;
+        return {
+            subject: currentModuleData.subject,
+            level: currentModuleData.level,
+            module_id: currentModuleData.module_id,
+            module_name: currentModuleData.module_header?.module_title || 'Unknown',
+            data: currentModuleData  // Full module data for quiz/summary
+        };
+    }
 };

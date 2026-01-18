@@ -1,0 +1,352 @@
+{
+    "module_header": {
+        "module_title": "System of Linear Equations",
+        "subject": "Mathematics",
+        "level": "Beginner",
+        "prerequisites": [
+            "Linear equations in one and two variables",
+            "Matrices and matrix operations",
+            "Determinants and their properties",
+            "Basic algebraic manipulation"
+        ],
+        "learning_outcomes": [
+            "Define and classify systems of linear equations (consistent, inconsistent, dependent, independent)",
+            "Solve systems of linear equations using substitution, elimination, and matrix methods",
+            "Apply Cramer's rule to solve systems using determinants",
+            "Represent systems in matrix form $A\\mathbf{x} = \\mathbf{b}$ and solve using matrix operations",
+            "Determine the number of solutions (unique, infinite, or no solution) using determinants and rank",
+            "Apply systems of linear equations to model and solve real-world engineering problems"
+        ]
+    },
+    "definition": "A system of linear equations is a collection of two or more linear equations involving the same set of variables. A solution to the system is a set of values for the variables that simultaneously satisfies all equations in the system. A system of $m$ equations in $n$ variables can be written as $a_{11}x_1 + a_{12}x_2 + \\cdots + a_{1n}x_n = b_1$, $a_{21}x_1 + a_{22}x_2 + \\cdots + a_{2n}x_n = b_2$, ..., $a_{m1}x_1 + a_{m2}x_2 + \\cdots + a_{mn}x_n = b_m$, or in matrix form as $A\\mathbf{x} = \\mathbf{b}$.",
+    "concept_overview": [
+        "Systems are classified by solution existence: consistent systems have at least one solution, while inconsistent systems have no solution.",
+        "Consistent systems are further classified as independent (unique solution) or dependent (infinitely many solutions forming a line or plane).",
+        "Common solution methods include substitution (solving one equation for a variable and substituting), elimination (adding/subtracting equations to eliminate variables), and matrix methods.",
+        "The coefficient matrix $A$ and augmented matrix $[A|\\mathbf{b}]$ provide compact notation, with solutions dependent on their ranks and determinants.",
+        "For a square system ($n$ equations in $n$ unknowns), Cramer's rule expresses each variable as a ratio of determinants, valid when $\\det(A) \\neq 0$."
+    ],
+    "theory": [
+        "Systems of linear equations constitute the most fundamental problem in linear algebra and appear ubiquitously in engineering analysis wherever multiple constraints must be satisfied simultaneously. Historically, systematic methods for solving linear systems date back to ancient Chinese mathematics, but modern matrix formulation provides a unified framework applicable to systems of arbitrary size. In engineering practice, systems of linear equations model circuit networks (Kirchhoff's laws), structural analysis (equilibrium equations), chemical processes (mass balance), economic systems (input-output models), and optimization (linear programming constraints). The study of linear systems develops essential skills in systematic problem-solving, understanding solution existence and uniqueness, and translating physical constraints into mathematical form. Mastery of solution techniques for linear systems provides the foundation for numerical methods, least squares approximation, eigenvalue problems, and virtually all computational mathematics used in engineering applications.",
+        "The fundamental solution methods for linear systems exploit algebraic manipulation to reduce complexity systematically. The substitution method solves one equation for a variable in terms of others, then substitutes this expression into remaining equations, reducing the system size by one. The elimination method (Gaussian elimination) adds appropriate multiples of equations to others to create zeros in the coefficient matrix, transforming the system into triangular form amenable to back-substitution. For systems in matrix form $A\\mathbf{x} = \\mathbf{b}$ where $A$ is an $n \\times n$ square matrix, solution existence and uniqueness depend critically on the determinant: when $\\det(A) \\neq 0$, the system has a unique solution $\\mathbf{x} = A^{-1}\\mathbf{b}$; when $\\det(A) = 0$, the system either has no solution (inconsistent) or infinitely many solutions (dependent). Cramer's rule provides explicit formulas for each variable: $x_i = \\frac{\\det(A_i)}{\\det(A)}$ where $A_i$ is the matrix $A$ with column $i$ replaced by $\\mathbf{b}$. While computationally expensive for large systems, Cramer's rule is valuable for theoretical analysis and understanding parametric dependencies. For non-square systems or when $\\det(A) = 0$, rank analysis using row reduction determines solution structure: the system is consistent if and only if $\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}])$.",
+        "Mastery of systems of linear equations is critically important because they provide the mathematical framework for virtually all multi-variable engineering problems. In electrical engineering, mesh analysis and nodal analysis produce linear systems relating voltages and currents throughout a circuit network. In structural mechanics, the stiffness method assembles global equilibrium equations $K\\mathbf{u} = \\mathbf{f}$ where solving for displacement vector $\\mathbf{u}$ requires solving a linear system potentially involving thousands of equations in finite element analysis. Control system state-space models lead to linear systems when computing equilibrium points and steady-state responses. Chemical process engineers solve material and energy balance equations formulated as linear systems. The distinction between consistent and inconsistent systems has profound practical significance: inconsistency indicates conflicting constraints or modeling errors, while dependence indicates redundant equations or insufficient constraints. The ability to classify solution types using determinants and rank provides engineers with diagnostic tools for troubleshooting models. In examinations and professional practice, proficiency in solving linear systems demonstrates command over systematic algebraic manipulation, matrix operations, and the ability to select appropriate solution methods based on problem structure and size."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$\\begin{cases} a_{11}x_1 + a_{12}x_2 + \\cdots + a_{1n}x_n = b_1 \\\\ a_{21}x_1 + a_{22}x_2 + \\cdots + a_{2n}x_n = b_2 \\\\ \\vdots \\\\ a_{m1}x_1 + a_{m2}x_2 + \\cdots + a_{mn}x_n = b_m \\end{cases}$",
+            "explanation": "General form of a system of $m$ linear equations in $n$ unknowns $x_1, x_2, \\ldots, x_n$ with coefficients $a_{ij}$ and constants $b_i$."
+        },
+        {
+            "formula": "$A\\mathbf{x} = \\mathbf{b}$ where $A = [a_{ij}]$, $\\mathbf{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\\\ \\vdots \\\\ x_n \\end{bmatrix}$, $\\mathbf{b} = \\begin{bmatrix} b_1 \\\\ b_2 \\\\ \\vdots \\\\ b_m \\end{bmatrix}$",
+            "explanation": "Matrix form of a linear system where $A$ is the $m \\times n$ coefficient matrix, $\\mathbf{x}$ is the $n \\times 1$ variable vector, and $\\mathbf{b}$ is the $m \\times 1$ constant vector."
+        },
+        {
+            "formula": "$\\mathbf{x} = A^{-1}\\mathbf{b}$ (when $A$ is square and $\\det(A) \\neq 0$)",
+            "explanation": "Solution for a square system with non-zero determinant, obtained by multiplying both sides by the inverse of $A$."
+        },
+        {
+            "formula": "$x_i = \\frac{\\det(A_i)}{\\det(A)}$ (Cramer's Rule)",
+            "explanation": "Cramer's rule for solving systems: each variable equals the ratio of two determinants, where $A_i$ is matrix $A$ with column $i$ replaced by vector $\\mathbf{b}$. Valid only when $\\det(A) \\neq 0$."
+        },
+        {
+            "formula": "$[A|\\mathbf{b}]$ — Augmented matrix",
+            "explanation": "The augmented matrix combines coefficient matrix $A$ and constant vector $\\mathbf{b}$, used in Gaussian elimination and rank analysis."
+        },
+        {
+            "formula": "Consistency condition: $\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}])$",
+            "explanation": "A system is consistent (has at least one solution) if and only if the rank of the coefficient matrix equals the rank of the augmented matrix."
+        },
+        {
+            "formula": "For square systems: Unique solution $\\iff$ $\\det(A) \\neq 0$",
+            "explanation": "A square system has a unique solution if and only if the determinant of the coefficient matrix is non-zero."
+        },
+        {
+            "formula": "For square systems: No solution or infinite solutions $\\iff$ $\\det(A) = 0$",
+            "explanation": "When the determinant is zero, the system either has no solution (inconsistent) or infinitely many solutions (dependent), determined by rank analysis."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Solve the system using substitution: $\\begin{cases} x + y = 7 \\\\ 2x - y = 5 \\end{cases}$",
+            "solution_steps": [
+                "**Step 1**: Solve the first equation for $y$:",
+                "$y = 7 - x$",
+                "**Step 2**: Substitute into the second equation:",
+                "$2x - (7 - x) = 5$",
+                "**Step 3**: Simplify and solve for $x$:",
+                "$2x - 7 + x = 5$",
+                "$3x = 12$",
+                "$x = 4$",
+                "**Step 4**: Substitute $x = 4$ back into $y = 7 - x$:",
+                "$y = 7 - 4 = 3$",
+                "**Verification**: Check both equations:",
+                "Equation 1: $4 + 3 = 7$ ✓",
+                "Equation 2: $2(4) - 3 = 8 - 3 = 5$ ✓"
+            ],
+            "final_answer": "$x = 4$, $y = 3$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Solve using elimination: $\\begin{cases} 3x + 2y = 12 \\\\ 5x - 2y = 4 \\end{cases}$",
+            "solution_steps": [
+                "**Step 1**: Notice that the coefficients of $y$ are opposites ($+2$ and $-2$)",
+                "**Step 2**: Add the two equations to eliminate $y$:",
+                "$(3x + 2y) + (5x - 2y) = 12 + 4$",
+                "$8x = 16$",
+                "**Step 3**: Solve for $x$:",
+                "$x = 2$",
+                "**Step 4**: Substitute $x = 2$ into the first equation:",
+                "$3(2) + 2y = 12$",
+                "$6 + 2y = 12$",
+                "$2y = 6$",
+                "$y = 3$",
+                "**Verification**:",
+                "Equation 1: $3(2) + 2(3) = 6 + 6 = 12$ ✓",
+                "Equation 2: $5(2) - 2(3) = 10 - 6 = 4$ ✓"
+            ],
+            "final_answer": "$x = 2$, $y = 3$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Solve using Cramer's rule: $\\begin{cases} 2x + 3y = 7 \\\\ 4x - y = 5 \\end{cases}$",
+            "solution_steps": [
+                "**Step 1**: Write in matrix form $A\\mathbf{x} = \\mathbf{b}$:",
+                "$A = \\begin{bmatrix} 2 & 3 \\\\ 4 & -1 \\end{bmatrix}$, $\\mathbf{b} = \\begin{bmatrix} 7 \\\\ 5 \\end{bmatrix}$",
+                "**Step 2**: Calculate $\\det(A)$:",
+                "$\\det(A) = (2)(-1) - (3)(4) = -2 - 12 = -14$",
+                "**Step 3**: Since $\\det(A) \\neq 0$, Cramer's rule applies",
+                "**Step 4**: Calculate determinant $\\det(A_x)$ (replace first column with $\\mathbf{b}$):",
+                "$A_x = \\begin{bmatrix} 7 & 3 \\\\ 5 & -1 \\end{bmatrix}$",
+                "$\\det(A_x) = (7)(-1) - (3)(5) = -7 - 15 = -22$",
+                "**Step 5**: Calculate $x$ using Cramer's rule:",
+                "$x = \\frac{\\det(A_x)}{\\det(A)} = \\frac{-22}{-14} = \\frac{11}{7}$",
+                "**Step 6**: Calculate determinant $\\det(A_y)$ (replace second column with $\\mathbf{b}$):",
+                "$A_y = \\begin{bmatrix} 2 & 7 \\\\ 4 & 5 \\end{bmatrix}$",
+                "$\\det(A_y) = (2)(5) - (7)(4) = 10 - 28 = -18$",
+                "**Step 7**: Calculate $y$ using Cramer's rule:",
+                "$y = \\frac{\\det(A_y)}{\\det(A)} = \\frac{-18}{-14} = \\frac{9}{7}$"
+            ],
+            "final_answer": "$x = \\frac{11}{7}$, $y = \\frac{9}{7}$"
+        }
+    ],
+    "logical_derivation": "To derive Cramer's rule for a $2 \\times 2$ system, start with $A\\mathbf{x} = \\mathbf{b}$ where $A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}$, $\\mathbf{x} = \\begin{bmatrix} x \\\\ y \\end{bmatrix}$, and $\\mathbf{b} = \\begin{bmatrix} e \\\\ f \\end{bmatrix}$. This gives the system $ax + by = e$ and $cx + dy = f$. Multiplying the first equation by $d$ and the second by $b$ yields $adx + bdy = ed$ and $bcx + bdy = fb$. Subtracting eliminates $y$: $(ad - bc)x = ed - fb$. Since $\\det(A) = ad - bc$, we get $x = \\frac{ed - fb}{ad - bc}$. Observe that the numerator $ed - fb = \\begin{vmatrix} e & b \\\\ f & d \\end{vmatrix} = \\det(A_x)$ where $A_x$ has the $\\mathbf{b}$ vector replacing the first column. Therefore $x = \\frac{\\det(A_x)}{\\det(A)}$. Similarly, solving for $y$ yields $y = \\frac{\\det(A_y)}{\\det(A)}$ where $A_y$ has $\\mathbf{b}$ replacing the second column. This pattern extends to $n \\times n$ systems: each variable equals the ratio of two determinants, providing an explicit but computationally expensive solution formula valid when $\\det(A) \\neq 0$.",
+    "applications": [
+        "**Electrical Circuit Analysis**: Solving for unknown currents and voltages in multi-loop circuits using Kirchhoff's voltage and current laws.",
+        "**Structural Engineering**: Determining reaction forces and internal stresses in statically determinate structures from equilibrium equations.",
+        "**Chemical Engineering**: Solving material balance equations for multiple components in mixing processes and reactors.",
+        "**Economics**: Analyzing input-output models relating production levels of interconnected industries.",
+        "**Computer Graphics**: Solving for transformation parameters when fitting curves or surfaces through specified points.",
+        "**Traffic Flow**: Modeling intersection traffic flow with conservation equations for vehicle counts.",
+        "**Linear Programming**: Formulating optimization problems with multiple linear constraints representing resource limitations."
+    ],
+    "key_takeaways": [
+        "A system of linear equations can have exactly one solution (independent), infinitely many solutions (dependent), or no solution (inconsistent).",
+        "For square systems, $\\det(A) \\neq 0$ guarantees a unique solution $\\mathbf{x} = A^{-1}\\mathbf{b}$.",
+        "When $\\det(A) = 0$, the system is either inconsistent or has infinitely many solutions, determined by rank comparison.",
+        "Substitution and elimination are algebraic methods suitable for small systems (2-3 equations).",
+        "Cramer's rule expresses each variable as $x_i = \\frac{\\det(A_i)}{\\det(A)}$, valid only when $\\det(A) \\neq 0$.",
+        "The augmented matrix $[A|\\mathbf{b}]$ provides a framework for Gaussian elimination and rank analysis.",
+        "Consistency requires $\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}])$; if ranks differ, the system is inconsistent."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Incorrectly substituting expressions in the substitution method",
+            "why_it_occurs": "Students make algebraic errors when replacing variables or forget to substitute into all remaining equations.",
+            "how_to_avoid": "Write the substitution expression clearly, verify it by substituting back, and systematically replace the variable in all other equations."
+        },
+        {
+            "mistake": "Sign errors when adding/subtracting equations in elimination",
+            "why_it_occurs": "Students forget to distribute negative signs or make arithmetic mistakes when combining equations.",
+            "how_to_avoid": "Write each step explicitly: if subtracting, write the equation being subtracted with all signs reversed, then combine term-by-term."
+        },
+        {
+            "mistake": "Forgetting to check the solution in all original equations",
+            "why_it_occurs": "Students verify the solution in only one equation or skip verification entirely.",
+            "how_to_avoid": "Always substitute the computed values back into all original equations to confirm they satisfy every equation in the system."
+        },
+        {
+            "mistake": "Applying Cramer's rule when $\\det(A) = 0$",
+            "why_it_occurs": "Students attempt to use Cramer's rule without first verifying the determinant is non-zero, leading to division by zero.",
+            "how_to_avoid": "Always calculate $\\det(A)$ first. If it equals zero, Cramer's rule does not apply—use elimination or rank analysis instead."
+        },
+        {
+            "mistake": "Confusing the coefficient matrix $A$ with the augmented matrix $[A|\\mathbf{b}]$",
+            "why_it_occurs": "Students use the wrong matrix when computing determinants or ranks for Cramer's rule or consistency tests.",
+            "how_to_avoid": "Remember: $\\det(A)$ uses only coefficients (left side of equations); the augmented matrix $[A|\\mathbf{b}]$ includes constants (right side) and is used for row reduction."
+        },
+        {
+            "mistake": "Misidentifying which column to replace in Cramer's rule",
+            "why_it_occurs": "When computing $\\det(A_i)$, students replace the wrong column with vector $\\mathbf{b}$.",
+            "how_to_avoid": "To find $x_i$, replace column $i$ of $A$ with $\\mathbf{b}$. For $x_1$, replace the first column; for $x_2$, replace the second column, etc."
+        },
+        {
+            "mistake": "Assuming no solution when actually infinitely many exist (or vice versa)",
+            "why_it_occurs": "When $\\det(A) = 0$, students don't perform rank analysis to distinguish between inconsistent and dependent systems.",
+            "how_to_avoid": "When $\\det(A) = 0$, compare $\\text{rank}(A)$ and $\\text{rank}([A|\\mathbf{b}])$: equal ranks mean infinitely many solutions, unequal ranks mean no solution."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "How many solutions does the system $\\begin{cases} x + y = 5 \\\\ 2x + 2y = 10 \\end{cases}$ have?",
+            "options": [
+                "Infinitely many solutions",
+                "Exactly one solution",
+                "No solution",
+                "Exactly two solutions"
+            ],
+            "correct_answer": 0,
+            "explanation": "The second equation is $2 \\times$ the first equation, so they represent the same line. The system is dependent with infinitely many solutions along the line $x + y = 5$."
+        },
+        {
+            "question": "For the system $\\begin{cases} 2x + y = 8 \\\\ x - y = 1 \\end{cases}$, what is the value of $x$?",
+            "options": [
+                "$x = 3$",
+                "$x = 2$",
+                "$x = 5$",
+                "$x = 1$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Adding the equations: $(2x + y) + (x - y) = 8 + 1 \\Rightarrow 3x = 9 \\Rightarrow x = 3$."
+        },
+        {
+            "question": "A system $A\\mathbf{x} = \\mathbf{b}$ where $A$ is $3 \\times 3$ has a unique solution if:",
+            "options": [
+                "$\\det(A) \\neq 0$",
+                "$\\det(A) = 0$",
+                "$\\det(\\mathbf{b}) \\neq 0$",
+                "$A$ is symmetric"
+            ],
+            "correct_answer": 0,
+            "explanation": "A square system has a unique solution if and only if the determinant of the coefficient matrix is non-zero: $\\det(A) \\neq 0$."
+        },
+        {
+            "question": "In Cramer's rule, to find variable $x_2$ in a $3 \\times 3$ system, which column of $A$ is replaced by $\\mathbf{b}$?",
+            "options": [
+                "Column 2",
+                "Column 1",
+                "Column 3",
+                "No column is replaced"
+            ],
+            "correct_answer": 0,
+            "explanation": "To find $x_i$ using Cramer's rule, replace column $i$ of $A$ with $\\mathbf{b}$. For $x_2$, replace column 2."
+        },
+        {
+            "question": "The system $\\begin{cases} x + y = 3 \\\\ x + y = 5 \\end{cases}$ has:",
+            "options": [
+                "No solution (inconsistent)",
+                "Exactly one solution",
+                "Infinitely many solutions",
+                "Exactly two solutions"
+            ],
+            "correct_answer": 0,
+            "explanation": "The left sides are identical but the right sides differ ($3 \\neq 5$), creating a contradiction. The system is inconsistent with no solution."
+        },
+        {
+            "question": "For the matrix equation $A\\mathbf{x} = \\mathbf{b}$ where $\\det(A) \\neq 0$, the solution is:",
+            "options": [
+                "$\\mathbf{x} = A^{-1}\\mathbf{b}$",
+                "$\\mathbf{x} = \\mathbf{b}A^{-1}$",
+                "$\\mathbf{x} = A\\mathbf{b}^{-1}$",
+                "$\\mathbf{x} = \\mathbf{b}/A$"
+            ],
+            "correct_answer": 0,
+            "explanation": "When $\\det(A) \\neq 0$, multiply both sides by $A^{-1}$ on the left: $A^{-1}A\\mathbf{x} = A^{-1}\\mathbf{b} \\Rightarrow \\mathbf{x} = A^{-1}\\mathbf{b}$."
+        },
+        {
+            "question": "Solve by substitution: $\\begin{cases} y = 2x \\\\ x + y = 9 \\end{cases}$. Find $x$:",
+            "options": [
+                "$x = 3$",
+                "$x = 6$",
+                "$x = 9$",
+                "$x = 2$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Substitute $y = 2x$ into the second equation: $x + 2x = 9 \\Rightarrow 3x = 9 \\Rightarrow x = 3$."
+        },
+        {
+            "question": "What does it mean if $\\text{rank}(A) \\neq \\text{rank}([A|\\mathbf{b}])$ for a linear system?",
+            "options": [
+                "The system is inconsistent (no solution)",
+                "The system has a unique solution",
+                "The system has infinitely many solutions",
+                "The determinant is zero"
+            ],
+            "correct_answer": 0,
+            "explanation": "When the rank of the coefficient matrix differs from the rank of the augmented matrix, the system is inconsistent and has no solution."
+        },
+        {
+            "question": "For the system $\\begin{cases} 3x - y = 7 \\\\ 6x - 2y = 14 \\end{cases}$, the solution set is:",
+            "options": [
+                "Infinitely many solutions (dependent)",
+                "Unique solution: $x = 2, y = -1$",
+                "No solution (inconsistent)",
+                "Exactly two distinct solutions"
+            ],
+            "correct_answer": 0,
+            "explanation": "The second equation is $2 \\times$ the first, so they represent the same line. The system is dependent with infinitely many solutions."
+        },
+        {
+            "question": "Using elimination, the first step to solve $\\begin{cases} 2x + 3y = 8 \\\\ 4x + 5y = 14 \\end{cases}$ is:",
+            "options": [
+                "Multiply the first equation by $-2$, then add to the second",
+                "Add the two equations directly",
+                "Multiply the second equation by 2",
+                "Solve the first equation for $x$"
+            ],
+            "correct_answer": 0,
+            "explanation": "To eliminate $x$, multiply the first equation by $-2$ to get $-4x - 6y = -16$, then add to the second equation to eliminate the $x$ terms."
+        },
+        {
+            "question": "If $\\det(A) = 0$ for a square system $A\\mathbf{x} = \\mathbf{b}$, the system:",
+            "options": [
+                "Has either no solution or infinitely many solutions",
+                "Always has a unique solution",
+                "Always has no solution",
+                "Always has infinitely many solutions"
+            ],
+            "correct_answer": 0,
+            "explanation": "When $\\det(A) = 0$, the matrix is singular. The system cannot have a unique solution—it either has no solution (inconsistent) or infinitely many (dependent)."
+        },
+        {
+            "question": "The augmented matrix $[A|\\mathbf{b}]$ is used primarily for:",
+            "options": [
+                "Gaussian elimination and row reduction",
+                "Computing determinants",
+                "Matrix multiplication",
+                "Finding eigenvalues"
+            ],
+            "correct_answer": 0,
+            "explanation": "The augmented matrix combines the coefficient matrix and constant vector, used in Gaussian elimination to systematically solve the system through row operations."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "A system of linear equations involves multiple equations with the same variables, with solutions satisfying all equations simultaneously.",
+            "Systems are classified as consistent (at least one solution) or inconsistent (no solution), with consistent systems being independent (unique) or dependent (infinitely many).",
+            "Matrix form $A\\mathbf{x} = \\mathbf{b}$ provides compact notation where $A$ is coefficients, $\\mathbf{x}$ is variables, $\\mathbf{b}$ is constants.",
+            "For square systems with $\\det(A) \\neq 0$, a unique solution exists: $\\mathbf{x} = A^{-1}\\mathbf{b}$.",
+            "When $\\det(A) = 0$, the system has either no solution or infinitely many solutions, determined by rank comparison.",
+            "Cramer's rule expresses each variable as $x_i = \\frac{\\det(A_i)}{\\det(A)}$ where $A_i$ has column $i$ replaced by $\\mathbf{b}$.",
+            "Substitution solves one equation for a variable, then substitutes into others; elimination adds/subtracts equations to eliminate variables.",
+            "The augmented matrix $[A|\\mathbf{b}]$ combines coefficients and constants for Gaussian elimination and rank analysis.",
+            "Consistency condition: $\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}])$; unequal ranks mean inconsistency.",
+            "Applications include circuit analysis, structural equilibrium, chemical mass balance, and linear programming."
+        ],
+        "important_formulas": [
+            "$A\\mathbf{x} = \\mathbf{b}$ — Matrix form of linear system",
+            "$\\mathbf{x} = A^{-1}\\mathbf{b}$ — Solution when $\\det(A) \\neq 0$",
+            "$x_i = \\frac{\\det(A_i)}{\\det(A)}$ — Cramer's rule",
+            "$\\text{rank}(A) = \\text{rank}([A|\\mathbf{b}])$ — Consistency condition",
+            "Unique solution $\\iff \\det(A) \\neq 0$ — For square systems"
+        ],
+        "common_exam_traps": [
+            "Applying Cramer's rule when $\\det(A) = 0$—this leads to division by zero; use elimination instead.",
+            "Forgetting to verify solutions in all original equations—errors may go undetected without complete verification.",
+            "Confusing coefficient matrix $A$ with augmented matrix $[A|\\mathbf{b}]$—determinants use $A$ only, not the augmented matrix.",
+            "When $\\det(A) = 0$, assuming 'no solution' without checking ranks—the system may have infinitely many solutions if consistent.",
+            "In Cramer's rule, replacing the wrong column—to find $x_i$, replace column $i$ of $A$ with $\\mathbf{b}$, not another column."
+        ],
+        "exam_tip": "Always check $\\det(A)$ first: if non-zero, use $\\mathbf{x} = A^{-1}\\mathbf{b}$ or Cramer's rule; if zero, use elimination and rank analysis to determine consistency and solution type."
+    }
+}

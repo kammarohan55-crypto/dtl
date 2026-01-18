@@ -1,0 +1,524 @@
+{
+    "module_header": {
+        "module_title": "Overfitting and Underfitting",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Advanced",
+        "prerequisites": [
+            "Supervised Learning",
+            "Model Evaluation Metrics",
+            "Basic understanding of training and testing",
+            "Calculus and optimization basics"
+        ],
+        "learning_outcomes": [
+            "Understand the concepts of overfitting (high variance) and underfitting (high bias)",
+            "Analyze learning curves to diagnose overfitting and underfitting",
+            "Distinguish between training error and generalization error",
+            "Apply regularization techniques (L1, L2) to prevent overfitting",
+            "Use early stopping and dropout for deep learning regularization",
+            "Understand the relationship between model complexity and generalization",
+            "Implement strategies to balance bias and variance in practice"
+        ]
+    },
+    "definition": "**Overfitting** occurs when a model learns training data too well, including noise, resulting in poor generalization to new data—low training error but high test error (high variance). **Underfitting** occurs when a model is too simple to capture underlying patterns—high error on both training and test data (high bias). The goal is finding the **sweet spot**: model complex enough to capture true patterns but not so complex it memorizes noise. **Learning curves** plot training/test error vs training set size or model complexity, diagnosing fit quality. **Regularization** combats overfitting by penalizing model complexity: (1) **L2 regularization (Ridge)**—adds λΣwᵢ² penalty, shrinks weights toward zero, (2) **L1 regularization (Lasso)**—adds λΣ|wᵢ| penalty, promotes sparsity (some weights exactly zero), (3) **Early stopping**—stop training when validation error starts increasing, (4) **Dropout** (deep learning)—randomly drop neurons during training, prevents co-adaptation. **Data augmentation** (more training data), **cross-validation** (detect overfitting), and **simpler models** also help. Proper balance between bias (underfitting) and variance (overfitting) is fundamental to machine learning success.",
+    "concept_overview": [
+        "Overfitting: Model memorizes training data (including noise). Low training error, high test error. Too complex.",
+        "Underfitting: Model too simple to capture patterns. High training error, high test error. Too simple.",
+        "Generalization gap: Difference between training and test error. Large gap→overfitting. Both high→underfitting.",
+        "Learning curves: Plot error vs training size/complexity. Overfitting: curves diverge. Underfitting: curves converge at high error.",
+        "Model complexity: More parameters→more capacity→can overfit. Fewer parameters→less capacity→may underfit.",
+        "Regularization: Add penalty term to loss function discouraging complexity. L2 (weight decay), L1 (sparsity), dropout, early stopping.",
+        "Solutions: Overfitting→regularization, more data, simpler model, early stopping. Underfitting→more complex model, more features, longer training."
+    ],
+    "theory": [
+        "The central challenge in machine learning is **generalization**—models must perform well on unseen data, not just training data. **Overfitting** and **underfitting** represent opposite failure modes. Understanding their causes, symptoms, and remedies is essential for building robust models. Consider polynomial regression fitting points: A **linear model** (degree 1) may be too simple—it underfits if the true relationship is curved. A **very high-degree polynomial** (e.g., degree 20) passes through every training point perfectly (zero training error) but oscillates wildly between points—it overfits, predicting poorly on new data. The **optimal model complexity** lies between these extremes. **Training error** measures performance on data the model saw during training. **Test error (generalization error)** measures performance on unseen data—this is what we truly care about. Overfitting manifests as low training error but high test error—the model memorized training specifics rather than learning general patterns. Underfitting shows high error on both training and test sets—the model lacks capacity to capture the underlying relationship. The **generalization gap** (test error − training error) quantifies overfitting: large gap indicates overfitting. As model complexity increases: training error always decreases (more capacity fits training better), test error initially decreases (captures true patterns) then increases (starts fitting noise). The minimum test error point represents optimal complexity. **Learning curves** visualize this: plot training/test error vs training set size. Overfitting: curves diverge (training error low, test error high). Underfitting: curves converge at high error. If curves are close but both high, need more complex model. If curves diverge, need regularization or more data.",
+        "**Causes and Symptoms**: **Overfitting causes**: (1) Model too complex (too many parameters relative to data)—neural networks with many layers, high-degree polynomials, (2) Training data too small—100 samples can't support 1000 parameters, (3) Training too long—model starts memorizing noise, (4) Lack of regularization—no penalty for complexity, (5) Noisy data—model fits noise as if it were signal. **Overfitting symptoms**: (1) Training accuracy near 100%, test accuracy much lower, (2) Large generalization gap, (3) Model predictions very sensitive to small input changes (high variance), (4) Learning curve shows diverging training/test error, (5) Validation error increases while training error decreases (during training). **Underfitting causes**: (1) Model too simple—linear model for non-linear relationship, (2) Insufficient features—important predictors missing, (3) Over-regularization—penalty too strong, shrinks weights too much, (4) Insufficient training—stopped before convergence. **Underfitting symptoms**: (1) Both training and test error high, (2) Model predictions too smooth/simple (high bias), (3) Learning curve shows low training error plateau at high value, (4) Adding more data doesn't improve much (model can't use it). **Diagnosis strategy**: Train model, measure training/test error, plot learning curves. If training error low, test error high→overfitting. If both high→underfitting. If both low→good fit (rare!). Examine predictions: overfitting shows erratic predictions (high variance), underfitting shows oversimplified predictions (high bias).",
+        "**Regularization Techniques**: Regularization prevents overfitting by constraining model complexity. **L2 Regularization (Ridge, Weight Decay)**: Add term λΣwᵢ² to loss function. Loss = MSE + λΣwᵢ². During optimization, this penalizes large weights—weights shrink toward zero (but not exactly zero). λ is regularization strength: λ=0 (no regularization, may overfit), large λ (heavy penalty, may underfit). Effect: Smooths decision boundary, reduces model sensitivity, improves generalization. Used in linear regression (Ridge), logistic regression, neural networks (weight decay). **L1 Regularization (Lasso)**: Add term λΣ|wᵢ| to loss. Promotes sparsity—some weights become exactly zero (feature selection). Useful when many features are irrelevant. Harder to optimize (non-differentiable at zero) than L2. **Elastic Net**: Combines L1 and L2 (αΣ|wᵢ| + βΣwᵢ²). **Early Stopping**: Monitor validation error during training. When validation error starts increasing (while training error still decreasing), stop training. Prevents model from memorizing training data. Simple, effective, widely used. Requires validation set. **Dropout** (Neural Networks): During training, randomly drop (set to zero) a fraction p of neurons each iteration. Prevents neurons from co-adapting (relying on specific other neurons). At test time, use all neurons but scale outputs by (1−p). Effect: Acts as ensemble of many sub-networks, reduces overfitting. **Data Augmentation**: Generate more training data from existing data—images: rotate, flip, crop, color jitter. Speech: add noise, time-stretch. Text: synonym replacement. More data reduces overfitting (model sees more examples). **Cross-Validation**: Use k-fold CV to detect overfitting. If training accuracy high but CV accuracy low→overfitting. **Model Selection**: Choose simpler model architecture if overfitting (fewer layers, fewer parameters). Decision trees: limit depth. Neural networks: fewer neurons/layers. **More Data**: Fundamental solution—more training examples make overfitting harder (model can't memorize all). But expensive/impossible in many domains. Best practices: Start simple (baseline model), add complexity gradually, monitor training/validation error, use regularization, collect more data if possible, use cross-validation for honest evaluation. In exams, demonstrating understanding of overfitting vs underfitting symptoms, learning curve interpretation, and appropriate regularization technique selection shows advanced model development competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "L2 Regularization (Ridge): $\\text{Loss} = \\text{MSE} + \\lambda \\sum_{i=1}^{n} w_i^2$",
+            "explanation": "Add quadratic penalty on weights. λ controls regularization strength. Shrinks weights toward zero."
+        },
+        {
+            "formula": "L1 Regularization (Lasso): $\\text{Loss} = \\text{MSE} + \\lambda \\sum_{i=1}^{n} |w_i|$",
+            "explanation": "Add absolute value penalty. Promotes sparsity—some weights become exactly zero (feature selection)."
+        },
+        {
+            "formula": "Generalization Gap: $\\text{Gap} = \\text{Error}_{\\text{test}} - \\text{Error}_{\\text{train}}$",
+            "explanation": "Difference between test and training error. Large gap indicates overfitting."
+        },
+        {
+            "formula": "Elastic Net: $\\text{Loss} = \\text{MSE} + \\alpha \\sum |w_i| + \\beta \\sum w_i^2$",
+            "explanation": "Combines L1 (sparsity) and L2 (shrinkage). α and β control relative strength."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Given training and test errors, diagnose whether model is overfitting, underfitting, or good fit.",
+            "solution_steps": [
+                "**Scenario 1: Image Classification**",
+                "- Training accuracy: 98%",
+                "- Test accuracy: 65%",
+                "",
+                "**Analysis:**",
+                "- Training error: 2% (very low)",
+                "- Test error: 35% (high)",
+                "- Large generalization gap: 35% − 2% = 33%",
+                "",
+                "**Diagnosis: OVERFITTING (High Variance)**",
+                "- Model memorized training images",
+                "- Doesn't generalize to new images",
+                "",
+                "**Solutions:**",
+                "✓ Apply regularization (L2, dropout)",
+                "✓ Collect more training data",
+                "✓ Use data augmentation (rotate, flip images)",
+                "✓ Simplify model (fewer layers/neurons)",
+                "✓ Early stopping",
+                "",
+                "---",
+                "",
+                "**Scenario 2: House Price Prediction**",
+                "- Training R²: 0.45",
+                "- Test R²: 0.42",
+                "",
+                "**Analysis:**",
+                "- Training explains 45% variance (low)",
+                "- Test explains 42% variance (also low)",
+                "- Small generalization gap: 0.45 − 0.42 = 0.03",
+                "- Both errors high, gap small",
+                "",
+                "**Diagnosis: UNDERFITTING (High Bias)**",
+                "- Model too simple to capture price patterns",
+                "- Not using available training data effectively",
+                "",
+                "**Solutions:**",
+                "✓ Use more complex model (polynomial features, more layers)",
+                "✓ Add more features (location, age, size interactions)",
+                "✓ Train longer",
+                "✓ Reduce regularization (if any)",
+                "",
+                "---",
+                "",
+                "**Scenario 3: Email Spam Detection**",
+                "- Training accuracy: 92%",
+                "- Test accuracy: 90%",
+                "",
+                "**Analysis:**",
+                "- Training error: 8%",
+                "- Test error: 10%",
+                "- Small gap: 10% − 8% = 2%",
+                "- Both errors reasonably low",
+                "",
+                "**Diagnosis: GOOD FIT**",
+                "- Model generalizes well",
+                "- Small generalization gap",
+                "- Can try minor improvements but fundamentally healthy"
+            ],
+            "final_answer": "Overfitting: low training error, high test error, large gap. Underfitting: both errors high, small gap. Good fit: both errors low, small gap. Solutions: Overfitting→regularization/data. Underfitting→complexity/features."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Apply L2 regularization to linear regression and explain its effect on weights.",
+            "solution_steps": [
+                "**Standard Linear Regression:**",
+                "",
+                "Minimize: MSE = (1/n)Σ(yᵢ − wᵀxᵢ)²",
+                "",
+                "Solution (normal equation): w = (XᵀX)⁻¹Xᵀy",
+                "",
+                "**Problem:** With many features or small data:",
+                "- XᵀX may be near-singular (ill-conditioned)",
+                "- Weights can become very large",
+                "- Model overfits—high variance, poor generalization",
+                "",
+                "---",
+                "",
+                "**L2 Regularized Linear Regression (Ridge):**",
+                "",
+                "Minimize: Loss = MSE + λΣwᵢ²",
+                "= (1/n)Σ(yᵢ − wᵀxᵢ)² + λΣwᵢ²",
+                "",
+                "**λ**: Regularization strength (hyperparameter)",
+                "- λ = 0: Standard linear regression (no penalty)",
+                "- λ → ∞: Weights shrink to zero (underfitting)",
+                "",
+                "**Regularized Solution:**",
+                "w = (XᵀX + λI)⁻¹Xᵀy",
+                "",
+                "Adding λI to XᵀX:",
+                "✓ Makes matrix invertible (numerical stability)",
+                "✓ Shrinks weights toward zero",
+                "✓ Reduces overfitting",
+                "",
+                "---",
+                "",
+                "**Example: Polynomial Regression**",
+                "",
+                "Data: 5 points (x, y) = (1,2), (2,3), (3,5), (4,6), (5,8)",
+                "",
+                "Fit polynomial: y = w₀ + w₁x + w₂x² + w₃x³ + w₄x⁴",
+                "",
+                "**Without regularization (λ=0):**",
+                "Perfect fit (passes through all 5 points)",
+                "Weights: w = [1.5, −2.3, 3.8, −1.2, 0.9]",
+                "Some weights very large (magnitude >3)",
+                "→ Oscillates wildly between points",
+                "→ Overfits",
+                "",
+                "**With L2 regularization (λ=0.1):**",
+                "Slight training error (doesn't pass through all points)",
+                "Weights: w = [1.8, 0.5, 0.2, 0.1, 0.0]",
+                "All weights smaller (shrinkage)",
+                "Higher-order terms (x³, x⁴) nearly zero",
+                "→ Smoother curve",
+                "→ Better generalization",
+                "",
+                "**Effect of increasing λ:**",
+                "",
+                "| λ   | Weight Magnitude | Training Error | Test Error |",
+                "|-----|------------------|----------------|------------|",
+                "| 0   | Large (3.8)      | 0.00          | 2.50       |",
+                "| 0.1 | Medium (0.5)     | 0.15          | 0.80       |",
+                "| 1.0 | Small (0.1)      | 0.50          | 0.75       |",
+                "| 10  | Tiny (0.01)      | 1.20          | 1.30       |",
+                "",
+                "**Optimal λ ≈ 1.0**: Balances training fit and generalization",
+                "",
+                "**Key Insight:**",
+                "L2 penalty prevents large weights → smoother model → less overfitting"
+            ],
+            "final_answer": "L2 regularization adds λΣwᵢ² penalty to loss. Shrinks weights toward zero (not exactly zero). Prevents overfitting by constraining model complexity. Optimal λ balances training error and generalization. Too small→overfit. Too large→underfit."
+        },
+        {
+            "difficulty": "Advanced",
+            "problem": "Interpret learning curves to diagnose overfitting/underfitting and recommend solutions.",
+            "solution_steps": [
+                "**Learning Curve 1: Overfitting**",
+                "",
+                "Plot: Error vs Training Set Size",
+                "",
+                "```",
+                "Error",
+                "  |",
+                "  |     Test Error __________ (high, flat)",
+                "  |                    ",
+                "  |",
+                "  |  Train Error______ (low, flat)",
+                "  |",
+                "  +------------------------> Training Size",
+                "  100         500        1000",
+                "```",
+                "",
+                "**Observations:**",
+                "- Training error: ~5% (low, doesn't decrease much with more data)",
+                "- Test error: ~25% (high, doesn't decrease much with more data)",
+                "- Large gap: 25% − 5% = 20%",
+                "- Both curves have flattened (plateau)",
+                "",
+                "**Diagnosis: HIGH VARIANCE (Overfitting)**",
+                "- Model memorizes training data well",
+                "- Doesn't generalize to test data",
+                "- More data alone won't help much (curves flat)",
+                "",
+                "**Solutions:**",
+                "1. ✓ **Add regularization** (L2, dropout)—primary solution",
+                "2. ✓ **Simplify model**—fewer parameters/layers",
+                "3. ✓ **Feature selection**—remove irrelevant features",
+                "4. ✓ **Early stopping**—stop training earlier",
+                "5. ✗ More data helps but limited (curves already flat)",
+                "",
+                "---",
+                "",
+                "**Learning Curve 2: Underfitting**",
+                "",
+                "```",
+                "Error",
+                "  |",
+                "  | Test Error  ________ (high)",
+                "  | Train Error ________ (also high, close)",
+                "  |                  ",
+                "  |",
+                "  +------------------------> Training Size",
+                "  100         500        1000",
+                "```",
+                "",
+                "**Observations:**",
+                "- Training error: ~35% (high)",
+                "- Test error: ~38% (also high)",
+                "- Small gap: 38% − 35% = 3%",
+                "- Curves converged but both high",
+                "",
+                "**Diagnosis: HIGH BIAS (Underfitting)**",
+                "- Model too simple to fit even training data",
+                "- Can't capture underlying patterns",
+                "- More data won't help (can't use it)",
+                "",
+                "**Solutions:**",
+                "1. ✓ **More complex model**—higher degree polynomial, more layers",
+                "2. ✓ **Add features**—polynomial features, interactions",
+                "3. ✓ **Train longer**—if stopped too early",
+                "4. ✓ **Reduce regularization**—λ too high",
+                "5. ✗ More data won't help (model can't use capacity)",
+                "",
+                "---",
+                "",
+                "**Learning Curve 3: Good Fit (More Data Helps)**",
+                "",
+                "```",
+                "Error",
+                "  |\\",
+                "  | \\  Test Error",
+                "  |  \\___",
+                "  |   \\__________  (decreasing, converging)",
+                "  |    \\",
+                "  |     \\Train Error_____ (low, increasing slightly)",
+                "  |",
+                "  +------------------------> Training Size",
+                "  100         500        1000",
+                "```",
+                "",
+                "**Observations:**",
+                "- Training error increases slightly (harder to fit more data)",
+                "- Test error decreases (better generalization)",
+                "- Gap closing (curves converging)",
+                "- Curves still have slope (not flat)",
+                "",
+                "**Diagnosis: GOOD TRAJECTORY**",
+                "- Model is learning properly",
+                "- More data will continue to help",
+                "- Gap is closing",
+                "",
+                "**Solutions:**",
+                "1. ✓ **Collect more training data**—primary recommendation",
+                "2. ✓ **Continue current approach**—model capacity is appropriate",
+                "3. ✓ **Data augmentation** if collection expensive",
+                "",
+                "---",
+                "",
+                "**Summary Decision Tree:**",
+                "",
+                "```",
+                "Training error low? ",
+                "├─ Yes → Test error low?",
+                "│        ├─ Yes → ✓ Good fit!",
+                "│        └─ No → ✗ Overfitting (high variance)",
+                "│               Solutions: Regularization, more data, simplify",
+                "│",
+                "└─ No → Both errors high?",
+                "         └─ Yes → ✗ Underfitting (high bias)",
+                "                  Solutions: More complexity, features, less regularization",
+                "```"
+            ],
+            "final_answer": "Learning curves diagnose fit: Large gap (train low, test high)→overfitting (regularization, data, simplify). Both high, small gap→underfitting (complexity, features). Converging curves with slope→more data helps. Flat curves→architectural changes needed."
+        }
+    ],
+    "logical_derivation": "Overfitting and underfitting arise from model capacity mismatch with data complexity. Underfitting (high bias): model lacks capacity to represent underlying function—linear model for non-linear relationship. Training error high because model can't fit training data. Overfitting (high variance): model has excess capacity—memorizes training noise as if it were signal. Training error low but learned patterns don't generalize. Generalization gap quantifies overfitting. Regularization constrains hypothesis space by penalizing complexity: L2 shrinks weights (smoother functions), L1 induces sparsity (simpler models), early stopping limits iterations (prevents noise memorization). The bias-variance tradeoff is fundamental: simple models have high bias (underfit) but low variance (stable predictions), complex models have low bias (fit well) but high variance (unstable, overfit). Optimal model complexity balances these. Learning curves visualize this: flat curves with gap indicate overfitting (regularization needed), converged high curves indicate underfitting (more capacity needed), converging decreasing curves indicate more data helps.",
+    "applications": [
+        "**Deep Learning:** Neural networks prone to overfitting (millions of parameters). Use dropout, L2 weight decay, batch normalization, data augmentation, early stopping. Monitor training/validation loss curves.",
+        "**Medical Diagnosis:** Small datasets (expensive data collection)→high overfitting risk. Use regularization, cross-validation, transfer learning (pre-trained models). Underfitting dangerous (miss disease).",
+        "**Financial Modeling:** Time series prediction overfits to historical patterns (regime changes). Use walk-forward validation, regularization, simpler models. Overfitting causes trading strategy failures.",
+        "**Natural Language Processing:** Language models (GPT, BERT) billions of parameters→massive data needed to avoid overfitting. Pre-training on large corpus, fine-tuning with regularization.",
+        "**Computer Vision:** Image classification with limited data overfits. Data augmentation (rotations, crops, color jitter), transfer learning (ImageNet pre-training), dropout in fully-connected layers.",
+        "**Kaggle Competitions:** Overfitting to public leaderboard (test set)→poor private leaderboard score. Use cross-validation, ensemble methods, regularization to improve generalization.",
+        "**Recommendation Systems:** User-item matrices sparse→overfitting risk. Matrix factorization with regularization, limit embedding dimensions, early stopping."
+    ],
+    "key_takeaways": [
+        "Overfitting: Model memorizes training data (low train error, high test error). High variance. Solutions: regularization, data, simplify.",
+        "Underfitting: Model too simple (both errors high, small gap). High bias. Solutions: more complexity, features, less regularization.",
+        "Generalization gap = test error − train error. Large gap indicates overfitting.",
+        "Learning curves: Plot train/test error vs data size. Diagnose fit quality and whether more data helps.",
+        "L2 regularization: Add λΣwᵢ² penalty. Shrinks weights toward zero (not exactly). Prevents overfitting.",
+        "L1 regularization: Add λΣ|wᵢ| penalty. Promotes sparsity (weights exactly zero). Feature selection.",
+        "Early stopping: Stop training when validation error increases. Simple, effective overfitting prevention. Balance model complexity with data size and use regularization for robust generalization."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Confusing overfitting and underfitting symptoms",
+            "why_it_occurs": "Students mix up high/low training vs test error patterns.",
+            "how_to_avoid": "Remember: Overfitting→train low, test high (large gap). Underfitting→both high (small gap). Draw learning curves to visualize."
+        },
+        {
+            "mistake": "Using regularization to fix underfitting",
+            "why_it_occurs": "Students apply regularization as default solution.",
+            "how_to_avoid": "Regularization reduces complexity→fixes overfitting, worsens underfitting. If both errors high (underfitting), reduce regularization or add complexity."
+        },
+        {
+            "mistake": "Not monitoring validation error during training",
+            "why_it_occurs": "Students only look at training accuracy.",
+            "how_to_avoid": "Always track both training and validation error. Diverging curves indicate overfitting. Use early stopping when validation error increases."
+        },
+        {
+            "mistake": "Choosing regularization strength λ arbitrarily",
+            "why_it_occurs": "Students pick random λ without tuning.",
+            "how_to_avoid": "Use cross-validation to select optimal λ. Try range [0.001, 0.01, 0.1, 1, 10]. Balance training fit and generalization."
+        },
+        {
+            "mistake": "Thinking more data always solves overfitting",
+            "why_it_occurs": "Students assume data is cure-all.",
+            "how_to_avoid": "More data helps if learning curves not flat. If flat (plateaued), need regularization/simpler model. Check curve slopes first."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is overfitting?",
+            "options": [
+                "Model memorizes training data, poor generalization (low train error, high test error)",
+                "Model too simple, high error on both train and test",
+                "Model trains too slowly",
+                "Model has too few parameters"
+            ],
+            "correct_answer": 0,
+            "explanation": "Overfitting: model learns training data too well (including noise). Low training error but high test error. High variance, poor generalization."
+        },
+        {
+            "question": "What is underfitting?",
+            "options": [
+                "Model too simple to capture patterns (high error on train and test)",
+                "Model memorizes training data",
+                "Model trains too fast",
+                "Model has too many parameters"
+            ],
+            "correct_answer": 0,
+            "explanation": "Underfitting: model lacks capacity to represent underlying function. High bias. High error on both training and test data. Too simple."
+        },
+        {
+            "question": "What does L2 regularization do?",
+            "options": [
+                "Adds penalty λΣwᵢ², shrinks weights toward zero",
+                "Adds penalty λΣ|wᵢ|, makes weights exactly zero",
+                "Increases model complexity",
+                "Speeds up training"
+            ],
+            "correct_answer": 0,
+            "explanation": "L2 (Ridge) adds quadratic weight penalty λΣwᵢ² to loss. Shrinks weights toward (not exactly to) zero. Reduces overfitting by penalizing complexity."
+        },
+        {
+            "question": "What does L1 regularization promote?",
+            "options": [
+                "Sparsity (some weights exactly zero, feature selection)",
+                "Large weights",
+                "Faster training",
+                "More overfitting"
+            ],
+            "correct_answer": 0,
+            "explanation": "L1 (Lasso) adds penalty λΣ|wᵢ|. Promotes sparsity—drives some weights to exactly zero. Performs automatic feature selection. Harder to optimize than L2."
+        },
+        {
+            "question": "What is early stopping?",
+            "options": [
+                "Stop training when validation error starts increasing",
+                "Stop after fixed number of epochs",
+                "Stop when training error reaches zero",
+                "Never stop training"
+            ],
+            "correct_answer": 0,
+            "explanation": "Early stopping: monitor validation error during training. When it starts increasing (while training error still decreasing), stop. Prevents overfitting. Simple, effective."
+        },
+        {
+            "question": "What does a large generalization gap indicate?",
+            "options": [
+                "Overfitting (test error much higher than training error)",
+                "Underfitting",
+                "Perfect fit",
+                "Need more epochs"
+            ],
+            "correct_answer": 0,
+            "explanation": "Generalization gap = test error − training error. Large gap means model fits training well but test poorly→overfitting (high variance)."
+        },
+        {
+            "question": "Learning curve shows both train and test error high with small gap. Diagnosis?",
+            "options": [
+                "Underfitting (model too simple, high bias)",
+                "Overfitting (model too complex)",
+                "Perfect fit",
+                "Need early stopping"
+            ],
+            "correct_answer": 0,
+            "explanation": "Both errors high, small gap→underfitting. Model too simple to capture patterns (high bias). Solutions: more complexity, features, less regularization."
+        },
+        {
+            "question": "How to fix overfitting?",
+            "options": [
+                "Add regularization, get more data, simplify model, early stopping",
+                "Increase model complexity",
+                "Remove regularization",
+                "Train longer"
+            ],
+            "correct_answer": 0,
+            "explanation": "Overfitting (high variance) solutions: regularization (L2/L1/dropout), more training data, simpler model architecture, early stopping. Reduce model capacity or constrain it."
+        },
+        {
+            "question": "How to fix underfitting?",
+            "options": [
+                "Increase model complexity, add features, reduce regularization",
+                "Add more regularization",
+                "Simplify model",
+                "Early stopping"
+            ],
+            "correct_answer": 0,
+            "explanation": "Underfitting (high bias) solutions: more complex model (more layers/parameters), add features, train longer, reduce regularization λ. Increase model capacity."
+        },
+        {
+            "question": "What does dropout do in neural networks?",
+            "options": [
+                "Randomly drops neurons during training to prevent co-adaptation",
+                "Drops training examples",
+                "Drops entire layers",
+                "Drops learning rate"
+            ],
+            "correct_answer": 0,
+            "explanation": "Dropout: randomly set fraction p of neurons to zero each training iteration. Prevents co-adaptation (neurons relying on specific others). Reduces overfitting. Use all neurons at test time."
+        },
+        {
+            "question": "What is the effect of increasing regularization strength λ?",
+            "options": [
+                "Shrinks weights more, reduces overfitting but may cause underfitting if too large",
+                "Always improves performance",
+                "Increases training speed",
+                "Has no effect"
+            ],
+            "correct_answer": 0,
+            "explanation": "Larger λ→stronger penalty→smaller weights→simpler model. Reduces overfitting but too large causes underfitting. Optimal λ balances training fit and generalization."
+        },
+        {
+            "question": "When do learning curves indicate more data will help?",
+            "options": [
+                "When curves are converging but still have slope (not flat)",
+                "When both curves are flat",
+                "When training error is zero",
+                "Never"
+            ],
+            "correct_answer": 0,
+            "explanation": "If learning curves still have slope (decreasing test error as training size increases), more data helps. If flat (plateaued), need architectural changes (regularization/complexity)."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Overfitting: Low train error, high test error, large gap. High variance. Memorizes training data (including noise).",
+            "Underfitting: Both errors high, small gap. High bias. Model too simple to capture patterns.",
+            "Generalization gap = test error − train error. Large gap→overfitting. Both high→underfitting.",
+            "Learning curves: Plot train/test error vs data size. Diagnose overfitting (diverging), underfitting (converged high), or if more data helps (slopes).",
+            "L2 regularization (Ridge): Add λΣwᵢ² penalty. Shrinks weights toward zero (not exactly). Reduces overfitting.",
+            "L1 regularization (Lasso): Add λΣ|wᵢ| penalty. Promotes sparsity (weights exactly zero). Feature selection.",
+            "Early stopping: Stop training when validation error increases. Prevents overfitting. Simple, effective.",
+            "Dropout: Randomly drop neurons during training. Prevents co-adaptation. Reduces overfitting in neural networks.",
+            "Overfitting solutions: Regularization (L2/L1/dropout), more data, simpler model, early stopping.",
+            "Underfitting solutions: More complexity, add features, train longer, reduce regularization."
+        ],
+        "important_formulas": [
+            "L2: Loss = MSE + λΣwᵢ²",
+            "L1: Loss = MSE + λΣ|wᵢ|",
+            "Gap = Error_test − Error_train"
+        ],
+        "common_exam_traps": [
+            "Overfitting: train low, test high (gap large). Underfitting: both high (gap small). Don't confuse!",
+            "Regularization fixes overfitting, worsens underfitting. Check which problem you have first.",
+            "L2 shrinks toward zero. L1 makes exactly zero (sparsity). Different effects.",
+            "Learning curves flat→architectural change. Slopes→more data helps. Check slopes!",
+            "More data helps overfitting IF curves not flat. Don't assume data is always solution."
+        ],
+        "exam_tip": "Remember: Overfitting=train low, test high→regularize. Underfitting=both high→complexify. L2 shrinks weights (smooth), L1 sparsity (zeros). Early stopping=stop when validation increases. Learning curves diagnose: gap→overfit, both high→underfit, slopes→data helps!"
+    }
+}

@@ -1,0 +1,334 @@
+{
+    "module_header": {
+        "module_title": "Integration",
+        "subject": "Mathematics",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Differentiation and antiderivatives",
+            "Understanding of area under curves",
+            "Algebraic manipulation and substitution",
+            "Trigonometric and exponential functions"
+        ],
+        "learning_outcomes": [
+            "Define the definite integral as a limit of Riemann sums",
+            "Apply the Fundamental Theorem of Calculus to evaluate definite integrals",
+            "Compute indefinite integrals using basic integration formulas",
+            "Apply integration techniques including substitution and integration by parts",
+            "Evaluate improper integrals and understand convergence",
+            "Interpret integrals geometrically and physically"
+        ]
+    },
+    "definition": "The definite integral $\\int_a^b f(x)\\,dx$ represents the signed area between the curve $y = f(x)$ and the x-axis from $x = a$ to $x = b$, defined as the limit of Riemann sums: $\\lim_{n \\to \\infty} \\sum_{i=1}^n f(x_i^*)\\Delta x$. The indefinite integral $\\int f(x)\\,dx = F(x) + C$ represents the family of all antiderivatives of $f(x)$, where $F'(x) = f(x)$ and $C$ is an arbitrary constant.",
+    "concept_overview": [
+        "Integration is the inverse operation of differentiation, recovering original functions from their derivatives (antiderivatives).",
+        "The Fundamental Theorem of Calculus (FTC) connects differentiation and integration: if $F' = f$, then $\\int_a^b f(x)\\,dx = F(b) - F(a)$.",
+        "Basic integration formulas reverse differentiation rules: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ (power rule), $\\int e^x\\,dx = e^x + C$, $\\int \\sin x\\,dx = -\\cos x + C$.",
+        "Integration techniques including u-substitution (chain rule backwards) and integration by parts (product rule backwards) expand the class of integrable functions.",
+        "Improper integrals handle infinite limits or discontinuous integrands by taking limits of proper integrals."
+    ],
+    "theory": [
+        "Integration represents the second fundamental operation of calculus, providing the mathematical framework for computing accumulated quantities, areas, volumes, and total changes from rates. While differentiation analyzes instantaneous behavior, integration reconstructs global behavior from local information, answering questions like 'given velocity, find displacement' or 'given rate of production, find total output.' The definite integral, rigorously defined through Riemann sums, formalizes the concept of area under a curve by approximating with rectangles and taking the limit as rectangles become infinitely thin. In engineering applications, integration appears everywhere: calculating work from force, finding total charge from current, determining fluid flow from velocity fields, computing heat transfer from temperature gradients, and analyzing signal energy from power spectra. The study of integration develops essential skills in pattern recognition for antiderivatives, strategic application of techniques, and translation of accumulation problems into integral formulations. Mastery of integration provides the foundation for differential equations, Laplace transforms, Fourier analysis, and all engineering mathematics involving accumulation and total quantities.",
+        "The Fundamental Theorem of Calculus establishes the profound connection between differentiation and integration, stating that integration and differentiation are inverse operations. Part 1 states that if $f$ is continuous on $[a,b]$ and $F(x) = \\int_a^x f(t)\\,dt$, then $F'(x) = f(x)$—differentiating an integral recovers the original function. Part 2 provides the evaluation formula: if $F' = f$ on $[a,b]$, then $\\int_a^b f(x)\\,dx = F(b) - F(a)$—definite integrals can be computed using any antiderivative. Basic integration formulas include: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ for $n \\neq -1$, $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$, $\\int e^x\\,dx = e^x + C$, $\\int \\sin x\\,dx = -\\cos x + C$, $\\int \\cos x\\,dx = \\sin x + C$. U-substitution handles integrals of the form $\\int f(g(x))g'(x)\\,dx$ by setting $u = g(x)$, $du = g'(x)\\,dx$, transforming to $\\int f(u)\\,du$. Integration by parts applies the product rule backwards: $\\int u\\,dv = uv - \\int v\\,du$, useful for products of algebraic and transcendental functions. Improper integrals $\\int_a^\\infty f(x)\\,dx$ are evaluated as $\\lim_{b \\to \\infty} \\int_a^b f(x)\\,dx$, converging if the limit exists finitely.",
+        "Mastery of integration is critically important because integrals quantify all accumulated quantities in engineering systems. In physics, displacement is the integral of velocity ($s = \\int v\\,dt$), work is the integral of force ($W = \\int F\\,dx$), and total change is the integral of rate of change. In electrical engineering, charge is the integral of current ($q = \\int i\\,dt$), and energy stored in a capacitor involves integrating voltage. In thermodynamics, heat transfer and entropy changes are computed through integration. In control systems, integral action in PI and PID controllers eliminates steady-state error by accumulating error over time. In probability and statistics, areas under probability density functions give probabilities. The Fundamental Theorem of Calculus provides the computational tool that makes calculus practical—without it, every integral would require evaluating limits of Riemann sums. In numerical analysis, when antiderivatives don't exist in closed form, techniques like Simpson's rule and Gaussian quadrature approximate integrals for computation. In examinations, proficiency in integration demonstrates command over antiderivative recognition, strategic use of techniques, and ability to set up and evaluate integrals for physical problems."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$\\int_a^b f(x)\\,dx = \\lim_{n \\to \\infty} \\sum_{i=1}^n f(x_i^*)\\Delta x$",
+            "explanation": "Definition of definite integral as limit of Riemann sums, where $\\Delta x = \\frac{b-a}{n}$."
+        },
+        {
+            "formula": "FTC Part 2: If $F' = f$, then $\\int_a^b f(x)\\,dx = F(b) - F(a)$",
+            "explanation": "Fundamental Theorem of Calculus: definite integral evaluated using any antiderivative."
+        },
+        {
+            "formula": "$\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ for $n \\neq -1$",
+            "explanation": "Power rule for integration (reverse of power rule for differentiation)."
+        },
+        {
+            "formula": "$\\int \\frac{1}{x}\\,dx = \\ln|x| + C$",
+            "explanation": "Special case of power rule when $n = -1$."
+        },
+        {
+            "formula": "$\\int e^x\\,dx = e^x + C$",
+            "explanation": "Exponential function is its own antiderivative."
+        },
+        {
+            "formula": "$\\int \\sin x\\,dx = -\\cos x + C$, $\\int \\cos x\\,dx = \\sin x + C$",
+            "explanation": "Antiderivatives of sine and cosine."
+        },
+        {
+            "formula": "U-substitution: If $u = g(x)$, then $\\int f(g(x))g'(x)\\,dx = \\int f(u)\\,du$",
+            "explanation": "Chain rule in reverse; transforms integral into simpler form."
+        },
+        {
+            "formula": "Integration by parts: $\\int u\\,dv = uv - \\int v\\,du$",
+            "explanation": "Product rule in reverse; useful for products of functions."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Evaluate $\\int (3x^2 - 4x + 5)\\,dx$.",
+            "solution_steps": [
+                "**Step 1**: Integrate term by term:",
+                "$\\int 3x^2\\,dx = 3 \\cdot \\frac{x^3}{3} = x^3$",
+                "$\\int -4x\\,dx = -4 \\cdot \\frac{x^2}{2} = -2x^2$",
+                "$\\int 5\\,dx = 5x$",
+                "**Step 2**: Combine and add constant:",
+                "$\\int (3x^2 - 4x + 5)\\,dx = x^3 - 2x^2 + 5x + C$"
+            ],
+            "final_answer": "$x^3 - 2x^2 + 5x + C$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Evaluate $\\int_0^2 (x^2 + 1)\\,dx$ using FTC.",
+            "solution_steps": [
+                "**Step 1**: Find antiderivative:",
+                "$F(x) = \\int (x^2 + 1)\\,dx = \\frac{x^3}{3} + x + C$",
+                "**Step 2**: Apply FTC: $\\int_0^2 (x^2 + 1)\\,dx = F(2) - F(0)$",
+                "**Step 3**: Evaluate at upper limit:",
+                "$F(2) = \\frac{2^3}{3} + 2 = \\frac{8}{3} + 2 = \\frac{8}{3} + \\frac{6}{3} = \\frac{14}{3}$",
+                "**Step 4**: Evaluate at lower limit:",
+                "$F(0) = \\frac{0^3}{3} + 0 = 0$",
+                "**Step 5**: Subtract:",
+                "$\\int_0^2 (x^2 + 1)\\,dx = \\frac{14}{3} - 0 = \\frac{14}{3}$"
+            ],
+            "final_answer": "$\\frac{14}{3}$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Evaluate $\\int 2x\\cos(x^2)\\,dx$ using u-substitution.",
+            "solution_steps": [
+                "**Step 1**: Identify inner function: Let $u = x^2$",
+                "**Step 2**: Find $du$: $du = 2x\\,dx$",
+                "**Step 3**: Notice that $2x\\,dx$ appears in the integral, so substitute:",
+                "$\\int 2x\\cos(x^2)\\,dx = \\int \\cos(u)\\,du$",
+                "**Step 4**: Integrate:",
+                "$= \\sin(u) + C$",
+                "**Step 5**: Substitute back $u = x^2$:",
+                "$= \\sin(x^2) + C$"
+            ],
+            "final_answer": "$\\sin(x^2) + C$"
+        }
+    ],
+    "logical_derivation": "To prove FTC Part 2, let $F$ be any antiderivative of $f$, so $F' = f$. Define $G(x) = \\int_a^x f(t)\\,dt$. By FTC Part 1, $G'(x) = f(x) = F'(x)$. Since $G$ and $F$ have the same derivative, they differ by a constant: $F(x) = G(x) + C$. Evaluating at $x = a$: $F(a) = G(a) + C = \\int_a^a f(t)\\,dt + C = 0 + C = C$, so $C = F(a)$. Thus $F(x) = G(x) + F(a)$, which gives $G(x) = F(x) - F(a)$. Setting $x = b$: $\\int_a^b f(t)\\,dt = G(b) = F(b) - F(a)$.",
+    "applications": [
+        "**Area Under Curves**: Computing regions bounded by curves and axes.",
+        "**Displacement from Velocity**: $s = \\int v\\,dt$ recovers position from velocity in kinematics.",
+        "**Work from Force**: $W = \\int F\\,dx$ calculates work done by variable force.",
+        "**Electric Charge**: $q = \\int i\\,dt$ computes charge from current in circuits.",
+        "**Probability**: Areas under probability density functions give probabilities.",
+        "**Signal Processing**: Energy of signal computed as $E = \\int |x(t)|^2\\,dt$.",
+        "**Control Systems**: Integral action accumulates error over time in PI/PID controllers."
+    ],
+    "key_takeaways": [
+        "Integration is the inverse of differentiation: finding antiderivatives.",
+        "Definite integral $\\int_a^b f(x)\\,dx$ represents signed area under curve from $a$ to $b$.",
+        "Fundamental Theorem of Calculus: $\\int_a^b f(x)\\,dx = F(b) - F(a)$ where $F' = f$.",
+        "Power rule for integration: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ (except $n = -1$).",
+        "Special case: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$.",
+        "U-substitution transforms $\\int f(g(x))g'(x)\\,dx$ by letting $u = g(x)$, reversing chain rule.",
+        "Don't forget $+C$ for indefinite integrals (represents all antiderivatives)."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Forgetting the constant of integration $+C$ in indefinite integrals",
+            "why_it_occurs": "Students treat indefinite integrals like definite integrals.",
+            "how_to_avoid": "Remember: $\\int f(x)\\,dx$ represents a family of functions differing by constants. Always add $+C$ unless evaluating definite integral."
+        },
+        {
+            "mistake": "Incorrect power rule application: $\\int x^n\\,dx = \\frac{x^n}{n}$ instead of $\\frac{x^{n+1}}{n+1}$",
+            "why_it_occurs": "Students confuse with differentiation or forget to increase exponent.",
+            "how_to_avoid": "Power rule for integration: add 1 to exponent, then divide by new exponent: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$."
+        },
+        {
+            "mistake": "Using power rule for $\\int \\frac{1}{x}\\,dx = \\frac{x^0}{0}$ (undefined)",
+            "why_it_occurs": "Students try to apply power rule when $n = -1$.",
+            "how_to_avoid": "Special case: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$. Power rule doesn't work for $n = -1$."
+        },
+        {
+            "mistake": "Forgetting absolute value: $\\int \\frac{1}{x}\\,dx = \\ln x$ instead of $\\ln|x|$",
+            "why_it_occurs": "Students forget that logarithm requires positive argument.",
+            "how_to_avoid": "Always write $\\ln|x| + C$ to handle negative $x$ values correctly."
+        },
+        {
+            "mistake": "Incorrect u-substitution: not correctly identifying $du$",
+            "why_it_occurs": "Students set $u$ but don't properly find and substitute $du$.",
+            "how_to_avoid": "After choosing $u = g(x)$, carefully find $du = g'(x)\\,dx$ and verify all of $g'(x)\\,dx$ appears in the integral."
+        },
+        {
+            "mistake": "Evaluating $F(b) - F(a)$ as $F(a) - F(b)$ (reversed)",
+            "why_it_occurs": "Students reverse the order in FTC evaluation.",
+            "how_to_avoid": "Remember: $\\int_a^b f(x)\\,dx = F(b) - F(a)$ (upper limit minus lower limit). Think 'end minus start'."
+        },
+        {
+            "mistake": "Assuming integration distributes over products: $\\int fg = (\\int f)(\\int g)$",
+            "why_it_occurs": "Students incorrectly apply linearity to products.",
+            "how_to_avoid": "Integration is linear for sums, NOT products. For products, use integration by parts or other techniques."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is $\\int x^4\\,dx$?",
+            "options": [
+                "$\\frac{x^5}{5} + C$",
+                "$4x^3 + C$",
+                "$\\frac{x^4}{4} + C$",
+                "$x^5 + C$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Power rule: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$, so $\\int x^4\\,dx = \\frac{x^5}{5} + C$."
+        },
+        {
+            "question": "Evaluate $\\int_1^3 2x\\,dx$ using FTC:",
+            "options": [
+                "$8$",
+                "$4$",
+                "$6$",
+                "$3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$F(x) = x^2$. By FTC: $\\int_1^3 2x\\,dx = F(3) - F(1) = 9 - 1 = 8$."
+        },
+        {
+            "question": "What is $\\int \\frac{1}{x}\\,dx$?",
+            "options": [
+                "$\\ln|x| + C$",
+                "$\\frac{1}{x^2} + C$",
+                "$-\\frac{1}{x^2} + C$",
+                "$\\ln x + C$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Special case: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$ (note absolute value)."
+        },
+        {
+            "question": "The Fundamental Theorem of Calculus states:",
+            "options": [
+                "$\\int_a^b f(x)\\,dx = F(b) - F(a)$ where $F' = f$",
+                "$\\frac{d}{dx}\\int f(x)\\,dx = 0$",
+                "$\\int \\frac{d}{dx}f(x)\\,dx = f'(x)$",
+                "Integration and differentiation are unrelated"
+            ],
+            "correct_answer": 0,
+            "explanation": "FTC Part 2: if $F'(x) = f(x)$, then $\\int_a^b f(x)\\,dx = F(b) - F(a)$."
+        },
+        {
+            "question": "For u-substitution in $\\int 3x^2\\sin(x^3)\\,dx$, choose:",
+            "options": [
+                "$u = x^3$, $du = 3x^2\\,dx$",
+                "$u = \\sin(x^3)$",
+                "$u = 3x^2$",
+                "$u = x$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Let $u = x^3$ (inner function), then $du = 3x^2\\,dx$ which appears in the integral, making substitution work."
+        },
+        {
+            "question": "Which requires a constant $+C$?",
+            "options": [
+                "Indefinite integral $\\int f(x)\\,dx$",
+                "Definite integral $\\int_a^b f(x)\\,dx$",
+                "Both",
+                "Neither"
+            ],
+            "correct_answer": 0,
+            "explanation": "Indefinite integrals represent families of antiderivatives differing by constants, requiring $+C$. Definite integrals give specific numbers."
+        },
+        {
+            "question": "What is $\\int e^x\\,dx$?",
+            "options": [
+                "$e^x + C$",
+                "$xe^{x-1} + C$",
+                "$\\frac{e^{x+1}}{x+1} + C$",
+                "$e^{2x} + C$"
+            ],
+            "correct_answer": 0,
+            "explanation": "The exponential function is its own antiderivative: $\\int e^x\\,dx = e^x + C$."
+        },
+        {
+            "question": "Evaluate $\\int \\sin x\\,dx$:",
+            "options": [
+                "$-\\cos x + C$",
+                "$\\cos x + C$",
+                "$-\\sin x + C$",
+                "$\\tan x + C$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\int \\sin x\\,dx = -\\cos x + C$ (note the negative sign)."
+        },
+        {
+            "question": "If $\\int_0^a f(x)\\,dx = 5$ and $\\int_0^a g(x)\\,dx = 3$, then $\\int_0^a [f(x) + g(x)]\\,dx =$",
+            "options": [
+                "$8$",
+                "$15$",
+                "$2$",
+                "$\\frac{5}{3}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Integration is linear: $\\int [f + g] = \\int f + \\int g = 5 + 3 = 8$."
+        },
+        {
+            "question": "The definite integral $\\int_a^b f(x)\\,dx$ geometrically represents:",
+            "options": [
+                "Signed area between curve and x-axis from $a$ to $b$",
+                "Slope of tangent line",
+                "Total distance traveled",
+                "Average value"
+            ],
+            "correct_answer": 0,
+            "explanation": "Definite integral represents signed area: positive above x-axis, negative below."
+        },
+        {
+            "question": "Integration by parts formula is:",
+            "options": [
+                "$\\int u\\,dv = uv - \\int v\\,du$",
+                "$\\int u\\,dv = uv + \\int v\\,du$",
+                "$\\int u\\,dv = \\int u \\cdot \\int dv$",
+                "$\\int u\\,dv = u'v'$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Integration by parts (product rule backwards): $\\int u\\,dv = uv - \\int v\\,du$."
+        },
+        {
+            "question": "What is $\\int 0\\,dx$?",
+            "options": [
+                "$C$ (constant)",
+                "$0$",
+                "$x$",
+                "Undefined"
+            ],
+            "correct_answer": 0,
+            "explanation": "The antiderivative of zero is any constant: $\\int 0\\,dx = C$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Integration is the inverse of differentiation: finding antiderivatives (functions whose derivative is the given function).",
+            "Definite integral $\\int_a^b f(x)\\,dx$ represents signed area under curve from $x = a$ to $x = b$.",
+            "Fundamental Theorem of Calculus: $\\int_a^b f(x)\\,dx = F(b) - F(a)$ where $F'(x) = f(x)$.",
+            "Power rule for integration: $\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ for $n \\neq -1$.",
+            "Special case: $\\int \\frac{1}{x}\\,dx = \\ln|x| + C$ (note absolute value).",
+            "Standard antiderivatives: $\\int e^x\\,dx = e^x + C$, $\\int \\sin x\\,dx = -\\cos x + C$, $\\int \\cos x\\,dx = \\sin x + C$.",
+            "U-substitution reverses chain rule: let $u = g(x)$, $du = g'(x)\\,dx$ to transform integral.",
+            "Integration by parts reverses product rule: $\\int u\\,dv = uv - \\int v\\,du$.",
+            "Indefinite integrals must include $+C$ (constant of integration) representing all antiderivatives.",
+            "Integration is linear over sums/differences but NOT over products—use special techniques for products."
+        ],
+        "important_formulas": [
+            "$\\int_a^b f(x)\\,dx = F(b) - F(a)$ where $F' = f$ — FTC",
+            "$\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$ for $n \\neq -1$ — Power rule",
+            "$\\int \\frac{1}{x}\\,dx = \\ln|x| + C$ — Special case",
+            "$\\int e^x\\,dx = e^x + C$, $\\int \\sin x\\,dx = -\\cos x + C$",
+            "U-sub: $\\int f(g(x))g'(x)\\,dx = \\int f(u)\\,du$ where $u = g(x)$",
+            "By parts: $\\int u\\,dv = uv - \\int v\\,du$"
+        ],
+        "common_exam_traps": [
+            "Forgetting $+C$ in indefinite integrals—always add constant for antiderivatives.",
+            "Using $\\frac{x^n}{n}$ instead of $\\frac{x^{n+1}}{n+1}$ in power rule—must increase exponent.",
+            "Applying power rule to $\\int \\frac{1}{x}\\,dx$—special case is $\\ln|x| + C$, not power rule.",
+            "Forgetting absolute value: write $\\ln|x|$, not just $\\ln x$.",
+            "Reversing FTC evaluation: it's $F(b) - F(a)$ (upper minus lower), not $F(a) - F(b)$."
+        ],
+        "exam_tip": "For indefinite integrals, always add $+C$. For definite integrals, find antiderivative first, then evaluate $F(b) - F(a)$ (upper limit minus lower limit). Use u-substitution when you see a function and its derivative multiplied together."
+    }
+}

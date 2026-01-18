@@ -1,0 +1,343 @@
+{
+    "module_header": {
+        "module_title": "Probability Basics",
+        "subject": "Mathematics",
+        "level": "Advanced",
+        "prerequisites": [
+            "Set theory and basic combinatorics",
+            "Understanding of fractions and ratios",
+            "Basic logic and reasoning",
+            "Familiarity with summation notation"
+        ],
+        "learning_outcomes": [
+            "Define probability rigorously using axiomatic foundations and understand sample spaces",
+            "Apply classical, empirical, and subjective approaches to probability",
+            "Compute probabilities using addition and multiplication rules",
+            "Apply conditional probability and understand independence of events",
+            "Use Bayes' theorem to update probabilities based on new information",
+            "Apply counting principles (permutations, combinations) to probability problems"
+        ]
+    },
+    "definition": "Probability is a numerical measure of the likelihood that an event will occur, quantified as a value between 0 and 1 (or 0% to 100%). For an event $A$ in a sample space $S$, the probability $P(A)$ satisfies: (1) $0 \\leq P(A) \\leq 1$, (2) $P(S) = 1$, and (3) for mutually exclusive events, $P(A \\cup B) = P(A) + P(B)$. The sample space $S$ is the set of all possible outcomes of an experiment.",
+    "concept_overview": [
+        "The classical approach defines probability as the ratio of favorable outcomes to total outcomes when all outcomes are equally likely: $P(A) = \\frac{|A|}{|S|}$.",
+        "The addition rule states $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, simplifying to $P(A) + P(B)$ for mutually exclusive events.",
+        "The multiplication rule gives $P(A \\cap B) = P(A) \\cdot P(B|A)$ where $P(B|A)$ is the conditional probability of $B$ given $A$.",
+        "Events $A$ and $B$ are independent if $P(A \\cap B) = P(A) \\cdot P(B)$, meaning the occurrence of one does not affect the probability of the other.",
+        "Bayes' theorem updates probabilities: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$, fundamental in medical diagnostics, machine learning, and decision theory."
+    ],
+    "theory": [
+        "Probability theory provides the mathematical framework for quantifying uncertainty, making informed decisions under incomplete information, and modeling random phenomena in engineering and science. The axiomatic foundation, established by Kolmogorov, defines probability as a measure on a sample space satisfying normalization, non-negativity, and countable additivity. This rigorous approach enables mathematical proofs of probability theorems and ensures consistency across applications. In engineering practice, probability appears in reliability analysis (failure rates and system redundancy), signal processing (noise modeling and filtering), control systems (stochastic processes and Kalman filtering), quality control (defect rates and acceptance sampling), and risk assessment (safety factors and decision analysis). The study of probability develops essential skills in logical reasoning about uncertainty, translating real-world randomness into mathematical models, and making quantitative predictions about events whose outcomes cannot be known with certainty. Mastery of probability foundations is prerequisite for statistics, stochastic processes, queueing theory, and all engineering disciplines involving uncertainty.",
+        "The fundamental rules of probability enable systematic calculation of event probabilities through set-theoretic operations. The addition rule handles union of events: for any events $A$ and $B$, $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, with the subtraction of $P(A \\cap B)$ correcting for double-counting when events overlap. For mutually exclusive events ($A \\cap B = \\emptyset$), this simplifies to $P(A \\cup B) = P(A) + P(B)$. The complement rule states $P(A^c) = 1 - P(A)$, often simplifying calculations by working with the complement. Conditional probability $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ quantifies the probability of $A$ given that $B$ has occurred, fundamental for updating beliefs with new information. The multiplication rule $P(A \\cap B) = P(A) \\cdot P(B|A)$ computes joint probabilities. Independence, defined as $P(A \\cap B) = P(A) \\cdot P(B)$, simplifies calculations and indicates that knowledge of one event provides no information about the other. Bayes' theorem $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$ enables computing reverse conditional probabilities, essential in diagnostic testing, spam filtering, and Bayesian inference. Counting principles including permutations ($n!/(n-r)!$) and combinations ($\\binom{n}{r} = n!/(r!(n-r)!)$) determine the number of arrangements, crucial for computing classical probabilities.",
+        "Mastery of probability basics is critically important because probabilistic reasoning underpins decision-making in virtually all engineering domains involving uncertainty. In reliability engineering, computing system reliability from component failure probabilities requires multiplication rules and independence concepts. In communications engineering, error probability calculations use conditional probability to model channel noise effects. In quality control, acceptance sampling plans rely on binomial probabilities and complement rules. In machine learning, Bayesian classifiers use Bayes' theorem to predict categories based on features. The ability to construct appropriate sample spaces, identify relevant events, apply probability rules systematically, and interpret results in engineering context is fundamental to modeling real systems. Independence assumptions, when justified, dramatically simplify complex probability calculations—recognizing when independence holds is a critical skill. Bayes' theorem provides the mathematical foundation for updating beliefs rationally as new data arrives, essential in adaptive systems, Kalman filtering, and sequential decision-making. In examinations and professional practice, proficiency in probability demonstrates command over logical reasoning with uncertainty, ability to translate word problems into mathematical formulations, and skill in applying rules systematically to compute event probabilities."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$0 \\leq P(A) \\leq 1$ for any event $A$",
+            "explanation": "Axiom 1: Probabilities are non-negative and bounded by 1."
+        },
+        {
+            "formula": "$P(S) = 1$ where $S$ is the sample space",
+            "explanation": "Axiom 2: The probability of the entire sample space is 1 (certainty)."
+        },
+        {
+            "formula": "Classical probability: $P(A) = \\frac{|A|}{|S|}$ (equally likely outcomes)",
+            "explanation": "Ratio of favorable outcomes to total outcomes when all outcomes are equally likely."
+        },
+        {
+            "formula": "Addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$",
+            "explanation": "Probability of union; subtract intersection to avoid double-counting."
+        },
+        {
+            "formula": "For mutually exclusive events: $P(A \\cup B) = P(A) + P(B)$",
+            "explanation": "Simplified addition rule when events cannot occur simultaneously ($A \\cap B = \\emptyset$)."
+        },
+        {
+            "formula": "Complement rule: $P(A^c) = 1 - P(A)$",
+            "explanation": "Probability of 'not $A$' equals one minus probability of $A$."
+        },
+        {
+            "formula": "Conditional probability: $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ for $P(B) > 0$",
+            "explanation": "Probability of $A$ given that $B$ has occurred."
+        },
+        {
+            "formula": "Multiplication rule: $P(A \\cap B) = P(A) \\cdot P(B|A) = P(B) \\cdot P(A|B)$",
+            "explanation": "Probability of both events occurring."
+        },
+        {
+            "formula": "Independence: $P(A \\cap B) = P(A) \\cdot P(B)$",
+            "explanation": "For independent events, joint probability is product of individual probabilities."
+        },
+        {
+            "formula": "Bayes' theorem: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$",
+            "explanation": "Updates probability of $A$ given observation of $B$."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "A fair six-sided die is rolled. What is the probability of rolling a number greater than 4?",
+            "solution_steps": [
+                "**Step 1**: Define sample space: $S = \\{1, 2, 3, 4, 5, 6\\}$, so $|S| = 6$",
+                "**Step 2**: Define event: $A$ = {rolling > 4} = $\\{5, 6\\}$, so $|A| = 2$",
+                "**Step 3**: Apply classical probability:",
+                "$P(A) = \\frac{|A|}{|S|} = \\frac{2}{6} = \\frac{1}{3}$"
+            ],
+            "final_answer": "$P(\\text{roll} > 4) = \\frac{1}{3} \\approx 0.333$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "In a class of 40 students, 25 study Math, 20 study Physics, and 10 study both. If a student is selected at random, find the probability they study Math or Physics.",
+            "solution_steps": [
+                "**Step 1**: Define events:",
+                "$M$ = student studies Math, $P(M) = 25/40$",
+                "$P$ = student studies Physics, $P(P) = 20/40$",
+                "$M \\cap P$ = studies both, $P(M \\cap P) = 10/40$",
+                "**Step 2**: Apply addition rule:",
+                "$P(M \\cup P) = P(M) + P(P) - P(M \\cap P)$",
+                "$= \\frac{25}{40} + \\frac{20}{40} - \\frac{10}{40}$",
+                "$= \\frac{35}{40} = \\frac{7}{8}$"
+            ],
+            "final_answer": "$P(M \\cup P) = \\frac{7}{8} = 0.875$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "A diagnostic test for a disease is 95% accurate (detects disease when present). The disease affects 2% of the population. If a person tests positive, what is the probability they actually have the disease? (Assume test has 5% false positive rate.)",
+            "solution_steps": [
+                "**Step 1**: Define events:",
+                "$D$ = has disease, $P(D) = 0.02$, $P(D^c) = 0.98$",
+                "$T$ = tests positive",
+                "$P(T|D) = 0.95$ (true positive rate)",
+                "$P(T|D^c) = 0.05$ (false positive rate)",
+                "**Step 2**: Find $P(T)$ using law of total probability:",
+                "$P(T) = P(T|D) \\cdot P(D) + P(T|D^c) \\cdot P(D^c)$",
+                "$= 0.95(0.02) + 0.05(0.98)$",
+                "$= 0.019 + 0.049 = 0.068$",
+                "**Step 3**: Apply Bayes' theorem:",
+                "$P(D|T) = \\frac{P(T|D) \\cdot P(D)}{P(T)} = \\frac{0.95 \\times 0.02}{0.068}$",
+                "$= \\frac{0.019}{0.068} \\approx 0.279$"
+            ],
+            "final_answer": "$P(D|T) \\approx 0.279$ or 27.9%"
+        }
+    ],
+    "logical_derivation": "To derive Bayes' theorem, start with the definition of conditional probability: $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ and $P(B|A) = \\frac{P(A \\cap B)}{P(A)}$. From the second equation, $P(A \\cap B) = P(B|A) \\cdot P(A)$. Substituting into the first equation: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$. This is Bayes' theorem. To find $P(B)$ when $A_1, A_2, \\ldots, A_n$ partition the sample space, use the law of total probability: $P(B) = \\sum_{i=1}^{n} P(B|A_i) \\cdot P(A_i)$. Substituting gives the extended form: $P(A_i|B) = \\frac{P(B|A_i) \\cdot P(A_i)}{\\sum_{j=1}^{n} P(B|A_j) \\cdot P(A_j)}$.",
+    "applications": [
+        "**Reliability Engineering**: Computing system reliability from component failure probabilities using multiplication rule.",
+        "**Medical Diagnostics**: Using Bayes' theorem to determine disease probability given positive test results.",
+        "**Quality Control**: Acceptance sampling, defect rate analysis, and process capability using probability rules.",
+        "**Communication Systems**: Bit error rate calculations, channel modeling, error correction code analysis.",
+        "**Machine Learning**: Bayesian classifiers, spam filtering, and probabilistic models.",
+        "**Risk Assessment**: Computing failure probabilities, safety analysis, and decision trees.",
+        "**Gaming and Simulations**: Monte Carlo methods, stochastic modeling, random number generation."
+    ],
+    "key_takeaways": [
+        "Probability measures likelihood on scale 0 to 1; axioms ensure $0 \\leq P(A) \\leq 1$, $P(S) = 1$, additivity for disjoint events.",
+        "Classical probability: $P(A) = \\frac{|A|}{|S|}$ when all outcomes are equally likely.",
+        "Addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$; simplifies to $P(A) + P(B)$ for mutually exclusive events.",
+        "Complement rule: $P(A^c) = 1 - P(A)$ often simplifies calculations.",
+        "Conditional probability: $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ updates probability given new information.",
+        "Independence: $P(A \\cap B) = P(A) \\cdot P(B)$ means events don't influence each other.",
+        "Bayes' theorem: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$ reverses conditional probabilities, fundamental in inference."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Confusing $P(A|B)$ with $P(B|A)$",
+            "why_it_occurs": "Students think conditional probability is symmetric.",
+            "how_to_avoid": "$P(A|B) \\neq P(B|A)$ in general. Use Bayes' theorem to relate them: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$."
+        },
+        {
+            "mistake": "Using $P(A \\cup B) = P(A) + P(B)$ when events are not mutually exclusive",
+            "why_it_occurs": "Students forget to subtract the intersection.",
+            "how_to_avoid": "Always use full addition rule $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ unless explicitly told events are mutually exclusive."
+        },
+        {
+            "mistake": "Assuming independence without justification",
+            "why_it_occurs": "Students use $P(A \\cap B) = P(A) \\cdot P(B)$ when events are actually dependent.",
+            "how_to_avoid": "Verify independence: check if $P(A \\cap B) = P(A) \\cdot P(B)$ or if knowledge of one event doesn't affect the other. Don't assume."
+        },
+        {
+            "mistake": "Forgetting to normalize in Bayes' theorem",
+            "why_it_occurs": "Students compute $P(B|A) \\cdot P(A)$ but forget to divide by $P(B)$.",
+            "how_to_avoid": "Bayes' theorem requires denominator $P(B)$. Use law of total probability to find it if not given."
+        },
+        {
+            "mistake": "Confusing permutations and combinations",
+            "why_it_occurs": "Students don't consider whether order matters.",
+            "how_to_avoid": "Order matters → permutations ($P(n,r) = \\frac{n!}{(n-r)!}$). Order doesn't matter → combinations ($C(n,r) = \\frac{n!}{r!(n-r)!}$)."
+        },
+        {
+            "mistake": "Computing $P(A \\cap B)$ as $\\frac{P(A) + P(B)}{2}$ (averaging)",
+            "why_it_occurs": "Students guess at formulas instead of using multiplication rule.",
+            "how_to_avoid": "Use multiplication rule: $P(A \\cap B) = P(A) \\cdot P(B|A)$ or $P(A) \\cdot P(B)$ if independent. Never average probabilities."
+        },
+        {
+            "mistake": "Not recognizing complementary events",
+            "why_it_occurs": "Students don't see that $P(A^c) = 1 - P(A)$ could simplify the problem.",
+            "how_to_avoid": "If computing $P(A)$ is complex but $P(A^c)$ is simple, use $P(A) = 1 - P(A^c)$. Example: 'at least one' vs. 'none'."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "If $P(A) = 0.6$ and $P(A^c) = ?$",
+            "options": [
+                "$0.4$",
+                "$0.6$",
+                "$1.0$",
+                "$0.0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Complement rule: $P(A^c) = 1 - P(A) = 1 - 0.6 = 0.4$."
+        },
+        {
+            "question": "For mutually exclusive events $A$ and $B$ with $P(A) = 0.3$ and $P(B) = 0.5$, find $P(A \\cup B)$:",
+            "options": [
+                "$0.8$",
+                "$0.15$",
+                "$0.5$",
+                "$1.0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Mutually exclusive means $P(A \\cap B) = 0$, so $P(A \\cup B) = P(A) + P(B) = 0.3 + 0.5 = 0.8$."
+        },
+        {
+            "question": "If $P(A) = 0.5$, $P(B) = 0.4$, and $P(A \\cap B) = 0.2$, find $P(A \\cup B)$:",
+            "options": [
+                "$0.7$",
+                "$0.9$",
+                "$0.2$",
+                "$0.6$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.5 + 0.4 - 0.2 = 0.7$."
+        },
+        {
+            "question": "If events $A$ and $B$ are independent with $P(A) = 0.6$ and $P(B) = 0.3$, find $P(A \\cap B)$:",
+            "options": [
+                "$0.18$",
+                "$0.9$",
+                "$0.3$",
+                "$0.72$"
+            ],
+            "correct_answer": 0,
+            "explanation": "For independent events: $P(A \\cap B) = P(A) \\cdot P(B) = 0.6 \\times 0.3 = 0.18$."
+        },
+        {
+            "question": "Given $P(A \\cap B) = 0.15$ and $P(B) = 0.5$, find $P(A|B)$:",
+            "options": [
+                "$0.3$",
+                "$0.15$",
+                "$0.5$",
+                "$0.75$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Conditional probability: $P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.15}{0.5} = 0.3$."
+        },
+        {
+            "question": "A fair coin is flipped twice. Probability of getting at least one head is:",
+            "options": [
+                "$\\frac{3}{4}$",
+                "$\\frac{1}{2}$",
+                "$\\frac{1}{4}$",
+                "$1$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Use complement: $P(\\text{at least 1 H}) = 1 - P(\\text{no heads}) = 1 - P(TT) = 1 - \\frac{1}{4} = \\frac{3}{4}$."
+        },
+        {
+            "question": "Which statement about Bayes' theorem is correct?",
+            "options": [
+                "$P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$",
+                "$P(A|B) = P(B|A)$",
+                "$P(A|B) = P(A) \\cdot P(B)$",
+                "$P(A|B) = \\frac{P(A)}{P(B)}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Bayes' theorem: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$ relates forward and reverse conditional probabilities."
+        },
+        {
+            "question": "If $P(A|B) = P(A)$, then:",
+            "options": [
+                "$A$ and $B$ are independent",
+                "$A$ and $B$ are mutually exclusive",
+                "$A \\subset B$",
+                "$P(A) = P(B)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "If $P(A|B) = P(A)$, knowing $B$ doesn't change probability of $A$, so $A$ and $B$ are independent."
+        },
+        {
+            "question": "Number of ways to arrange 5 distinct books on a shelf:",
+            "options": [
+                "$120$",
+                "$25$",
+                "$5$",
+                "$60$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Permutations of 5 objects: $5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$."
+        },
+        {
+            "question": "Number of ways to choose 3 students from a group of 10:",
+            "options": [
+                "$120$",
+                "$720$",
+                "$30$",
+                "$1000$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Combinations: $C(10,3) = \\frac{10!}{3!7!} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$."
+        },
+        {
+            "question": "If $P(A) = 0.7$ and $P(B) = 0.5$ with $P(A \\cup B) = 0.9$, find $P(A \\cap B)$:",
+            "options": [
+                "$0.3$",
+                "$0.2$",
+                "$0.4$",
+                "$0.8$"
+            ],
+            "correct_answer": 0,
+            "explanation": "From addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, so $0.9 = 0.7 + 0.5 - P(A \\cap B)$, giving $P(A \\cap B) = 0.3$."
+        },
+        {
+            "question": "The probability of an impossible event is:",
+            "options": [
+                "$0$",
+                "$1$",
+                "$0.5$",
+                "Undefined"
+            ],
+            "correct_answer": 0,
+            "explanation": "An impossible event (empty set) has probability 0: $P(\\emptyset) = 0$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Probability quantifies likelihood on scale 0 to 1, with axioms ensuring $0 \\leq P(A) \\leq 1$, $P(S) = 1$, and additivity.",
+            "Classical probability: $P(A) = \\frac{|A|}{|S|}$ when all outcomes equally likely (favorable/total).",
+            "Addition rule: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$; simplifies for mutually exclusive events.",
+            "Complement rule: $P(A^c) = 1 - P(A)$ often simplifies 'at least one' problems.",
+            "Conditional probability: $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ updates probability given new information.",
+            "Multiplication rule: $P(A \\cap B) = P(A) \\cdot P(B|A)$ for joint probabilities.",
+            "Independence: $P(A \\cap B) = P(A) \\cdot P(B)$ means events don't influence each other; verify before using.",
+            "Bayes' theorem: $P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$ reverses conditional probabilities.",
+            "Counting: permutations $P(n,r) = \\frac{n!}{(n-r)!}$ when order matters; combinations $C(n,r) = \\frac{n!}{r!(n-r)!}$ when it doesn't.",
+            "Law of total probability: $P(B) = \\sum P(B|A_i) \\cdot P(A_i)$ for partition $\\{A_i\\}$."
+        ],
+        "important_formulas": [
+            "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ — Addition rule",
+            "$P(A^c) = 1 - P(A)$ — Complement",
+            "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$ — Conditional probability",
+            "$P(A \\cap B) = P(A) \\cdot P(B|A)$ — Multiplication rule",
+            "$P(A \\cap B) = P(A) \\cdot P(B)$ — Independence",
+            "$P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$ — Bayes' theorem"
+        ],
+        "common_exam_traps": [
+            "Confusing $P(A|B)$ with $P(B|A)$—they're generally different; use Bayes' theorem to relate them.",
+            "Using addition rule without subtracting intersection—always use $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ unless mutually exclusive.",
+            "Assuming independence without verification—check if $P(A \\cap B) = P(A) \\cdot P(B)$ before using.",
+            "Forgetting complement for 'at least one' problems—use $P(\\text{at least 1}) = 1 - P(\\text{none})$.",
+            "Confusing permutations and combinations—order matters → permutations; order doesn't → combinations."
+        ],
+        "exam_tip": "For 'at least one' problems, use complements: $P(\\text{at least 1}) = 1 - P(\\text{none})$. For Bayes' theorem, identify what you're given ($P(B|A)$) and what you need ($P(A|B)$), then apply the formula systematically."
+    }
+}

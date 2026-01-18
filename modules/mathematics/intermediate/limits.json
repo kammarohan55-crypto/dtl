@@ -1,0 +1,339 @@
+{
+    "module_header": {
+        "module_title": "Limits",
+        "subject": "Mathematics",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Functions and their properties",
+            "Basic algebraic operations",
+            "Understanding of rational expressions",
+            "Graphical interpretation of functions"
+        ],
+        "learning_outcomes": [
+            "Define the limit of a function rigorously and understand its intuitive meaning",
+            "Evaluate limits using algebraic techniques including factorization, rationalization, and L'Hôpital's rule",
+            "Apply limit laws and properties to simplify complex limit calculations",
+            "Identify and handle indeterminate forms such as $\\frac{0}{0}$, $\\frac{\\infty}{\\infty}$, and $0 \\cdot \\infty$",
+            "Evaluate one-sided limits and infinite limits",
+            "Understand the relationship between limits and continuity as foundation for calculus"
+        ]
+    },
+    "definition": "The limit of a function $f(x)$ as $x$ approaches $a$ is the value $L$ that $f(x)$ gets arbitrarily close to as $x$ gets arbitrarily close to $a$, denoted $\\lim_{x \\to a} f(x) = L$. Formally, for every $\\epsilon > 0$, there exists a $\\delta > 0$ such that if $0 < |x - a| < \\delta$, then $|f(x) - L| < \\epsilon$. The limit exists and equals $L$ only if both left-hand limit and right-hand limit equal $L$.",
+    "concept_overview": [
+        "Limits capture the behavior of functions near a point without requiring the function to be defined at that point, forming the foundation for derivatives and integrals.",
+        "The limit $\\lim_{x \\to a} f(x) = L$ means $f(x)$ approaches $L$ as $x$ approaches $a$, independent of the value $f(a)$ or whether $f(a)$ exists.",
+        "Limit laws allow systematic evaluation: limits of sums, products, quotients, and compositions can be computed from limits of simpler functions.",
+        "Indeterminate forms like $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$ require special techniques such as algebraic manipulation, L'Hôpital's rule, or series expansion.",
+        "One-sided limits ($\\lim_{x \\to a^+}$ and $\\lim_{x \\to a^-}$) examine behavior from the right and left respectively, with the two-sided limit existing only when both one-sided limits exist and are equal."
+    ],
+    "theory": [
+        "Limits constitute the foundational concept of calculus, providing the rigorous mathematical framework for analyzing rates of change, instantaneous velocity, and area under curves. Historically developed to resolve paradoxes of motion and infinitesimals, limits formalize the intuitive notion of approaching a value without necessarily reaching it. The epsilon-delta definition, though technically demanding, ensures mathematical precision and enables rigorous proofs of calculus theorems. In engineering education, limits appear when analyzing circuit behavior as frequency approaches infinity or zero, computing instantaneous rates in chemical kinetics, determining stability boundaries in control systems, and evaluating stress concentrations at geometric discontinuities. The study of limits develops critical analytical skills including precise reasoning with infinitesimal quantities, handling edge cases and special behaviors, and building mathematical intuition for the behavior of complex functions. Mastery of limits provides the essential conceptual foundation for differentiation, integration, infinite series, and all subsequent calculus-based engineering analysis.",
+        "The fundamental techniques for evaluating limits exploit algebraic manipulation and theoretical properties to transform indeterminate forms into determinate ones. Direct substitution works when $f(x)$ is continuous at $x = a$: simply evaluate $f(a)$. When direct substitution yields an indeterminate form $\\frac{0}{0}$, algebraic techniques apply: factorization cancels common factors in rational functions, rationalization removes radicals from numerators or denominators, and expansion uses binomial or trigonometric identities. L'Hôpital's rule handles indeterminate forms $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$ by replacing the original limit with the limit of the ratio of derivatives: if $\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$, then $\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$ provided the latter limit exists. Other indeterminate forms like $0 \\cdot \\infty$, $\\infty - \\infty$, $0^0$, $1^\\infty$, and $\\infty^0$ require transformation into $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ forms. One-sided limits examine behavior approaching from one direction: $\\lim_{x \\to a^+} f(x)$ as $x$ approaches from the right and $\\lim_{x \\to a^-} f(x)$ from the left. The two-sided limit exists if and only if both one-sided limits exist and are equal.",
+        "Mastery of limits is critically important because they provide the rigorous foundation upon which all of calculus and its engineering applications rest. The derivative, defined as $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$, requires understanding limits to compute instantaneous rates of change. The definite integral, defined as a limit of Riemann sums, requires limits to transition from finite approximations to exact areas. In engineering problem-solving, limits model asymptotic behavior: amplifier gain as frequency approaches infinity, chemical reaction rates as concentration approaches zero, and structural deflection as load approaches critical buckling values. Limits enable analysis of discontinuities and singularities that appear at material interfaces, geometric transitions, and boundary conditions. The concept of a limit teaches engineers to reason about limiting cases, extreme conditions, and threshold behaviors—essential skills for design, safety analysis, and performance optimization. In control systems, limits determine stability margins and steady-state errors. In signal processing, limits describe filter behavior at cutoff frequencies. In examinations, proficiency in computing limits demonstrates command over algebraic manipulation, strategic use of limit laws, and the ability to recognize and resolve indeterminate forms through appropriate techniques."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$\\lim_{x \\to a} f(x) = L$",
+            "explanation": "The limit of $f(x)$ as $x$ approaches $a$ equals $L$, meaning $f(x)$ gets arbitrarily close to $L$ as $x$ gets arbitrarily close to $a$."
+        },
+        {
+            "formula": "$\\lim_{x \\to a} [f(x) + g(x)] = \\lim_{x \\to a} f(x) + \\lim_{x \\to a} g(x)$",
+            "explanation": "Sum law: the limit of a sum equals the sum of limits (provided both limits exist)."
+        },
+        {
+            "formula": "$\\lim_{x \\to a} [f(x) \\cdot g(x)] = \\lim_{x \\to a} f(x) \\cdot \\lim_{x \\to a} g(x)$",
+            "explanation": "Product law: the limit of a product equals the product of limits."
+        },
+        {
+            "formula": "$\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim_{x \\to a} f(x)}{\\lim_{x \\to a} g(x)}$ if $\\lim_{x \\to a} g(x) \\neq 0$",
+            "explanation": "Quotient law: the limit of a quotient equals the quotient of limits, provided the denominator limit is non-zero."
+        },
+        {
+            "formula": "$\\lim_{x \\to a} c \\cdot f(x) = c \\cdot \\lim_{x \\to a} f(x)$",
+            "explanation": "Constant multiple law: constants can be factored out of limits."
+        },
+        {
+            "formula": "$\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$ (L'Hôpital's Rule)",
+            "explanation": "If the limit yields $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$, replace with the limit of the ratio of derivatives."
+        },
+        {
+            "formula": "$\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$",
+            "explanation": "Standard trigonometric limit, fundamental for derivative of sine function."
+        },
+        {
+            "formula": "$\\lim_{x \\to \\infty} \\left(1 + \\frac{1}{x}\\right)^x = e$",
+            "explanation": "Definition of Euler's number $e$ as a limit, fundamental in exponential growth and compound interest."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Evaluate $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$.",
+            "solution_steps": [
+                "**Step 1**: Attempt direct substitution:",
+                "$\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}$ (indeterminate form)",
+                "**Step 2**: Factor the numerator:",
+                "$x^2 - 9 = (x-3)(x+3)$",
+                "**Step 3**: Simplify by canceling $(x-3)$:",
+                "$\\frac{x^2 - 9}{x - 3} = \\frac{(x-3)(x+3)}{x-3} = x + 3$ for $x \\neq 3$",
+                "**Step 4**: Evaluate the limit:",
+                "$\\lim_{x \\to 3} (x + 3) = 3 + 3 = 6$"
+            ],
+            "final_answer": "$\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3} = 6$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Evaluate $\\lim_{x \\to 0} \\frac{\\sqrt{1+x} - 1}{x}$.",
+            "solution_steps": [
+                "**Step 1**: Direct substitution gives $\\frac{0}{0}$ (indeterminate)",
+                "**Step 2**: Rationalize the numerator by multiplying by conjugate:",
+                "$\\frac{\\sqrt{1+x} - 1}{x} \\cdot \\frac{\\sqrt{1+x} + 1}{\\sqrt{1+x} + 1}$",
+                "**Step 3**: Simplify the numerator using $(a-b)(a+b) = a^2 - b^2$:",
+                "$= \\frac{(\\sqrt{1+x})^2 - 1^2}{x(\\sqrt{1+x} + 1)} = \\frac{1+x - 1}{x(\\sqrt{1+x} + 1)}$",
+                "$= \\frac{x}{x(\\sqrt{1+x} + 1)}$",
+                "**Step 4**: Cancel $x$ for $x \\neq 0$:",
+                "$= \\frac{1}{\\sqrt{1+x} + 1}$",
+                "**Step 5**: Now evaluate by direct substitution:",
+                "$\\lim_{x \\to 0} \\frac{1}{\\sqrt{1+0} + 1} = \\frac{1}{1 + 1} = \\frac{1}{2}$"
+            ],
+            "final_answer": "$\\lim_{x \\to 0} \\frac{\\sqrt{1+x} - 1}{x} = \\frac{1}{2}$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Evaluate $\\lim_{x \\to \\infty} \\frac{3x^2 + 2x - 1}{5x^2 - x + 4}$ using L'Hôpital's rule.",
+            "solution_steps": [
+                "**Step 1**: Direct substitution gives $\\frac{\\infty}{\\infty}$ (indeterminate)",
+                "**Step 2**: Apply L'Hôpital's rule by differentiating numerator and denominator:",
+                "Numerator derivative: $\\frac{d}{dx}(3x^2 + 2x - 1) = 6x + 2$",
+                "Denominator derivative: $\\frac{d}{dx}(5x^2 - x + 4) = 10x - 1$",
+                "**Step 3**: The limit becomes:",
+                "$\\lim_{x \\to \\infty} \\frac{6x + 2}{10x - 1}$",
+                "**Step 4**: This still gives $\\frac{\\infty}{\\infty}$, apply L'Hôpital again:",
+                "$\\lim_{x \\to \\infty} \\frac{6}{10} = \\frac{3}{5}$",
+                "**Alternative method**: Divide numerator and denominator by $x^2$:",
+                "$\\lim_{x \\to \\infty} \\frac{3 + \\frac{2}{x} - \\frac{1}{x^2}}{5 - \\frac{1}{x} + \\frac{4}{x^2}} = \\frac{3 + 0 - 0}{5 - 0 + 0} = \\frac{3}{5}$"
+            ],
+            "final_answer": "$\\lim_{x \\to \\infty} \\frac{3x^2 + 2x - 1}{5x^2 - x + 4} = \\frac{3}{5}$"
+        }
+    ],
+    "logical_derivation": "To derive L'Hôpital's rule for the indeterminate form $\\frac{0}{0}$, suppose $\\lim_{x \\to a} f(x) = 0$ and $\\lim_{x \\to a} g(x) = 0$, with $f$ and $g$ differentiable near $a$. Consider the limit $\\lim_{x \\to a} \\frac{f(x)}{g(x)}$. By the definition of the derivative, we can write $f(x) \\approx f(a) + f'(a)(x-a) = f'(a)(x-a)$ for $x$ near $a$ (since $f(a) = 0$). Similarly, $g(x) \\approx g'(a)(x-a)$. Thus $\\frac{f(x)}{g(x)} \\approx \\frac{f'(a)(x-a)}{g'(a)(x-a)} = \\frac{f'(a)}{g'(a)}$ for $x$ near $a$, provided $g'(a) \\neq 0$. Taking the limit as $x \\to a$ gives $\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{f'(a)}{g'(a)}$. More rigorously, using the Cauchy Mean Value Theorem, there exists $c$ between $x$ and $a$ such that $\\frac{f(x) - f(a)}{g(x) - g(a)} = \\frac{f'(c)}{g'(c)}$. Since $f(a) = g(a) = 0$, we have $\\frac{f(x)}{g(x)} = \\frac{f'(c)}{g'(c)}$. As $x \\to a$, we have $c \\to a$, so if $\\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$ exists, it equals $\\lim_{x \\to a} \\frac{f(x)}{g(x)}$.",
+    "applications": [
+        "**Definition of Derivative**: The derivative $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$ is fundamentally a limit, giving instantaneous rate of change.",
+        "**Circuit Analysis**: Finding steady-state behavior as time approaches infinity or transient response as time approaches zero.",
+        "**Control Systems**: Determining final value and initial value of system response using final value and initial value theorems (limits as $s \\to 0$ and $s \\to \\infty$).",
+        "**Signal Processing**: Analyzing filter frequency response as frequency approaches cutoff points or infinity.",
+        "**Optimization**: Finding maximum and minimum values by examining function behavior as variables approach bounds.",
+        "**Chemical Kinetics**: Computing instantaneous reaction rates as time intervals shrink to zero.",
+        "**Numerical Analysis**: Establishing convergence of iterative algorithms and assessing approximation accuracy."
+    ],
+    "key_takeaways": [
+        "The limit $\\lim_{x \\to a} f(x) = L$ means $f(x)$ approaches $L$ as $x$ approaches $a$, independent of whether $f(a)$ exists or equals $L$.",
+        "Direct substitution works only when the function is continuous at the point; otherwise, algebraic manipulation is required.",
+        "Indeterminate forms $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$ require techniques like factorization, rationalization, or L'Hôpital's rule.",
+        "Limit laws (sum, product, quotient) enable breaking complex limits into simpler components.",
+        "L'Hôpital's rule: if $\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$, then it equals $\\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$ if the latter exists.",
+        "One-sided limits must both exist and be equal for the two-sided limit to exist.",
+        "Limits form the rigorous foundation for derivatives, integrals, and all calculus-based analysis in engineering."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Assuming $\\lim_{x \\to a} f(x) = f(a)$ without checking continuity",
+            "why_it_occurs": "Students forget that limits describe behavior near a point, not necessarily at the point.",
+            "how_to_avoid": "Always check if direct substitution is valid (function must be continuous at $a$). If substitution yields indeterminate form, use algebraic techniques."
+        },
+        {
+            "mistake": "Incorrectly applying L'Hôpital's rule to non-indeterminate forms",
+            "why_it_occurs": "Students apply L'Hôpital's rule without first verifying the limit yields $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$.",
+            "how_to_avoid": "Check the form first by attempting direct substitution. L'Hôpital's rule applies only to indeterminate forms $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$."
+        },
+        {
+            "mistake": "Canceling factors incorrectly without considering domain restrictions",
+            "why_it_occurs": "Students cancel terms like $(x-3)$ from numerator and denominator without noting this is valid only for $x \\neq 3$.",
+            "how_to_avoid": "After canceling, explicitly state the restriction. The simplified expression is valid for all $x$ except where the canceled factor equals zero."
+        },
+        {
+            "mistake": "Confusing $\\lim_{x \\to a} f(x)$ with $f(a)$",
+            "why_it_occurs": "Students think the limit is the function value at the point.",
+            "how_to_avoid": "Remember: the limit describes behavior approaching $a$, which may differ from $f(a)$ or exist even when $f(a)$ is undefined."
+        },
+        {
+            "mistake": "Forgetting to rationalize when dealing with square roots",
+            "why_it_occurs": "Students don't recognize that multiplying by the conjugate eliminates radicals in indeterminate forms.",
+            "how_to_avoid": "When $\\frac{0}{0}$ involves square roots in numerator or denominator, try multiplying by the conjugate to simplify."
+        },
+        {
+            "mistake": "Misapplying limit laws when limits don't exist",
+            "why_it_occurs": "Students use sum/product/quotient laws without verifying that individual limits exist.",
+            "how_to_avoid": "Limit laws require all individual limits to exist. If any component limit doesn't exist, the law doesn't apply."
+        },
+        {
+            "mistake": "Not recognizing standard limits like $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$",
+            "why_it_occurs": "Students attempt to evaluate standard trigonometric limits using L'Hôpital's rule or algebraic manipulation unnecessarily.",
+            "how_to_avoid": "Memorize key standard limits: $\\frac{\\sin x}{x} \\to 1$, $(1 + \\frac{1}{x})^x \\to e$, $\\frac{1 - \\cos x}{x} \\to 0$ as $x \\to 0$."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is $\\lim_{x \\to 2} (3x + 5)$?",
+            "options": [
+                "$11$",
+                "$8$",
+                "$6$",
+                "Does not exist"
+            ],
+            "correct_answer": 0,
+            "explanation": "Since $f(x) = 3x + 5$ is continuous everywhere, use direct substitution: $3(2) + 5 = 6 + 5 = 11$."
+        },
+        {
+            "question": "Evaluate $\\lim_{x \\to 5} \\frac{x^2 - 25}{x - 5}$:",
+            "options": [
+                "$10$",
+                "$5$",
+                "$0$",
+                "Does not exist"
+            ],
+            "correct_answer": 0,
+            "explanation": "Factor numerator: $\\frac{(x-5)(x+5)}{x-5} = x + 5$ for $x \\neq 5$. Thus $\\lim_{x \\to 5} (x+5) = 10$."
+        },
+        {
+            "question": "What is $\\lim_{x \\to 0} \\frac{\\sin x}{x}$?",
+            "options": [
+                "$1$",
+                "$0$",
+                "$\\infty$",
+                "Does not exist"
+            ],
+            "correct_answer": 0,
+            "explanation": "This is a standard limit: $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$, fundamental for the derivative of sine."
+        },
+        {
+            "question": "If $\\lim_{x \\to a} f(x) = 3$ and $\\lim_{x \\to a} g(x) = 5$, what is $\\lim_{x \\to a} [f(x) \\cdot g(x)]$?",
+            "options": [
+                "$15$",
+                "$8$",
+                "$2$",
+                "$\\frac{3}{5}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "By the product law: $\\lim_{x \\to a} [f(x) \\cdot g(x)] = \\lim_{x \\to a} f(x) \\cdot \\lim_{x \\to a} g(x) = 3 \\cdot 5 = 15$."
+        },
+        {
+            "question": "Which form allows application of L'Hôpital's rule?",
+            "options": [
+                "$\\frac{0}{0}$",
+                "$\\frac{1}{0}$",
+                "$0 + 0$",
+                "$1 \\cdot \\infty$"
+            ],
+            "correct_answer": 0,
+            "explanation": "L'Hôpital's rule applies to indeterminate forms $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$. Other forms require transformation first."
+        },
+        {
+            "question": "Evaluate $\\lim_{x \\to \\infty} \\frac{2x^2 + 3}{x^2 - 1}$:",
+            "options": [
+                "$2$",
+                "$0$",
+                "$\\infty$",
+                "$3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Divide numerator and denominator by $x^2$: $\\lim_{x \\to \\infty} \\frac{2 + \\frac{3}{x^2}}{1 - \\frac{1}{x^2}} = \\frac{2 + 0}{1 - 0} = 2$."
+        },
+        {
+            "question": "What technique is best for $\\lim_{x \\to 0} \\frac{\\sqrt{x+1} - 1}{x}$?",
+            "options": [
+                "Rationalization",
+                "Direct substitution",
+                "Factorization",
+                "L'Hôpital's rule"
+            ],
+            "correct_answer": 0,
+            "explanation": "Direct substitution gives $\\frac{0}{0}$. Rationalization by multiplying by the conjugate $\\frac{\\sqrt{x+1} + 1}{\\sqrt{x+1} + 1}$ simplifies the expression."
+        },
+        {
+            "question": "If $\\lim_{x \\to a^-} f(x) = 3$ and $\\lim_{x \\to a^+} f(x) = 3$, then $\\lim_{x \\to a} f(x) =$",
+            "options": [
+                "$3$",
+                "$0$",
+                "$6$",
+                "Does not exist"
+            ],
+            "correct_answer": 0,
+            "explanation": "The two-sided limit exists and equals $L$ if and only if both one-sided limits exist and equal $L$. Since both equal 3, $\\lim_{x \\to a} f(x) = 3$."
+        },
+        {
+            "question": "Evaluate $\\lim_{x \\to \\infty} \\frac{5x^3 + 2x}{3x^2 - x + 1}$:",
+            "options": [
+                "$\\infty$",
+                "$\\frac{5}{3}$",
+                "$0$",
+                "$5$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Numerator degree (3) exceeds denominator degree (2), so the limit is $\\infty$ (specifically $+\\infty$ since leading coefficients are both positive)."
+        },
+        {
+            "question": "What is $\\lim_{x \\to 0^+} \\frac{1}{x}$?",
+            "options": [
+                "$+\\infty$",
+                "$-\\infty$",
+                "$0$",
+                "$1$"
+            ],
+            "correct_answer": 0,
+            "explanation": "As $x$ approaches 0 from the right (positive values), $\\frac{1}{x}$ grows without bound toward positive infinity."
+        },
+        {
+            "question": "The limit $\\lim_{x \\to a} f(x)$ can exist even if:",
+            "options": [
+                "$f(a)$ is undefined",
+                "$f(x)$ is undefined for all $x$",
+                "$f(x)$ equals zero everywhere",
+                "$f(x)$ is discontinuous everywhere"
+            ],
+            "correct_answer": 0,
+            "explanation": "The limit depends only on values of $f(x)$ near $a$, not at $a$ itself. The function need not even be defined at $a$ for the limit to exist."
+        },
+        {
+            "question": "To evaluate $\\lim_{x \\to 1} \\frac{x^3 - 1}{x - 1}$, which factorization helps?",
+            "options": [
+                "$x^3 - 1 = (x-1)(x^2 + x + 1)$",
+                "$x^3 - 1 = (x-1)^3$",
+                "$x^3 - 1 = (x+1)(x^2 - 1)$",
+                "No factorization needed"
+            ],
+            "correct_answer": 0,
+            "explanation": "Direct substitution gives $\\frac{0}{0}$. Factor $x^3 - 1 = (x-1)(x^2+x+1)$, cancel $(x-1)$: $\\lim_{x \\to 1} (x^2+x+1) = 3$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Limits capture function behavior near a point without requiring evaluation at that point, forming the foundation of calculus.",
+            "The notation $\\lim_{x \\to a} f(x) = L$ means $f(x)$ approaches $L$ as $x$ approaches $a$, independent of $f(a)$.",
+            "Direct substitution works when functions are continuous; otherwise, algebraic manipulation or special techniques are needed.",
+            "Limit laws enable systematic evaluation: limits of sums, products, and quotients can be computed from component limits.",
+            "Indeterminate forms $\\frac{0}{0}$ require techniques like factorization (canceling common factors), rationalization (removing radicals), or L'Hôpital's rule.",
+            "L'Hôpital's rule transforms indeterminate forms $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$ by replacing with the limit of the ratio of derivatives.",
+            "One-sided limits examine behavior from specific directions: $\\lim_{x \\to a^+}$ from the right, $\\lim_{x \\to a^-}$ from the left.",
+            "Two-sided limit exists if and only if both one-sided limits exist and are equal.",
+            "Standard limits like $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$ and $\\lim_{x \\to \\infty} (1 + \\frac{1}{x})^x = e$ are fundamental building blocks.",
+            "Limits enable definitions of derivatives and integrals, providing the rigorous foundation for all calculus."
+        ],
+        "important_formulas": [
+            "$\\lim_{x \\to a} [f(x) + g(x)] = \\lim_{x \\to a} f(x) + \\lim_{x \\to a} g(x)$ — Sum law",
+            "$\\lim_{x \\to a} [f(x) \\cdot g(x)] = \\lim_{x \\to a} f(x) \\cdot \\lim_{x \\to a} g(x)$ — Product law",
+            "$\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim_{x \\to a} f(x)}{\\lim_{x \\to a} g(x)}$ if $\\lim_{x \\to a} g(x) \\neq 0$ — Quotient law",
+            "$\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$ if $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ — L'Hôpital's rule",
+            "$\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$ — Standard trigonometric limit",
+            "$\\lim_{x \\to \\infty} (1 + \\frac{1}{x})^x = e$ — Definition of $e$"
+        ],
+        "common_exam_traps": [
+            "Assuming $\\lim_{x \\to a} f(x) = f(a)$ without checking continuity—the limit describes behavior near $a$, not at $a$.",
+            "Applying L'Hôpital's rule to non-indeterminate forms—verify the form is $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ first.",
+            "Canceling factors without noting domain restrictions—state explicitly that the simplified form is valid except where canceled factors equal zero.",
+            "Using limit laws when component limits don't exist—laws require all individual limits to exist.",
+            "Forgetting rationalization for radical expressions—multiplying by the conjugate often resolves $\\frac{0}{0}$ forms with square roots."
+        ],
+        "exam_tip": "For $\\frac{0}{0}$ forms, try factorization first, then rationalization if radicals are present; use L'Hôpital's rule as a last resort. Always verify the form before applying L'Hôpital's rule."
+    }
+}

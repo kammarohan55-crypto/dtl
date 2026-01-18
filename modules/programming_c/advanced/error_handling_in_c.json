@@ -1,0 +1,366 @@
+{
+    "module_header": {
+        "module_title": "Error Handling in C",
+        "subject": "Programming Using C",
+        "level": "Advanced",
+        "prerequisites": [
+            "Functions in C",
+            "File handling",
+            "Pointers basics",
+            "Standard library functions"
+        ],
+        "learning_outcomes": [
+            "Understand errno and its role in error reporting",
+            "Use perror() and strerror() for error messages",
+            "Implement error checking for system calls and library functions",
+            "Apply defensive programming techniques",
+            "Design error handling strategies: return codes, errno, custom error types",
+            "Handle errors gracefully without program crashes",
+            "Write robust code with proper resource cleanup on errors"
+        ]
+    },
+    "definition": "Error handling in C manages failures and exceptional conditions without crashing. Techniques: (1) Return codes—functions return status (0=success, negative/NULL=error). (2) errno global variable—set by library functions to indicate error type, accessed via `<errno.h>`. (3) perror(msg) prints error message based on errno. (4) strerror(errno) returns error string. (5) Assertions via assert() for debug-time checks. (6) Defensive programming—validate inputs, check return values, handle edge cases. Proper error handling includes: detecting errors (check return values), reporting (log/print errors), recovering (cleanup resources), and gracefully degrading (fail-safe behavior instead of crash).",
+    "concept_overview": [
+        "errno: Global variable set by library functions on error. Check after failed call. Different values for different errors.",
+        "Return codes: Functions return status. 0 or positive=success, -1 or NULL=error. Example: fopen returns NULL on failure.",
+        "perror(msg): Prints msg followed by error description based on errno. Example: `if (!ptr) perror(\"malloc failed\");`",
+        "strerror(errno): Returns string describing errno value. Example: `printf(\"Error: %s\\n\", strerror(errno));`",
+        "Assertions: assert(condition) aborts if condition false (debug builds). Disabled in release (-DNDEBUG).",
+        "Defensive programming: Validate inputs (non-NULL, range checks), check all return values, handle edge cases.",
+        "Resource cleanup: On errors, free memory, close files, release resources before returning to avoid leaks."
+    ],
+    "theory": [
+        "Error handling distinguishes robust production code from fragile prototypes. C lacks exceptions (unlike C++/Java), requiring explicit error checking via return codes and errno. Every system call / library function can fail: malloc (out of memory), fopen (file not found, permissions), read/write (I/O errors), network calls (connection failures). Ignoring errors causes undefined behavior: dereferencing NULL, using uninitialized data, resource leaks. Understanding error handling develops defensive programming mindset essential for reliable systems. The errno mechanism provides standardized error reporting: library functions set errno to error constant (ENOMEM, ENOENT, EACCES, etc.) defined in errno.h, enabling portable error checking. perror/strerror translate errno to human-readable messages. Proper error handling involves: (1) Prevention—validate inputs, check preconditions. (2) Detection—check return values of every fallible function. (3) Response—log errors, cleanup resources, return error status to caller or gracefully degrade. (4) Recovery—attempt alternative approaches or fail safely without corruption.",
+        "The fundamental error handling mechanisms in C rely on return codes and errno. Return code pattern: functions return special value indicating failure—typically -1 for int functions, NULL for pointers, negative for error codes. Example: `FILE *fp = fopen(\"file.txt\", \"r\"); if (fp == NULL) { perror(\"fopen\"); return 1; }` checks if fopen failed. errno usage: many functions set errno on failure. After failed call, check errno: `int fd = open(\"file\", O_RDONLY); if (fd == -1) { if (errno == ENOENT) printf(\"File not found\\n\"); else if (errno == EACCES) printf(\"Permission denied\\n\"); }` Common errno values: ENOMEM (out of memory), EINVAL (invalid argument), EIO (I/O error), ENOENT (no such file), EACCES (permission denied). perror prints: program name, custom message, system error description. strerror returns error string: `fprintf(stderr, \"Error: %s\\n\", strerror(errno));`. Assertions catch logic errors in development: `assert(ptr != NULL);` aborts if ptr is NULL (debug builds only). Defensive programming: (1) Validate inputs at function entry: check non-NULL pointers, value ranges. (2) Check return values: every malloc, fopen, read, write, etc. (3) Handle edge cases: empty inputs, boundary conditions. (4) Resource cleanup: use goto cleanup pattern or ensure free/fclose on all exit paths. Example pattern: `int func() { char *buf = malloc(...); FILE *fp = fopen(...); if (!buf || !fp) goto cleanup; ... cleanup: free(buf); if (fp) fclose(fp); return status; }`. Error propagation: functions return error codes allowing callers to handle: `int parse(char *str) { if (!str) return -1; ... }` caller checks: `if (parse(str) < 0) { handle error; }`.",
+        "Mastery of error handling is critically important because production code must be robust, not crash under unexpected conditions. Real-world failures: network disconnections (handle timeouts, retries), file system issues (disk full, permissions), memory exhaustion (graceful degradation), malformed input (validate, reject). Proper error handling prevents: crashes (check NULL before dereference), data corruption (validate before write), resource leaks (cleanup on errors), security vulnerabilities (unchecked buffer sizes enable exploits). Common patterns: (1) Early return on error: check conditions, return error code early, reduces nesting. (2) Error code enums: `enum Error { ERR_NONE = 0, ERR_NOMEM, ERR_IO };` return typed errors. (3) RAII-like cleanup: single cleanup label, goto cleanup on error (avoids duplication). (4) Logging: fprintf(stderr) or syslog for error details in production. Performance: error checking adds minimal overhead (checks are CPU-cheap); critical path optimization possible. Security: error messages must not leak sensitive info (paths, data). In embedded systems: error handling critical for reliability (device must not crash). Testing: error paths often under-tested; inject failures (mock malloc failing) to test error handling. In multi-threaded code: errno is thread-local (POSIX). Modern C: static analyzers detect unchecked return values. Best practices: (1) Check all return values. (2) Clean up resources on errors. (3) Log errors with context. (4) Return error indicators. (5) Document error conditions in comments. In examinations, demonstrating errno usage, perror/strerror, return code checking, and cleanup patterns shows professional error handling competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Return code pattern: `if (func() < 0) { handle_error(); }`",
+            "explanation": "Functions return 0/positive on success, negative on error. Caller checks and handles."
+        },
+        {
+            "formula": "errno checking: `if (call() == -1) { if (errno == ENOENT) ... }`",
+            "explanation": "Check errno after failed call to determine error type."
+        },
+        {
+            "formula": "perror usage: `if (!ptr) { perror(\"malloc\"); exit(1); }`",
+            "explanation": "perror prints custom message + system error description based on errno."
+        },
+        {
+            "formula": "Cleanup pattern: `if (error) goto cleanup; ... cleanup: free(ptr); fclose(fp);`",
+            "explanation": "Single cleanup point, goto on error ensures resources freed on all paths."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Check file open failure and report error using perror.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "#include <stdlib.h>",
+                "",
+                "int main() {",
+                "    FILE *fp = fopen(\"nonexistent.txt\", \"r\");",
+                "    ",
+                "    if (fp == NULL) {",
+                "        perror(\"Error opening file\");",
+                "        return 1;  // Exit with error code",
+                "    }",
+                "    ",
+                "    // File opened successfully",
+                "    printf(\"File opened\\n\");",
+                "    fclose(fp);",
+                "    ",
+                "    return 0;",
+                "}",
+                "```",
+                "**Output if file not found:**",
+                "Error opening file: No such file or directory",
+                "",
+                "**perror** automatically prints errno-based error message."
+            ],
+            "final_answer": "Check return value (NULL for fopen). Use perror to print error description."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Implement function with proper error handling and cleanup.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "#include <stdlib.h>",
+                "#include <string.h>",
+                "#include <errno.h>",
+                "",
+                "int processFile(const char *filename) {",
+                "    FILE *fp = NULL;",
+                "    char *buffer = NULL;",
+                "    int status = -1;  // Default: error",
+                "    ",
+                "    // Validate input",
+                "    if (!filename) {",
+                "        fprintf(stderr, \"Error: NULL filename\\n\");",
+                "        return -1;",
+                "    }",
+                "    ",
+                "    // Allocate buffer",
+                "    buffer = (char*)malloc(1024);",
+                "    if (!buffer) {",
+                "        perror(\"malloc\");",
+                "        goto cleanup;",
+                "    }",
+                "    ",
+                "    // Open file",
+                "    fp = fopen(filename, \"r\");",
+                "    if (!fp) {",
+                "        fprintf(stderr, \"Cannot open %s: %s\\n\", ",
+                "                filename, strerror(errno));",
+                "        goto cleanup;",
+                "    }",
+                "    ",
+                "    // Process (simplified)",
+                "    if (fgets(buffer, 1024, fp)) {",
+                "        printf(\"Read: %s\", buffer);",
+                "        status = 0;  // Success",
+                "    }",
+                "    ",
+                "cleanup:",
+                "    // Clean up resources",
+                "    if (buffer) free(buffer);",
+                "    if (fp) fclose(fp);",
+                "    ",
+                "    return status;",
+                "}",
+                "",
+                "int main() {",
+                "    if (processFile(\"data.txt\") < 0) {",
+                "        fprintf(stderr, \"Processing failed\\n\");",
+                "        return 1;",
+                "    }",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "Validate inputs, check all calls, use goto cleanup for resource cleanup on all error paths."
+        }
+    ],
+    "logical_derivation": "C lacks exceptions requiring manual error checking. Functions fail for various reasons (resource exhaustion, invalid input, I/O errors). Return codes signal success/failure; special values (-1, NULL) indicate errors. errno provides error details: library functions set errno to standardized constants. perror/strerror translate errno to messages. Defensive programming prevents errors: validate inputs (preconditions), check invariants (assertions), handle edge cases. Resource cleanup critical: errors mid-function must still free allocated resources (goto cleanup pattern consolidates cleanup). Proper error handling enables robust systems that degrade gracefully instead of crashing.",
+    "applications": [
+        "**File operations**: Check fopen, fread, fwrite failures; handle disk full, permissions.",
+        "**Memory allocation**: Check malloc/calloc return; handle out-of-memory gracefully.",
+        "**Network programming**: Handle connection failures, timeouts, partial reads/writes.",
+        "**System calls**: Check return values; errno indicates specific failure (EINTR, EAGAIN).",
+        "**Input validation**: Reject malformed input; prevent buffer overflows, injection attacks.",
+        "**Embedded systems**: Critical error handling for reliability (device must not crash).",
+        "**Server applications**: Log errors, maintain service despite individual request failures."
+    ],
+    "key_takeaways": [
+        "errno: Global variable set by library functions on error. Check after failed call.",
+        "Return codes: 0/positive=success, -1/NULL/negative=failure. Always check return values.",
+        "perror(msg): Prints msg + errno-based error description. Example: `if (!fp) perror(\"fopen\");`",
+        "strerror(errno): Returns error string. Example: `fprintf(stderr, \"Error: %s\", strerror(errno));`",
+        "Defensive programming: Validate inputs, check return values, handle edge cases, cleanup resources.",
+        "Cleanup pattern: Single cleanup label, goto on error ensures resource release on all paths.",
+        "Assertions: assert(condition) for debug checks. Disabled in release builds (NDEBUG)."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Not checking return values",
+            "why_it_occurs": "Students assume functions always succeed.",
+            "how_to_avoid": "Every fallible function can fail. Check: `if (malloc() == NULL)`, `if (fopen() == NULL)`, `if (read() < 0)`, etc."
+        },
+        {
+            "mistake": "Dereferencing NULL without checking",
+            "why_it_occurs": "Students use pointer returned from malloc/fopen without checking NULL.",
+            "how_to_avoid": "Always check: `ptr = malloc(...); if (!ptr) { error; }` before using ptr."
+        },
+        {
+            "mistake": "Forgetting to clean up on error paths",
+            "why_it_occurs": "Students free/close on success path but forget on error returns.",
+            "how_to_avoid": "Use goto cleanup pattern: all exit paths go through cleanup label that frees resources."
+        },
+        {
+            "mistake": "Checking errno without checking return value first",
+            "why_it_occurs": "Students check errno directly instead of first checking if call failed.",
+            "how_to_avoid": "errno only meaningful after failure. Pattern: `if (call() < 0) { check errno; }`"
+        },
+        {
+            "mistake": "Not resetting errno before call",
+            "why_it_occurs": "Students check errno from previous call.",
+            "how_to_avoid": "errno not cleared on success. Check immediately after failed call, or reset: `errno = 0; call(); if (errno) ...`"
+        },
+        {
+            "mistake": "Using assert for runtime errors",
+            "why_it_occurs": "Students use assert for input validation.",
+            "how_to_avoid": "assert for logic errors (debug only). Runtime errors need proper handling (check & return error). assert disabled in release."
+        },
+        {
+            "mistake": "Not providing error context",
+            "why_it_occurs": "Students print generic \"Error\" without details.",
+            "how_to_avoid": "Print context: function name, operation, input values. `fprintf(stderr, \"Cannot open %s: %s\", filename, strerror(errno));`"
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is errno?",
+            "options": [
+                "Global variable set by library functions to indicate error type",
+                "Function that returns errors",
+                "Error counter",
+                "Exception object"
+            ],
+            "correct_answer": 0,
+            "explanation": "errno is global variable (thread-local in POSIX) set by system/library functions on errors to values like ENOMEM, EINVAL."
+        },
+        {
+            "question": "What does perror() do?",
+            "options": [
+                "Prints custom message + errno-based error description",
+                "Returns error string",
+                "Sets errno",
+                "Throws exception"
+            ],
+            "correct_answer": 0,
+            "explanation": "perror(msg) prints msg followed by colon and errno error description. Example output: \"fopen: No such file or directory\""
+        },
+        {
+            "question": "What does malloc() return on failure?",
+            "options": [
+                "NULL",
+                "-1",
+                "0",
+                "Throws exception"
+            ],
+            "correct_answer": 0,
+            "explanation": "malloc returns NULL when unable to allocate memory. Always check: `if (ptr == NULL) handle_error();`"
+        },
+        {
+            "question": "When should you check errno?",
+            "options": [
+                "After function returns error code (e.g., -1)",
+                "Before calling function",
+                "Always",
+                "Never"
+            ],
+            "correct_answer": 0,
+            "explanation": "errno only meaningful after function fails. Pattern: `if (call() == -1) { check errno; }`"
+        },
+        {
+            "question": "What does strerror() return?",
+            "options": [
+                "String describing errno value",
+                "Error code number",
+                "Nothing (void)",
+                "Boolean"
+            ],
+            "correct_answer": 0,
+            "explanation": "`strerror(errno)` returns string like \"No such file or directory\". Use: `printf(\"Error: %s\", strerror(errno));`"
+        },
+        {
+            "question": "What does assert() do in release builds?",
+            "options": [
+                "Nothing (disabled with NDEBUG)",
+                "Aborts program",
+                "Logs warning",
+                "Returns false"
+            ],
+            "correct_answer": 0,
+            "explanation": "assert disabled in release builds (-DNDEBUG). Only for debug checks, not runtime error handling."
+        },
+        {
+            "question": "What should you do after malloc returns NULL?",
+            "options": [
+                "Handle error (free resources, return error code)",
+                "Use the pointer anyway",
+                "Try again",
+                "Ignore it"
+            ],
+            "correct_answer": 0,
+            "explanation": "malloc fails when out of memory. Must handle: cleanup any allocated resources, log error, return failure to caller."
+        },
+        {
+            "question": "What' s a good pattern for resource cleanup on errors?",
+            "options": [
+                "Single cleanup label with goto on errors",
+                "Duplicate cleanup code on each error",
+                "Hope it doesn't fail",
+                "Use try-catch"
+            ],
+            "correct_answer": 0,
+            "explanation": "goto cleanup pattern: all error paths goto cleanup label that frees resources. Ensures cleanup on all exit paths."
+        },
+        {
+            "question": "Should you check return value of fclose()?",
+            "options": [
+                "Yes, can fail (e.g., disk full on flush)",
+                "No, always succeeds",
+                "Only for write mode",
+                "Optional"
+            ],
+            "correct_answer": 0,
+            "explanation": "fclose can fail (buffered data not written if disk full). Check: `if (fclose(fp) != 0) perror(\"fclose\");`"
+        },
+        {
+            "question": "What does defensive programming mean?",
+            "options": [
+                "Validate inputs, check returns, handle edge cases",
+                "Use lots of asserts",
+                "Never trust user",
+                "Write comments"
+            ],
+            "correct_answer": 0,
+            "explanation": "Defensive programming: validate inputs (non-NULL, ranges), check all return values, handle edge cases, prevent errors proactively."
+        },
+        {
+            "question": "What's wrong with: `char *p = malloc(100); p[0] = 'a';`?",
+            "options": [
+                "Doesn't check if malloc returned NULL",
+                "Wrong malloc size",
+                "Should use calloc",
+                "Nothing wrong"
+            ],
+            "correct_answer": 0,
+            "explanation": "If malloc fails (returns NULL), p[0] dereferences NULL causing crash. Must check: `if (!p) handle_error();`"
+        },
+        {
+            "question": "errno values are:",
+            "options": [
+                "Positive integers (constants like ENOMEM, EINVAL)",
+                "Negative  integers",
+                "Strings",
+                "Booleans"
+            ],
+            "correct_answer": 0,
+            "explanation": "errno set to positive constants: ENOMEM (out of memory), EINVAL (invalid arg), ENOENT (no file), etc. Defined in errno.h."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "errno: Global variable set by library functions on error to indicate error type (ENOMEM, EINVAL, ENOENT, etc.).",
+            "Return codes: Functions return 0/positive on success, -1/NULL/negative on failure. Always check.",
+            "perror(msg): Prints msg + errno error description. Example: `if (!fp) perror(\"fopen\");`",
+            "strerror(errno): Returns error string. Example: `fprintf(stderr, \"Error: %s\", strerror(errno));`",
+            "Check errno AFTER function fails: `if (call() == -1) { check errno; }` errno only meaningful on failure.",
+            "Defensive programming: Validate inputs (non-NULL, range), check all return values, handle edge cases.",
+            "Resource cleanup: Single cleanup label, goto on errors ensures free/fclose on all exit paths.",
+            "Never use pointer from malloc/fopen without NULL check—dereference NULL crashes.",
+            "assert for logic errors (debug only). Runtime errors need proper handling (return codes, not asserts).",
+            "Provide error context: print function name, operation, input values for debugging."
+        ],
+        "important_formulas": [
+            "Check return: `if (malloc() == NULL) error;`",
+            "errno: `if (call() < 0) { if (errno == ENOENT) ...; }`",
+            "perror: `if (!ptr) { perror(\"malloc\"); exit(1); }`",
+            "Cleanup: `if (err) goto cleanup; ... cleanup: free(p); fclose(fp);`"
+        ],
+        "common_exam_traps": [
+            "Not checking return values—malloc, fopen, etc. can fail. Always check before using.",
+            "Dereferencing without NULL check—`ptr = malloc(); ptr[0] = x;` crashes if malloc fails.",
+            "Forgetting cleanup on errors—use goto cleanup pattern to free resources on all paths.",
+            "Checking errno without checking return first—errno only meaningful after function fails.",
+            "Using assert for runtime errors—assert disabled in release. Use proper error handling."
+        ],
+        "exam_tip": "Remember: Always check return values. errno after failure. perror prints errno message. Cleanup resources on all paths (goto cleanup). NULL check before dereference. assert debug-only, not runtime error."
+    }
+}

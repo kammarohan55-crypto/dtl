@@ -1,0 +1,405 @@
+{
+    "module_header": {
+        "module_title": "Classification Concepts",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Supervised Learning",
+            "Introduction to Machine Learning",
+            "Basic probability and statistics"
+        ],
+        "learning_outcomes": [
+            "Understand classification as supervised learning for predicting categorical outputs",
+            "Distinguish between binary and multi-class classification",
+            "Apply logistic regression for binary classification",
+            "Understand decision boundaries and classification regions",
+            "Evaluate classifiers using accuracy, precision, recall, F1-score, ROC-AUC",
+            "Handle class imbalance problems",
+            "Understand common classification algorithms and their characteristics"
+        ]
+    },
+    "definition": "Classification is supervised learning predicting categorical target variable (classes/labels) from input features. Binary classification: two classes (spam/not spam, disease/healthy). Multi-class: multiple classes (digit 0-9, animal species). Algorithms: Logistic Regression (probabilistic binary classifier using sigmoid σ(z)=1/(1+e^{-z})), Decision Trees (hierarchical if-then rules), k-NN (k-Nearest Neighbors—classify by majority vote of k nearest points), SVM (Support Vector Machines—maximum margin hyperplane), Neural Networks (learn complex non-linear boundaries). Training minimizes classification loss: log-loss (cross-entropy) for probabilistic models. Decision boundary separates classes in feature space. Evaluation metrics: Accuracy (correct/total), Precision (true positives/predicted positives), Recall/Sensitivity (true positives/actual positives), F1-score (harmonic mean of precision/recall), ROC curve (TPR vs FPR), AUC (area under ROC). Class imbalance (skewed class distribution) requires special handling: resampling, weighted loss, appropriate metrics.",
+    "concept_overview": [
+        "Classification: Predict categorical output (class). Binary (2 classes) or Multi-class (3+ classes).",
+        "Logistic regression: Binary classifier. Outputs probability P(y=1|x) = σ(w^Tx + b). Sigmoid squashes to [0,1].",
+        "Decision boundary: Hyperplane separating classes. Linear (logistic, SVM) or non-linear (trees, neural nets).",
+        "Evaluation: Accuracy=correct/total. Precision=TP/(TP+FP). Recall=TP/(TP+FN). F1=2PR/(P+R).",
+        "Confusion matrix: [TP FP; FN TN]. Shows correct/incorrect predictions for each class.",
+        "Class imbalance: Unequal class distribution (fraud 0.1%). Accuracy misleading. Use precision/recall/F1/AUC.",
+        "ROC curve: TPR vs FPR at different thresholds. AUC=area under curve [0,1]. Higher=better classifier."
+    ],
+    "theory": [
+        "Classification forms the foundation of countless ML applications: medical diagnosis (disease present/absent), spam filtering (spam/legitimate), sentiment analysis (positive/negative/neutral), image recognition (object categories), fraud detection (fraudulent/legitimate). Understanding classification develops ability to: (1) Formulate problems as categorical prediction, (2) Choose appropriate algorithms based on data characteristics, (3) Evaluate performance using proper metrics (critical for imbalanced data), (4) Interpret decision boundaries (linear vs non-linear separability). The categorical nature distinguishes classification from regression (continuous outputs)—algorithms must partition feature space into discrete regions. Real-world challenges include imbalanced classes (rare events like fraud, diseases), overlapping classes (ambiguous boundaries), high-dimensional data (curse of dimensionality), non-linear relationships requiring complex boundaries.",
+        "The fundamental classification approaches reflect different strategies for partitioning feature space. **Logistic Regression** (despite name, used for classification): Binary classifier outputting probability $P(y=1|x) = \\sigma(w^Tx + b)$ where sigmoid $\\sigma(z) = \\frac{1}{1+e^{-z}}$ maps any real number to [0,1]. Decision rule: predict class 1 if P≥0.5, else class 0. Linear decision boundary: $w^Tx + b = 0$ separates classes. Training minimizes log-loss (binary cross-entropy): $-\\frac{1}{n}\\sum [y\\log(\\hat{p}) + (1-y)\\log(1-\\hat{p})]$ where $\\hat{p}=\\sigma(w^Tx+b)$. Optimization via gradient descent. Strengths: probabilistic outputs (calibrated probabilities useful for risk assessment), interpretable (coefficients show feature importance), fast training/prediction. Weaknesses: linear boundary (poor for non-linearly separable data). **Decision Trees**: Hierarchical if-then rules partitioning feature space recursively. Each node tests feature (e.g., age>30?), branches to children. Leaves assign class labels. Training finds splits maximizing information gain (reducing entropy/Gini impurity). Example: classifying loan default—split by income>$50k, then by credit_score>700, etc. Strengths: non-linear boundaries, interpretable (visualize tree), handles mixed features (numerical/categorical), no feature scaling needed. Weaknesses: overfitting (deep trees memorize training), unstable (small data changes→different tree). Solution: ensemble methods (Random Forests—average many trees). **k-Nearest Neighbors (k-NN)**: Instance-based learning. To classify new point, find k nearest training examples (Euclidean distance), predict majority class. Non-parametric (no training phase—lazy learning). Strengths: simple, no assumptions about data distribution, effective for irregular boundaries. Weaknesses: slow prediction (must compute distances to all training points), sensitive to k, requires feature scaling, poor in high dimensions (curse of dimensionality). **Support Vector Machines (SVM)**: Finds maximum margin hyperplane separating classes. Margin: distance from hyperplane to nearest points (support vectors). Maximizing margin improves generalization. Kernel trick enables non-linear boundaries (RBF kernel maps to high-D space). Strengths: effective in high dimensions, memory efficient (only support vectors matter), kernel flexibility. Weaknesses: slow for large datasets, sensitive to hyperparameters (C, kernel, gamma), no probabilistic outputs (need Platt scaling). **Neural Networks**: Layer weights learn complex non-linear decision boundaries. Input→Hidden layers→Output (sigmoid or softmax). Universal function approximators. Strengths: learns intricate patterns, state-of-art for vision/NLP. Weaknesses: needs large data, slow training, black-box (hard to interpret), many hyperparameters.",
+        "Mastery of classification evaluation is critical for real-world deployment. **Confusion Matrix**: 2×2 table for binary classification: [TP FP; FN TN]. True Positives (correctly predicted positive), False Positives (incorrectly predicted positive—Type I error), False Negatives (incorrectly predicted negative—Type II error), True Negatives (correctly predicted negative). **Metrics**: (1) **Accuracy** = (TP+TN)/(TP+TN+FP+FN): Overall correctness. Misleading for imbalanced data (99% negatives→always predicting negative gives 99% accuracy but useless). (2) **Precision** = TP/(TP+FP): Of predicted positives, how many correct? High precision→few false alarms. Important when FP costly (spam filter blocking legitimate email). (3) **Recall/Sensitivity** = TP/(TP+FN): Of actual positives, how many caught? High recall→few missed positives. Important when FN costly (disease detection—missing disease dangerous). (4) **F1-Score** = 2×(Precision×Recall)/(Precision+Recall): Harmonic mean balancing precision/recall. (5) **Specificity** = TN/(TN+FP): Of actual negatives, how many correctly identified. (6) **ROC Curve** (Receiver Operating Characteristic): Plots TPR (recall) vs FPR (1-specificity) across classification thresholds. Perfect classifier: TPR=1, FPR=0 (top-left corner). Random guessing: diagonal line. (7) **AUC** (Area Under ROC Curve): [0,1]. AUC=1 perfect, AUC=0.5 random, AUC<0.5 worse than random. Robust to class imbalance. **Class Imbalance**: Real data often skewed (fraud 0.1%, disease 5%). Challenges: (1) Accuracy misleading (predict majority class always→high accuracy, useless model), (2) Minority class underlearned (model ignores rare class). Solutions: (1) **Resampling**: Oversample minority (duplicate/synthesize examples—SMOTE), undersample majority (remove examples—lose data). (2) **Weighted loss**: Penalize minority misclassifications more. (3) **Appropriate metrics**: Use precision/recall/F1/AUC, not accuracy. (4) **Threshold tuning**: Adjust decision threshold (default 0.5) to favor recall or precision. **Multi-class classification**: Extend to 3+ classes. Strategies: (1) **One-vs-Rest**: Train k binary classifiers (class i vs all others), pick highest score. (2) **One-vs-One**: Train k(k-1)/2 classifiers (each pair), majority vote. (3) **Native multi-class**: Softmax regression (generalized logistic), decision trees, neural networks with softmax output. Evaluation: confusion matrix k×k, macro/micro-averaged metrics. In examinations, demonstrating metric selection based on problem (imbalanced→F1/AUC, not accuracy), confusion matrix interpretation, and algorithm characteristics shows classification competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Logistic regression: $P(y=1|x) = \\sigma(w^Tx + b) = \\frac{1}{1 + e^{-(w^Tx + b)}}$",
+            "explanation": "Probability of class 1 using sigmoid function. Outputs [0,1]. Decision boundary: w^Tx + b = 0."
+        },
+        {
+            "formula": "Log-loss (binary cross-entropy): $L = -\\frac{1}{n}\\sum [y\\log(\\hat{p}) + (1-y)\\log(1-\\hat{p})]$",
+            "explanation": "Classification loss for probabilistic models. Penalizes confident wrong predictions heavily."
+        },
+        {
+            "formula": "Accuracy: $\\frac{TP + TN}{TP + TN + FP + FN}$",
+            "explanation": "Fraction of correct predictions. Misleading for imbalanced data."
+        },
+        {
+            "formula": "Precision: $\\frac{TP}{TP + FP}$, Recall: $\\frac{TP}{TP + FN}$",
+            "explanation": "Precision: of predicted positives, how many correct. Recall: of actual positives, how many caught."
+        },
+        {
+            "formula": "F1-score: $\\frac{2 \\times Precision \\times Recall}{Precision + Recall}$",
+            "explanation": "Harmonic mean of precision and recall. Balances both. Range [0,1], higher=better."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Calculate precision, recall, F1 from confusion matrix.",
+            "solution_steps": [
+                "**Problem:** Email spam classifier tested on 100 emails.",
+                "**Confusion Matrix:**",
+                "```",
+                "               Predicted",
+                "              Spam | Not Spam",
+                "Actual Spam     40  |    10      (50 actual spam)",
+                "   Not Spam      5  |    45      (50 actual not spam)",
+                "```",
+                "",
+                "**Identify values:**",
+                "- TP (True Positives) = 40 (correctly predicted spam)",
+                "- FP (False Positives) = 5 (incorrectly predicted spam—actually not spam)",
+                "- FN (False Negatives) = 10 (missed spam—predicted not spam, actually spam)",
+                "- TN (True Negatives) = 45 (correctly predicted not spam)",
+                "",
+                "**Calculate metrics:**",
+                "",
+                "**Accuracy:**",
+                "= (TP + TN) / Total",
+                "= (40 + 45) / 100",
+                "= 85/100 = 0.85 = 85%",
+                "",
+                "**Precision:**",
+                "= TP / (TP + FP)",
+                "= 40 / (40 + 5)",
+                "= 40 / 45",
+                "= 0.889 = 88.9%",
+                "**Interpretation:** Of emails predicted as spam, 88.9% actually were spam. (11.1% false alarms)",
+                "",
+                "**Recall (Sensitivity):**",
+                "= TP / (TP + FN)",
+                "= 40 / (40 + 10)",
+                "= 40 / 50",
+                "= 0.80 = 80%",
+                "**Interpretation:** Of actual spam emails, 80% were caught. (20% slipped through)",
+                "",
+                "**F1-Score:**",
+                "= 2 × (Precision × Recall) / (Precision + Recall)",
+                "= 2 × (0.889 × 0.80) / (0.889 + 0.80)",
+                "= 2 × 0.711 / 1.689",
+                "= 1.422 / 1.689",
+                "= 0.842 = 84.2%",
+                "",
+                "**Trade-off:**",
+                "- High precision (88.9%) → Few false alarms (good—don't block legitimate email)",
+                "- Moderate recall (80%) → Some spam gets through (acceptable)",
+                "- Balanced F1-score (84.2%)"
+            ],
+            "final_answer": "Accuracy: 85%, Precision: 88.9%, Recall: 80%, F1: 84.2%. High precision (few false alarms), moderate recall (some spam missed)."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Explain why accuracy is misleading for imbalanced data and what to use instead.",
+            "solution_steps": [
+                "**Scenario:** Credit card fraud detection",
+                "- Dataset: 10,000 transactions",
+                "- Fraud: 10 transactions (0.1%)",
+                "- Legitimate: 9,990 transactions (99.9%)",
+                "**Extremely imbalanced!**",
+                "",
+                "**Naive Classifier:** Always predict 'Not Fraud'",
+                "",
+                "**Confusion Matrix:**",
+                "```",
+                "              Predicted",
+                "           Fraud | Not Fraud",
+                "Actual Fraud  0  |    10      (0 caught, 10 missed)",
+                "   Not Fraud  0  |  9,990     (all correct)",
+                "```",
+                "",
+                "**Accuracy Calculation:**",
+                "= (TP + TN) / Total",
+                "= (0 + 9,990) / 10,000",
+                "= 9,990 / 10,000",
+                "= 99.9%",
+                "",
+                "**Problem:**",
+                "✗ **99.9% accuracy looks AMAZING!**",
+                "✗ But the model is **completely useless** (catches ZERO fraud)",
+                "✗ Just predicting majority class trivially achieves high accuracy",
+                "",
+                "**Why accuracy fails:**",
+                "- Dominated by majority class (99.9% legitimate)",
+                "- Ignores performance on minority class (fraud)",
+                "- Gives false confidence",
+                "",
+                "**Better Metrics:**",
+                "",
+                "**1. Precision:**",
+                "= TP / (TP + FP) = 0 / (0 + 0) = undefined (no predictions)",
+                "Meaningless here but would measure false alarm rate if predicting fraud",
+                "",
+                "**2. Recall (most important for fraud):**",
+                "= TP / (TP + FN)",
+                "= 0 / (0 + 10)",
+                "= 0% ← **Reveals the problem!**",
+                "Caught 0% of fraud—terrible!",
+                "",
+                "**3. F1-Score:**",
+                "= 0 (since recall=0)",
+                "Clearly shows poor performance",
+                "",
+                "**4. AUC-ROC:**",
+                "= 0.5 (random guessing)",
+                "Model no better than random",
+                "",
+                "**Proper Classifier Example:**",
+                "Suppose model catches 8/10 fraud but has 100 false alarms:",
+                "",
+                "```",
+                "           Fraud | Not Fraud",
+                "Fraud       8   |    2      ",
+                "Not Fraud 100   |  9,890    ",
+                "```",
+                "",
+                "- **Accuracy:** (8 + 9,890)/10,000 = 98.98% (looks WORSE than naive!)",
+                "- **Recall:** 8/10 = 80% (catches most fraud—GOOD!)",
+                "- **Precision:** 8/(8+100) = 7.4% (many false alarms—trade-off)",
+                "- **F1:** 2×(0.8×0.074)/(0.8+0.074) = 13.5%",
+                "",
+                "**For fraud detection:**",
+                "- Recall most important (catching fraud critical)",
+                "- Willing to accept lower precision (investigate false alarms)",
+                "- Accuracy misleading—use Recall, F1, AUC",
+                "",
+                "**Recommendation for Imbalanced Data:**",
+                "✅ **Use:** Precision, Recall, F1-score, AUC-ROC",
+                "✅ **Plot:** ROC curve, Precision-Recall curve",
+                "✅ **Consider:** Cost-sensitive learning (weight minority errors higher)",
+                "✗ **Avoid:** Accuracy alone"
+            ],
+            "final_answer": "Accuracy misleading for imbalanced data: predicting majority class achieves high accuracy but useless model. Use Precision, Recall, F1, AUC instead—reveal minority class performance."
+        }
+    ],
+    "logical_derivation": "Classification partitions feature space into regions corresponding to classes. Decision boundary separates regions—linear (logistic regression, SVM) or non-linear (trees, neural nets). Training minimizes classification loss: log-loss for probabilistic models penalizes confident misclassifications. Logistic regression applies sigmoid to linear combination, outputting probabilities. Decision trees recursively split feature space maximizing information gain. k-NN classifies based on local neighborhood majority. Evaluation requires metrics matching problem objectives: accuracy for balanced data, precision/recall/F1/AUC for imbalanced. ROC curve plots TPR vs FPR across thresholds, AUC summarizes discriminative ability. Class imbalance requires resampling or weighted loss to prevent majority class dominance.",
+    "applications": [
+        "**Spam Detection:** Email classification (spam/legitimate). High precision prevents false positives.",
+        "**Medical Diagnosis:** Disease detection (positive/negative). High recall critical (catch all cases).",
+        "**Fraud Detection:** Transaction classification (fraudulent/legitimate). Imbalanced, high recall priority.",
+        "**Sentiment Analysis:** Text classification (positive/negative/neutral). Product reviews, social media.",
+        "**Image Recognition:** Object classification (cat/dog/bird/...). Computer vision applications.",
+        "**Credit Scoring:** Loan default prediction (will default/won't). Risk assessment.",
+        "**Customer Churn:** Predict customer attrition (will leave/stay). Retention targeting."
+    ],
+    "key_takeaways": [
+        "Classification: Supervised learning predicting categorical output. Binary (2 classes) or Multi-class (3+).",
+        "Logistic regression: P(y=1|x) = σ(w^Tx + b). Sigmoid outputs [0,1]. Linear decision boundary.",
+        "Confusion matrix: [TP FP; FN TN]. Foundation for all classification metrics.",
+        "Accuracy: (TP+TN)/Total. Misleading for imbalanced data. Use precision/recall/F1/AUC instead.",
+        "Precision: TP/(TP+FP) (of predicted positives, how many correct). Recall: TP/(TP+FN) (of actual positives, how many caught).",
+        "F1-score: Harmonic mean of precision/recall. Balances both. Good for imbalanced data.",
+        "ROC/AUC: ROC plots TPR vs FPR. AUC∈[0,1], higher=better. Robust to class imbalance."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Using accuracy for imbalanced data",
+            "why_it_occurs": "Students default to accuracy without checking class distribution.",
+            "how_to_avoid": "Check class distribution first. If imbalanced (fraud, disease), use precision/recall/F1/AUC, never accuracy alone."
+        },
+        {
+            "mistake": "Confusing precision and recall",
+            "why_it_occurs": "Students mix up definitions.",
+            "how_to_avoid": "Precision: of PREDICTED positives, % correct (FP penalty). Recall: of ACTUAL positives, % caught (FN penalty). Different denominators."
+        },
+        {
+            "mistake": "Not understanding precision-recall trade-off",
+            "why_it_occurs": "Students expect both high simultaneously.",
+            "how_to_avoid": "Trade-off exists: increasing recall (catch more positives) often decreases precision (more false alarms). Tune threshold based on problem (fraud→favor recall)."
+        },
+        {
+            "mistake": "Using classification algorithm for regression problem",
+            "why_it_occurs": "Students don't check output type.",
+            "how_to_avoid": "Classification=categorical output (spam/not spam). Regression=continuous (price). Check target variable type first."
+        },
+        {
+            "mistake": "Ignoring decision threshold tuning",
+            "why_it_occurs": "Students use default 0.5 threshold always.",
+            "how_to_avoid": "For imbalanced/cost-sensitive problems, tune threshold (e.g., 0.3 for high recall). Use ROC curve to choose optimal operating point."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What does classification predict?",
+            "options": [
+                "Categorical class label",
+                "Continuous numerical value",
+                "Cluster assignment",
+                "Distance"
+            ],
+            "correct_answer": 0,
+            "explanation": "Classification is supervised learning predicting categorical output (spam/not spam, disease/no disease). Regression predicts continuous values."
+        },
+        {
+            "question": "What does logistic regression output?",
+            "options": [
+                "Probability P(y=1|x) ∈ [0,1]",
+                "Class label directly",
+                "Continuous value",
+                "Distance to boundary"
+            ],
+            "correct_answer": 0,
+            "explanation": "Logistic regression outputs probability using sigmoid: P(y=1|x) = σ(w^Tx + b) ∈ [0,1]. Decision rule: predict 1 if P≥0.5."
+        },
+        {
+            "question": "What is precision?",
+            "options": [
+                "TP / (TP + FP)",
+                "TP / (TP + FN)",
+                "(TP + TN) / Total",
+                "TN / (TN + FP)"
+            ],
+            "correct_answer": 0,
+            "explanation": "Precision = TP/(TP+FP): of predicted positives, how many correct. Measures false alarm rate."
+        },
+        {
+            "question": "What is recall?",
+            "options": [
+                "TP / (TP + FN)",
+                "TP / (TP + FP)",
+                "(TP + TN) / Total",
+                "TN / (TN + FN)"
+            ],
+            "correct_answer": 0,
+            "explanation": "Recall (Sensitivity) = TP/(TP+FN): of actual positives, how many caught. Measures missed positives."
+        },
+        {
+            "question": "Why is accuracy misleading for imbalanced data?",
+            "options": [
+                "Predicting majority class achieves high accuracy but useless model",
+                "Accuracy is always wrong",
+                "Too difficult to calculate",
+                "No reason"
+            ],
+            "correct_answer": 0,
+            "explanation": "Imbalanced data (fraud 0.1%): always predicting 'not fraud' gives 99.9% accuracy but catches zero fraud. Use precision/recall/F1/AUC instead."
+        },
+        {
+            "question": "What is F1-score?",
+            "options": [
+                "Harmonic mean of precision and recall",
+                "Same as accuracy",
+                "Always 1.0",
+                "Maximum of precision and recall"
+            ],
+            "correct_answer": 0,
+            "explanation": "F1 = 2×(P×R)/(P+R): harmonic mean balancing precision and recall. Good single metric for imbalanced data."
+        },
+        {
+            "question": "What does ROC curve plot?",
+            "options": [
+                "TPR (Recall) vs FPR across thresholds",
+                "Precision vs Recall",
+                "Accuracy vs Threshold",
+                "Loss vs Epochs"
+            ],
+            "correct_answer": 0,
+            "explanation": "ROC (Receiver Operating Characteristic) plots True Positive Rate (Recall) vs False Positive Rate at different classification thresholds."
+        },
+        {
+            "question": "What is AUC?",
+            "options": [
+                "Area Under ROC Curve, range [0,1], higher=better",
+                "Accuracy metric",
+                "Always 0.5",
+                "Loss function"
+            ],
+            "correct_answer": 0,
+            "explanation": "AUC = Area Under ROC Curve. Range [0,1]. AUC=1 perfect, AUC=0.5 random, AUC<0.5 worse than random. Robust to imbalance."
+        },
+        {
+            "question": "What is a confusion matrix?",
+            "options": [
+                "Table showing TP, FP, FN, TN",
+                "Feature correlation matrix",
+                "Weight matrix",
+                "Training data"
+            ],
+            "correct_answer": 0,
+            "explanation": "Confusion matrix: 2×2 table for binary classification [TP FP; FN TN] showing correct/incorrect predictions for each class."
+        },
+        {
+            "question": "Which metric important when false negatives costly?",
+            "options": [
+                "Recall (catch all positives)",
+                "Precision",
+                "Accuracy",
+                "Specificity"
+            ],
+            "correct_answer": 0,
+            "explanation": "High recall critical when missing positives costly (disease detection—missing disease dangerous). Recall = TP/(TP+FN) minimizes false negatives."
+        },
+        {
+            "question": "Which metric important when false positives costly?",
+            "options": [
+                "Precision (avoid false alarms)",
+                "Recall",
+                "Accuracy",
+                "F1-score"
+            ],
+            "correct_answer": 0,
+            "explanation": "High precision critical when false alarms costly (spam filter blocking legitimate email). Precision = TP/(TP+FP) minimizes false positives."
+        },
+        {
+            "question": "What is sigmoid function?",
+            "options": [
+                "σ(z) = 1/(1+e^{-z}), maps ℝ → [0,1]",
+                "Linear function",
+                "Always outputs 0 or 1",
+                "Exponential growth"
+            ],
+            "correct_answer": 0,
+            "explanation": "Sigmoid σ(z) = 1/(1+e^{-z}) maps any real number to [0,1]. Used in logistic regression to output probabilities."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Classification: Supervised learning predicting categorical output (classes). Binary (2) or Multi-class (3+).",
+            "Logistic regression: P(y=1|x) = σ(w^Tx + b). Sigmoid maps to [0,1]. Linear decision boundary. Predict 1 if P≥0.5.",
+            "Confusion matrix: [TP FP; FN TN]. Foundation for metrics. TP=correct positives, FP=false alarms, FN=missed, TN=correct negatives.",
+            "Accuracy: (TP+TN)/Total. MISLEADING for imbalanced data. Predicting majority→high accuracy, useless model.",
+            "Precision: TP/(TP+FP). Of predicted positives, % correct. High→few false alarms. Important when FP costly (spam filter).",
+            "Recall: TP/(TP+FN). Of actual positives, % caught. High→few missed. Important when FN costly (disease detection).",
+            "F1-score: 2PR/(P+R). Harmonic mean. Balances precision/recall. Good for imbalanced data.",
+            "ROC curve: TPR vs FPR across thresholds. AUC∈[0,1], higher=better. Robust to imbalance.",
+            "Class imbalance: Skewed distribution (fraud 0.1%). Use precision/recall/F1/AUC, NOT accuracy. Resample or weight loss.",
+            "Algorithms: Logistic (linear, probabilistic), Trees (non-linear, interpretable), k-NN (instance-based), SVM (max margin), Neural Nets (complex)."
+        ],
+        "important_formulas": [
+            "Logistic: P(y=1|x) = σ(w^Tx+b) = 1/(1+e^{-(w^Tx+b)})",
+            "Precision: TP/(TP+FP), Recall: TP/(TP+FN)",
+            "F1: 2PR/(P+R)",
+            "Accuracy: (TP+TN)/Total"
+        ],
+        "common_exam_traps": [
+            "Accuracy misleading for imbalanced data. Use precision/recall/F1/AUC instead.",
+            "Precision vs Recall: Precision=TP/(TP+FP) (predicted positives). Recall=TP/(TP+FN) (actual positives). Different denominators!",
+            "High recall→catch more positives but more false alarms (lower precision). Trade-off.",
+            "FN costly (disease)→maximize recall. FP costly (spam blocking email)→maximize precision.",
+            "Classification=categorical output. Regression=continuous. Don't mix algorithms."
+        ],
+        "exam_tip": "Remember: Classification=categories. Confusion matrix=[TP FP; FN TN]. Precision=TP/(TP+FP), Recall=TP/(TP+FN). Imbalanced→use F1/AUC not accuracy. Recall for FN-costly, Precision for FP-costly."
+    }
+}

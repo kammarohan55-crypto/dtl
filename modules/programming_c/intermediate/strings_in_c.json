@@ -1,0 +1,334 @@
+{
+    "module_header": {
+        "module_title": "Strings in C",
+        "subject": "Programming Using C",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Arrays in C",
+            "Character data type",
+            "Loops and functions",
+            "Understanding of null character"
+        ],
+        "learning_outcomes": [
+            "Understand strings as null-terminated character arrays",
+            "Declare, initialize, and manipulate strings using character arrays",
+            "Use string input/output functions (scanf, gets, fgets, printf, puts)",
+            "Apply string.h library functions (strlen, strcpy, strcat, strcmp)",
+            "Understand string termination using null character '\\0'",
+            "Process strings character-by-character using loops",
+            "Handle common string operations and pitfalls"
+        ]
+    },
+    "definition": "In C, a string is a sequence of characters stored as a null-terminated character array. Strings are declared as `char str[size];` and must include space for the null terminator '\\0' which marks the string end. String literals like `\"Hello\"` are automatically null-terminated. Strings are manipulated using standard library functions from `<string.h>` like `strlen()` (length), `strcpy()` (copy), `strcat()` (concatenate), and `strcmp()` (compare). Unlike other languages, C has no built-in string type; strings are character arrays with special termination convention.",
+    "concept_overview": [
+        "String representation: character array with null terminator '\\0' at end. Example: \"Hi\" stored as {'H', 'i', '\\0'}.",
+        "Declaration: `char str[20];` allocates 20 characters. String can use up to 19 characters (1 reserved for '\\0').",
+        "Initialization: `char str[] = \"Hello\";` auto-sizes to 6 (5 chars + '\\0'). Or `char str[10] = \"Hello\";` with explicit size.",
+        "String input: `scanf(\"%s\", str)` reads until whitespace. `fgets(str, size, stdin)` reads line including spaces, safer than gets().",
+        "String functions: `strlen(str)` returns length (excluding '\\0'), `strcpy(dest, src)` copies, `strcat(dest, src)` appends, `strcmp(s1, s2)` compares.",
+        "Character-by-character access: `str[i]` accesses individual characters. Loop until `str[i] == '\\0'` or use `strlen()` for length.",
+        "String literals: `\"text\"` are constant, stored in read-only memory. Cannot modify: `\"Hello\"[0] = 'h';` causes error."
+    ],
+    "theory": [
+        "Strings in C exemplify how high-level abstractions (text) are built from primitive types (character arrays with conventions). The null-termination strategy—ending strings with '\\0' (ASCII value 0)—enables variable-length strings in fixed-size arrays: functions traverse until '\\0' to determine length, eliminating need for separate length storage. This design reflects C's systems programming heritage: efficient, minimal overhead, but requiring programmer discipline. Understanding strings develops awareness of memory representation, pointer-array duality (string manipulation often uses pointers), and buffer management (preventing overflows). Strings are ubiquitous: user input, file I/O, networking, parsing, text processing. Mastery enables building text-based interfaces, parsers, data processors, and communication protocols. The distinction between string literals (constant, read-only) and character arrays (mutable) prevents security vulnerabilities and crashes from attempting to modify constants.",
+        "The fundamental string mechanics involve declaration, initialization, input/output, and manipulation through library functions. Declaration `char str[size];` allocates array; size must accommodate longest expected string plus '\\0'. Initialization can be explicit `char str[] = \"Hello\";` which auto-sizes to 6, or declared size `char str[20] = \"Hello\";` where remaining characters are 0-filled. String input functions: `scanf(\"%s\", str)` reads until whitespace (unsafe for multi-word input, no length limit), `gets(str)` reads entire line but deprecated (buffer overflow risk), `fgets(str, size, stdin)` reads up to size-1 characters safely, including newline '\\n' which can be removed. String output: `printf(\"%s\", str)` prints until '\\0', `puts(str)` prints string and adds newline. Standard library `<string.h>` provides essential functions: `strlen(str)` counts characters until '\\0' (returns length not including '\\0'), `strcpy(dest, src)` copies src to dest (dest must have sufficient space), `strcat(dest, src)` appends src to dest (dest must have room for combined length), `strcmp(s1, s2)` compares lexicographically (returns 0 if equal, <0 if s1 < s2, >0 if s1 > s2). Manual string processing uses loops: `for (int i = 0; str[i] != '\\0'; i++)` or `while (*ptr != '\\0')` with pointers. Common operations: finding length, copying, searching for character/substring, reversing, case conversion.",
+        "Mastery of strings is critically important because text processing is central to software: command-line parsing, configuration files, user interfaces, data formats (JSON, XML, CSV), networking protocols, logging, and natural language processing. Understanding null-termination prevents buffer overflows—a major security vulnerability where writing beyond array bounds corrupts memory or enables exploits. Safe string handling requires: checking buffer capacity before writing, using bounded functions (`strncpy`, `strncat`, `fgets` with size), validating input length. The `strcpy` vs `strncpy` distinction matters: `strcpy` copies until src's '\\0' (unsafe if dest too small), `strncpy` copies at most n characters (safer but may not null-terminate if src longer). String comparison subtleties: `strcmp` compares lexicographically (dictionary order) returning negative/zero/positive, not boolean true/false; comparing char-by-char until difference or '\\0' found. String literals vs arrays: `\"Hello\"` is constant (attempting modification causes crash), `char str[] = \"Hello\";` creates modifiable array copy. In embedded systems, string handling affects RAM usage; dynamic allocation vs static arrays is critical. In parsing applications, string tokenization (`strtok`) splits input by delimiters. In examinations, demonstrating correct null-termination, safe input handling, and appropriate library function usage shows string competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "String declaration: `char str[size];` Example: `char name[50];`",
+            "explanation": "Character array of size characters, accommodates strings up to size-1 characters (1 for '\\0')."
+        },
+        {
+            "formula": "String initialization: `char str[] = \"text\";` Auto-sizes to length('text') + 1",
+            "explanation": "\"Hello\" requires 6 elements: 'H','e','l','l','o','\\0'."
+        },
+        {
+            "formula": "`strlen(str)` returns $n$ where str[n] = '\\0' and str[0..n-1] are non-null",
+            "explanation": "Length counts characters before null terminator, not including '\\0'."
+        },
+        {
+            "formula": "`strcmp(s1, s2)` returns: $\\begin{cases} 0 & s1 = s2 \\\\ <0 & s1 < s2 \\\\ >0 & s1 > s2 \\end{cases}$",
+            "explanation": "Lexicographic comparison: 0 if equal, negative if s1 alphabetically before s2, positive otherwise."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Declare, initialize, and print a string.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "int main() {",
+                "    // Method 1: Auto-size initialization",
+                "    char str1[] = \"Hello\";",
+                "    ",
+                "    // Method 2: Explicit size",
+                "    char str2[20] = \"World\";",
+                "    ",
+                "    // Print strings",
+                "    printf(\"%s\\n\", str1);  // Output: Hello",
+                "    printf(\"%s\\n\", str2);  // Output: World",
+                "    ",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "Strings initialized with literals, printed using %s format specifier"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Use string.h functions to copy, concatenate, and compare strings.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "#include <string.h>",
+                "",
+                "int main() {",
+                "    char str1[50] = \"Hello\";",
+                "    char str2[50] = \"World\";",
+                "    char str3[50];",
+                "    ",
+                "    // Copy str1 to str3",
+                "    strcpy(str3, str1);",
+                "    printf(\"After strcpy: %s\\n\", str3);  // Hello",
+                "    ",
+                "    // Concatenate str2 to str1",
+                "    strcat(str1, str2);",
+                "    printf(\"After strcat: %s\\n\", str1);  // HelloWorld",
+                "    ",
+                "    // Compare strings",
+                "    if (strcmp(str2, \"World\") == 0) {",
+                "        printf(\"Strings are equal\\n\");",
+                "    }",
+                "    ",
+                "    // String length",
+                "    printf(\"Length of str1: %lu\\n\", strlen(str1));  // 10",
+                "    ",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "strcpy copies, strcat appends, strcmp compares (0 if equal), strlen returns length"
+        }
+    ],
+    "logical_derivation": "Null-termination derives from need to represent variable-length data in fixed-size arrays. Storing length separately would require extra space and synchronization; '\\0' terminator enables self-describing strings. Functions traverse until '\\0' to find length/end. This convention requires: (1) always allocate size+1 for string of length size, (2) library functions maintain '\\0', (3) manual manipulation must preserve '\\0'. The design trades safety for efficiency: no bounds checking (programmer responsibility) but minimal overhead. String literals as constants in read-only memory prevents accidental modification and enables string sharing (multiple pointers to same literal).",
+    "applications": [
+        "**User Input**: Reading names, commands, text using scanf, fgets.",
+        "**Text Processing**: Parsing configuration files, CSV data, log files.",
+        "**String Manipulation**: Building messages, formatting output, concatenating paths.",
+        "**Comparison & Searching**: Sorting strings, validating passwords, finding substrings.",
+        "**Tokenization**: Splitting input by delimiters using strtok.",
+        "**Networking**: Building HTTP requests, parsing protocols.",
+        "**File I/O**: Reading/writing text files line-by-line."
+    ],
+    "key_takeaways": [
+        "String: null-terminated character array. Declared as `char str[size];` with size for max length + 1 for '\\0'.",
+        "Initialization: `char str[] = \"Hello\";` auto-sizes to 6. \"Hello\" is {'H','e','l','l','o','\\0'}.",
+        "Null terminator '\\0': marks string end. Essential; without it, functions read beyond intended string.",
+        "strlen(str): returns length excluding '\\0'. strcpy(dest, src): copies string. strcat(dest, src): appends.",
+        "strcmp(s1, s2): returns 0 if equal, <0 if s1<s2, >0 if s1>s2 (lexicographic comparison).",
+        "String input: scanf(\"%s\") stops at whitespace. fgets(str, size, stdin) reads line, safer.",
+        "String literals (\"text\") are constant, stored in read-only memory. Cannot modify."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Forgetting to allocate space for null terminator",
+            "why_it_occurs": "Students allocate `char str[5]` for 5-character string, forgetting '\\0'.",
+            "how_to_avoid": "For n-character string, allocate n+1 size: `char str[6]` for \"Hello\" (5 chars + '\\0')."
+        },
+        {
+            "mistake": "Using gets() for input",
+            "why_it_occurs": "Students use deprecated gets() not knowing it's unsafe.",
+            "how_to_avoid": "Never use gets() (buffer overflow risk). Use `fgets(str, sizeof(str), stdin)` for safe input."
+        },
+        {
+            "mistake": "Forgetting to include <string.h>",
+            "why_it_occurs": "Students use strlen, strcpy without including header.",
+            "how_to_avoid": "#include <string.h> when using string functions. Compiler error about undefined function indicates missing header."
+        },
+        {
+            "mistake": "Buffer overflow with strcpy/strcat",
+            "why_it_occurs": "Students copy/append without checking destination has enough space.",
+            "how_to_avoid": "Ensure dest has room: if src is 10 chars, dest needs at least 11. Use strncpy/strncat for length limiting."
+        },
+        {
+            "mistake": "Comparing strings with == or !=",
+            "why_it_occurs": "Students write `if (str1 == str2)` expecting content comparison.",
+            "how_to_avoid": "== compares pointers (addresses), not contents. Use `strcmp(str1, str2) == 0` for equality."
+        },
+        {
+            "mistake": "Modifying string literals",
+            "why_it_occurs": "Students try `char *str = \"Hello\"; str[0] = 'h';`",
+            "how_to_avoid": "String literals are const. Use `char str[] = \"Hello\";` for modifiable copy. Modifying literal causes crash."
+        },
+        {
+            "mistake": "Not null-terminating manually built strings",
+            "why_it_occurs": "Students fill character array but forget to add '\\0'.",
+            "how_to_avoid": "After manual character assignment, ensure `str[length] = '\\0';` Functions expect null terminator."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What character marks the end of a string in C?",
+            "options": [
+                "'\\0' (null character)",
+                "' ' (space)",
+                "'\\n' (newline)",
+                "';' (semicolon)"
+            ],
+            "correct_answer": 0,
+            "explanation": "Null character '\\0' (ASCII 0) terminates strings. Functions read until '\\0' to find string end."
+        },
+        {
+            "question": "For string \"Hello\", how many array elements are needed?",
+            "options": [
+                "6",
+                "5",
+                "4",
+                "7"
+            ],
+            "correct_answer": 0,
+            "explanation": "\"Hello\" has 5 characters plus 1 for null terminator '\\0' = 6 total elements."
+        },
+        {
+            "question": "Which function returns the length of a string?",
+            "options": [
+                "`strlen()`",
+                "`length()`",
+                "`size()`",
+                "`count()`"
+            ],
+            "correct_answer": 0,
+            "explanation": "`strlen(str)` from <string.h> returns length of string (excluding '\\0')."
+        },
+        {
+            "question": "How to correctly compare two strings for equality?",
+            "options": [
+                "`strcmp(s1, s2) == 0`",
+                "`s1 == s2`",
+                "`s1 = s2`",
+                "`equals(s1, s2)`"
+            ],
+            "correct_answer": 0,
+            "explanation": "strcmp returns 0 if strings equal. == compares pointers (addresses), not contents."
+        },
+        {
+            "question": "Which safely reads a line of input including spaces?",
+            "options": [
+                "`fgets(str, size, stdin)`",
+                "`gets(str)`",
+                "`scanf(\"%s\", str)`",
+                "`read(str)`"
+            ],
+            "correct_answer": 0,
+            "explanation": "fgets reads up to size-1 characters safely. gets() deprecated (unsafe). scanf(\"%s\") stops at whitespace."
+        },
+        {
+            "question": "What does `strcpy(dest, src)` do?",
+            "options": [
+                "Copies src string to dest",
+                "Compares dest and src",
+                "Concatenates src to dest",
+                "Returns length of src"
+            ],
+            "correct_answer": 0,
+            "explanation": "strcpy copies src string (including '\\0') to dest. Dest must have enough space."
+        },
+        {
+            "question": "What header file is needed for strlen, strcpy, strcmp?",
+            "options": [
+                "`<string.h>`",
+                "`<stdio.h>`",
+                "`<stdlib.h>`",
+                "`<str.h>`"
+            ],
+            "correct_answer": 0,
+            "explanation": "#include <string.h> provides string manipulation functions like strlen, strcpy, strcmp, strcat."
+        },
+        {
+            "question": "Can string literals be modified?",
+            "options": [
+                "No, they are constant",
+                "Yes, always",
+                "Yes, but only first character",
+                "Only in main()"
+            ],
+            "correct_answer": 0,
+            "explanation": "String literals like \"Hello\" are stored in read-only memory. Attempting to modify causes crash/error."
+        },
+        {
+            "question": "What does `strcat(dest, src)` do?",
+            "options": [
+                "Appends src to end of dest",
+                "Copies src to dest",
+                "Compares dest and src",
+                "Creates new string"
+            ],
+            "correct_answer": 0,
+            "explanation": "strcat concatenates (appends) src to dest. Dest must have room for combined length + '\\0'."
+        },
+        {
+            "question": "What does strcmp return when strings are equal?",
+            "options": [
+                "0",
+                "1",
+                "true",
+                "-1"
+            ],
+            "correct_answer": 0,
+            "explanation": "strcmp returns 0 if strings equal, <0 if first < second, >0 if first > second."
+        },
+        {
+            "question": "Which correctly declares a string?",
+            "options": [
+                "`char str[20];`",
+                "`string str[20];`",
+                "`String str;`",
+                "`char str;`"
+            ],
+            "correct_answer": 0,
+            "explanation": "C has no built-in string type. Use character array: `char str[size];`"
+        },
+        {
+            "question": "What's wrong with: `char str[5] = \"Hello\";`?",
+            "options": [
+                "Insufficient space for null terminator",
+                "Syntax error",
+                "Nothing, it's correct",
+                "Too much space"
+            ],
+            "correct_answer": 0,
+            "explanation": "\"Hello\" needs 6 characters (5 + '\\0'). Size 5 has no room for null terminator, causing undefined behavior."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "String: null-terminated character array. 'Hello' stored as {'H','e','l','l','o','\\0'}.",
+            "Declaration: `char str[size];` where size = max chars + 1 for '\\0'.",
+            "Initialization: `char str[] = \"Hello\";` auto-sizes to 6 (5 chars + null).",
+            "Null terminator '\\0': marks string end. Without it, functions read beyond intended string.",
+            "strlen(str): returns length excluding '\\0'. \"Hello\" length is 5, not 6.",
+            "strcpy(dest, src): copies src to dest (including '\\0'). Dest must have enough space.",
+            "strcat(dest, src): appends src to dest. Dest must have room for combined length.",
+            "strcmp(s1, s2): returns 0 if equal, <0 if s1<s2 alphabetically, >0 otherwise.",
+            "String comparison: use strcmp(), not == (== compares addresses not contents).",
+            "String literals (\"text\") are constant, read-only. Use `char str[]` for modifiable copy."
+        ],
+        "important_formulas": [
+            "Declaration: `char str[20];` (holds up to 19 chars + '\\0')",
+            "Initialization: `char str[] = \"Hello\";` (6 elements)",
+            "strlen: length without '\\0'",
+            "strcmp: 0 if equal"
+        ],
+        "common_exam_traps": [
+            "Forgetting space for '\\0'—\"Hello\" needs char[6] not char[5].",
+            "Using == to compare strings—compares addresses. Use strcmp(s1,s2)==0.",
+            "Forgetting #include <string.h>—needed for strlen, strcpy, strcmp, strcat.",
+            "Buffer overflow with strcpy/strcat—ensure dest has room for source + '\\0'.",
+            "Modifying string literals—\"Hello\"[0]='h' causes crash. Use char str[]=\"Hello\"."
+        ],
+        "exam_tip": "Remember: strings need '\\0' terminator (size=length+1). Compare with strcmp not ==. Include <string.h>. fgets for safe input, not gets."
+    }
+}

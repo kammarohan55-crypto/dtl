@@ -1,0 +1,333 @@
+{
+    "module_header": {
+        "module_title": "Probability Distributions",
+        "subject": "Mathematics",
+        "level": "Advanced",
+        "prerequisites": [
+            "Random variables (discrete and continuous)",
+            "PMF, PDF, and CDF concepts",
+            "Expected value and variance",
+            "Integration and summation techniques"
+        ],
+        "learning_outcomes": [
+            "Understand and apply common discrete distributions: Bernoulli, Binomial, Poisson",
+            "Understand and apply common continuous distributions: Uniform, Exponential, Normal",
+            "Compute probabilities using distribution formulas and tables",
+            "Calculate expected values and variances for standard distributions",
+            "Recognize distribution applications in engineering contexts",
+            "Apply the Central Limit Theorem to approximate distributions"
+        ]
+    },
+    "definition": "A probability distribution specifies the probabilities of all possible values of a random variable. For discrete random variables, the binomial distribution models the number of successes in $n$ independent Bernoulli trials with probability $p$: $P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}$. For continuous random variables, the normal distribution with mean $\\mu$ and variance $\\sigma^2$ has PDF $f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)}$, describing many natural phenomena.",
+    "concept_overview": [
+        "Bernoulli distribution models a single trial with success probability $p$; binomial extends to $n$ independent trials.",
+        "Poisson distribution models rare events occurring at average rate $\\lambda$ per unit time/space, with $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$.",
+        "Uniform distribution assigns equal probability density to all values in an interval $[a, b]$.",
+        "Exponential distribution models time between events in a Poisson process, memoryless property.",
+        "Normal (Gaussian) distribution is bell-shaped, symmetric about mean $\\mu$, characterized by $(\\mu, \\sigma^2)$; Central Limit Theorem ensures wide applicability."
+    ],
+    "theory": [
+        "Probability distributions provide standardized mathematical models for random phenomena, enabling engineers to predict system behavior, assess risks, and make data-driven decisions without deriving distributions from first principles every time. Discrete distributions model count data (number of arrivals, defects, successes), while continuous distributions model measurements (lifetimes, dimensions, temperatures). These distributions arise naturally from physical processes: the binomial from independent trials, the Poisson from rare events, the exponential from memoryless waiting times, and the normal from aggregation of many small independent effects. In engineering applications, the binomial models component reliability in redundant systems, the Poisson models network packet arrivals, the exponential models electronic component failure times, and the normal models measurement errors and manufacturing tolerances. The study of probability distributions develops essential skills in model selection, parameter estimation, and using distribution properties to simplify complex calculations. Mastery of standard distributions provides the foundation for statistical inference, quality control, reliability theory, and queueing systems.",
+        "The fundamental distributions each have characteristic formulas, parameters, and properties. The binomial distribution $X \\sim \\text{Binomial}(n, p)$ has PMF $P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}$ for $k = 0, 1, \\ldots, n$, with $E[X] = np$ and $\\text{Var}(X) = np(1-p)$. The Poisson distribution $X \\sim \\text{Poisson}(\\lambda)$ has PMF $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$ for $k = 0, 1, 2, \\ldots$, with $E[X] = \\text{Var}(X) = \\lambda$, useful when $n$ is large and $p$ is small in binomial. The uniform distribution $X \\sim \\text{Uniform}(a, b)$ has PDF $f(x) = \\frac{1}{b-a}$ for $a \\leq x \\leq b$, with $E[X] = \\frac{a+b}{2}$ and $\\text{Var}(X) = \\frac{(b-a)^2}{12}$. The exponential distribution $X \\sim \\text{Exp}(\\lambda)$ has PDF $f(x) = \\lambda e^{-\\lambda x}$ for $x \\geq 0$, with $E[X] = \\frac{1}{\\lambda}$ and $\\text{Var}(X) = \\frac{1}{\\lambda^2}$, exhibiting the memoryless property $P(X > s + t | X > s) = P(X > t)$. The normal distribution $X \\sim N(\\mu, \\sigma^2)$ has PDF $f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)}$, symmetric and bell-shaped, with $E[X] = \\mu$ and $\\text{Var}(X) = \\sigma^2$. The standard normal $Z \\sim N(0, 1)$ enables probability calculations via $Z = \\frac{X - \\mu}{\\sigma}$. The Central Limit Theorem states that sums or averages of independent random variables approach normal distribution regardless of original distribution, explaining the ubiquity of the normal.",
+        "Mastery of probability distributions is critically important because they provide the standard models that engineers use to analyze systems involving randomness and make quantitative predictions. In reliability engineering, exponential and Weibull distributions model component lifetimes, enabling calculation of mean time to failure and failure rates. In quality control, normal distributions model process output, enabling determination of defect rates and process capability indices. In communications, Poisson processes model packet arrivals, enabling network capacity planning. The ability to recognize which distribution applies to a given scenario—based on physical properties like independence, memorylessness, or central limit behavior—is a key engineering skill. Parameters must be estimated from data or specified from physical considerations. Distribution properties enable shortcuts: using $E[X] = np$ for binomial avoids summing infinite series, and the 68-95-99.7 rule for normal enables quick probability estimates. The Central Limit Theorem provides theoretical justification for using normal approximations in diverse contexts, from estimating measurement error to analyzing sample means. In examinations and professional practice, proficiency demonstrates command over model selection, parameter interpretation, probability calculation using formulas and tables, and application of distributions to engineering problems."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Binomial: $P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}$, $k = 0, 1, \\ldots, n$",
+            "explanation": "$n$ independent trials, probability $p$ of success each trial."
+        },
+        {
+            "formula": "Binomial: $E[X] = np$, $\\text{Var}(X) = np(1-p)$",
+            "explanation": "Expected value proportional to $n$ and $p$; maximum variance when $p = 0.5$."
+        },
+        {
+            "formula": "Poisson: $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$, $k = 0, 1, 2, \\ldots$",
+            "explanation": "Models rare events with average rate $\\lambda$."
+        },
+        {
+            "formula": "Poisson: $E[X] = \\text{Var}(X) = \\lambda$",
+            "explanation": "Unique property: mean equals variance."
+        },
+        {
+            "formula": "Uniform: $f(x) = \\frac{1}{b-a}$ for $a \\leq x \\leq b$",
+            "explanation": "Constant density over interval $[a, b]$."
+        },
+        {
+            "formula": "Exponential: $f(x) = \\lambda e^{-\\lambda x}$ for $x \\geq 0$",
+            "explanation": "Models waiting times; parameter $\\lambda$ is rate."
+        },
+        {
+            "formula": "Exponential: $E[X] = \\frac{1}{\\lambda}$, $\\text{Var}(X) = \\frac{1}{\\lambda^2}$",
+            "explanation": "Mean is reciprocal of rate; variance is square of mean."
+        },
+        {
+            "formula": "Normal: $f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)}$",
+            "explanation": "Bell curve parameterized by mean $\\mu$ and variance $\\sigma^2$."
+        },
+        {
+            "formula": "Standard normal: $Z = \\frac{X - \\mu}{\\sigma}$ where $X \\sim N(\\mu, \\sigma^2)$",
+            "explanation": "Standardization transforms to $N(0, 1)$ for table lookup."
+        },
+        {
+            "formula": "68-95-99.7 rule: For $X \\sim N(\\mu, \\sigma^2)$, $P(\\mu - \\sigma \\leq X \\leq \\mu + \\sigma) \\approx 0.68$",
+            "explanation": "Empirical rule: ~68% within 1 SD, ~95% within 2 SD, ~99.7% within 3 SD."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "A fair coin is flipped 10 times. Find the probability of getting exactly 6 heads.",
+            "solution_steps": [
+                "**Step 1**: Identify distribution: $X \\sim \\text{Binomial}(n=10, p=0.5)$",
+                "**Step 2**: Apply binomial formula:",
+                "$P(X = 6) = \\binom{10}{6}(0.5)^6(0.5)^4$",
+                "$= \\binom{10}{6}(0.5)^{10}$",
+                "**Step 3**: Calculate $\\binom{10}{6} = \\frac{10!}{6!4!} = 210$",
+                "$P(X = 6) = 210 \\times \\frac{1}{1024} \\approx 0.205$"
+            ],
+            "final_answer": "$P(X = 6) \\approx 0.205$ or 20.5%"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Calls arrive at a help desk at an average rate of 3 per hour. Find the probability of exactly 5 calls in an hour using Poisson distribution.",
+            "solution_steps": [
+                "**Step 1**: Identify distribution: $X \\sim \\text{Poisson}(\\lambda = 3)$",
+                "**Step 2**: Apply Poisson formula:",
+                "$P(X = 5) = \\frac{3^5 e^{-3}}{5!}$",
+                "**Step 3**: Calculate:",
+                "$= \\frac{243 \\times e^{-3}}{120}$",
+                "$= \\frac{243 \\times 0.04979}{120} \\approx \\frac{12.10}{120} \\approx 0.101$"
+            ],
+            "final_answer": "$P(X = 5) \\approx 0.101$ or 10.1%"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "For $X \\sim N(100, 15^2)$, find $P(X \\leq 115)$ using standardization.",
+            "solution_steps": [
+                "**Step 1**: Standardize: $Z = \\frac{X - \\mu}{\\sigma} = \\frac{115 - 100}{15} = 1$",
+                "**Step 2**: $P(X \\leq 115) = P(Z \\leq 1)$",
+                "**Step 3**: From standard normal table: $P(Z \\leq 1) \\approx 0.8413$"
+            ],
+            "final_answer": "$P(X \\leq 115) \\approx 0.8413$ or 84.13%"
+        }
+    ],
+    "logical_derivation": "To derive the binomial distribution, consider $n$ independent Bernoulli trials each with success probability $p$. The number of successes $X$ can be any integer from 0 to $n$. For exactly $k$ successes, we need $k$ trials to succeed (probability $p^k$) and $n-k$ to fail (probability $(1-p)^{n-k}$). However, these $k$ successes can occur in any $\\binom{n}{k}$ arrangements. By counting and independence, $P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}$. For expected value, $E[X] = E[X_1 + X_2 + \\cdots + X_n]$ where $X_i$ are indicator variables for each trial. By linearity, $E[X] = \\sum_{i=1}^n E[X_i] = np$.",
+    "applications": [
+        "**Reliability Engineering**: Exponential distribution for component lifetimes, binomial for redundant systems.",
+        "**Quality Control**: Normal distribution for process output, defect rate analysis.",
+        "**Communications**: Poisson for packet arrivals, exponential for service times in networks.",
+        "**Manufacturing**: Normal for dimensional tolerances, process capability studies.",
+        "**Finance**: Normal for stock returns (log-normal for prices), risk modeling.",
+        "**Healthcare**: Poisson for disease incidence, exponential for patient survival times.",
+        "**Environmental Engineering**: Normal for measurement errors, Poisson for contamination events."
+    ],
+    "key_takeaways": [
+        "Binomial $\\text{Bin}(n, p)$: $n$ independent trials, $P(X=k) = \\binom{n}{k}p^k(1-p)^{n-k}$, $E[X] = np$.",
+        "Poisson $\\text{Pois}(\\lambda)$: rare events, $P(X=k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$, $E[X] = \\text{Var}(X) = \\lambda$.",
+        "Uniform $U(a,b)$: constant density $\\frac{1}{b-a}$ on $[a,b]$, $E[X] = \\frac{a+b}{2}$.",
+        "Exponential $\\text{Exp}(\\lambda)$: waiting times, $f(x) = \\lambda e^{-\\lambda x}$, memoryless, $E[X] = \\frac{1}{\\lambda}$.",
+        "Normal $N(\\mu, \\sigma^2)$: bell curve, standardize via $Z = \\frac{X-\\mu}{\\sigma}$, symmetric about $\\mu$.",
+        "68-95-99.7 rule: ~68% within 1 SD, ~95% within 2 SD, ~99.7% within 3 SD of mean.",
+        "Central Limit Theorem: sums/averages of independent RVs approach normal distribution."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Using binomial when trials are not independent",
+            "why_it_occurs": "Students apply binomial formula without verifying independence assumption.",
+            "how_to_avoid": "Verify trials are independent and have constant probability $p$ before using binomial."
+        },
+        {
+            "mistake": "Confusing Poisson parameter $\\lambda$ as a probability",
+            "why_it_occurs": "$\\lambda$ represents average rate, not probability, but students treat it as $p$.",
+            "how_to_avoid": "$\\lambda$ is the expected count per unit (rate), can be > 1. It's not bounded like probabilities."
+        },
+        {
+            "mistake": "Not standardizing before using normal tables",
+            "why_it_occurs": "Students look up $P(X \\leq x)$ directly without converting to standard normal.",
+            "how_to_avoid": "Always standardize: compute $z = \\frac{x - \\mu}{\\sigma}$, then find $P(Z \\leq z)$ from table."
+        },
+        {
+            "mistake": "Thinking mean and variance are always equal",
+            "why_it_occurs": "Poisson has $E[X] = \\text{Var}(X) = \\lambda$, but students overgeneralize.",
+            "how_to_avoid": "Equal mean and variance is special to Poisson. Other distributions have different relationships."
+        },
+        {
+            "mistake": "Using normal approximation without checking conditions",
+            "why_it_occurs": "Students apply normal approximation to binomial without verifying $np$ and $n(1-p)$ are large.",
+            "how_to_avoid": "For binomial $\\to$ normal approximation, check $np \\geq 5$ and $n(1-p) \\geq 5$."
+        },
+        {
+            "mistake": "Forgetting to include all possible outcomes for discrete distributions",
+            "why_it_occurs": "Students miss $k=0$ or other boundary values when computing probabilities.",
+            "how_to_avoid": "For binomial, $k$ ranges from 0 to $n$. For Poisson, $k$ starts at 0 and goes to infinity theoretically."
+        },
+        {
+            "mistake": "Mixing up parameters in formulas",
+            "why_it_occurs": "Different distributions use $\\lambda$, $\\mu$, $\\sigma$, $p$, $n$ differently.",
+            "how_to_avoid": "Clearly identify which distribution and which parameters before applying formulas. Write down $X \\sim \\text{Dist}(\\text{params})$ first."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "For binomial distribution with $n=10$, $p=0.3$, find $E[X]$:",
+            "options": [
+                "$3$",
+                "$2.1$",
+                "$7$",
+                "$0.3$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$E[X] = np = 10 \\times 0.3 = 3$."
+        },
+        {
+            "question": "For Poisson distribution with $\\lambda = 4$, $E[X]$ and $\\text{Var}(X)$ are:",
+            "options": [
+                "Both equal to 4",
+                "$E[X] = 4$, $\\text{Var}(X) = 16$",
+                "$E[X] = 4$, $\\text{Var}(X) = 2$",
+                "$E[X] = 2$, $\\text{Var}(X) = 4$"
+            ],
+            "correct_answer": 0,
+            "explanation": "For Poisson, $E[X] = \\text{Var}(X) = \\lambda = 4$."
+        },
+        {
+            "question": "The uniform distribution on $[0, 10]$ has PDF:",
+            "options": [
+                "$f(x) = \\frac{1}{10}$ for $0 \\leq x \\leq 10$",
+                "$f(x) = 10$ for all $x$",
+                "$f(x) = x/10$ for $0 \\leq x \\leq 10$",
+                "$f(x) = 0.5$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Uniform on $[a, b]$ has constant PDF $\\frac{1}{b-a} = \\frac{1}{10}$."
+        },
+        {
+            "question": "For exponential distribution with rate $\\lambda = 2$, $E[X] =$",
+            "options": [
+                "$0.5$",
+                "$2$",
+                "$4$",
+                "$1$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$E[X] = \\frac{1}{\\lambda} = \\frac{1}{2} = 0.5$."
+        },
+        {
+            "question": "For $X \\sim N(50, 10^2)$, standardizing $X = 60$ gives:",
+            "options": [
+                "$Z = 1$",
+                "$Z = 10$",
+                "$Z = 0.5$",
+                "$Z = 2$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$Z = \\frac{60 - 50}{10} = 1$."
+        },
+        {
+            "question": "Which distribution is memoryless?",
+            "options": [
+                "Exponential",
+                "Normal",
+                "Binomial",
+                "Uniform"
+            ],
+            "correct_answer": 0,
+            "explanation": "Exponential distribution has memoryless property: $P(X > s+t | X > s) = P(X > t)$."
+        },
+        {
+            "question": "For normal distribution, approximately what percentage is within 2 standard deviations of the mean?",
+            "options": [
+                "$95\\%$",
+                "$68\\%$",
+                "$99.7\\%$",
+                "$50\\%$"
+            ],
+            "correct_answer": 0,
+            "explanation": "68-95-99.7 rule: ~95% within $\\mu \\pm 2\\sigma$."
+        },
+        {
+            "question": "Binomial can be approximated by Poisson when:",
+            "options": [
+                "$n$ is large and $p$ is small",
+                "$n$ is small and $p$ is large",
+                "$n = p$",
+                "Always"
+            ],
+            "correct_answer": 0,
+            "explanation": "When $n$ large, $p$ small, and $np$ moderate, use Poisson($\\lambda = np$) to approximate binomial."
+        },
+        {
+            "question": "For $X \\sim \\text{Binomial}(20, 0.4)$, $\\text{Var}(X) =$",
+            "options": [
+                "$4.8$",
+                "$8$",
+                "$20$",
+                "$0.4$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\text{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$."
+        },
+        {
+            "question": "The Central Limit Theorem states that:",
+            "options": [
+                "Sample means approach normal distribution as sample size increases",
+                "All distributions are normal",
+                "Variance always equals mean",
+                "Probability sums to 1"
+            ],
+            "correct_answer": 0,
+            "explanation": "CLT: sum/average of independent RVs approaches normal regardless of original distribution, for large $n$."
+        },
+        {
+            "question": "For exponential with $\\lambda = 0.5$, $\\text{Var}(X) =$",
+            "options": [
+                "$4$",
+                "$2$",
+                "$0.5$",
+                "$0.25$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\text{Var}(X) = \\frac{1}{\\lambda^2} = \\frac{1}{(0.5)^2} = 4$."
+        },
+        {
+            "question": "Standard normal distribution has:",
+            "options": [
+                "$\\mu = 0$, $\\sigma = 1$",
+                "$\\mu = 1$, $\\sigma = 0$",
+                "$\\mu = 0$, $\\sigma = 0$",
+                "$\\mu = 1$, $\\sigma = 1$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Standard normal $N(0, 1)$ has mean 0 and standard deviation 1."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Binomial $\\text{Bin}(n,p)$: $n$ independent trials, $P(X=k) = \\binom{n}{k}p^k(1-p)^{n-k}$, $E[X]=np$, $\\text{Var}(X)=np(1-p)$.",
+            "Poisson $\\text{Pois}(\\lambda)$: rare events, $P(X=k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$, $E[X]=\\text{Var}(X)=\\lambda$.",
+            "Uniform $U(a,b)$: constant density $\\frac{1}{b-a}$ on $[a,b]$, $E[X]=\\frac{a+b}{2}$, $\\text{Var}(X)=\\frac{(b-a)^2}{12}$.",
+            "Exponential $\\text{Exp}(\\lambda)$: $f(x)=\\lambda e^{-\\lambda x}$ for $x \\geq 0$, memoryless, $E[X]=\\frac{1}{\\lambda}$, $\\text{Var}(X)=\\frac{1}{\\lambda^2}$.",
+            "Normal $N(\\mu,\\sigma^2)$: $f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)}$, bell curve, symmetric about $\\mu$.",
+            "Standardization: $Z = \\frac{X-\\mu}{\\sigma}$ transforms to $N(0,1)$ for table lookup.",
+            "68-95-99.7 rule: ~68% within $\\mu \\pm \\sigma$, ~95% within $\\mu \\pm 2\\sigma$, ~99.7% within $\\mu \\pm 3\\sigma$.",
+            "Poisson approximates binomial when $n$ large, $p$ small, using $\\lambda = np$.",
+            "Central Limit Theorem: sums/averages of independent RVs approach normal for large $n$.",
+            "Memoryless property: only exponential (continuous) and geometric (discrete) possess it."
+        ],
+        "important_formulas": [
+            "Binomial: $P(X=k) = \\binom{n}{k}p^k(1-p)^{n-k}$, $E[X]=np$",
+            "Poisson: $P(X=k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$, $E[X]=\\text{Var}(X)=\\lambda$",
+            "Exponential: $f(x)=\\lambda e^{-\\lambda x}$, $E[X]=\\frac{1}{\\lambda}$",
+            "Normal: standardize $Z = \\frac{X-\\mu}{\\sigma}$",
+            "Uniform: $f(x) = \\frac{1}{b-a}$ on $[a,b]$"
+        ],
+        "common_exam_traps": [
+            "Using binomial without verifying independence of trials.",
+            "Treating Poisson $\\lambda$ as a probability (it's a rate, can be > 1).",
+            "Forgetting to standardize before using normal tables: always compute $Z = \\frac{x-\\mu}{\\sigma}$ first.",
+            "Thinking mean = variance for all distributions (only true for Poisson).",
+            "Applying normal approximation to binomial without checking $np \\geq 5$ and $n(1-p) \\geq 5$."
+        ],
+        "exam_tip": "Identify distribution type first (count → binomial/Poisson, measurement → normal/exponential). For normal, always standardize to $Z = \\frac{X-\\mu}{\\sigma}$ before using tables. Remember $E[X]=np$ for binomial, $E[X]=\\frac{1}{\\lambda}$ for exponential."
+    }
+}

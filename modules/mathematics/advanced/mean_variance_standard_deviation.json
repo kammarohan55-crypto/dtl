@@ -1,0 +1,333 @@
+{
+    "module_header": {
+        "module_title": "Mean, Variance, and Standard Deviation",
+        "subject": "Mathematics",
+        "level": "Advanced",
+        "prerequisites": [
+            "Random variables and distributions",
+            "Expected value concepts",
+            "Summation notation",
+            "Basic statistical concepts"
+        ],
+        "learning_outcomes": [
+            "Calculate and interpret mean (expected value) as measure of center",
+            "Compute variance and standard deviation as measures of spread",
+            "Apply properties of mean and variance for transformed variables",
+            "Understand and use Chebyshev's inequality",
+            "Calculate and interpret coefficient of variation",
+            "Apply these concepts to analyze data distributions and make decisions"
+        ]
+    },
+    "definition": "The mean (expected value) $\\mu = E[X]$ is the weighted average of all possible values, measuring the center of a distribution. Variance $\\sigma^2 = \\text{Var}(X) = E[(X-\\mu)^2]$ measures the average squared deviation from the mean, quantifying spread. Standard deviation $\\sigma = \\sqrt{\\text{Var}(X)}$ is the square root of variance, having the same units as $X$ and providing an interpretable measure of dispersion.",
+    "concept_overview": [
+        "Mean locates the center; for discrete: $E[X] = \\sum x \\cdot p(x)$, for continuous: $E[X] = \\int x \\cdot f(x)\\,dx$.",
+        "Variance $\\text{Var}(X) = E[X^2] - [E[X]]^2$ measures spread; larger variance indicates more variability.",
+        "Standard deviation $\\sigma$ has same units as data, making it more interpretable than variance.",
+        "Properties: $E[aX + b] = aE[X] + b$ (linear), but $\\text{Var}(aX + b) = a^2\\text{Var}(X)$ (quadratic in $a$, constant $b$ vanishes).",
+        "Chebyshev's inequality: $P(|X - \\mu| \\geq k\\sigma) \\leq \\frac{1}{k^2}$ bounds probability of deviations for any distribution."
+    ],
+    "theory": [
+        "Mean, variance, and standard deviation constitute the fundamental descriptive statistics that summarize probability distributions and data sets quantitatively, enabling engineers to characterize uncertainty and variability in single numbers. The mean provides the 'typical' or 'center' value around which observations cluster, essential for predicting average behavior in systems with randomness. Variance and standard deviation quantify dispersion or spread, indicating reliability and consistency: low variance means predictable outcomes close to the mean, while high variance indicates wide variation and uncertainty. These measures enable risk assessment, quality control, and decision-making under uncertainty. In engineering applications, the mean represents expected performance (average lifetime, mean strength), while standard deviation quantifies variability (manufacturing tolerance, measurement error). Understanding these statistics develops essential skills in data summarization, comparison of distributions, and interpretation of statistical results. Mastery provides the foundation for hypothesis testing, confidence intervals, control charts, and all statistical inference.",
+        "The fundamental formulas and properties enable systematic calculation and manipulation. For discrete random variable, $E[X] = \\sum_{x} x \\cdot p(x)$ weights each value by its probability. For continuous, $E[X] = \\int_{-\\infty}^{\\infty} x \\cdot f(x)\\,dx$ integrates over the density. Variance has definitional form $\\text{Var}(X) = E[(X-\\mu)^2] = \\sum (x-\\mu)^2 p(x)$ or $\\int (x-\\mu)^2 f(x)\\,dx$, but the computational formula $\\text{Var}(X) = E[X^2] - [E[X]]^2$ is often easier, requiring $E[X^2] = \\sum x^2 p(x)$ or $\\int x^2 f(x)\\,dx$. Standard deviation $\\sigma = \\sqrt{\\text{Var}(X)}$ converts variance to original units. Key properties include linearity of expectation: $E[aX + b] = aE[X] + b$ and $E[X + Y] = E[X] + E[Y]$ even for dependent variables. For variance, $\\text{Var}(aX + b) = a^2 \\text{Var}(X)$—constants vanish, coefficient is squared. For independent variables, $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)$. Chebyshev's inequality provides distribution-free bounds: for any $k > 1$, at least $1 - \\frac{1}{k^2}$ of probability lies within $k$ standard deviations of the mean. Coefficient of variation $CV = \\frac{\\sigma}{\\mu}$ normalizes standard deviation by mean, enabling comparison of variability across different scales.",
+        "Mastery of mean, variance, and standard deviation is critically important because these statistics form the language engineers use to communicate about variability and uncertainty quantitatively. In quality control, process mean and standard deviation determine capability indices ($C_p$, $C_{pk}$) that assess whether manufacturing meets specifications. In reliability engineering, mean time between failures (MTBF) and standard deviation characterize component and system reliability. In measurement systems, accuracy relates to bias (difference from true mean) and precision relates to standard deviation (repeatability). The ability to compute these statistics from data or probability distributions, interpret them in physical context, and use them to make decisions is fundamental to data-driven engineering. Properties enable efficient calculation: $E[3X + 5]$ requires only $E[X]$, not re-computation from scratch. Chebyshev's inequality provides conservative probability bounds without knowing the distribution shape, useful in worst-case analysis. Comparing coefficients of variation reveals whether variability is inherent to the process or due to scaling. In examinations, proficiency demonstrates command over calculation techniques, property application, and statistical reasoning."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Mean (discrete): $E[X] = \\sum_x x \\cdot p(x)$",
+            "explanation": "Weighted average using probabilities as weights."
+        },
+        {
+            "formula": "Mean (continuous): $E[X] = \\int_{-\\infty}^{\\infty} x \\cdot f(x)\\,dx$",
+            "explanation": "Integral of $x$ weighted by density function."
+        },
+        {
+            "formula": "Variance: $\\text{Var}(X) = E[(X - \\mu)^2] = E[X^2] - [E[X]]^2$",
+            "explanation": "Average squared deviation; computational formula often easier."
+        },
+        {
+            "formula": "Standard deviation: $\\sigma = \\sqrt{\\text{Var}(X)}$",
+            "explanation": "Square root of variance; same units as $X$."
+        },
+        {
+            "formula": "Linearity of mean: $E[aX + b] = aE[X] + b$",
+            "explanation": "Expectation is linear in transformations."
+        },
+        {
+            "formula": "Variance of transform: $\\text{Var}(aX + b) = a^2 \\text{Var}(X)$",
+            "explanation": "Constant $b$ vanishes; coefficient $a$ is squared."
+        },
+        {
+            "formula": "For independent $X, Y$: $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)$",
+            "explanation": "Variances add for independent random variables."
+        },
+        {
+            "formula": "Chebyshev's inequality: $P(|X - \\mu| \\geq k\\sigma) \\leq \\frac{1}{k^2}$",
+            "explanation": "At least $1 - \\frac{1}{k^2}$ of distribution is within $k$ standard deviations of mean."
+        },
+        {
+            "formula": "Coefficient of variation: $CV = \\frac{\\sigma}{\\mu}$",
+            "explanation": "Relative variability; dimensionless measure."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "For discrete random variable with $p(1) = 0.2$, $p(2) = 0.5$, $p(3) = 0.3$, find mean and variance.",
+            "solution_steps": [
+                "**Step 1**: Calculate mean:",
+                "$E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 0.2 + 1.0 + 0.9 = 2.1$",
+                "**Step 2**: Calculate $E[X^2]$:",
+                "$E[X^2] = 1^2(0.2) + 2^2(0.5) + 3^2(0.3) = 0.2 + 2.0 + 2.7 = 4.9$",
+                "**Step 3**: Calculate variance:",
+                "$\\text{Var}(X) = E[X^2] - [E[X]]^2 = 4.9 - (2.1)^2 = 4.9 - 4.41 = 0.49$",
+                "**Step 4**: Standard deviation:",
+                "$\\sigma = \\sqrt{0.49} = 0.7$"
+            ],
+            "final_answer": "$E[X] = 2.1$, $\\text{Var}(X) = 0.49$, $\\sigma = 0.7$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "If $E[X] = 10$ and $\\text{Var}(X) = 4$, find $E[3X - 5]$ and $\\text{Var}(3X - 5)$.",
+            "solution_steps": [
+                "**Step 1**: Apply linearity for mean:",
+                "$E[3X - 5] = 3E[X] - 5 = 3(10) - 5 = 25$",
+                "**Step 2**: Apply variance property:",
+                "$\\text{Var}(3X - 5) = 3^2 \\text{Var}(X) = 9 \\times 4 = 36$",
+                "(Constant -5 does not affect variance)"
+            ],
+            "final_answer": "$E[3X - 5] = 25$, $\\text{Var}(3X - 5) = 36$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Using Chebyshev's inequality, find a lower bound for $P(|X - \\mu| < 2\\sigma)$ for any distribution.",
+            "solution_steps": [
+                "**Step 1**: Chebyshev's inequality: $P(|X - \\mu| \\geq k\\sigma) \\leq \\frac{1}{k^2}$",
+                "**Step 2**: Here $k = 2$, so:",
+                "$P(|X - \\mu| \\geq 2\\sigma) \\leq \\frac{1}{4} = 0.25$",
+                "**Step 3**: Use complement:",
+                "$P(|X - \\mu| < 2\\sigma) = 1 - P(|X - \\mu| \\geq 2\\sigma) \\geq 1 - 0.25 = 0.75$"
+            ],
+            "final_answer": "At least 75% of distribution is within 2 standard deviations of mean"
+        }
+    ],
+    "logical_derivation": "To prove the computational variance formula $\\text{Var}(X) = E[X^2] - [E[X]]^2$, start from the definition: $\\text{Var}(X) = E[(X - \\mu)^2]$ where $\\mu = E[X]$. Expand: $E[(X - \\mu)^2] = E[X^2 - 2\\mu X + \\mu^2]$. Apply linearity: $= E[X^2] - 2\\mu E[X] + \\mu^2$. Since $\\mu = E[X]$: $= E[X^2] - 2E[X] \\cdot E[X] + [E[X]]^2 = E[X^2] - 2[E[X]]^2 + [E[X]]^2 = E[X^2] - [E[X]]^2$.",
+    "applications": [
+        "**Quality Control**: Process mean and standard deviation for control charts and capability indices.",
+        "**Reliability**: MTBF (mean time between failures) and variability in component lifetimes.",
+        "**Finance**: Expected return (mean) and risk (standard deviation) of portfolios.",
+        "**Manufacturing**: Dimensional mean and tolerance (standard deviation) for parts.",
+        "**Measurement Systems**: Accuracy (bias from true mean) and precision (standard deviation).",
+        "**Signal Processing**: Signal power (variance), signal-to-noise ratio.",
+        "**Project Management**: Expected completion time and variability in critical path analysis."
+    ],
+    "key_takeaways": [
+        "Mean $E[X]$ measures center; variance $\\text{Var}(X)$ measures spread around mean.",
+        "Computational formula: $\\text{Var}(X) = E[X^2] - [E[X]]^2$ often easier than definition.",
+        "Standard deviation $\\sigma = \\sqrt{\\text{Var}(X)}$ has same units as $X$, more interpretable.",
+        "Linearity: $E[aX + b] = aE[X] + b$; for variance: $\\text{Var}(aX + b) = a^2\\text{Var}(X)$.",
+        "For independent variables: $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)$.",
+        "Chebyshev: at least $1 - \\frac{1}{k^2}$ of distribution within $k\\sigma$ of $\\mu$ (any distribution).",
+        "Coefficient of variation $CV = \\frac{\\sigma}{\\mu}$ normalizes variability by scale."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Computing $E[X^2]$ as $[E[X]]^2$",
+            "why_it_occurs": "Students think expectation distributes over squaring.",
+            "how_to_avoid": "$E[X^2] \\neq [E[X]]^2$ in general. Calculate $E[X^2] = \\sum x^2 p(x)$ or $\\int x^2 f(x)\\,dx$ separately."
+        },
+        {
+            "mistake": "Thinking $\\text{Var}(aX + b) = a \\cdot \\text{Var}(X) + b$",
+            "why_it_occurs": "Students incorrectly apply linearity to variance.",
+            "how_to_avoid": "Variance: $\\text{Var}(aX + b) = a^2 \\text{Var}(X)$. Constant $b$ vanishes, $a$ is squared. Only mean is linear."
+        },
+        {
+            "mistake": "Adding variances for dependent variables",
+            "why_it_occurs": "Students use $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)$ without checking independence.",
+            "how_to_avoid": "Variance addition requires independence. For dependent variables, use $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y) + 2\\text{Cov}(X,Y)$."
+        },
+        {
+            "mistake": "Using Chebyshev's inequality incorrectly for specific distributions",
+            "why_it_occurs": "Students apply Chebyshev when more precise bounds (like normal 68-95-99.7) are available.",
+            "how_to_avoid": "Chebyshev is conservative and works for ANY distribution. Use specific distribution properties when known (e.g., normal)."
+        },
+        {
+            "mistake": "Forgetting units in standard deviation",
+            "why_it_occurs": "Students compute variance and forget to take square root.",
+            "how_to_avoid": "Standard deviation $\\sigma = \\sqrt{\\text{Var}(X)}$ has same units as $X$. Variance has squared units."
+        },
+        {
+            "mistake": "Confusing sample statistics with population parameters",
+            "why_it_occurs": "Students use formulas interchangeably without noting context.",
+            "how_to_avoid": "Population: $\\mu$, $\\sigma^2$. Sample: $\\bar{x}$, $s^2$ (with $n-1$ denominator). Context determines which."
+        },
+        {
+            "mistake": "Thinking larger variance always means worse",
+            "why_it_occurs": "Students associate variability with poor quality.",
+            "how_to_avoid": "Context matters. In some applications (e.g., diversity), variability is desirable. Assess based on requirements."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "If $E[X] = 5$ and $E[X^2] = 30$, find $\\text{Var}(X)$:",
+            "options": [
+                "$5$",
+                "$25$",
+                "$30$",
+                "$35$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\text{Var}(X) = E[X^2] - [E[X]]^2 = 30 - 25 = 5$."
+        },
+        {
+            "question": "If $\\text{Var}(X) = 16$, find the standard deviation:",
+            "options": [
+                "$4$",
+                "$16$",
+                "$256$",
+                "$8$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\sigma = \\sqrt{\\text{Var}(X)} = \\sqrt{16} = 4$."
+        },
+        {
+            "question": "If $E[X] = 10$, find $E[2X + 3]$:",
+            "options": [
+                "$23$",
+                "$20$",
+                "$13$",
+                "$30$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$E[2X + 3] = 2E[X] + 3 = 2(10) + 3 = 23$."
+        },
+        {
+            "question": "If $\\text{Var}(X) = 9$, find $\\text{Var}(2X)$:",
+            "options": [
+                "$36$",
+                "$18$",
+                "$9$",
+                "$4.5$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\text{Var}(2X) = 2^2 \\text{Var}(X) = 4 \\times 9 = 36$."
+        },
+        {
+            "question": "Chebyshev's inequality states that at least what fraction of any distribution lies within 3 standard deviations of the mean?",
+            "options": [
+                "$\\frac{8}{9} \\approx 89\\%$",
+                "$75\\%$",
+                "$95\\%$",
+                "$99.7\\%$"
+            ],
+            "correct_answer": 0,
+            "explanation": "At least $1 - \\frac{1}{k^2} = 1 - \\frac{1}{9} = \\frac{8}{9}$ for $k = 3$."
+        },
+        {
+            "question": "If $E[X] = 8$ and $E[Y] = 12$, find $E[X + Y]$:",
+            "options": [
+                "$20$",
+                "$96$",
+                "$100$",
+                "$4$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$E[X + Y] = E[X] + E[Y] = 8 + 12 = 20$ (works even if dependent)."
+        },
+        {
+            "question": "For independent $X$ and $Y$ with $\\text{Var}(X) = 5$ and $\\text{Var}(Y) = 3$, find $\\text{Var}(X + Y)$:",
+            "options": [
+                "$8$",
+                "$15$",
+                "$2$",
+                "$64$"
+            ],
+            "correct_answer": 0,
+            "explanation": "For independent variables: $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y) = 5 + 3 = 8$."
+        },
+        {
+            "question": "The coefficient of variation is:",
+            "options": [
+                "$\\frac{\\sigma}{\\mu}$",
+                "$\\frac{\\mu}{\\sigma}$",
+                "$\\frac{\\sigma^2}{\\mu}$",
+                "$\\mu \\cdot \\sigma$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$CV = \\frac{\\sigma}{\\mu}$ is standard deviation relative to mean."
+        },
+        {
+            "question": "If $\\text{Var}(X) = 25$, find $\\text{Var}(X + 10)$:",
+            "options": [
+                "$25$",
+                "$35$",
+                "$100$",
+                "$250$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\text{Var}(X + 10) = \\text{Var}(X) = 25$. Adding constant doesn't change variance."
+        },
+        {
+            "question": "Which has the same units as the random variable $X$?",
+            "options": [
+                "Standard deviation",
+                "Variance",
+                "Expected value of $X^2$",
+                "All of the above"
+            ],
+            "correct_answer": 0,
+            "explanation": "Standard deviation has same units as $X$. Variance has squared units. $E[X^2]$ has squared units."
+        },
+        {
+            "question": "For $X \\sim \\text{Binomial}(10, 0.5)$, $\\text{Var}(X) =$",
+            "options": [
+                "$2.5$",
+                "$5$",
+                "$10$",
+                "$0.5$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\text{Var}(X) = np(1-p) = 10 \\times 0.5 \\times 0.5 = 2.5$."
+        },
+        {
+            "question": "If $E[X] = \\mu$ and $\\text{Var}(X) = \\sigma^2$, find $E[(X - \\mu)^2]$:",
+            "options": [
+                "$\\sigma^2$",
+                "$0$",
+                "$\\mu^2$",
+                "$2\\sigma^2$"
+            ],
+            "correct_answer": 0,
+            "explanation": "By definition: $\\text{Var}(X) = E[(X - \\mu)^2] = \\sigma^2$."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Mean $E[X]$ measures center; variance $\\text{Var}(X) = E[X^2] - [E[X]]^2$ measures spread.",
+            "Standard deviation $\\sigma = \\sqrt{\\text{Var}(X)}$ has same units as $X$, more interpretable than variance.",
+            "Linearity of mean: $E[aX + b] = aE[X] + b$ and $E[X + Y] = E[X] + E[Y]$ (even if dependent).",
+            "Variance property: $\\text{Var}(aX + b) = a^2\\text{Var}(X)$ (constant vanishes, coefficient squared).",
+            "For independent $X, Y$: $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)$.",
+            "Computational formula: $\\text{Var}(X) = E[X^2] - [E[X]]^2$ often easier than definition.",
+            "Chebyshev: at least $1 - \\frac{1}{k^2}$ of distribution within $k\\sigma$ of $\\mu$ (any distribution).",
+            "For $k=2$: at least 75% within $2\\sigma$; for $k=3$: at least 89% within $3\\sigma$.",
+            "Coefficient of variation $CV = \\frac{\\sigma}{\\mu}$ enables comparison across different scales.",
+            "$E[X^2] \\neq [E[X]]^2$ in general—must compute separately."
+        ],
+        "important_formulas": [
+            "$E[X] = \\sum x \\cdot p(x)$ or $\\int x \\cdot f(x)\\,dx$",
+            "$\\text{Var}(X) = E[X^2] - [E[X]]^2$",
+            "$\\sigma = \\sqrt{\\text{Var}(X)}$",
+            "$E[aX + b] = aE[X] + b$",
+            "$\\text{Var}(aX + b) = a^2\\text{Var}(X)$",
+            "Chebyshev: $P(|X - \\mu| \\geq k\\sigma) \\leq \\frac{1}{k^2}$"
+        ],
+        "common_exam_traps": [
+            "Computing $E[X^2]$ as $[E[X]]^2$—these are different; calculate $E[X^2]$ separately.",
+            "Applying linearity to variance: $\\text{Var}(aX + b) = a^2\\text{Var}(X)$, not $a\\cdot\\text{Var}(X) + b$.",
+            "Adding variances for dependent variables—independence required for $\\text{Var}(X+Y) = \\text{Var}(X) + \\text{Var}(Y)$.",
+            "Forgetting to take square root: standard deviation is $\\sqrt{\\text{Var}(X)}$, not variance itself.",
+            "Using Chebyshev when specific distribution (like normal) gives better bounds."
+        ],
+        "exam_tip": "Use computational formula $\\text{Var}(X) = E[X^2] - [E[X]]^2$ for efficiency. Remember variance properties: constant drops out, coefficient squared. For Chebyshev, at least $1 - 1/k^2$ within $k$ SDs."
+    }
+}

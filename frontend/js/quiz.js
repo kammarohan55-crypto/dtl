@@ -1,5 +1,5 @@
-// Quiz Logic
-// Handles loading, rendering, scoring, and progression tracking
+// Quiz Logic - Works with NEW JSON schema
+// Reads quiz from module data directly (not separate quiz files)
 
 let currentQuiz = null;
 
@@ -15,41 +15,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadQuiz() {
     const moduleState = window.moduleState;
-    if (!moduleState) return;
+    if (!moduleState) {
+        alert("Module not loaded yet. Please wait...");
+        return;
+    }
 
     const currentModule = moduleState.getCurrentModule();
-    if (!currentModule) {
+    if (!currentModule || !currentModule.data) {
         alert("Please load a module first.");
         return;
     }
 
-    const subject = currentModule.subject;
-    const moduleId = currentModule.module_id;
+    // Get quiz from module data
+    const quizData = currentModule.data.quiz;
+
+    if (!quizData || quizData.length === 0) {
+        alert("No quiz available for this module.");
+        return;
+    }
 
     // Show loading UI
     document.getElementById('startQuizBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
 
-    try {
-        const response = await fetch(`quizzes/${subject}_quizzes.json`);
-        if (!response.ok) throw new Error("Failed to load quizzes");
+    // Transform quiz format
+    currentQuiz = {
+        questions: quizData.map(q => ({
+            question: q.question,
+            options: q.options,
+            correct: q.correct_answer,  // Index 0-3
+            explanation: q.explanation,
+            difficulty: 'General'  // Could add difficulty field to JSON schema if needed
+        }))
+    };
 
-        const allQuizzes = await response.json();
-        const quizData = allQuizzes[moduleId];
+    renderQuiz(currentQuiz);
 
-        if (!quizData) throw new Error("No quiz found for this module");
-
-        currentQuiz = quizData;
-        renderQuiz(currentQuiz);
-
-        // Hide start button, show quiz container
-        document.querySelector('.quiz-hero').style.display = 'none';
-        document.getElementById('quizContainer').style.display = 'block';
-
-    } catch (error) {
-        console.error(error);
-        alert("Could not load quiz: " + error.message);
-        document.getElementById('startQuizBtn').innerHTML = 'Start Interactive Quiz';
-    }
+    // Hide start button, show quiz container
+    document.querySelector('.quiz-hero').style.display = 'none';
+    document.getElementById('quizContainer').style.display = 'block';
 }
 
 function renderQuiz(quiz) {
@@ -147,6 +150,11 @@ function submitQuiz() {
 
     if (unanswered > 0) {
         alert(`Please answer all questions! (${unanswered} remaining)`);
+        // Re-enable inputs
+        currentQuiz.questions.forEach((q, index) => {
+            const card = document.querySelector(`.question-card[data-id="${index}"]`);
+            card.querySelectorAll('input').forEach(inp => inp.disabled = false);
+        });
         return;
     }
 
@@ -189,7 +197,7 @@ async function handleProgression(score) {
         msgDiv.className = 'progression-banner progression-review';
         msgDiv.innerHTML = `
             <h3><i class="fas fa-exclamation-triangle"></i> Review Needed</h3> 
-            <p>You scored ${score}%. We recommend reviewing the <strong>Intuition</strong> and <strong>Worked Examples</strong> sections before moving on.</p>
+            <p>You scored ${score}%. We recommend reviewing the <strong>Theory</strong> and <strong>Worked Examples</strong> sections before moving on.</p>
         `;
     } else {
         msgDiv.className = 'progression-banner progression-success';
@@ -207,7 +215,7 @@ async function handleProgression(score) {
             if (allPassed) {
                 msgDiv.innerHTML = `
                     <h3><i class="fas fa-trophy"></i> LEVEL COMPLETE!</h3>
-                    <p>You have mastered the passed all modules in <strong>${level}</strong>!</p>
+                    <p>You have mastered all modules in <strong>${level}</strong>!</p>
                     <a href="roadmap.html" class="premium-btn" style="display:inline-block; margin-top:10px; color:white; text-decoration:none;">Unlock Next Level</a>
                 `;
             } else {

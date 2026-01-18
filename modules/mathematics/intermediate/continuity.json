@@ -1,0 +1,335 @@
+{
+    "module_header": {
+        "module_title": "Continuity",
+        "subject": "Mathematics",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Limits and limit evaluation techniques",
+            "Functions and their properties",
+            "One-sided limits",
+            "Basic understanding of graphs"
+        ],
+        "learning_outcomes": [
+            "Define continuity rigorously using limits and understand its intuitive meaning",
+            "Determine whether a function is continuous at a point using the three-part definition",
+            "Classify types of discontinuities (removable, jump, infinite)",
+            "Apply the Intermediate Value Theorem to prove existence of solutions",
+            "Understand properties of continuous functions and their implications",
+            "Analyze piecewise functions for continuity and identify discontinuity points"
+        ]
+    },
+    "definition": "A function $f(x)$ is continuous at a point $x = a$ if three conditions are satisfied: (1) $f(a)$ exists, (2) $\\lim_{x \\to a} f(x)$ exists, and (3) $\\lim_{x \\to a} f(x) = f(a)$. A function is continuous on an interval if it is continuous at every point in that interval. Intuitively, a function is continuous if its graph can be drawn without lifting the pen.",
+    "concept_overview": [
+        "Continuity ensures that small changes in input produce small changes in output, with no sudden jumps or breaks in the function.",
+        "The three-part definition requires existence of the function value, existence of the limit, and equality between them.",
+        "Discontinuities are classified as removable (can be fixed by redefining one point), jump (left and right limits exist but differ), or infinite (limit approaches infinity).",
+        "The Intermediate Value Theorem states that a continuous function on $[a,b]$ takes on every value between $f(a)$ and $f(b)$.",
+        "Continuous functions possess important properties: sums, products, quotients, and compositions of continuous functions remain continuous (with appropriate domain restrictions)."
+    ],
+    "theory": [
+        "Continuity represents a fundamental property of functions that ensures predictable, uninterrupted behavior essential for modeling physical systems and enabling calculus operations. While the intuitive notion of continuity as 'no breaks in the graph' suffices for visualization, the rigorous epsilon-delta definition provides the mathematical precision necessary for theoretical proofs and advanced analysis. Historically, the formalization of continuity resolved paradoxes in infinitesimal calculus and established calculus on solid logical foundations. In engineering applications, continuity assumptions underpin virtually all mathematical models: electrical signals are modeled as continuous functions, stress distributions in materials are assumed continuous except at boundaries, and control system responses are analyzed assuming continuous state variables. The study of continuity develops essential analytical skills including precise reasoning about function behavior, identifying and classifying singularities, and understanding the implications of mathematical assumptions on physical validity. Mastery of continuity provides the theoretical foundation for differentiability, integrability, and all subsequent analysis in engineering mathematics.",
+        "The fundamental definition of continuity at a point $x = a$ requires three conditions to hold simultaneously. First, $f(a)$ must exist—the function must be defined at the point. Second, $\\lim_{x \\to a} f(x)$ must exist—the function must approach a definite value as $x$ approaches $a$ from both sides. Third, these two values must be equal: $\\lim_{x \\to a} f(x) = f(a)$—the limit value must match the function value. Failure of any condition creates a discontinuity. When $f(a)$ is undefined but the limit exists, we have a removable discontinuity that can be eliminated by defining $f(a)$ to equal the limit. When both one-sided limits exist but differ, we have a jump discontinuity where the function 'jumps' from one value to another. When the limit approaches infinity, we have an infinite discontinuity or vertical asymptote. Piecewise functions require careful analysis at boundary points where the definition changes. Polynomial, rational (except at denominator zeros), exponential, logarithmic, and trigonometric functions are continuous on their natural domains. Compositions and arithmetic combinations of continuous functions preserve continuity: if $f$ and $g$ are continuous at $a$, then $f+g$, $f \\cdot g$, $f/g$ (if $g(a) \\neq 0$), and $f \\circ g$ are continuous at $a$.",
+        "Mastery of continuity is critically important because it provides the prerequisite for differentiation and integration, and ensures mathematical models accurately represent physical reality. The Intermediate Value Theorem, guaranteed only for continuous functions, enables proving existence of solutions without explicitly finding them—essential in numerical analysis and root-finding algorithms. In engineering, continuity assumptions enable application of powerful analytical techniques: differential equations require continuous coefficients for solution existence theorems, Laplace transforms assume piecewise continuous functions, and Fourier analysis relies on continuity for convergence. Discontinuities in physical systems often indicate idealized models: instantaneous switches in circuits create discontinuous voltage signals, material interfaces produce discontinuous stress fields, and shock waves in fluids represent discontinuous pressure and density. Identifying whether discontinuities are inherent to the physical system or artifacts of mathematical idealization is crucial for model validity. The differentiability of continuous functions depends critically on smoothness—mere continuity is insufficient; the function must also have no sharp corners. In control systems, continuous feedback ensures smooth actuator response. In signal processing, continuous-time signals model analog systems while discontinuous signals represent digital or sampled systems. In examinations, proficiency in analyzing continuity demonstrates understanding of function behavior, ability to apply definitions rigorously, and skill in identifying and classifying singularities in mathematical models."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "$f$ is continuous at $a$ if: (1) $f(a)$ exists, (2) $\\lim_{x \\to a} f(x)$ exists, (3) $\\lim_{x \\to a} f(x) = f(a)$",
+            "explanation": "Three-part definition of continuity: the function must be defined, the limit must exist, and they must be equal."
+        },
+        {
+            "formula": "$\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)$",
+            "explanation": "Equivalent condition: both one-sided limits must exist, be equal to each other, and equal the function value."
+        },
+        {
+            "formula": "If $f$ and $g$ are continuous at $a$, then $f \\pm g$, $f \\cdot g$, $\\frac{f}{g}$ (if $g(a) \\neq 0$) are continuous at $a$",
+            "explanation": "Arithmetic combinations of continuous functions preserve continuity."
+        },
+        {
+            "formula": "If $g$ is continuous at $a$ and $f$ is continuous at $g(a)$, then $f \\circ g$ is continuous at $a$",
+            "explanation": "Composition of continuous functions is continuous."
+        },
+        {
+            "formula": "Intermediate Value Theorem: If $f$ is continuous on $[a,b]$ and $k$ is between $f(a)$ and $f(b)$, then $\\exists c \\in (a,b)$ such that $f(c) = k$",
+            "explanation": "A continuous function takes on all intermediate values between any two function values."
+        },
+        {
+            "formula": "Removable discontinuity: $\\lim_{x \\to a} f(x)$ exists but $\\neq f(a)$ or $f(a)$ undefined",
+            "explanation": "Can be removed by redefining $f(a)$ to equal the limit."
+        },
+        {
+            "formula": "Jump discontinuity: $\\lim_{x \\to a^-} f(x) \\neq \\lim_{x \\to a^+} f(x)$",
+            "explanation": "Left and right limits exist but differ, creating a 'jump' in the graph."
+        },
+        {
+            "formula": "Infinite discontinuity: $\\lim_{x \\to a} f(x) = \\pm\\infty$",
+            "explanation": "Function approaches infinity at the point, typically at vertical asymptotes."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Determine if $f(x) = \\frac{x^2 - 4}{x - 2}$ is continuous at $x = 2$.",
+            "solution_steps": [
+                "**Step 1**: Check if $f(2)$ exists:",
+                "$f(2) = \\frac{2^2 - 4}{2 - 2} = \\frac{0}{0}$ (undefined)",
+                "**Step 2**: Since condition (1) fails, $f$ is NOT continuous at $x = 2$",
+                "**Step 3**: Check if the discontinuity is removable by finding the limit:",
+                "$\\lim_{x \\to 2} f(x) = \\lim_{x \\to 2} \\frac{(x-2)(x+2)}{x-2} = \\lim_{x \\to 2} (x+2) = 4$",
+                "**Step 4**: The limit exists, so this is a removable discontinuity",
+                "**Conclusion**: Defining $f(2) = 4$ would make the function continuous"
+            ],
+            "final_answer": "Not continuous at $x = 2$; removable discontinuity"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "For what value of $k$ is the function continuous everywhere? $f(x) = \\begin{cases} x^2 + 3x & \\text{if } x < 2 \\\\ kx + 1 & \\text{if } x \\geq 2 \\end{cases}$",
+            "solution_steps": [
+                "**Step 1**: For continuity at $x = 2$, we need $\\lim_{x \\to 2^-} f(x) = f(2) = \\lim_{x \\to 2^+} f(x)$",
+                "**Step 2**: Calculate left-hand limit:",
+                "$\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^-} (x^2 + 3x) = 4 + 6 = 10$",
+                "**Step 3**: Calculate function value (using the second piece since $x = 2 \\geq 2$):",
+                "$f(2) = k(2) + 1 = 2k + 1$",
+                "**Step 4**: Calculate right-hand limit:",
+                "$\\lim_{x \\to 2^+} f(x) = \\lim_{x \\to 2^+} (kx + 1) = 2k + 1$",
+                "**Step 5**: For continuity: $10 = 2k + 1$",
+                "$2k = 9$",
+                "$k = \\frac{9}{2}$"
+            ],
+            "final_answer": "$k = \\frac{9}{2}$"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Use the Intermediate Value Theorem to show that $f(x) = x^3 - 2x - 5$ has a root in the interval $[2, 3]$.",
+            "solution_steps": [
+                "**Step 1**: Verify that $f$ is continuous on $[2, 3]$:",
+                "$f(x) = x^3 - 2x - 5$ is a polynomial, so it is continuous everywhere",
+                "**Step 2**: Evaluate function at endpoints:",
+                "$f(2) = 2^3 - 2(2) - 5 = 8 - 4 - 5 = -1$",
+                "$f(3) = 3^3 - 2(3) - 5 = 27 - 6 - 5 = 16$",
+                "**Step 3**: Observe that $f(2) = -1 < 0$ and $f(3) = 16 > 0$",
+                "**Step 4**: Since 0 is between $f(2)$ and $f(3)$, by IVT:",
+                "$\\exists c \\in (2, 3)$ such that $f(c) = 0$",
+                "**Conclusion**: The function has at least one root in $(2, 3)$"
+            ],
+            "final_answer": "By IVT, a root exists in $(2, 3)$"
+        }
+    ],
+    "logical_derivation": "To prove the Intermediate Value Theorem, assume $f$ is continuous on $[a,b]$ with $f(a) < k < f(b)$ (without loss of generality). Define the set $S = \\{x \\in [a,b] : f(x) < k\\}$. This set is non-empty (contains $a$) and bounded above by $b$. By the completeness of real numbers, $S$ has a least upper bound; call it $c = \\sup S$. We claim $f(c) = k$. Suppose $f(c) < k$. By continuity of $f$ at $c$, for $\\epsilon = k - f(c) > 0$, there exists $\\delta > 0$ such that $|f(x) - f(c)| < \\epsilon$ for $|x - c| < \\delta$. This means $f(x) < f(c) + \\epsilon = k$ for all $x$ in $(c - \\delta, c + \\delta)$. Thus points to the right of $c$ are in $S$, contradicting $c$ being the supremum. Similarly, supposing $f(c) > k$ leads to a contradiction. Therefore $f(c) = k$, and $c \\in (a,b)$ since $f(a) < k < f(b)$. This rigorous proof relies fundamentally on the continuity of $f$ and the completeness axiom of real numbers.",
+    "applications": [
+        "**Root-Finding Algorithms**: Bisection method uses IVT to guarantee convergence by repeatedly halving intervals containing a root.",
+        "**Existence Proofs**: Proving solutions exist without computing them explicitly, such as showing fixed points of continuous functions.",
+        "**Circuit Analysis**: Ensuring smooth voltage and current transitions, with discontinuities indicating switches or non-ideal components.",
+        "**Control Systems**: Continuous feedback functions ensure smooth actuator response and stability.",
+        "**Material Properties**: Stress-strain relationships assumed continuous except at material boundaries or phase transitions.",
+        "**Signal Processing**: Continuous-time signals model analog systems; analyzing discontinuities identifies sampling or quantization effects.",
+        "**Differential Equations**: Solution existence theorems require continuous coefficients and initial/boundary conditions."
+    ],
+    "key_takeaways": [
+        "Continuity at $a$ requires: $f(a)$ exists, $\\lim_{x \\to a} f(x)$ exists, and they are equal.",
+        "A function is continuous if its graph has no breaks, jumps, or gaps—it can be drawn without lifting the pen.",
+        "Removable discontinuities occur when the limit exists but doesn't equal $f(a)$ or $f(a)$ is undefined; can be fixed by redefining one point.",
+        "Jump discontinuities have different left and right limits; infinite discontinuities have limits approaching $\\pm\\infty$.",
+        "The Intermediate Value Theorem guarantees continuous functions take all intermediate values, enabling existence proofs.",
+        "Arithmetic combinations and compositions of continuous functions are continuous (with appropriate domain restrictions).",
+        "Polynomials, exponentials, logarithms, and trigonometric functions are continuous on their natural domains."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Assuming continuity without checking all three conditions",
+            "why_it_occurs": "Students verify only one or two conditions, forgetting that all three must hold.",
+            "how_to_avoid": "Systematically check: (1) Is $f(a)$ defined? (2) Does $\\lim_{x \\to a} f(x)$ exist? (3) Do they equal? All must be YES for continuity."
+        },
+        {
+            "mistake": "Confusing 'limit exists' with 'function is continuous'",
+            "why_it_occurs": "Students think existence of limit implies continuity.",
+            "how_to_avoid": "A limit can exist even if the function is discontinuous. Continuity additionally requires $\\lim_{x \\to a} f(x) = f(a)$."
+        },
+        {
+            "mistake": "Incorrectly classifying removable vs. non-removable discontinuities",
+            "why_it_occurs": "Students don't check whether the limit exists when the function is undefined.",
+            "how_to_avoid": "Removable discontinuity: limit exists but $\\neq f(a)$ or $f(a)$ undefined. Jump/infinite: limit doesn't exist or equals infinity."
+        },
+        {
+            "mistake": "Misapplying IVT when function is not continuous",
+            "why_it_occurs": "Students use IVT without verifying continuity on the interval.",
+            "how_to_avoid": "IVT requires continuity on $[a,b]$. Always verify the function is continuous before applying the theorem."
+        },
+        {
+            "mistake": "For piecewise functions, only checking one piece at boundary points",
+            "why_it_occurs": "Students evaluate only one definition at the transition point.",
+            "how_to_avoid": "At boundary points where definition changes, check both one-sided limits using the appropriate piece for each side."
+        },
+        {
+            "mistake": "Assuming differentiability implies continuity (reverse logic)",
+            "why_it_occurs": "Students confuse the relationship: differentiability implies continuity, NOT the reverse.",
+            "how_to_avoid": "Remember: differentiable $\\Rightarrow$ continuous, but continuous $\\not\\Rightarrow$ differentiable. Example: $|x|$ is continuous but not differentiable at 0."
+        },
+        {
+            "mistake": "Forgetting domain restrictions in quotients",
+            "why_it_occurs": "Students claim $\\frac{f}{g}$ is continuous everywhere if $f$ and $g$ are, forgetting $g(x) \\neq 0$ requirement.",
+            "how_to_avoid": "When forming quotients, exclude points where the denominator is zero from the domain."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "Which condition is NOT required for $f(x)$ to be continuous at $x = a$?",
+            "options": [
+                "$f'(a)$ exists",
+                "$f(a)$ exists",
+                "$\\lim_{x \\to a} f(x)$ exists",
+                "$\\lim_{x \\to a} f(x) = f(a)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Continuity requires $f(a)$ exists, limit exists, and they're equal. Differentiability ($f'(a)$ exists) is NOT required for continuity—only the reverse is true."
+        },
+        {
+            "question": "The function $f(x) = \\frac{x^2 - 9}{x - 3}$ has what type of discontinuity at $x = 3$?",
+            "options": [
+                "Removable",
+                "Jump",
+                "Infinite",
+                "No discontinuity"
+            ],
+            "correct_answer": 0,
+            "explanation": "$f(3)$ is undefined, but $\\lim_{x \\to 3} f(x) = \\lim_{x \\to 3} (x+3) = 6$ exists. This is removable—defining $f(3) = 6$ makes it continuous."
+        },
+        {
+            "question": "If $\\lim_{x \\to 2^-} f(x) = 5$ and $\\lim_{x \\to 2^+} f(x) = 5$ and $f(2) = 3$, then $f$ is:",
+            "options": [
+                "Discontinuous at $x = 2$ (removable)",
+                "Continuous at $x = 2$",
+                "Has a jump discontinuity at $x = 2$",
+                "Has an infinite discontinuity at $x = 2$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Both limits exist and equal 5, but $f(2) = 3 \\neq 5$. The third condition fails, creating a removable discontinuity."
+        },
+        {
+            "question": "Which function is continuous everywhere?",
+            "options": [
+                "$f(x) = x^3 + 2x - 1$",
+                "$f(x) = \\frac{1}{x}$",
+                "$f(x) = \\frac{x^2 - 1}{x - 1}$",
+                "$f(x) = \\begin{cases} x & x < 0 \\\\ x+1 & x \\geq 0 \\end{cases}$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Polynomials are continuous everywhere. Option (b) undefined at $x=0$; (c) undefined at $x=1$; (d) has jump at $x=0$ (left limit 0, right limit 1)."
+        },
+        {
+            "question": "The Intermediate Value Theorem can be used to:",
+            "options": [
+                "Prove existence of roots",
+                "Find exact roots",
+                "Determine if a function is continuous",
+                "Calculate derivatives"
+            ],
+            "correct_answer": 0,
+            "explanation": "IVT proves existence of values (like roots) without finding them exactly. It requires continuity as a hypothesis, not a conclusion."
+        },
+        {
+            "question": "For $g(x) = \\begin{cases} x^2 & x \\leq 1 \\\\ 2x & x > 1 \\end{cases}$, is $g$ continuous at $x = 1$?",
+            "options": [
+                "No, jump discontinuity",
+                "Yes",
+                "No, removable discontinuity",
+                "No, infinite discontinuity"
+            ],
+            "correct_answer": 0,
+            "explanation": "$\\lim_{x \\to 1^-} g(x) = 1^2 = 1$; $\\lim_{x \\to 1^+} g(x) = 2(1) = 2$; $g(1) = 1$. Left and right limits differ, creating a jump discontinuity."
+        },
+        {
+            "question": "If $f$ and $g$ are continuous at $a$, which is always continuous at $a$?",
+            "options": [
+                "$f + g$",
+                "$\\frac{1}{g}$",
+                "$\\sqrt{f}$",
+                "$\\ln(f)$"
+            ],
+            "correct_answer": 0,
+            "explanation": "Sum of continuous functions is continuous. Options (b), (c), (d) have domain restrictions: (b) requires $g(a) \\neq 0$, (c) requires $f(a) \\geq 0$, (d) requires $f(a) > 0$."
+        },
+        {
+            "question": "A removable discontinuity can be fixed by:",
+            "options": [
+                "Redefining the function at one point",
+                "Changing the function on an interval",
+                "Taking the derivative",
+                "It cannot be fixed"
+            ],
+            "correct_answer": 0,
+            "explanation": "Removable discontinuities are 'holes' that can be filled by redefining $f(a)$ to equal $\\lim_{x \\to a} f(x)$."
+        },
+        {
+            "question": "If $f(x) = |x|$, then $f$ is:",
+            "options": [
+                "Continuous everywhere but not differentiable at $x = 0$",
+                "Differentiable everywhere",
+                "Not continuous at $x = 0$",
+                "Has a jump discontinuity at $x = 0$"
+            ],
+            "correct_answer": 0,
+            "explanation": "$|x|$ is continuous everywhere (no breaks), but has a sharp corner at $x = 0$, making it non-differentiable there."
+        },
+        {
+            "question": "Which statement about IVT is correct?",
+            "options": [
+                "If $f$ is continuous on $[a,b]$ and $f(a) < 0 < f(b)$, then $\\exists c \\in (a,b)$ with $f(c) = 0$",
+                "IVT finds the exact location of intermediate values",
+                "IVT applies to all functions",
+                "IVT requires differentiability"
+            ],
+            "correct_answer": 0,
+            "explanation": "IVT guarantees existence of intermediate values for continuous functions but doesn't locate them. It requires only continuity, not differentiability."
+        },
+        {
+            "question": "The function $h(x) = \\frac{1}{x-2}$ has what type of discontinuity at $x = 2$?",
+            "options": [
+                "Infinite",
+                "Removable",
+                "Jump",
+                "No discontinuity"
+            ],
+            "correct_answer": 0,
+            "explanation": "As $x \\to 2$, $h(x) \\to \\pm\\infty$ (vertical asymptote). This is an infinite discontinuity."
+        },
+        {
+            "question": "Continuity is a:",
+            "options": [
+                "Necessary but not sufficient condition for differentiability",
+                "Sufficient but not necessary condition for differentiability",
+                "Necessary and sufficient condition for differentiability",
+                "Neither necessary nor sufficient for differentiability"
+            ],
+            "correct_answer": 0,
+            "explanation": "Differentiable implies continuous (necessary), but continuous doesn't imply differentiable (not sufficient). Example: $|x|$ is continuous but not differentiable at 0."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Continuity at $a$ requires three conditions: $f(a)$ exists, $\\lim_{x \\to a} f(x)$ exists, and they are equal.",
+            "Intuitively, continuous functions have graphs with no breaks, jumps, or gaps—drawable without lifting the pen.",
+            "Removable discontinuities have existing limits but $f(a)$ undefined or not equal to limit; fixable by redefining one point.",
+            "Jump discontinuities occur when left and right limits exist but differ; infinite discontinuities have limits approaching $\\pm\\infty$.",
+            "The Intermediate Value Theorem (IVT) states continuous functions on $[a,b]$ take all values between $f(a)$ and $f(b)$.",
+            "IVT enables existence proofs for roots and solutions without explicit calculation, fundamental in numerical analysis.",
+            "Arithmetic combinations (sum, product, quotient with non-zero denominator) of continuous functions are continuous.",
+            "Compositions of continuous functions are continuous: if $g$ continuous at $a$ and $f$ continuous at $g(a)$, then $f \\circ g$ continuous at $a$.",
+            "Polynomials, exponentials, logarithms, and trigonometric functions are continuous on their natural domains.",
+            "Continuity is necessary but not sufficient for differentiability—differentiable functions are continuous, but not vice versa."
+        ],
+        "important_formulas": [
+            "$f$ continuous at $a$: (1) $f(a)$ exists, (2) $\\lim_{x \\to a} f(x)$ exists, (3) $\\lim_{x \\to a} f(x) = f(a)$",
+            "IVT: If $f$ continuous on $[a,b]$ and $k$ between $f(a)$ and $f(b)$, then $\\exists c \\in (a,b)$ with $f(c) = k$",
+            "Removable discontinuity: $\\lim_{x \\to a} f(x)$ exists but $\\neq f(a)$ or $f(a)$ undefined",
+            "Jump discontinuity: $\\lim_{x \\to a^-} f(x) \\neq \\lim_{x \\to a^+} f(x)$"
+        ],
+        "common_exam_traps": [
+            "Forgetting to check all three conditions—verify $f(a)$ exists, limit exists, and they're equal.",
+            "Assuming limit existence implies continuity—also need $\\lim_{x \\to a} f(x) = f(a)$.",
+            "For piecewise functions, not checking both one-sided limits at transition points using appropriate pieces.",
+            "Misclassifying discontinuity types—removable has existing limit, jump has differing one-sided limits, infinite has limit $\\to \\pm\\infty$.",
+            "Applying IVT without verifying continuity—theorem requires continuous function on the interval."
+        ],
+        "exam_tip": "For continuity: check all three conditions systematically. For piecewise functions: evaluate one-sided limits separately at boundaries. For IVT: verify continuity first, then check that the target value lies between endpoint values."
+    }
+}

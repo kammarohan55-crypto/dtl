@@ -1,0 +1,336 @@
+{
+    "module_header": {
+        "module_title": "Unions",
+        "subject": "Programming Using C",
+        "level": "Intermediate",
+        "prerequisites": [
+            "Structures in C",
+            "Variables and data types",
+            "Pointers basics",
+            "Understanding of memory layout"
+        ],
+        "learning_outcomes": [
+            "Understand unions as memory-sharing composite data types",
+            "Declare union types and union variables",
+            "Access union members and understand memory overlap",
+            "Differentiate between structures and unions",
+            "Apply unions for memory-efficient variant data",
+            "Understand sizeof for unions and memory optimization",
+            "Use unions in embedded systems and system programming"
+        ]
+    },
+    "definition": "A union is a user-defined data type that allows storing different data types in the same memory location. Unlike structures that allocate separate memory for each member, unions share memory among all members—only one member can hold a value at any time. Declared as `union name { type1 mem1; type2 mem2; ... };` with size equal to the largest member. Used for memory optimization when only one of several alternatives is needed at a time, common in embedded systems, variant data, and type punning.",
+    "concept_overview": [
+        "Union declaration: `union Data { int i; float f; char c; };` defines union where members share memory.",
+        "Memory sharing: All members occupy same address. Size = size of largest member, not sum.",
+        "One active member: Only one member meaningful at a time. Writing to one overwrites others.",
+        "Access syntax: Same as structures—dot `.` for variables, arrow `->` for pointers.",
+        "Size calculation: `sizeof(union)` equals size of largest member (plus padding for alignment).",
+        "Union vs structure: Structure allocates sum of members; union allocates max of members.",
+        "Use cases: Variant data (value can be int OR float), memory optimization, type conversion, hardware registers."
+    ],
+    "theory": [
+        "Unions provide a memory-efficient mechanism for representing data that can be one of several types but never multiple types simultaneously. This differs fundamentally from structures where all members coexist. The union design reflects scenarios where a variable might hold different types at different times: a configuration value that's either integer, float, or string; a network packet field that varies by protocol; a variant type in interpreters/compilers. Understanding unions requires grasping memory overlay: all members start at the same address, writing to one member overwrites storage shared by others. This enables: (1) memory savings when alternatives are mutually exclusive, (2) type reinterpretation (viewing same bytes as different types), (3) bit-level manipulation in embedded systems. Mastery develops understanding of memory layout, type representations, and performance/memory trade-offs.",
+        "The fundamental union mechanics mirror structures but with crucial memory-sharing difference. Union declaration `union Data { int i; float f; char c; };` defines type where members overlap in memory. Union variable `union Data d;` allocates memory equal to largest member (here, int and float typically 4 bytes, so sizeof(union Data) = 4). All members start at same address: `&d.i == &d.f == &d.c`. Assignment to one member: `d.i = 10;` stores integer. Subsequent assignment `d.f = 3.14;` overwrites the same memory, making `d.i` meaningless (contains bit pattern of float 3.14 interpreted as int). Only last-written member is valid. Access uses dot/arrow like structures: `d.i` for variable, `ptr->i` for pointer. Tagged unions combine union with discriminator (tag) indicating active member: `struct Variant { int type; union { int i; float f; } data; };` where `type` indicates whether `data.i` or `data.f` is valid. This pattern enables safe variant types. Memory layout: union size = max member size + alignment padding. Example: `union { char c; int i; }` is 4 bytes (int size) not 5, with padding after char. Applications include: bit-field access (union of struct and integer for bit manipulation), endianness detection (union of multi-byte int and char array), variant records in parsers.",
+        "Mastery of unions is critically important for systems programming, embedded development, and memory-constrained applications. Understanding memory sharing prevents bugs: accessing wrong member yields garbage (bit reinterpretation). Tagged unions enable safe variant types: always check tag before accessing union. Memory efficiency matters in embedded systems: unions save RAM when alternatives are exclusive. Type punning (viewing bytes as different type) enables low-level tricks but is technically undefined behavior in C (use memcpy for portable type punning). Unions in hardware programming map registers with bit-fields: `union Register { uint32_t raw; struct { uint32_t bit0:1, bit1:1, ...; } bits; };` enabling both raw and bit-level access. Padding considerations: union size may exceed largest member due to alignment. Unions are less common than structures but essential in: device drivers (hardware register access), network stacks (protocol headers with variant fields), interpreters (value types), file format parsers (variant record types). In examinations, demonstrating understanding of memory sharing, size calculation, and appropriate use cases shows advanced programming competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Union size: `sizeof(union) = max(sizeof(member_i)) + padding`",
+            "explanation": "Union allocates memory for largest member, not sum. All members share this space."
+        },
+        {
+            "formula": "Union declaration: `union tag { type1 m1; type2 m2; ... };`",
+            "explanation": "Defines union where all members overlap in memory at same address."
+        },
+        {
+            "formula": "Member addresses: `&u.m1 == &u.m2 == ... == &u` (all same address)",
+            "explanation": "All union members start at same memory location—complete overlap."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Demonstrate union memory sharing by writing different members.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "union Data {",
+                "    int i;",
+                "    float f;",
+                "    char c;",
+                "};",
+                "",
+                "int main() {",
+                "    union Data d;",
+                "    ",
+                "    printf(\"Size: %lu\\n\", sizeof(d));  // 4 (size of int/float)",
+                "    ",
+                "    d.i = 10;",
+                "    printf(\"d.i = %d\\n\", d.i);  // 10",
+                "    ",
+                "    d.f = 3.14;  // Overwrites d.i",
+                "    printf(\"d.f = %.2f\\n\", d.f);  // 3.14",
+                "    printf(\"d.i = %d (garbage)\\n\", d.i);  // Garbage now",
+                "    ",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "Union members share memory; writing to one overwrites others. Only last-written member is valid."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Create a tagged union for variant data type.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "enum Type { INT, FLOAT, CHAR };",
+                "",
+                "struct Variant {",
+                "    enum Type type;  // Tag indicating active member",
+                "    union {",
+                "        int i;",
+                "        float f;",
+                "        char c;",
+                "    } data;",
+                "};",
+                "",
+                "void printVariant(struct Variant v) {",
+                "    switch (v.type) {",
+                "        case INT: printf(\"int: %d\\n\", v.data.i); break;",
+                "        case FLOAT: printf(\"float: %.2f\\n\", v.data.f); break;",
+                "        case CHAR: printf(\"char: %c\\n\", v.data.c); break;",
+                "    }",
+                "}",
+                "",
+                "int main() {",
+                "    struct Variant v1 = {INT, {.i = 42}};",
+                "    struct Variant v2 = {FLOAT, {.f = 3.14}};",
+                "    ",
+                "    printVariant(v1);  // int: 42",
+                "    printVariant(v2);  // float: 3.14",
+                "    ",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "Tagged union uses discriminator (type) to track which member is valid, enabling safe variant types."
+        }
+    ],
+    "logical_derivation": "Unions derive from need to represent mutually exclusive alternatives in memory-efficient manner. If variable can be int OR float OR char (never multiple simultaneously), allocating space for all wastes memory. Union allocates max(sizes), sharing storage. The design trades type safety for memory: programmer responsible for tracking active member. Tagged unions restore safety by adding type field. This pattern appears in variant types (discriminated unions in ML/Rust), JSON values (number|string|array|object), protocol fields (interpretation depends on message type). Memory layout: all members at offset 0, size = largest + padding. This enables type punning: same bytes interpreted as different types.",
+    "applications": [
+        "**Memory Optimization**: Embedded systems with limited RAM use unions for mutually exclusive data.",
+        "**Variant Types**: Interpreters/compilers represent values that can be different types.",
+        "**Hardware Programming**: Union of raw register value and bit-field structure for bit-level access.",
+        "**Type Conversion**: Type punning (viewing bytes as different type), though technically undefined behavior.",
+        "**Network Protocols**: Protocol headers with variant fields based on packet type.",
+        "**Endianness Detection**: Union of multi-byte int and char array to test byte order.",
+        "**Space-Efficient Structures**: Large structures with mutually exclusive fields."
+    ],
+    "key_takeaways": [
+        "Union: members share same memory location. Size = max member size, not sum.",
+        "Declaration: `union tag { type1 m1; type2 m2; ... };` like struct but with memory overlap.",
+        "One active member: Writing to one member overwrites others. Only last-written valid.",
+        "Access: dot `.` for variables, arrow `->` for pointers (same as structures).",
+        "Union vs structure: Structure allocates sum of members; union allocates max.",
+        "Tagged union: Add discriminator field to track which member is active for type safety.",
+        "sizeof(union): Returns size of largest member plus alignment padding."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Accessing wrong union member",
+            "why_it_occurs": "Students write to one member then read from another, getting garbage.",
+            "how_to_avoid": "Only access last-written member. Use tagged unions with discriminator to track which member is valid."
+        },
+        {
+            "mistake": "Expecting sizeof(union) to be sum of members",
+            "why_it_occurs": "Students think union size is like structure (sum).",
+            "how_to_avoid": "Union size = max member size (plus alignment), not sum. All members share memory."
+        },
+        {
+            "mistake": "Initializing multiple members",
+            "why_it_occurs": "Students try `union Data d = {10, 3.14};` expecting both valid.",
+            "how_to_avoid": "Union initialization sets only first member by default. Use designated initializer: `{.f = 3.14}` for specific member."
+        },
+        {
+            "mistake": "Assuming all members have separate addresses",
+            "why_it_occurs": "Students expect union members at different addresses like structures.",
+            "how_to_avoid": "All union members start at same address. `&u.m1 == &u.m2`. They overlap completely."
+        },
+        {
+            "mistake": "Not using tagged union for variant data",
+            "why_it_occurs": "Students use plain union without tracking which member is valid.",
+            "how_to_avoid": "Add type/tag field to indicate active member: `struct { int type; union {...} data; }` Check before accessing."
+        },
+        {
+            "mistake": "Relying on type punning for portability",
+            "why_it_occurs": "Students use union to convert between types, causing undefined behavior.",
+            "how_to_avoid": "Type punning via unions is technically UB in C. Use memcpy for portable type conversion."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "How much memory does a union allocate?",
+            "options": [
+                "Size of largest member (plus alignment)",
+                "Sum of all members",
+                "Size of first member",
+                "Size of smallest member"
+            ],
+            "correct_answer": 0,
+            "explanation": "Union allocates space for largest member only (plus padding). All members share this memory."
+        },
+        {
+            "question": "How many union members can hold valid values simultaneously?",
+            "options": [
+                "One",
+                "All of them",
+                "Two",
+                "Depends on types"
+            ],
+            "correct_answer": 0,
+            "explanation": "Only one member valid at a time. Writing to member overwrites shared memory, invalidating others."
+        },
+        {
+            "question": "What is the key difference between union and structure?",
+            "options": [
+                "Union members share memory; structure members have separate memory",
+                "Union is faster",
+                "Union can have more members",
+                "No difference"
+            ],
+            "correct_answer": 0,
+            "explanation": "Structure allocates separate memory for each member (sum). Union shares memory among members (max)."
+        },
+        {
+            "question": "What are the addresses of union members?",
+            "options": [
+                "All members have same address",
+                "Each member has different address",
+                "Only first two have same address",
+                "Depends on compiler"
+            ],
+            "correct_answer": 0,
+            "explanation": "All union members start at same address—complete memory overlap. `&u.m1 == &u.m2 == ...`"
+        },
+        {
+            "question": "What is a tagged union?",
+            "options": [
+                "Union with discriminator field indicating active member",
+                "Union with more than 3 members",
+                "Union with pointer members",
+                "Union declared with typedef"
+            ],
+            "correct_answer": 0,
+            "explanation": "Tagged union adds type/discriminator field to track which member is currently valid, enabling type-safe variant data."
+        },
+        {
+            "question": "What happens when you write to one member then read another?",
+            "options": [
+                "Get garbage/bit reinterpretation",
+                "Get correct value",
+                "Compilation error",
+                "Runtime error"
+            ],
+            "correct_answer": 0,
+            "explanation": "Members share memory. Writing to one overwrites shared bytes. Reading different member interprets those bytes as different type—garbage."
+        },
+        {
+            "question": "Which operator accesses union members?",
+            "options": [
+                "Dot `.` for variables, arrow `->` for pointers",
+                "Only dot `.`",
+                "Only arrow `->`",
+                "Bracket `[]`"
+            ],
+            "correct_answer": 0,
+            "explanation": "Union member access identical to structures: `.` for variables, `->` for pointers."
+        },
+        {
+            "question": "When are unions most useful?",
+            "options": [
+                "When storing mutually exclusive alternatives to save memory",
+                "When need all data types at once",
+                "When structure is too slow",
+                "Always better than structures"
+            ],
+            "correct_answer": 0,
+            "explanation": "Unions save memory when variable can be one of several types but never multiple simultaneously (mutually exclusive)."
+        },
+        {
+            "question": "Can unions contain structures?",
+            "options": [
+                "Yes",
+                "No",
+                "Only small structures",
+                "Only if union is global"
+            ],
+            "correct_answer": 0,
+            "explanation": "Unions can contain any type including structures, arrays, pointers. Size = max member size."
+        },
+        {
+            "question": "What does `union Data { int i; float f; char c; };` size typically equal?",
+            "options": [
+                "4 bytes (sizeof int or float)",
+                "9 bytes (sum)",
+                "1 byte (sizeof char)",
+                "12 bytes"
+            ],
+            "correct_answer": 0,
+            "explanation": "Size = max member. int and float typically 4 bytes each, char is 1. Max is 4, so sizeof(union) = 4."
+        },
+        {
+            "question": "How to initialize specific union member?",
+            "options": [
+                "Use designated initializer: `{.member = value}`",
+                "List all members: `{val1, val2, val3}`",
+                "Cannot initialize unions",
+                "Use arrow operator"
+            ],
+            "correct_answer": 0,
+            "explanation": "Designated initializer `{.f = 3.14}` initializes specific member. Default initialization sets first member."
+        },
+        {
+            "question": "Are unions commonly used?",
+            "options": [
+                "Less common than structures, mainly in systems/embedded programming",
+                "More common than structures",
+                "Equally common",
+                "Never used"
+            ],
+            "correct_answer": 0,
+            "explanation": "Unions less common than structures. Used in embedded systems (memory constraints), hardware programming, variant types, specific optimizations."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Union: members share same memory location. Size = max member size, not sum.",
+            "Declaration: `union tag { type1 m1; type2 m2; ... };` Members overlap in memory.",
+            "One active member: Only last-written member is valid. Writing to one overwrites others.",
+            "All members same address: `&u.m1 == &u.m2 == ...` Complete memory overlap.",
+            "sizeof(union): Max member size plus alignment padding, not sum of members.",
+            "Union vs structure: Structure allocates sum (separate memory); union allocates max (shared memory).",
+            "Tagged union: Add discriminator field to track active member for type safety.",
+            "Access syntax: Dot `.` for variables, arrow `->` for pointers (same as structures).",
+            "Use case: Memory optimization when alternatives are mutually exclusive.",
+            "Accessing wrong member yields garbage—bit pattern reinterpreted as wrong type."
+        ],
+        "important_formulas": [
+            "Declaration: `union Data { int i; float f; char c; };`",
+            "Size: max(sizeof members) + alignment",
+            "All addresses equal: `&u.i == &u.f == &u.c`",
+            "Tagged: `struct { int type; union {...} data; };`"
+        ],
+        "common_exam_traps": [
+            "Expecting sizeof(union) = sum—it's max member size, not sum.",
+            "Accessing wrong member after writing different one—yields garbage.",
+            "Assuming separate addresses for members—all members at same address.",
+            "Initializing multiple members—only one member valid at a time.",
+            "Using plain union without tracking active member—use tagged union for safety."
+        ],
+        "exam_tip": "Remember: union size = MAX member size (not sum). All members share same address. Only one member valid at a time. Use tagged unions to track which member is active."
+    }
+}

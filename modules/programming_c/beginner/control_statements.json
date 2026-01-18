@@ -1,0 +1,333 @@
+{
+    "module_header": {
+        "module_title": "Control Statements (if, if-else, switch)",
+        "subject": "Programming Using C",
+        "level": "Beginner",
+        "prerequisites": [
+            "Operators in C (relational and logical)",
+            "Variables and data types",
+            "Understanding of boolean logic",
+            "Basic program structure"
+        ],
+        "learning_outcomes": [
+            "Understand decision-making in programs using control statements",
+            "Apply if statement for single-condition execution",
+            "Use if-else for two-way branching decisions",
+            "Implement nested if-else for multiple conditions",
+            "Apply else-if ladder for sequential condition checking",
+            "Use switch-case for multi-way branching based on discrete values",
+            "Understand when to use if vs switch for decision-making"
+        ]
+    },
+    "definition": "Control statements alter the sequential flow of program execution based on conditions. The `if` statement executes code block when condition is true: `if (condition) { statements; }`. The `if-else` provides two-way branching: `if (condition) { } else { }`. The `else-if` ladder tests multiple conditions sequentially. The `switch` statement provides multi-way branching based on a variable's value: `switch (variable) { case value1: statements; break; case value2: statements; break; default: statements; }`",
+    "concept_overview": [
+        "if statement: executes block only when condition is true. Syntax: `if (condition) { statements; }`. Condition uses relational/logical operators.",
+        "if-else: two-way decision. If condition true, executes if-block; otherwise executes else-block. Ensures one path always executes.",
+        "Nested if-else: if statements inside if/else blocks. Enables complex multi-level decisions. Proper indentation crucial for readability.",
+        "else-if ladder: chain of if-else for sequential condition testing. First true condition executes, rest skipped. Syntax: `if() {} else if() {} else if() {} else {}`",
+        "switch-case: multi-way branching for discrete values (int, char). Each case ends with break to prevent fall-through. default handles unmatched values.",
+        "Key difference: if for ranges/complex conditions, switch for discrete values (equality checks). switch more readable for multiple equality comparisons."
+    ],
+    "theory": [
+        "Control statements enable programs to make decisions and alter execution flow based on runtime conditions, transforming passive data processors into intelligent systems that respond to inputs. Sequential execution—executing statements line by line—suffices for simple calculations but real applications require conditional logic: different actions for valid vs invalid input, different calculations for positive vs negative values, different responses based on user choices. Control statements implement the fundamental programming concept of selection: choosing which code path to execute based on boolean conditions. This capability is essential for input validation (rejecting invalid data), error handling (responding to abnormal conditions), business logic (applying rules), and user interaction (responding to choices). Understanding control flow develops algorithmic thinking—decomposing problems into cases and conditions. Mastery enables writing robust programs that handle diverse scenarios gracefully.",
+        "The fundamental control structures each serve specific purposes. The `if` statement provides single-condition execution: `if (age >= 18) { printf(\"Adult\"); }` executes the block only when condition is true, skipping it otherwise. The `if-else` provides guaranteed two-way branching: exactly one of the two blocks executes based on condition truthfulness. Nested if-else creates decision trees for complex scenarios: `if (score >= 90) { grade = 'A'; } else if (score >= 80) { grade = 'B'; } else { grade = 'F'; }` tests conditions sequentially, executing first match. The else-if ladder enables multi-way decisions with precedence: first true condition wins. The `switch` statement provides optimized multi-way branching for discrete values: `switch (choice) { case 1: ...; break; case 2: ...; break; default: ...; }`. Each case tests equality; `break` prevents fall-through to next case; `default` handles unmatched values. The choice between if and switch depends on nature of conditions: switch is cleaner for multiple equality checks on same variable, if is necessary for ranges, inequalities, and complex boolean combinations. Conditions use relational operators (==, !=, <, >, <=, >=) and logical operators (&&, ||, !) to form boolean expressions evaluated to true (non-zero) or false (0).",
+        "Mastery of control statements is critically important because they form the decision-making backbone of all non-trivial programs. Input validation—checking user input before processing—prevents crashes and security vulnerabilities. Error handling—detecting and responding to abnormal conditions—makes programs robust. Business rules—implementing domain-specific logic like pricing tiers, access controls, calculation formulas—require conditional logic. Proper control structure usage affects code quality: well-structured decisions are readable and maintainable, poorly structured (deeply nested, complex conditions) are error-prone. Common pitfalls include: confusing = (assignment) with == (comparison) in conditions causing logic errors; forgetting braces causing only first statement to be controlled; missing break in switch causing unintended fall-through; unreachable code after unconditional return. Understanding control flow enables debugging: tracing which path executes for given inputs. In embedded systems, conditional logic controls hardware: `if (temperature > THRESHOLD) { activateCooling(); }`. In safety-critical systems, validation logic prevents hazardous states. In examinations, demonstrating proper use of if vs switch, correct condition syntax, and handling edge cases shows programming competence."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "if syntax: `if (condition) { statements; }`",
+            "explanation": "Executes statements only when condition evaluates to true (non-zero)."
+        },
+        {
+            "formula": "if-else syntax: `if (condition) { block1; } else { block2; }`",
+            "explanation": "Two-way branch: executes block1 if true, block2 if false. Exactly one executes."
+        },
+        {
+            "formula": "else-if ladder: `if (c1) {} else if (c2) {} else if (c3) {} else {}`",
+            "explanation": "Sequential testing: first true condition executes, rest skipped."
+        },
+        {
+            "formula": "switch syntax: `switch (var) { case val1: ...; break; case val2: ...; break; default: ...; }`",
+            "explanation": "Multi-way branch based on variable value. break prevents fall-through."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Write a program to check if a number is positive, negative, or zero using if-else.",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "int main() {",
+                "    int num;",
+                "    printf(\"Enter a number: \");",
+                "    scanf(\"%d\", &num);",
+                "    ",
+                "    if (num > 0) {",
+                "        printf(\"Positive\\n\");",
+                "    } else if (num < 0) {",
+                "        printf(\"Negative\\n\");",
+                "    } else {",
+                "        printf(\"Zero\\n\");",
+                "    }",
+                "    ",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "else-if ladder tests conditions sequentially: > 0, < 0, else (zero)"
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Write a program using switch to implement a simple calculator (+, -, *, /).",
+            "solution_steps": [
+                "```c",
+                "#include <stdio.h>",
+                "",
+                "int main() {",
+                "    char op;",
+                "    float a, b, result;",
+                "    ",
+                "    printf(\"Enter operator (+, -, *, /): \");",
+                "    scanf(\" %c\", &op);",
+                "    printf(\"Enter two numbers: \");",
+                "    scanf(\"%f %f\", &a, &b);",
+                "    ",
+                "    switch (op) {",
+                "        case '+': result = a + b; break;",
+                "        case '-': result = a - b; break;",
+                "        case '*': result = a * b; break;",
+                "        case '/': ",
+                "            if (b != 0) result = a / b;",
+                "            else { printf(\"Error: Division by zero\\n\"); return 1; }",
+                "            break;",
+                "        default: printf(\"Invalid operator\\n\"); return 1;",
+                "    }",
+                "    printf(\"Result: %.2f\\n\", result);",
+                "    return 0;",
+                "}",
+                "```"
+            ],
+            "final_answer": "switch tests operator character; default handles invalid input"
+        }
+    ],
+    "logical_derivation": "Control statements derive from the need to model real-world decision-making in programs. Sequential execution cannot handle conditional logic like 'if age >= 18, allow entry'. The if statement implements implication: condition → action. The if-else implements mutual exclusion: exactly one of two paths executes. Nested structures create decision trees matching hierarchical real-world logic. The switch statement optimizes multi-way branching: compiler can generate jump tables for O(1) case selection instead of O(n) sequential if-else tests, crucial for performance in dispatching based on command codes or state machines in embedded systems.",
+    "applications": [
+        "**Input Validation**: Checking user input ranges, types, formats before processing.",
+        "**Access Control**: Granting/denying permissions based on user role or credentials.",
+        "**Menu Systems**: Processing user menu choices using switch statements.",
+        "**Grading Systems**: Assigning letter grades based on numeric scores using else-if.",
+        "**Error Handling**: Detecting and responding to error conditions.",
+        "**Business Logic**: Implementing pricing tiers, discount rules, tax calculations.",
+        "**State Machines**: Implementing different behaviors based on system state in embedded systems."
+    ],
+    "key_takeaways": [
+        "if statement: executes block only when condition is true. Syntax: `if (condition) { statements; }`",
+        "if-else: two-way branch. Exactly one of the two blocks executes based on condition.",
+        "else-if ladder: sequential condition testing. First true condition executes, rest skipped.",
+        "Nested if-else: if statements inside if/else blocks for multi-level decisions. Use indentation.",
+        "switch-case: multi-way branching for discrete values (int, char). Each case needs break.",
+        "default in switch: handles values not matched by any case (like final else in if-else ladder).",
+        "Use if for ranges/inequalities, switch for discrete equality checks on same variable."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Using = instead of == in condition",
+            "why_it_occurs": "Students write `if (x = 5)` instead of `if (x == 5)`.",
+            "how_to_avoid": "= assigns, == compares. `if (x = 5)` assigns 5 to x (always true), not comparing. Use ==."
+        },
+        {
+            "mistake": "Forgetting braces for multi-statement blocks",
+            "why_it_occurs": "Students write `if (x > 0) printf(\"pos\"); x++;` thinking both controlled.",
+            "how_to_avoid": "Without braces, only first statement is controlled. Always use braces: `if (x > 0) { printf(); x++; }`"
+        },
+        {
+            "mistake": "Missing break in switch cases",
+            "why_it_occurs": "Students forget break, causing fall-through to next case.",
+            "how_to_avoid": "Each case should end with break (unless fall-through is intentional and documented)."
+        },
+        {
+            "mistake": "Unreachable code after if without else",
+            "why_it_occurs": "Students put return in if without considering else path.",
+            "how_to_avoid": "Ensure all paths are handled. If if-block returns, else-block or code after if should handle false case."
+        },
+        {
+            "mistake": "Comparing floating-point numbers with ==",
+            "why_it_occurs": "Students write `if (f == 0.1)` not realizing floating-point precision issues.",
+            "how_to_avoid": "Use epsilon comparison: `if (fabs(f - 0.1) < 0.0001)` instead of exact ==."
+        },
+        {
+            "mistake": "Using switch with float or string",
+            "why_it_occurs": "Students try `switch (price)` with float variable.",
+            "how_to_avoid": "switch works only with integral types (int, char). Use if-else for float, strings."
+        },
+        {
+            "mistake": "Confusing dangling else",
+            "why_it_occurs": "In nested if without braces, else associates with nearest if, not intended one.",
+            "how_to_avoid": "Always use braces for nested if-else to make association explicit."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What does `if (x = 5)` do?",
+            "options": [
+                "Assigns 5 to x, condition always true",
+                "Compares x with 5",
+                "Syntax error",
+                "Checks if x is 5"
+            ],
+            "correct_answer": 0,
+            "explanation": "`=` is assignment, not comparison. `x = 5` assigns 5 to x and evaluates to 5 (true). Use `==` for comparison."
+        },
+        {
+            "question": "In if-else, how many blocks execute?",
+            "options": [
+                "Exactly one",
+                "Both",
+                "Zero or one",
+                "Depends on condition"
+            ],
+            "correct_answer": 0,
+            "explanation": "if-else guarantees exactly one block executes: if-block when true, else-block when false."
+        },
+        {
+            "question": "What is required at the end of each switch case?",
+            "options": [
+                "`break;`",
+                "`return;`",
+                "`exit;`",
+                "`end;`"
+            ],
+            "correct_answer": 0,
+            "explanation": "`break;` ends case execution, preventing fall-through to next case. Without break, execution continues to next case."
+        },
+        {
+            "question": "Which handles unmatched values in switch?",
+            "options": [
+                "`default:`",
+                "`else:`",
+                "`otherwise:`",
+                "`catch:`"
+            ],
+            "correct_answer": 0,
+            "explanation": "`default:` case executes when no case value matches, like final else in if-else ladder."
+        },
+        {
+            "question": "Can switch be used with float variables?",
+            "options": [
+                "No, only integral types (int, char)",
+                "Yes, any type",
+                "Yes, but only positive floats",
+                "Only with decimal points"
+            ],
+            "correct_answer": 0,
+            "explanation": "switch requires integral types (int, char, enum). Use if-else for float comparisons."
+        },
+        {
+            "question": "In `if (x > 0) printf(\"A\"); printf(\"B\");`, when does \"B\" print?",
+            "options": [
+                "Always",
+                "Only if x > 0",
+                "Only if x <= 0",
+                "Never"
+            ],
+            "correct_answer": 0,
+            "explanation": "Without braces, only first statement is controlled by if. Second printf always executes."
+        },
+        {
+            "question": "What's the correct syntax for else-if?",
+            "options": [
+                "`else if (condition)`",
+                "`elseif (condition)`",
+                "`elif (condition)`",
+                "`else-if (condition)`"
+            ],
+            "correct_answer": 0,
+            "explanation": "In C, it's `else if` (two words). Not `elseif` or `elif` (Python) or `else-if`."
+        },
+        {
+            "question": "In else-if ladder, which condition executes?",
+            "options": [
+                "First true condition",
+                "All true conditions",
+                "Last true condition",
+                "All conditions"
+            ],
+            "correct_answer": 0,
+            "explanation": "else-if ladder tests sequentially. First true condition executes, rest are skipped (short-circuit)."
+        },
+        {
+            "question": "What happens if switch has no default case and no match?",
+            "options": [
+                "No code executes, continues after switch",
+                "Error",
+                "First case executes",
+                "Program crashes"
+            ],
+            "correct_answer": 0,
+            "explanation": "default is optional. If no case matches and no default, switch body skipped, execution continues after switch."
+        },
+        {
+            "question": "Which is better for checking grade ranges (A: 90-100, B: 80-89, etc.)?",
+            "options": [
+                "if-else ladder",
+                "switch",
+                "Both equally good",
+                "Neither works"
+            ],
+            "correct_answer": 0,
+            "explanation": "Grade ranges require inequality comparisons (>=), which if-else handles. switch only for discrete equality checks."
+        },
+        {
+            "question": "What does nested if-else mean?",
+            "options": [
+                "if/else inside another if/else block",
+                "Multiple if statements in sequence",
+                "if with multiple conditions",
+                "switch inside if"
+            ],
+            "correct_answer": 0,
+            "explanation": "Nested: if-else statement inside another if/else block, enabling multi-level decision trees."
+        },
+        {
+            "question": "In C, what represents true in conditions?",
+            "options": [
+                "Any non-zero value",
+                "Only 1",
+                "Only positive numbers",
+                "The word `true`"
+            ],
+            "correct_answer": 0,
+            "explanation": "In C, any non-zero value is true, 0 is false. No boolean type in standard C (before C99's stdbool.h)."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "if statement: executes block only when condition true. Syntax: `if (condition) { statements; }`",
+            "if-else: two-way branch. Exactly one block executes: if-block if true, else-block if false.",
+            "else-if ladder: sequential testing. First true condition executes, rest skipped.",
+            "Nested if-else: if statements inside if/else for multi-level decisions. Requires proper indentation.",
+            "switch-case: multi-way branching for discrete values (int, char). Syntax: `switch(var) { case val: ...; break; }`",
+            "break in switch: ends case, prevents fall-through. Without break, execution continues to next case.",
+            "default in switch: handles unmatched values (optional but recommended).",
+            "if vs switch: if for ranges/inequalities, switch for discrete equality checks on same variable.",
+            "Common error: = (assign) vs == (compare). if(x=5) assigns not compares.",
+            "Braces: without braces, only first statement controlled by if. Always use braces for clarity."
+        ],
+        "important_formulas": [
+            "if: `if (condition) { statements; }`",
+            "if-else: `if (cond) { block1; } else { block2; }`",
+            "else-if: `if (c1) {} else if (c2) {} else {}`",
+            "switch: `switch(var) { case val: ...; break; default: ...; }`"
+        ],
+        "common_exam_traps": [
+            "Using = instead of == in conditions: if(x=5) assigns not compares.",
+            "Forgetting braces: without braces, only first statement controlled by if.",
+            "Missing break in switch: causes fall-through to next case unintentionally.",
+            "Using switch with float: switch works only with int, char (integral types).",
+            "Dangling else in nested if: else associates with nearest if without braces."
+        ],
+        "exam_tip": "Remember: == for comparison, = for assignment. Always use braces even for single-statement blocks. switch needs break at end of each case. Use if for ranges, switch for discrete values."
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "module_header": {
+        "module_title": "Intelligent Agents",
+        "subject": "Artificial Intelligence & Machine Learning",
+        "level": "Beginner",
+        "prerequisites": [
+            "Introduction to Artificial Intelligence",
+            "Basic programming concepts"
+        ],
+        "learning_outcomes": [
+            "Understand the concept of intelligent agents and their components",
+            "Distinguish between different agent types: simple reflex, model-based, goal-based, utility-based",
+            "Identify agent environments and their characteristics (observable, deterministic, episodic, static, discrete)",
+            "Apply the PEAS framework to describe agent tasks",
+            "Recognize rational agent behavior and performance measures",
+            "Understand agent architectures and their implementation",
+            "Identify real-world applications of intelligent agents"
+        ]
+    },
+    "definition": "An intelligent agent is an autonomous entity that perceives its environment through sensors and acts upon it through actuators to achieve goals. Formally: Agent maps percept sequences to actions. Components: Sensors (perceive environment), Actuators (perform actions), Agent function (percept history → action), Agent program (implementation). Rational agent: For each possible percept sequence, selects action expected to maximize performance measure given percept sequence and built-in knowledge. Environment types: Observable (fully/partially), Deterministic (vs stochastic), Episodic (vs sequential), Static (vs dynamic), Discrete (vs continuous), Single-agent (vs multi-agent). Agent types: Simple reflex (condition-action rules), Model-based reflex (internal state), Goal-based (planning to goals), Utility-based (maximizing utility).",
+    "concept_overview": [
+        "Agent: Autonomous entity perceiving via sensors, acting via actuators. Maps percepts to actions.",
+        "Rational agent: Maximizes expected performance measure based on percept sequence and knowledge.",
+        "PEAS: Performance measure, Environment, Actuators, Sensors—framework to specify agent tasks.",
+        "Agent types: Simple reflex (rules), Model-based (state), Goal-based (planning), Utility-based (optimization).",
+        "Environment properties: Observable, Deterministic, Episodic, Static, Discrete, Single/Multi-agent.",
+        "Percepts: Sensory inputs at given moment. Percept sequence: Complete history of percepts.",
+        "Agent function: Mapping from percept sequences to actions. Agent program: Implementation of function."
+    ],
+    "theory": [
+        "The intelligent agent paradigm provides a unifying framework for AI systems, abstracting core elements: perception (sensors gathering information), cognition (decision-making), and action (actuators affecting environment). This abstraction applies across diverse AI applications—robotic vacuum cleaners, self-driving cars, recommendation systems, game-playing programs. Understanding agents develops systematic thinking about AI design: What information does system perceive? What actions can it take? What goals should it achieve? How should success be measured? The agent perspective shifts focus from internal algorithms to external behavior: rationality—doing the 'right thing' given available information. A rational agent acts to maximize expected performance, not necessarily perfectly (limited knowledge, computational bounds). This pragmatic definition acknowledges real-world constraints. Agent environments vary dramatically in properties affecting design complexity: fully observable environments (agent sees complete state) simplify reasoning versus partially observable (incomplete information); deterministic environments (actions have predictable effects) versus stochastic (uncertainty); episodic tasks (independent episodes) versus sequential (current decisions affect future); static environments (unchanging while agent deliberates) versus dynamic (change during deliberation); discrete states/actions versus continuous. Environment characteristics fundamentally shape agent architecture.",
+        "The fundamental agent types reflect increasing sophistication in decision-making. Simple reflex agents use condition-action rules: 'if percept matches condition, then do action'—like a thermostat turning heat on when cold. Advantages: simple, fast. Limitations: no memory, can't handle partial observability or sequential tasks. Model-based reflex agents maintain internal state tracking world aspects not directly observable: robot vacuum mapping rooms updates state 'room clean' even when not currently sensed. Internal model predicts world evolution and action effects. Goal-based agents explicitly represent goals and plan actions to achieve them: GPS navigation selects routes reaching destination goal. Requires search/planning algorithms. More flexible than reflex—same agent handles different goals. Utility-based agents assign utilities (numerical values) to states, choosing actions maximizing expected utility: autonomous car optimizes safety, speed, comfort (potentially conflicting objectives). Handles trade-offs better than binary goal satisfaction. Learning agents improve performance through experience: all previous types can incorporate learning modules adapting behavior. The PEAS framework (Performance, Environment, Actuators, Sensors) systematically describes agent tasks: for self-driving car—Performance: safety, speed, legality, comfort; Environment: roads, traffic, weather; Actuators: steering, acceleration, braking; Sensors: cameras, lidar, GPS. PEAS clarifies design requirements.",
+        "Mastery of agent concepts is critically important because agent abstraction applies universally in AI: chatbots (percepts=user messages, actions=responses), recommendation systems (percepts=user behavior, actions=recommendations), robots (percepts=sensor readings, actions=motor commands), game AI (percepts=game state, actions=moves). Understanding agent types informs architecture choice: simple reflex for reactive control (industrial machinery), model-based for partially observable environments (robot navigation), goal-based for planning tasks (logistics), utility-based for optimization (resource allocation). Environment properties determine feasible approaches: fully observable deterministic allows planning; partially observable stochastic requires probabilistic reasoning. Multi-agent systems introduce strategic reasoning: competitive (adversarial search in games), cooperative (coordination), mixed (auctions). Real-world agent challenges: perception noises (sensor uncertainty), computational limits (bounded rationality—optimal decision intractable, must approximate), exploration-exploitation (learning agents balance trying new actions vs exploiting known good ones), safety (agents must avoid harmful actions). Ethical considerations: autonomous weapons, algorithmic bias in decision agents, transparency in agent reasoning. In examinations, demonstrating ability to classify agents, apply PEAS, characterize environments, and select appropriate agent type for scenarios shows understanding of intelligent agent design principles foundational to AI engineering."
+    ],
+    "mathematical_formulation": [
+        {
+            "formula": "Agent function: $f: P^* \\rightarrow A$ where $P^*$ = percept sequences, $A$ = actions",
+            "explanation": "Agent function maps complete percept history to action choice."
+        },
+        {
+            "formula": "Rational agent: $\\arg\\max_a E[Performance | Percepts, Knowledge](a)$",
+            "explanation": "Selects action maximizing expected performance given percepts and built-in knowledge."
+        },
+        {
+            "formula": "Utility-based: $a^* = \\arg\\max_a \\sum_s P(s|a) \\cdot U(s)$",
+            "explanation": "Chooses action maximizing expected utility over resulting states."
+        }
+    ],
+    "worked_examples": [
+        {
+            "difficulty": "Basic",
+            "problem": "Apply PEAS framework to a robot vacuum cleaner.",
+            "solution_steps": [
+                "**PEAS for Robot Vacuum:**",
+                "",
+                "**Performance Measure:**",
+                "- Amount of dirt cleaned",
+                "- Energy efficiency (battery life)",
+                "- Time taken",
+                "- Safety (not damaging furniture)",
+                "",
+                "**Environment:**",
+                "- Room layout (floors, furniture, walls)",
+                "- Dirt distribution",
+                "- Obstacles",
+                "- Lighting conditions",
+                "",
+                "**Actuators:**",
+                "- Wheels (for movement: forward, backward, rotate)",
+                "- Vacuum motor (suction on/off)",
+                "- Brush (rotating for sweeping)",
+                "",
+                "**Sensors:**",
+                "- Dirt sensor (detects dirt level)",
+                "- Bump sensor (collision detection)",
+                "- Cliff sensor (detect stairs/drops)",
+                "- Battery level sensor",
+                "- Camera/Lidar (for navigation - advanced models)"
+            ],
+            "final_answer": "PEAS systematically describes agent task specifying what agent should achieve (Performance), where it operates (Environment), how it acts (Actuators), and how it perceives (Sensors)."
+        },
+        {
+            "difficulty": "Intermediate",
+            "problem": "Classify environment type for chess-playing agent.",
+            "solution_steps": [
+                "**Chess Environment Classification:**",
+                "",
+                "**1. Observable:**",
+                "- **Fully observable** - Agent sees complete board state (all pieces visible)",
+                "",
+                "**2. Deterministic:**",
+                "- **Deterministic** - Move effect completely predictable (no randomness like dice)",
+                "",
+                "**3. Episodic vs Sequential:**",
+                "- **Sequential** - Current move affects future game state (not independent episodes)",
+                "",
+                "**4. Static vs Dynamic:**",
+                "- **Semi-dynamic** - Board doesn't change while agent thinks, but clock ticking (time pressure)",
+                "- If no clock: **Static**",
+                "",
+                "**5. Discrete vs Continuous:**",
+                "- **Discrete** - Finite set of board positions and legal moves",
+                "",
+                "**6. Agents:**",
+                "- **Multi-agent (competitive)** - Two players with opposing goals",
+                "",
+                "**Summary:** Chess is fully observable, deterministic, sequential, semi-dynamic/static, discrete, competitive multi-agent environment.",
+                "",
+                "**Agent type suitable:** Goal-based (goal=checkmate) or Utility-based (evaluate board positions)"
+            ],
+            "final_answer": "Classifying environment properties guides agent design. Chess: fully observable, deterministic, sequential → planning algorithms suitable (minimax, alpha-beta)."
+        }
+    ],
+    "logical_derivation": "Agents abstract AI systems as entities perceiving and acting in environments to achieve goals. Complexity arises from environment properties: fully observable allows complete reasoning; partially observable requires maintaining beliefs about hidden states. Deterministic enables planning with certainty; stochastic requires probabilistic reasoning. Sequential tasks need long-term planning; episodic tasks solve independent problems. Agent types evolved from simple reflex (purely reactive) to model-based (state tracking) to goal/utility-based (explicit objectives and optimization). Rationality provides objective criterion: agent succeeds if actions maximize expected performance. This grounds AI design in measurable outcomes rather than mimicking human thought processes.",
+    "applications": [
+        "**Robotics:** Vacuum cleaners (cleaning), drones (delivery), warehouse robots (sorting), surgical robots (precision).",
+        "**Autonomous vehicles:** Self-driving cars (navigation, safety), autopilot (aviation).",
+        "**Game AI:** Chess engines (Deep Blue), Go players (AlphaGo), video game NPCs (behavior).",
+        "**Recommendation systems:** Netflix (movie suggestions), Amazon (product recommendations).",
+        "**Personal assistants:** Siri, Alexa, Google Assistant (voice commands, task automation).",
+        "**Trading bots:** Algorithmic stock trading (buy/sell decisions based on market data).",
+        "**Smart home:** Thermostats (temperature control), lighting (adaptive brightness)."
+    ],
+    "key_takeaways": [
+        "Intelligent agent: Autonomous entity perceiving via sensors, acting via actuators to achieve goals.",
+        "Rational agent: Maximizes expected performance measure given percept sequence and knowledge.",
+        "PEAS framework: Performance, Environment, Actuators, Sensors—systematic agent task specification.",
+        "Agent types: Simple reflex (rules), Model-based (state), Goal-based (planning), Utility-based (optimization).",
+        "Environment properties: Observable, Deterministic, Episodic, Static, Discrete, Single/Multi-agent.",
+        "Agent function: Mapping percept sequences → actions. Agent program: Concrete implementation.",
+        "Percept vs perception: Percept=input at moment. Perception=process interpreting sensory data."
+    ],
+    "common_mistakes": [
+        {
+            "mistake": "Confusing agent function with agent program",
+            "why_it_occurs": "Students don't distinguish abstract mapping from implementation.",
+            "how_to_avoid": "Agent function: abstract mathematical mapping (all possible percept sequences → actions). Agent program: concrete code implementing function."
+        },
+        {
+            "mistake": "Thinking rational = omniscient or optimal",
+            "why_it_occurs": "Students expect perfection from rational agents.",
+            "how_to_avoid": "Rational: do the best expected given available information/computation. Doesn't mean perfect—may lack knowledge, have computational limits."
+        },
+        {
+            "mistake": "Confusing environment types",
+            "why_it_occurs": "Students mix up observable vs deterministic vs episodic.",
+            "how_to_avoid": "Observable: can agent see all relevant state? Deterministic: are action outcomes predictable? Episodic: do episodes affect each other?"
+        },
+        {
+            "mistake": "Choosing wrong agent type for task",
+            "why_it_occurs": "Students don't match agent architecture to environment.",
+            "how_to_avoid": "Simple reflex: fully observable, deterministic, reactive. Model-based: partially observable. Goal/Utility: sequential planning/optimization."
+        },
+        {
+            "mistake": "Forgetting performance measure in PEAS",
+            "why_it_occurs": "Students focus on sensors/actuators, neglect defining success.",
+            "how_to_avoid": "Performance measure crucial—defines what agent should achieve. Always specify first in PEAS."
+        }
+    ],
+    "quiz": [
+        {
+            "question": "What is an intelligent agent?",
+            "options": [
+                "Autonomous entity perceiving and acting to achieve goals",
+                "Any computer program",
+                "Robot with sensors",
+                "Human-like AI"
+            ],
+            "correct_answer": 0,
+            "explanation": "Intelligent agent: autonomous entity using sensors to perceive environment, actuators to act, achieving goals. Includes software agents, not just robots."
+        },
+        {
+            "question": "What does PEAS stand for?",
+            "options": [
+                "Performance, Environment, Actuators, Sensors",
+                "Percepts, Events, Actions, States",
+                "Planning, Execution, Analysis, Solution",
+                "Program, Environment, Agent, System"
+            ],
+            "correct_answer": 0,
+            "explanation": "PEAS framework: Performance measure (success criteria), Environment (where agent operates), Actuators (how it acts), Sensors (how it perceives)."
+        },
+        {
+            "question": "What defines a rational agent?",
+            "options": [
+                "Maximizes expected performance given percepts and knowledge",
+                "Always makes perfect decisions",
+                "Thinks like humans",
+                "Uses logic only"
+            ],
+            "correct_answer": 0,
+            "explanation": "Rational agent: selects actions maximizing expected performance based on percept sequence and built-in knowledge. Not necessarily perfect (limited info/computation)."
+        },
+        {
+            "question": "Which agent type uses condition-action rules without memory?",
+            "options": [
+                "Simple reflex agent",
+                "Model-based agent",
+                "Goal-based agent",
+                "Utility-based agent"
+            ],
+            "correct_answer": 0,
+            "explanation": "Simple reflex agent: uses 'if condition then action' rules, no internal state/memory. Fast but limited to reactive tasks."
+        },
+        {
+            "question": "Which agent maintains internal state to track unobservable aspects?",
+            "options": [
+                "Model-based reflex agent",
+                "Simple reflex agent",
+                "Goal-based agent only",
+                "None"
+            ],
+            "correct_answer": 0,
+            "explanation": "Model-based reflex agent: maintains internal state model predicting world evolution and action effects. Handles partial observability."
+        },
+        {
+            "question": "Is chess environment deterministic or stochastic?",
+            "options": [
+                "Deterministic",
+                "Stochastic",
+                "Both",
+                "Neither"
+            ],
+            "correct_answer": 0,
+            "explanation": "Chess is deterministic: move outcomes completely predictable, no randomness (unlike backgammon with dice). Fully observable, sequential, discrete."
+        },
+        {
+            "question": "What does 'fully observable' environment mean?",
+            "options": [
+                "Agent sensors give access to complete state",
+                "Environment never changes",
+                "Agent can predict future",
+                "No other agents present"
+            ],
+            "correct_answer": 0,
+            "explanation": "Fully observable: agent's sensors provide complete, relevant state information. Partially observable: some state hidden (poker—opponent's cards)."
+        },
+        {
+            "question": "Which agent type assigns numerical values to states to optimize?",
+            "options": [
+                "Utility-based agent",
+                "Goal-based agent",
+                "Reflex agent",
+                "Model-based agent"
+            ],
+            "correct_answer": 0,
+            "explanation": "Utility-based agent: assigns utilities to states, chooses actions maximizing expected utility. Handles trade-offs between conflicting objectives."
+        },
+        {
+            "question": "What is a percept?",
+            "options": [
+                "Agent's sensory input at a given time",
+                "Agent's action",
+                "Agent's goal",
+                "Agent's program"
+            ],
+            "correct_answer": 0,
+            "explanation": "Percept: agent's sensory input at moment. Percept sequence: history of all percepts. Agent function maps percept sequences to actions."
+        },
+        {
+            "question": "Which is NOT an environment property?",
+            "options": [
+                "Intelligent",
+                "Observable",
+                "Deterministic",
+                "Episodic"
+            ],
+            "correct_answer": 0,
+            "explanation": "Environment properties: Observable, Deterministic, Episodic, Static, Discrete, Single/Multi-agent. 'Intelligent' describes agents, not environments."
+        },
+        {
+            "question": "Goal-based agents differ from reflex agents by:",
+            "options": [
+                "Explicitly representing goals and planning actions",
+                "Being faster",
+                "Having more sensors",
+                "Using neural networks"
+            ],
+            "correct_answer": 0,
+            "explanation": "Goal-based agents explicitly represent goals and use search/planning to find action sequences achieving goals. More flexible than reflex rules."
+        },
+        {
+            "question": "Which best describes robot vacuum environment?",
+            "options": [
+                "Partially observable, stochastic, sequential, dynamic",
+                "Fully observable, deterministic, episodic, static",
+                "Always deterministic and static",
+                "Always episodic"
+            ],
+            "correct_answer": 0,
+            "explanation": "Robot vacuum: partially observable (can't see whole house), stochastic (dirt distribution uncertain), sequential (cleaning path matters), dynamic (dirt appears while cleaning)."
+        }
+    ],
+    "ai_summary": {
+        "key_ideas": [
+            "Intelligent agent: Autonomous entity perceiving (sensors) and acting (actuators) to achieve goals in environment.",
+            "Rational agent: Maximizes expected performance measure based on percept sequence and built-in knowledge (not omniscient/perfect).",
+            "PEAS framework: Performance, Environment, Actuators, Sensors—systematic specification of agent tasks.",
+            "Agent types: Simple reflex (condition-action rules, no memory) → Model-based (internal state) → Goal-based (planning) → Utility-based (optimization).",
+            "Environment properties: Observable (fully/partially), Deterministic (vs stochastic), Episodic (vs sequential), Static (vs dynamic), Discrete (vs continuous), Single/Multi-agent.",
+            "Agent function: Abstract mapping percept sequences → actions. Agent program: Concrete implementation.",
+            "Percept: Sensory input at moment. Percept sequence: Complete history guiding decisions.",
+            "Simple reflex: Fast, reactive, limited. Model-based: Handles partial observability. Goal-based: Flexible planning. Utility-based: Optimizes trade-offs.",
+            "Environment complexity determines agent architecture: Fully observable + deterministic allows planning; partially observable + stochastic requires probabilistic reasoning.",
+            "Applications: Robotics (vacuums, drones), autonomous vehicles, game AI, recommendations, assistants, trading bots."
+        ],
+        "important_formulas": [
+            "Agent function: $f: P^* \\rightarrow A$",
+            "Rational: $\\arg\\max_a E[Perf | percepts](a)$",
+            "PEAS: Performance, Environment, Actuators, Sensors"
+        ],
+        "common_exam_traps": [
+            "Confusing agent function (abstract mapping) vs agent program (implementation)—function is mathematical, program is code.",
+            "Thinking rational = perfect—rational means best expected given available info, not omniscient.",
+            "Mixing environment properties: Observable≠Deterministic≠Episodic. Each independent dimension.",
+            "Wrong agent type: Simple reflex for partially observable fails. Use model-based for hidden state.",
+            "Forgetting performance measure in PEAS—always specify what defines success first."
+        ],
+        "exam_tip": "Remember PEAS framework order: Performance (what to achieve) first. Environment types: Observable (can see all?), Deterministic (predictable?), Episodic (independent?). Agent types progress: Reflex → Model → Goal → Utility."
+    }
+}
